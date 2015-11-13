@@ -1,0 +1,143 @@
+<obj type="Map">
+  <api object="Map" method="Areas" static="true">
+    <ret type="iterator"/>
+  </api>
+  <api object="Map" method="FindBiggestArea" static="true">
+    <arg pos="1" type="bool" name="bWater"/>
+    <ret type="Area"/>
+  </api>
+  <api object="Map" method="FindWater" static="true">
+    <arg pos="1" type="Plot" name="pkPlot"/>
+    <arg pos="2" type="int" name="iRange"/>
+    <arg pos="3" type="bool" name="bFreshWater"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Map" method="GetClimate" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="GetFractalFlags" static="true">
+    <ret type="{FRAC_WRAP_X,  FRAC_WRAP_Y}"/>
+  </api>
+  <api object="Map" method="GetGridSize" static="true">
+    <ret type="int,  int"/>
+  </api>
+  <api object="Map" method="GetNumPlots" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="GetNumResources" static="true">
+    <arg pos="1" type="ResourceTypes" name="eResource"/>
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="GetNumResourcesOnLand" static="true">
+    <arg pos="1" type="ResourceTypes" name="eResource"/>
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="GetPlot" static="true">
+    <arg pos="1" type="int" name="x"/>
+    <arg pos="2" type="int" name="y"/>
+    <ret type="Plot"/>
+  </api>
+  <api object="Map" method="GetPlotByIndex" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="Plot"/>
+  </api>
+  <api object="Map" method="GetPlotXY" static="true">
+    <arg pos="1" type="int" name="x" default="0"/>
+    <arg pos="2" type="int" name="y" default="0"/>
+    <arg pos="3" type="int" name="dx"/>
+    <arg pos="4" type="int" name="dy"/>
+    <ret type="Plot"/>
+  </api>
+  <api object="Map" method="GetArea" static="true">
+    <arg pos="1" type="int" name="iID"/>
+    <ret type="Area"/>
+  </api>
+  <api object="Map" method="GetIndexAfterLastArea" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="GetLandPlots" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="GetNumAreas" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="GetNumLandAreas" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="GetRandomResourceQuantity" static="true">
+    <arg pos="1" type="ResourceTypes" name="eResource"/>
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="GetSeaLevel" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="GetWorldSize" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="IsPlot" static="true">
+    <arg pos="1" type="int" name="x"/>
+    <arg pos="2" type="int" name="y"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Map" method="IsWrapX" static="true">
+    <ret type="bool"/>
+  </api>
+  <api object="Map" method="IsWrapY" static="true">
+    <ret type="bool"/>
+  </api>
+  <api object="Map" method="MaxPlotDistance" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="Rand" static="true">
+    <arg pos="1" type="int" name="iMax"/>
+    <arg pos="2" type="str" name="sMsg"/>
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="CalculateAreas" static="true">
+    <ret type="void"/>
+  </api>
+  <api object="Map" method="RecalculateAreas" static="true">
+    <ret type="void"/>
+  </api>
+  <api object="Map" method="PlotDistance" static="true">
+    <arg pos="1" type="int" name="iX1"/>
+    <arg pos="2" type="int" name="iY1"/>
+    <arg pos="3" type="int" name="iX2"/>
+    <arg pos="4" type="int" name="iY2"/>
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="PlotXYWithRangeCheck" static="true">
+    <arg pos="1" type="int" name="iX"/>
+    <arg pos="2" type="int" name="iY"/>
+    <arg pos="3" type="int" name="iDeltaHexX"/>
+    <arg pos="4" type="int" name="iDeltaHexY"/>
+    <arg pos="5" type="int" name="iRange"/>
+    <ret type="Plot"/>
+  </api>
+  <api object="Map" method="PlotDirection" static="true">
+    <arg pos="1" type="int" name="iX"/>
+    <arg pos="2" type="int" name="iY"/>
+    <arg pos="3" type="DirectionTypes" name="eDirection"/>
+    <ret type="Plot"/>
+  </api>
+  <api object="Map" method="DefaultContinentStamper" static="true">
+    <ret type="void"/>
+  </api>
+  <api object="Map" method="DoPlaceNaturalWonders" static="true">
+    <ret type="void"/>
+  </api>
+  <api object="Map" method="GetCustomOption" static="true">
+    <arg pos="1" type="str" name="sOption"/>
+    <ret type="int"/>
+  </api>
+  <api object="Map" method="UpdateDeferredFog" static="true">
+    <ret type="void"/>
+  </api>
+  <api object="Map" method="ChangeAIMapHint" static="true">
+    <arg pos="1" type="int" name="iHint"/>
+    <ret type="void"/>
+  </api>
+  <api object="Map" method="GetAIMapHint" static="true">
+    <ret type="int"/>
+  </api>
+</obj>

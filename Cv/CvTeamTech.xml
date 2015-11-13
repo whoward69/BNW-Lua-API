@@ -1,0 +1,78 @@
+<class type="CvTeamTech">
+  <call fn="Init" ret="void">
+    <arg type="CvTechXMLEntries*" name="pTechs"/>
+    <arg type="CvTeam*" name="pTeam"/>
+  </call>
+  <call fn="Uninit" ret="void"></call>
+  <call fn="Reset" ret="void"></call>
+  <call fn="Read" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="Write" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="SetHasTech" ret="void">
+    <arg type="TechTypes" name="eIndex"/>
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="HasTech" ret="bool">
+    <arg type="TechTypes" name="eIndex"/>
+  </call>
+  <call fn="GetLastTechAcquired" ret="TechTypes"></call>
+  <call fn="SetLastTechAcquired" ret="void">
+    <arg type="TechTypes" name="eTech"/>
+  </call>
+  <call fn="GetNumTechsKnown" ret="int"></call>
+  <call fn="HasResearchedAllTechs" ret="bool"></call>
+  <call fn="SetNoTradeTech" ret="void">
+    <arg type="TechTypes" name="eIndex"/>
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="IsNoTradeTech" ret="bool">
+    <arg type="TechTypes" name="eIndex"/>
+  </call>
+  <call fn="IncrementTechCount" ret="void">
+    <arg type="TechTypes" name="eIndex"/>
+  </call>
+  <call fn="GetTechCount" ret="int">
+    <arg type="TechTypes" name="eIndex"/>
+  </call>
+  <call fn="SetResearchProgress" ret="void">
+    <arg type="TechTypes" name="eIndex"/>
+    <arg type="int" name="iNewValue"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="SetResearchProgressTimes100" ret="void">
+    <arg type="TechTypes" name="eIndex"/>
+    <arg type="int" name="iNewValue"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="GetResearchProgress" ret="int">
+    <arg type="TechTypes" name="eIndex"/>
+  </call>
+  <call fn="GetResearchProgressTimes100" ret="int">
+    <arg type="TechTypes" name="eIndex"/>
+  </call>
+  <call fn="ChangeResearchProgress" ret="void">
+    <arg type="TechTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="ChangeResearchProgressTimes100" ret="void">
+    <arg type="TechTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="ChangeResearchProgressPercent" ret="int">
+    <arg type="TechTypes" name="eIndex"/>
+    <arg type="int" name="iPercent"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="GetResearchCost" ret="int">
+    <arg type="TechTypes" name="eTech"/>
+  </call>
+  <call fn="GetResearchLeft" ret="int">
+    <arg type="TechTypes" name="eTech"/>
+  </call>
+  <call fn="GetTechs" ret="CvTechXMLEntries*"></call>
+</class>

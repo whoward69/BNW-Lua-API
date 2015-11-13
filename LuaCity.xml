@@ -1,0 +1,1274 @@
+<obj type="City">
+  <api object="City" method="IsNone">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="Kill">
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="CreateGreatGeneral">
+    <method class="CvCity" fn="createGreatGeneral"/>
+  </api>
+  <api object="City" method="CreateGreatAdmiral">
+    <method class="CvCity" fn="createGreatAdmiral"/>
+  </api>
+  <api object="City" method="DoTask">
+    <arg pos="2" type="TaskTypes" name="eTask"/>
+    <arg pos="3" type="int" name="iData1" default="-1"/>
+    <arg pos="4" type="int" name="iData2" default="-1"/>
+    <arg pos="5" type="bool" name="bOption" default="false"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="ChooseProduction">
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetCityPlotIndex">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetCityIndexPlot">
+    <arg pos="2" type="int" name="iIndex"/>
+    <ret type="Plot"/>
+  </api>
+  <api object="City" method="CanWork">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="IsPlotBlockaded">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="ClearWorkingOverride">
+    <method class="CvCity" fn="clearWorkingOverride"/>
+  </api>
+  <api object="City" method="CountNumImprovedPlots">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="CountNumWaterPlots">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="CountNumRiverPlots">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="FindPopulationRank">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="FindBaseYieldRateRank">
+    <arg pos="2" type="YieldTypes" name="eYield"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="FindYieldRateRank">
+    <arg pos="2" type="YieldTypes" name="eYield"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="AllUpgradesAvailable">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <arg pos="3" type="int" name="iUpgradeCount" default="0"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="IsWorldWondersMaxed">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="IsTeamWondersMaxed">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="IsNationalWondersMaxed">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="IsBuildingsMaxed">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="CanTrainTooltip">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <ret type="str"/>
+  </api>
+  <api object="City" method="CanTrain">
+    <arg pos="2" type="int" name="iUnit"/>
+    <arg pos="3" type="bool" name="bContinue" default="false"/>
+    <arg pos="4" type="bool" name="bTestVisible" default="false"/>
+    <arg pos="5" type="bool" name="bIgnoreCost" default="false"/>
+    <arg pos="6" type="bool" name="bWillPurchase" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="CanConstructTooltip">
+    <arg pos="2" type="BuildingTypes" name="eBuilding"/>
+    <ret type="str"/>
+  </api>
+  <api object="City" method="CanConstruct">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <arg pos="3" type="bool" name="bContinue" default="false"/>
+    <arg pos="4" type="bool" name="bTestVisible" default="false"/>
+    <arg pos="5" type="bool" name="bIgnoreCost" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="CanCreate">
+    <arg pos="2" type="int" name="iProject"/>
+    <arg pos="3" type="bool" name="bContinue" default="false"/>
+    <arg pos="4" type="bool" name="bTestVisible" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="CanPrepare">
+    <arg pos="2" type="int" name="iSpecialist"/>
+    <arg pos="3" type="bool" name="bContinue" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="CanMaintain">
+    <arg pos="2" type="int" name="iProcess"/>
+    <arg pos="3" type="bool" name="bContinue" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetPurchaseUnitTooltip">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <ret type="str"/>
+  </api>
+  <api object="City" method="GetFaithPurchaseUnitTooltip">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <ret type="str"/>
+  </api>
+  <api object="City" method="GetPurchaseBuildingTooltip">
+    <arg pos="2" type="BuildingTypes" name="eBuilding"/>
+    <ret type="str"/>
+  </api>
+  <api object="City" method="GetFaithPurchaseBuildingTooltip">
+    <arg pos="2" type="BuildingTypes" name="eBuilding"/>
+    <ret type="str"/>
+  </api>
+  <api object="City" method="CanJoin">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="IsBuildingLocalResourceValid">
+    <method class="CvCity" fn="IsBuildingLocalResourceValid"/>
+  </api>
+  <api object="City" method="GetResourceDemanded">
+    <method class="CvCity" fn="GetResourceDemanded"/>
+  </api>
+  <api object="City" method="SetResourceDemanded">
+    <method class="CvCity" fn="SetResourceDemanded"/>
+  </api>
+  <api object="City" method="DoPickResourceDemanded">
+    <method class="CvCity" fn="DoPickResourceDemanded"/>
+  </api>
+  <api object="City" method="GetFoodTurnsLeft">
+    <method class="CvCity" fn="getFoodTurnsLeft"/>
+  </api>
+  <api object="City" method="IsProduction">
+    <method class="CvCity" fn="isProduction"/>
+  </api>
+  <api object="City" method="IsProductionLimited">
+    <method class="CvCity" fn="isProductionLimited"/>
+  </api>
+  <api object="City" method="IsProductionUnit">
+    <method class="CvCity" fn="isProductionUnit"/>
+  </api>
+  <api object="City" method="IsProductionBuilding">
+    <method class="CvCity" fn="isProductionBuilding"/>
+  </api>
+  <api object="City" method="IsProductionProject">
+    <method class="CvCity" fn="isProductionProject"/>
+  </api>
+  <api object="City" method="IsProductionSpecialist">
+    <method class="CvCity" fn="isProductionSpecialist"/>
+  </api>
+  <api object="City" method="IsProductionProcess">
+    <method class="CvCity" fn="isProductionProcess"/>
+  </api>
+  <api object="City" method="CanContinueProduction">
+    <arg pos="2" type="int" name="eOrderType"/>
+    <arg pos="3" type="int" name="iData1"/>
+    <arg pos="4" type="int" name="iData2"/>
+    <arg pos="5" type="bool" name="bSave"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetProductionExperience">
+    <method class="CvCity" fn="getProductionExperience"/>
+  </api>
+  <api object="City" method="AddProductionExperience">
+    <arg pos="2" type="Unit" name="pkUnit"/>
+    <arg pos="3" type="bool" name="bConscript" default="false"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetProductionUnit">
+    <method class="CvCity" fn="getProductionUnit"/>
+  </api>
+  <api object="City" method="GetProductionUnitAI">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetProductionBuilding">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetProductionProject">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetProductionSpecialist">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetProductionProcess">
+    <method class="CvCity" fn="getProductionProcess"/>
+  </api>
+  <api object="City" method="GetProductionNameKey">
+    <ret type="str"/>
+  </api>
+  <api object="City" method="GetGeneralProductionTurnsLeft">
+    <method class="CvCity" fn="getGeneralProductionTurnsLeft"/>
+  </api>
+  <api object="City" method="IsFoodProduction">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetFirstUnitOrder">
+    <method class="CvCity" fn="getFirstUnitOrder"/>
+  </api>
+  <api object="City" method="GetFirstProjectOrder">
+    <method class="CvCity" fn="getFirstProjectOrder"/>
+  </api>
+  <api object="City" method="GetFirstSpecialistOrder">
+    <method class="CvCity" fn="getFirstSpecialistOrder"/>
+  </api>
+  <api object="City" method="GetNumTrainUnitAI">
+    <method class="CvCity" fn="getNumTrainUnitAI"/>
+  </api>
+  <api object="City" method="GetFirstBuildingOrder">
+    <method class="CvCity" fn="getFirstBuildingOrder"/>
+  </api>
+  <api object="City" method="IsUnitFoodProduction">
+    <method class="CvCity" fn="isFoodProduction"/>
+  </api>
+  <api object="City" method="GetProduction">
+    <method class="CvCity" fn="getProduction"/>
+  </api>
+  <api object="City" method="GetProductionTimes100">
+    <method class="CvCity" fn="getProductionTimes100"/>
+  </api>
+  <api object="City" method="GetProductionNeeded">
+    <method class="CvCity" fn="getProductionNeeded"/>
+  </api>
+  <api object="City" method="GetUnitProductionNeeded">
+    <arg pos="2" type="UnitTypes" name="eUnitType"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetBuildingProductionNeeded">
+    <arg pos="2" type="BuildingTypes" name="eBuildingType"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetProjectProductionNeeded">
+    <arg pos="2" type="ProjectTypes" name="eProjectType"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetProductionTurnsLeft">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetUnitProductionTurnsLeft">
+    <method class="CvCity" fn="getProductionTurnsLeft"/>
+  </api>
+  <api object="City" method="GetBuildingProductionTurnsLeft">
+    <method class="CvCity" fn="getProductionTurnsLeft"/>
+  </api>
+  <api object="City" method="GetProjectProductionTurnsLeft">
+    <method class="CvCity" fn="getProductionTurnsLeft"/>
+  </api>
+  <api object="City" method="GetSpecialistProductionTurnsLeft">
+    <method class="CvCity" fn="getProductionTurnsLeft"/>
+  </api>
+  <api object="City" method="IsCanPurchase">
+    <arg pos="2" type="bool" name="bTestPurchaseCost"/>
+    <arg pos="3" type="bool" name="bTestTrainable"/>
+    <arg pos="4" type="UnitTypes" name="eUnitType"/>
+    <arg pos="5" type="BuildingTypes" name="eBuildingType"/>
+    <arg pos="6" type="ProjectTypes" name="eProjectType"/>
+    <arg pos="7" type="YieldTypes" name="ePurchaseYield"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetUnitPurchaseCost">
+    <method class="CvCity" fn="GetPurchaseCost"/>
+  </api>
+  <api object="City" method="GetUnitFaithPurchaseCost">
+    <method class="CvCity" fn="GetFaithPurchaseCost"/>
+  </api>
+  <api object="City" method="GetBuildingPurchaseCost">
+    <method class="CvCity" fn="GetPurchaseCost"/>
+  </api>
+  <api object="City" method="GetBuildingFaithPurchaseCost">
+    <method class="CvCity" fn="GetFaithPurchaseCost"/>
+  </api>
+  <api object="City" method="GetProjectPurchaseCost">
+    <method class="CvCity" fn="GetPurchaseCost"/>
+  </api>
+  <api object="City" method="SetProduction">
+    <method class="CvCity" fn="setProduction"/>
+  </api>
+  <api object="City" method="ChangeProduction">
+    <method class="CvCity" fn="changeProduction"/>
+  </api>
+  <api object="City" method="GetYieldModifierTooltip">
+    <arg pos="2" type="YieldTypes" name="eYield"/>
+    <ret type="str"/>
+  </api>
+  <api object="City" method="GetProductionModifier">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetCurrentProductionDifference">
+    <method class="CvCity" fn="getCurrentProductionDifference"/>
+  </api>
+  <api object="City" method="GetRawProductionDifference">
+    <method class="CvCity" fn="getRawProductionDifference"/>
+  </api>
+  <api object="City" method="GetCurrentProductionDifferenceTimes100">
+    <method class="CvCity" fn="getCurrentProductionDifferenceTimes100"/>
+  </api>
+  <api object="City" method="GetRawProductionDifferenceTimes100">
+    <method class="CvCity" fn="getRawProductionDifferenceTimes100"/>
+  </api>
+  <api object="City" method="GetUnitProductionModifier">
+    <arg pos="2" type="UnitTypes" name="iUnit"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetBuildingProductionModifier">
+    <arg pos="2" type="BuildingTypes" name="iBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetProjectProductionModifier">
+    <arg pos="2" type="ProjectTypes" name="eProject"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetSpecialistProductionModifier">
+    <arg pos="2" type="SpecialistTypes" name="eSpecialist"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetExtraProductionDifference">
+    <method class="CvCity" fn="getExtraProductionDifference"/>
+  </api>
+  <api object="City" method="CanHurry">
+    <method class="CvCity" fn="canHurry"/>
+  </api>
+  <api object="City" method="Hurry">
+    <method class="CvCity" fn="hurry"/>
+  </api>
+  <api object="City" method="GetConscriptUnit">
+    <method class="CvCity" fn="getConscriptUnit"/>
+  </api>
+  <api object="City" method="GetConscriptPopulation">
+    <method class="CvCity" fn="getConscriptPopulation"/>
+  </api>
+  <api object="City" method="ConscriptMinCityPopulation">
+    <method class="CvCity" fn="conscriptMinCityPopulation"/>
+  </api>
+  <api object="City" method="CanConscript">
+    <method class="CvCity" fn="canConscript"/>
+  </api>
+  <api object="City" method="Conscript">
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetResourceYieldRateModifier">
+    <method class="CvCity" fn="getResourceYieldRateModifier"/>
+  </api>
+  <api object="City" method="GetHandicapType">
+    <method class="CvCity" fn="getHandicapType"/>
+  </api>
+  <api object="City" method="GetCivilizationType">
+    <method class="CvCity" fn="getCivilizationType"/>
+  </api>
+  <api object="City" method="GetPersonalityType">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetArtStyleType">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetCitySizeType">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="IsBarbarian">
+    <method class="CvCity" fn="isBarbarian"/>
+  </api>
+  <api object="City" method="IsHuman">
+    <method class="CvCity" fn="isHuman"/>
+  </api>
+  <api object="City" method="IsVisible">
+    <method class="CvCity" fn="isVisible"/>
+  </api>
+  <api object="City" method="IsCapital">
+    <method class="CvCity" fn="isCapital"/>
+  </api>
+  <api object="City" method="IsOriginalCapital">
+    <method class="CvCity" fn="IsOriginalCapital"/>
+  </api>
+  <api object="City" method="IsOriginalMajorCapital">
+    <method class="CvCity" fn="IsOriginalMajorCapital"/>
+  </api>
+  <api object="City" method="IsCoastal">
+    <method class="CvCity" fn="isCoastal"/>
+  </api>
+  <api object="City" method="FoodConsumption">
+    <method class="CvCity" fn="foodConsumption"/>
+  </api>
+  <api object="City" method="FoodDifference">
+    <method class="CvCity" fn="foodDifference"/>
+  </api>
+  <api object="City" method="FoodDifferenceTimes100">
+    <method class="CvCity" fn="foodDifferenceTimes100"/>
+  </api>
+  <api object="City" method="GrowthThreshold">
+    <method class="CvCity" fn="growthThreshold"/>
+  </api>
+  <api object="City" method="ProductionLeft">
+    <method class="CvCity" fn="productionLeft"/>
+  </api>
+  <api object="City" method="HurryCost">
+    <method class="CvCity" fn="hurryCost"/>
+  </api>
+  <api object="City" method="HurryGold">
+    <method class="CvCity" fn="hurryGold"/>
+  </api>
+  <api object="City" method="HurryPopulation">
+    <method class="CvCity" fn="hurryPopulation"/>
+  </api>
+  <api object="City" method="HurryProduction">
+    <method class="CvCity" fn="hurryProduction"/>
+  </api>
+  <api object="City" method="MaxHurryPopulation">
+    <method class="CvCity" fn="maxHurryPopulation"/>
+  </api>
+  <api object="City" method="GetNumBuilding">
+    <arg pos="2" type="BuildingTypes" name="eBuildingType"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="IsHasBuilding">
+    <arg pos="2" type="BuildingTypes" name="eBuildingType"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetNumActiveBuilding">
+    <arg pos="2" type="BuildingTypes" name="eBuildingType"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetID">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetX">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetY">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="At">
+    <arg pos="2" type="int" name="x"/>
+    <arg pos="3" type="int" name="y"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="AtPlot">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="Plot">
+    <ret type="Plot"/>
+  </api>
+  <api object="City" method="Area">
+    <ret type="Area"/>
+  </api>
+  <api object="City" method="WaterArea">
+    <ret type="Area"/>
+  </api>
+  <api object="City" method="GetRallyPlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="City" method="CanBuyPlot">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="CanBuyPlotAt">
+    <arg pos="2" type="int" name="iX"/>
+    <arg pos="3" type="int" name="iY"/>
+    <arg pos="4" type="bool" name="bIgnoreCost"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="CanBuyAnyPlot">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetNextBuyablePlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="City" method="GetBuyablePlotList">
+    <ret type="Plot, ..."/>
+  </api>
+  <api object="City" method="GetBuyPlotCost">
+    <arg pos="2" type="int" name="iX"/>
+    <arg pos="3" type="int" name="iY"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetGarrisonedUnit">
+    <ret type="Unit"/>
+  </api>
+  <api object="City" method="GetGameTurnFounded">
+    <method class="CvCity" fn="getGameTurnFounded"/>
+  </api>
+  <api object="City" method="GetGameTurnAcquired">
+    <method class="CvCity" fn="getGameTurnAcquired"/>
+  </api>
+  <api object="City" method="GetGameTurnLastExpanded">
+    <method class="CvCity" fn="getGameTurnLastExpanded"/>
+  </api>
+  <api object="City" method="GetPopulation">
+    <method class="CvCity" fn="getPopulation"/>
+  </api>
+  <api object="City" method="SetPopulation">
+    <arg pos="2" type="int" name="iValue"/>
+    <arg pos="3" type="bool" name="bReassignPop"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="ChangePopulation">
+    <arg pos="2" type="int" name="iChange"/>
+    <arg pos="3" type="bool" name="bReassignPop"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetRealPopulation">
+    <method class="CvCity" fn="getRealPopulation"/>
+  </api>
+  <api object="City" method="GetHighestPopulation">
+    <method class="CvCity" fn="getHighestPopulation"/>
+  </api>
+  <api object="City" method="SetHighestPopulation">
+    <method class="CvCity" fn="setHighestPopulation"/>
+  </api>
+  <api object="City" method="GetNumGreatPeople">
+    <method class="CvCity" fn="getNumGreatPeople"/>
+  </api>
+  <api object="City" method="GetBaseGreatPeopleRate">
+    <method class="CvCity" fn="getBaseGreatPeopleRate"/>
+  </api>
+  <api object="City" method="GetGreatPeopleRate">
+    <method class="CvCity" fn="getGreatPeopleRate"/>
+  </api>
+  <api object="City" method="GetTotalGreatPeopleRateModifier">
+    <method class="CvCity" fn="getTotalGreatPeopleRateModifier"/>
+  </api>
+  <api object="City" method="ChangeBaseGreatPeopleRate">
+    <method class="CvCity" fn="changeBaseGreatPeopleRate"/>
+  </api>
+  <api object="City" method="GetGreatPeopleRateModifier">
+    <method class="CvCity" fn="getGreatPeopleRateModifier"/>
+  </api>
+  <api object="City" method="GetJONSCultureStored">
+    <method class="CvCity" fn="GetJONSCultureStored"/>
+  </api>
+  <api object="City" method="SetJONSCultureStored">
+    <method class="CvCity" fn="SetJONSCultureStored"/>
+  </api>
+  <api object="City" method="ChangeJONSCultureStored">
+    <method class="CvCity" fn="ChangeJONSCultureStored"/>
+  </api>
+  <api object="City" method="GetJONSCultureLevel">
+    <method class="CvCity" fn="GetJONSCultureLevel"/>
+  </api>
+  <api object="City" method="SetJONSCultureLevel">
+    <method class="CvCity" fn="SetJONSCultureLevel"/>
+  </api>
+  <api object="City" method="ChangeJONSCultureLevel">
+    <method class="CvCity" fn="ChangeJONSCultureLevel"/>
+  </api>
+  <api object="City" method="DoJONSCultureLevelIncrease">
+    <method class="CvCity" fn="DoJONSCultureLevelIncrease"/>
+  </api>
+  <api object="City" method="GetJONSCultureThreshold">
+    <method class="CvCity" fn="GetJONSCultureThreshold"/>
+  </api>
+  <api object="City" method="GetJONSCulturePerTurn">
+    <method class="CvCity" fn="getJONSCulturePerTurn"/>
+  </api>
+  <api object="City" method="GetBaseJONSCulturePerTurn">
+    <method class="CvCity" fn="GetBaseJONSCulturePerTurn"/>
+  </api>
+  <api object="City" method="GetJONSCulturePerTurnFromBuildings">
+    <method class="CvCity" fn="GetJONSCulturePerTurnFromBuildings"/>
+  </api>
+  <api object="City" method="ChangeJONSCulturePerTurnFromBuildings">
+    <method class="CvCity" fn="ChangeJONSCulturePerTurnFromBuildings"/>
+  </api>
+  <api object="City" method="GetJONSCulturePerTurnFromPolicies">
+    <method class="CvCity" fn="GetJONSCulturePerTurnFromPolicies"/>
+  </api>
+  <api object="City" method="ChangeJONSCulturePerTurnFromPolicies">
+    <method class="CvCity" fn="ChangeJONSCulturePerTurnFromPolicies"/>
+  </api>
+  <api object="City" method="GetJONSCulturePerTurnFromSpecialists">
+    <method class="CvCity" fn="GetJONSCulturePerTurnFromSpecialists"/>
+  </api>
+  <api object="City" method="ChangeJONSCulturePerTurnFromSpecialists">
+    <method class="CvCity" fn="ChangeJONSCulturePerTurnFromSpecialists"/>
+  </api>
+  <api object="City" method="GetJONSCulturePerTurnFromGreatWorks">
+    <method class="CvCity" fn="GetJONSCulturePerTurnFromGreatWorks"/>
+  </api>
+  <api object="City" method="GetJONSCulturePerTurnFromTraits">
+    <method class="CvCity" fn="GetJONSCulturePerTurnFromTraits"/>
+  </api>
+  <api object="City" method="GetJONSCulturePerTurnFromReligion">
+    <method class="CvCity" fn="GetJONSCulturePerTurnFromReligion"/>
+  </api>
+  <api object="City" method="ChangeJONSCulturePerTurnFromReligion">
+    <bug>Not exposed</bug>
+    <method class="CvCity" fn="ChangeJONSCulturePerTurnFromReligion"/>
+  </api>
+  <api object="City" method="GetJONSCulturePerTurnFromLeagues">
+    <method class="CvCity" fn="GetJONSCulturePerTurnFromLeagues"/>
+  </api>
+  <api object="City" method="GetCultureRateModifier">
+    <method class="CvCity" fn="getCultureRateModifier"/>
+  </api>
+  <api object="City" method="ChangeCultureRateModifier">
+    <method class="CvCity" fn="changeCultureRateModifier"/>
+  </api>
+  <api object="City" method="GetNumGreatWorks">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetNumGreatWorkSlots">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetBaseTourism">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetTourismMultiplier">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetTourismTooltip">
+    <ret type="str"/>
+  </api>
+  <api object="City" method="GetFilledSlotsTooltip">
+    <ret type="str"/>
+  </api>
+  <api object="City" method="GetTotalSlotsTooltip">
+    <ret type="str"/>
+  </api>
+  <api object="City" method="ClearGreatWorks">
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetFaithBuildingTourism">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="IsThemingBonusPossible">
+    <arg pos="2" type="int" name="iBuildingClass"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetThemingBonus">
+    <arg pos="2" type="int" name="iBuildingClass"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetThemingTooltip">
+    <arg pos="2" type="int" name="iBuildingClass"/>
+    <ret type="str"/>
+  </api>
+  <api object="City" method="GetFaithPerTurn">
+    <method class="CvCity" fn="GetFaithPerTurn"/>
+  </api>
+  <api object="City" method="GetFaithPerTurnFromBuildings">
+    <method class="CvCity" fn="GetFaithPerTurnFromBuildings"/>
+  </api>
+  <api object="City" method="GetFaithPerTurnFromPolicies">
+    <method class="CvCity" fn="GetFaithPerTurnFromPolicies"/>
+  </api>
+  <api object="City" method="GetFaithPerTurnFromTraits">
+    <method class="CvCity" fn="GetFaithPerTurnFromTraits"/>
+  </api>
+  <api object="City" method="GetFaithPerTurnFromReligion">
+    <method class="CvCity" fn="GetFaithPerTurnFromReligion"/>
+  </api>
+  <api object="City" method="ChangeFaithPerTurnFromReligion">
+    <bug>Not exposed</bug>
+    <method class="CvCity" fn="ChangeFaithPerTurnFromReligion"/>
+  </api>
+  <api object="City" method="IsReligionInCity">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="IsHolyCityForReligion">
+    <arg pos="2" type="ReligionTypes" name="eReligion"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="IsHolyCityAnyReligion">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetNumFollowers">
+    <arg pos="2" type="ReligionTypes" name="eReligion"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetReligiousMajority">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetSecondaryReligion">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetSecondaryReligionPantheonBelief">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetPressurePerTurn">
+    <arg pos="2" type="ReligionTypes" name="eReligion"/>
+    <ret type="int, int"/>
+  </api>
+  <api object="City" method="ConvertPercentFollowers">
+    <arg pos="2" type="ReligionTypes" name="eToReligion"/>
+    <arg pos="3" type="ReligionTypes" name="eFromReligion"/>
+    <arg pos="4" type="int" name="iPercent"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="AdoptReligionFully">
+    <arg pos="2" type="ReligionTypes" name="eReligion"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetReligionBuildingClassHappiness">
+    <arg pos="2" type="BuildingClassTypes" name="eBuildingClass"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetReligionBuildingClassYieldChange">
+    <arg pos="2" type="BuildingClassTypes" name="eBuildingClass"/>
+    <arg pos="3" type="YieldTypes" name="eYieldType"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetLeagueBuildingClassYieldChange">
+    <arg pos="2" type="BuildingClassTypes" name="eBuildingClass"/>
+    <arg pos="3" type="YieldTypes" name="eYieldType"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetNumTradeRoutesAddingPressure">
+    <arg pos="2" type="ReligionTypes" name="eReligion"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetNumWorldWonders">
+    <method class="CvCity" fn="getNumWorldWonders"/>
+  </api>
+  <api object="City" method="GetNumTeamWonders">
+    <method class="CvCity" fn="getNumTeamWonders"/>
+  </api>
+  <api object="City" method="GetNumNationalWonders">
+    <method class="CvCity" fn="getNumNationalWonders"/>
+  </api>
+  <api object="City" method="GetNumBuildings">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetWonderProductionModifier">
+    <method class="CvCity" fn="GetWonderProductionModifier"/>
+  </api>
+  <api object="City" method="ChangeWonderProductionModifier">
+    <method class="CvCity" fn="ChangeWonderProductionModifier"/>
+  </api>
+  <api object="City" method="GetLocalResourceWonderProductionMod">
+    <method class="CvCity" fn="GetLocalResourceWonderProductionMod"/>
+  </api>
+  <api object="City" method="ChangeHealRate">
+    <method class="CvCity" fn="changeHealRate"/>
+  </api>
+  <api object="City" method="IsNoOccupiedUnhappiness">
+    <method class="CvCity" fn="IsNoOccupiedUnhappiness"/>
+  </api>
+  <api object="City" method="GetFood">
+    <method class="CvCity" fn="getFood"/>
+  </api>
+  <api object="City" method="GetFoodTimes100">
+    <method class="CvCity" fn="getFoodTimes100"/>
+  </api>
+  <api object="City" method="SetFood">
+    <method class="CvCity" fn="setFood"/>
+  </api>
+  <api object="City" method="ChangeFood">
+    <method class="CvCity" fn="changeFood"/>
+  </api>
+  <api object="City" method="GetFoodKept">
+    <method class="CvCity" fn="getFoodKept"/>
+  </api>
+  <api object="City" method="GetMaxFoodKeptPercent">
+    <method class="CvCity" fn="getMaxFoodKeptPercent"/>
+  </api>
+  <api object="City" method="GetOverflowProduction">
+    <method class="CvCity" fn="getOverflowProduction"/>
+  </api>
+  <api object="City" method="SetOverflowProduction">
+    <method class="CvCity" fn="setOverflowProduction"/>
+  </api>
+  <api object="City" method="GetFeatureProduction">
+    <method class="CvCity" fn="getFeatureProduction"/>
+  </api>
+  <api object="City" method="SetFeatureProduction">
+    <method class="CvCity" fn="setFeatureProduction"/>
+  </api>
+  <api object="City" method="GetMilitaryProductionModifier">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetSpaceProductionModifier">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="CreateApolloProgram">
+    <ret type="void"/>
+  </api>
+  <api object="City" method="GetBuildingDefense">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetFreeExperience">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetNukeModifier">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="IsResistance">
+    <method class="CvCity" fn="IsResistance"/>
+  </api>
+  <api object="City" method="GetResistanceTurns">
+    <method class="CvCity" fn="GetResistanceTurns"/>
+  </api>
+  <api object="City" method="ChangeResistanceTurns">
+    <method class="CvCity" fn="ChangeResistanceTurns"/>
+  </api>
+  <api object="City" method="IsRazing">
+    <method class="CvCity" fn="IsRazing"/>
+  </api>
+  <api object="City" method="GetRazingTurns">
+    <method class="CvCity" fn="GetRazingTurns"/>
+  </api>
+  <api object="City" method="ChangeRazingTurns">
+    <method class="CvCity" fn="ChangeRazingTurns"/>
+  </api>
+  <api object="City" method="IsOccupied">
+    <method class="CvCity" fn="IsOccupied"/>
+  </api>
+  <api object="City" method="SetOccupied">
+    <method class="CvCity" fn="SetOccupied"/>
+  </api>
+  <api object="City" method="IsPuppet">
+    <method class="CvCity" fn="IsPuppet"/>
+  </api>
+  <api object="City" method="SetPuppet">
+    <method class="CvCity" fn="SetPuppet"/>
+  </api>
+  <api object="City" method="GetHappinessFromBuildings">
+    <method class="CvCity" fn="GetHappinessFromBuildings"/>
+  </api>
+  <api object="City" method="GetLocalHappiness">
+    <method class="CvCity" fn="GetLocalHappiness"/>
+  </api>
+  <api object="City" method="GetHappiness">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="IsNeverLost">
+    <method class="CvCity" fn="isNeverLost"/>
+  </api>
+  <api object="City" method="SetNeverLost">
+    <method class="CvCity" fn="setNeverLost"/>
+  </api>
+  <api object="City" method="IsDrafted">
+    <method class="CvCity" fn="isDrafted"/>
+  </api>
+  <api object="City" method="SetDrafted">
+    <method class="CvCity" fn="setDrafted"/>
+  </api>
+  <api object="City" method="IsBlockaded">
+    <method class="CvCity" fn="IsBlockaded"/>
+  </api>
+  <api object="City" method="GetWeLoveTheKingDayCounter">
+    <method class="CvCity" fn="GetWeLoveTheKingDayCounter"/>
+  </api>
+  <api object="City" method="SetWeLoveTheKingDayCounter">
+    <method class="CvCity" fn="SetWeLoveTheKingDayCounter"/>
+  </api>
+  <api object="City" method="ChangeWeLoveTheKingDayCounter">
+    <method class="CvCity" fn="ChangeWeLoveTheKingDayCounter"/>
+  </api>
+  <api object="City" method="GetNumThingsProduced">
+    <method class="CvCity" fn="GetNumThingsProduced"/>
+  </api>
+  <api object="City" method="IsProductionAutomated">
+    <method class="CvCity" fn="isProductionAutomated"/>
+  </api>
+  <api object="City" method="SetProductionAutomated">
+    <method class="CvCity" fn="setProductionAutomated"/>
+  </api>
+  <api object="City" method="SetCitySizeBoost">
+    <method class="CvCity" fn="setCitySizeBoost"/>
+  </api>
+  <api object="City" method="GetOwner">
+    <method class="CvCity" fn="getOwner"/>
+  </api>
+  <api object="City" method="GetTeam">
+    <method class="CvCity" fn="getTeam"/>
+  </api>
+  <api object="City" method="GetPreviousOwner">
+    <method class="CvCity" fn="getPreviousOwner"/>
+  </api>
+  <api object="City" method="GetOriginalOwner">
+    <method class="CvCity" fn="getOriginalOwner"/>
+  </api>
+  <api object="City" method="GetSeaPlotYield">
+    <arg pos="2" type="YieldTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetRiverPlotYield">
+    <arg pos="2" type="YieldTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetLakePlotYield">
+    <arg pos="2" type="YieldTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetBaseYieldRate">
+    <arg pos="2" type="YieldTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetBaseYieldRateFromTerrain">
+    <method class="CvCity" fn="GetBaseYieldRateFromTerrain"/>
+  </api>
+  <api object="City" method="ChangeBaseYieldRateFromTerrain">
+    <method class="CvCity" fn="ChangeBaseYieldRateFromTerrain"/>
+  </api>
+  <api object="City" method="GetBaseYieldRateFromBuildings">
+    <method class="CvCity" fn="GetBaseYieldRateFromBuildings"/>
+  </api>
+  <api object="City" method="ChangeBaseYieldRateFromBuildings">
+    <method class="CvCity" fn="ChangeBaseYieldRateFromBuildings"/>
+  </api>
+  <api object="City" method="GetBaseYieldRateFromSpecialists">
+    <method class="CvCity" fn="GetBaseYieldRateFromSpecialists"/>
+  </api>
+  <api object="City" method="ChangeBaseYieldRateFromSpecialists">
+    <method class="CvCity" fn="ChangeBaseYieldRateFromSpecialists"/>
+  </api>
+  <api object="City" method="GetBaseYieldRateFromMisc">
+    <method class="CvCity" fn="GetBaseYieldRateFromMisc"/>
+  </api>
+  <api object="City" method="ChangeBaseYieldRateFromMisc">
+    <method class="CvCity" fn="ChangeBaseYieldRateFromMisc"/>
+  </api>
+  <api object="City" method="GetBaseYieldRateFromReligion">
+    <method class="CvCity" fn="GetBaseYieldRateFromReligion"/>
+  </api>
+  <api object="City" method="ChangeBaseYieldRateFromReligion">
+    <method class="CvCity" fn="ChangeBaseYieldRateFromReligion"/>
+  </api>
+  <api object="City" method="GetYieldPerPopTimes100">
+    <method class="CvCity" fn="GetYieldPerPopTimes100"/>
+  </api>
+  <api object="City" method="GetBaseYieldRateModifier">
+    <arg pos="2" type="YieldTypes" name="eIndex"/>
+    <arg pos="3" type="int" name="iExtra" default="0"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetYieldRate">
+    <arg pos="2" type="YieldTypes" name="eIndex"/>
+    <arg pos="3" type="bool" name="bIgnoreTrade" default="false"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetYieldRateTimes100">
+    <arg pos="2" type="YieldTypes" name="eIndex"/>
+    <arg pos="3" type="bool" name="bIgnoreTrade" default="false"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetYieldRateModifier">
+    <arg pos="2" type="YieldTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetExtraSpecialistYield">
+    <arg pos="2" type="YieldTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetExtraSpecialistYieldOfType">
+    <method class="CvCity" fn="getExtraSpecialistYield"/>
+  </api>
+  <api object="City" method="GetDomainFreeExperience">
+    <method class="CvCity" fn="getDomainFreeExperience"/>
+  </api>
+  <api object="City" method="GetDomainProductionModifier">
+    <method class="CvCity" fn="getDomainProductionModifier"/>
+  </api>
+  <api object="City" method="IsEverOwned">
+    <method class="CvCity" fn="isEverOwned"/>
+  </api>
+  <api object="City" method="IsRevealed">
+    <method class="CvCity" fn="isRevealed"/>
+  </api>
+  <api object="City" method="SetRevealed">
+    <method class="CvCity" fn="setRevealed"/>
+  </api>
+  <api object="City" method="GetName">
+    <ret type="str"/>
+  </api>
+  <api object="City" method="GetNameKey">
+    <ret type="str"/>
+  </api>
+  <api object="City" method="SetName">
+    <arg pos="2" type="str" name="sName"/>
+    <arg pos="3" type="bool" name="bFound" default="false"/>
+    <ret type="void"/>
+  </api>
+  <api object="City" method="IsHasResourceLocal">
+    <arg pos="2" type="int" name="iResource"/>
+    <arg pos="3" type="bool" name="bTestVisible"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetBuildingProduction">
+    <arg pos="2" type="int" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="SetBuildingProduction">
+    <arg pos="2" type="int" name="iIndex"/>
+    <arg pos="3" type="int" name="iNewValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="ChangeBuildingProduction">
+    <arg pos="2" type="int" name="iIndex"/>
+    <arg pos="3" type="int" name="iChange"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetBuildingProductionTime">
+    <arg pos="2" type="int" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="SetBuildingProductionTime">
+    <arg pos="2" type="int" name="iIndex"/>
+    <arg pos="3" type="int" name="iNewValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="ChangeBuildingProductionTime">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetBuildingOriginalOwner">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetBuildingOriginalTime">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetUnitProduction">
+    <arg pos="2" type="int" name="iUnit"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="SetUnitProduction">
+    <arg pos="2" type="int" name="iUnit"/>
+    <arg pos="3" type="int" name="iValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="ChangeUnitProduction">
+    <arg pos="2" type="int" name="iUnit"/>
+    <arg pos="3" type="int" name="iValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="IsCanAddSpecialistToBuilding">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetSpecialistUpgradeThreshold">
+    <arg pos="2" type="int" name="iUnitClass"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetNumSpecialistsAllowedByBuilding">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetSpecialistCount">
+    <arg pos="2" type="int" name="iSpecialist"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetSpecialistGreatPersonProgress">
+    <arg pos="2" type="int" name="iSpecialist"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetSpecialistGreatPersonProgressTimes100">
+    <arg pos="2" type="int" name="iSpecialist"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="ChangeSpecialistGreatPersonProgressTimes100">
+    <arg pos="2" type="int" name="iSpecialist"/>
+    <arg pos="3" type="int" name="iChange"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetNumSpecialistsInBuilding">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="DoReallocateCitizens">
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="DoVerifyWorkingPlots">
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="IsNoAutoAssignSpecialists">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetFocusType">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="SetFocusType">
+    <arg pos="2" type="int" name="iFocus"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="IsForcedAvoidGrowth">
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetUnitCombatFreeExperience">
+    <method class="CvCity" fn="getUnitCombatFreeExperience"/>
+  </api>
+  <api object="City" method="GetFreePromotionCount">
+    <method class="CvCity" fn="getFreePromotionCount"/>
+  </api>
+  <api object="City" method="IsFreePromotion">
+    <method class="CvCity" fn="isFreePromotion"/>
+  </api>
+  <api object="City" method="GetSpecialistFreeExperience">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="UpdateStrengthValue">
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetStrengthValue">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetDamage">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="SetDamage">
+    <method class="CvCity" fn="setDamage"/>
+  </api>
+  <api object="City" method="ChangeDamage">
+    <method class="CvCity" fn="changeDamage"/>
+  </api>
+  <api object="City" method="GetMaxHitPoints">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="CanRangeStrike">
+    <method class="CvCity" fn="canRangeStrike"/>
+  </api>
+  <api object="City" method="CanRangeStrikeNow">
+    <method class="CvCity" fn="CanRangeStrikeNow"/>
+  </api>
+  <api object="City" method="CanRangeStrikeAt">
+    <method class="CvCity" fn="canRangeStrikeAt"/>
+  </api>
+  <api object="City" method="HasPerformedRangedStrikeThisTurn">
+    <method class="CvCity" fn="isMadeAttack"/>
+  </api>
+  <api object="City" method="RangeCombatUnitDefense">
+    <arg pos="2" type="Unit" name="pkDefender"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="RangeCombatDamage">
+    <arg pos="2" type="Unit" name="pkDefendingUnit" default="nil"/>
+    <arg pos="3" type="City" name="pkDefendingCity" default="nil"/>
+    <arg pos="4" type="bool" name="bIncludeRand" default="false"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetAirStrikeDefenseDamage">
+    <arg pos="2" type="Unit" name="pkAttackingUnit" default="nil"/>
+    <arg pos="3" type="bool" name="bIncludeRand" default="false"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="IsWorkingPlot">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="AlterWorkingPlot">
+    <arg pos="2" type="int" name="iIndex"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="IsForcedWorkingPlot">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetNumForcedWorkingPlots">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetNumRealBuilding">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="SetNumRealBuilding">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <arg pos="3" type="int" name="iNewValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetNumFreeBuilding">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="IsBuildingSellable">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetSellBuildingRefund">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetTotalBaseBuildingMaintenance">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetBuildingGreatWork">
+    <arg pos="2" type="int" name="iBuildingClass"/>
+    <arg pos="3" type="int" name="iSlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="SetBuildingGreatWork">
+    <arg pos="2" type="int" name="iBuildingClass"/>
+    <arg pos="3" type="int" name="iSlot"/>
+    <arg pos="4" type="int" name="iGreatWorkIndex"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="IsHoldingGreatWork">
+    <arg pos="2" type="int" name="iBuildingClass"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetNumGreatWorksInBuilding">
+    <arg pos="2" type="int" name="iBuildingClass"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="ClearOrderQueue">
+    <method class="CvCity" fn="clearOrderQueue"/>
+  </api>
+  <api object="City" method="PushOrder">
+    <arg pos="2" type="OrderTypes" name="eOrder"/>
+    <arg pos="3" type="int" name="iData1"/>
+    <arg pos="4" type="int" name="iData2"/>
+    <arg pos="5" type="int" name="bSave"><bug>possibly should be bool,  not int</bug></arg>
+    <arg pos="6" type="bool" name="bPop"/>
+    <arg pos="7" type="bool" name="bAppend"/>
+    <arg pos="8" type="bool" name="bForce" default="false"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="PopOrder">
+    <arg pos="2" type="int" name="iNum"/>
+    <arg pos="3" type="bool" name="bFinish" default="false"/>
+    <arg pos="4" type="bool" name="bChoose" default="false"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetOrderQueueLength">
+    <method class="CvCity" fn="getOrderQueueLength"/>
+  </api>
+  <api object="City" method="GetOrderFromQueue">
+    <arg pos="2" type="int" name="iNum"/>
+    <ret type="int, int, int, bool, bool"><bug>_, iData1, iData1, _, _ second one should be iData2</bug></ret>
+  </api>
+  <api object="City" method="GetBuildingYieldChange">
+    <arg pos="2" type="int" name="eBuildingClass"/>
+    <arg pos="3" type="int" name="eYield"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetBuildingEspionageModifier">
+    <arg pos="2" type="BuildingTypes" name="eBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetBuildingGlobalEspionageModifier">
+    <arg pos="2" type="BuildingTypes" name="eBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="SetBuildingYieldChange">
+    <arg pos="2" type="int" name="eBuildingClass"/>
+    <arg pos="3" type="int" name="eYield"/>
+    <arg pos="4" type="int" name="iChange"/>
+    <ret type="nil"/>
+  </api>
+  <api object="City" method="GetNumCityPlots">
+    <ret type="int"/>
+  </api>
+  <api object="City" method="CanPlaceUnitHere">
+    <arg pos="2" type="int" name="iUnitType"/>
+    <ret type="bool"/>
+  </api>
+  <api object="City" method="GetSpecialistYield">
+    <arg pos="2" type="SpecialistTypes" name="eSpecialist"/>
+    <arg pos="3" type="YieldTypes" name="eYield"/>
+    <ret type="int"/>
+  </api>
+  <api object="City" method="GetCultureFromSpecialist">
+    <method class="CvCity" fn="GetCultureFromSpecialist"/>
+  </api>
+  <api object="City" method="GetReligionCityRangeStrikeModifier">
+    <ret type="int"/>
+  </api>
+</obj>

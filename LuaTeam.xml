@@ -1,0 +1,433 @@
+<obj type="Team">
+  <api object="Team" method="IsNone">
+    <ret type="bool"/>
+  </api>
+  <api object="Team" method="AddTeam">
+    <method class="CvTeam" fn="addTeam"/>
+  </api>
+  <api object="Team" method="CanChangeWarPeace">
+    <method class="CvTeam" fn="canChangeWarPeace"/>
+  </api>
+  <api object="Team" method="CanDeclareWar">
+    <method class="CvTeam" fn="canDeclareWar"/>
+  </api>
+  <api object="Team" method="DeclareWar">
+    <method class="CvTeam" fn="declareWar"/>
+  </api>
+  <api object="Team" method="MakePeace">
+    <method class="CvTeam" fn="makePeace"/>
+  </api>
+  <api object="Team" method="GetNumTurnsLockedIntoWar">
+    <method class="CvTeam" fn="GetNumTurnsLockedIntoWar"/>
+  </api>
+  <api object="Team" method="Meet">
+    <arg pos="2" type="TeamTypes" name="eOtherTeam"/>
+    <arg pos="3" type="bool" name="bSuppressMessages"/>
+    <ret type="void"/>
+  </api>
+  <api object="Team" method="GetScore">
+    <method class="CvTeam" fn="GetScore"/>
+  </api>
+  <api object="Team" method="GetPower">
+    <method class="CvTeam" fn="getPower"/>
+  </api>
+  <api object="Team" method="GetDefensivePower">
+    <method class="CvTeam" fn="getDefensivePower"/>
+  </api>
+  <api object="Team" method="GetNumNukeUnits">
+    <method class="CvTeam" fn="getNumNukeUnits"/>
+  </api>
+  <api object="Team" method="GetTeamVotingForInDiplo">
+    <method class="CvTeam" fn="GetTeamVotingForInDiplo"/>
+  </api>
+  <api object="Team" method="GetProjectedVotesFromMinorAllies">
+    <method class="CvTeam" fn="GetProjectedVotesFromMinorAllies"/>
+  </api>
+  <api object="Team" method="GetProjectedVotesFromLiberatedMinors">
+    <method class="CvTeam" fn="GetProjectedVotesFromLiberatedMinors"/>
+  </api>
+  <api object="Team" method="GetProjectedVotesFromCivs">
+    <method class="CvTeam" fn="GetProjectedVotesFromCivs"/>
+  </api>
+  <api object="Team" method="GetTotalProjectedVotes">
+    <method class="CvTeam" fn="GetTotalProjectedVotes"/>
+  </api>
+  <api object="Team" method="GetTotalSecuredVotes">
+    <method class="CvTeam" fn="GetTotalSecuredVotes"/>
+  </api>
+  <api object="Team" method="GetAtWarCount">
+    <method class="CvTeam" fn="getAtWarCount"/>
+  </api>
+  <api object="Team" method="GetHasMetCivCount">
+    <method class="CvTeam" fn="getHasMetCivCount"/>
+  </api>
+  <api object="Team" method="HasMetHuman">
+    <method class="CvTeam" fn="hasMetHuman"/>
+  </api>
+  <api object="Team" method="GetDefensivePactCount">
+    <method class="CvTeam" fn="getDefensivePactCount"/>
+  </api>
+  <api object="Team" method="GetUnitClassMaking">
+    <method class="CvTeam" fn="getUnitClassMaking"/>
+  </api>
+  <api object="Team" method="GetUnitClassCountPlusMaking">
+    <method class="CvTeam" fn="getUnitClassCountPlusMaking"/>
+  </api>
+  <api object="Team" method="GetBuildingClassMaking">
+    <method class="CvTeam" fn="getBuildingClassMaking"/>
+  </api>
+  <api object="Team" method="GetBuildingClassCountPlusMaking">
+    <method class="CvTeam" fn="getBuildingClassCountPlusMaking"/>
+  </api>
+  <api object="Team" method="CountNumUnitsByArea">
+    <method class="CvTeam" fn="countNumUnitsByArea"/>
+  </api>
+  <api object="Team" method="CountNumCitiesByArea">
+    <method class="CvTeam" fn="countNumCitiesByArea"/>
+  </api>
+  <api object="Team" method="CountTotalPopulationByArea">
+    <method class="CvTeam" fn="countTotalPopulationByArea"/>
+  </api>
+  <api object="Team" method="CountEnemyDangerByArea">
+    <method class="CvTeam" fn="countEnemyDangerByArea"/>
+  </api>
+  <api object="Team" method="IsHuman">
+    <method class="CvTeam" fn="isHuman"/>
+  </api>
+  <api object="Team" method="IsBarbarian">
+    <method class="CvTeam" fn="isBarbarian"/>
+  </api>
+  <api object="Team" method="IsMinorCiv">
+    <method class="CvTeam" fn="isMinorCiv"/>
+  </api>
+  <api object="Team" method="IsMinorCivWarmonger">
+    <method class="CvTeam" fn="IsMinorCivWarmonger"/>
+  </api>
+  <api object="Team" method="GetLeaderID">
+    <method class="CvTeam" fn="getLeaderID"/>
+  </api>
+  <api object="Team" method="GetSecretaryID">
+    <method class="CvTeam" fn="getSecretaryID"/>
+  </api>
+  <api object="Team" method="GetHandicapType">
+    <method class="CvTeam" fn="getHandicapType"/>
+  </api>
+  <api object="Team" method="GetName">
+    <ret type="str"/>
+  </api>
+  <api object="Team" method="GetNameKey">
+    <ret type="str"/>
+  </api>
+  <api object="Team" method="GetNumMembers">
+    <method class="CvTeam" fn="getNumMembers"/>
+  </api>
+  <api object="Team" method="IsAlive">
+    <method class="CvTeam" fn="isAlive"/>
+  </api>
+  <api object="Team" method="IsEverAlive">
+    <method class="CvTeam" fn="isEverAlive"/>
+  </api>
+  <api object="Team" method="GetNumCities">
+    <method class="CvTeam" fn="getNumCities"/>
+  </api>
+  <api object="Team" method="GetTotalPopulation">
+    <method class="CvTeam" fn="getTotalPopulation"/>
+  </api>
+  <api object="Team" method="GetTotalLand">
+    <method class="CvTeam" fn="getTotalLand"/>
+  </api>
+  <api object="Team" method="GetNukeInterception">
+    <method class="CvTeam" fn="getNukeInterception"/>
+  </api>
+  <api object="Team" method="ChangeNukeInterception">
+    <method class="CvTeam" fn="changeNukeInterception"/>
+  </api>
+  <api object="Team" method="GetForceTeamVoteEligibilityCount">
+    <method class="CvTeam" fn="getForceTeamVoteEligibilityCount"/>
+  </api>
+  <api object="Team" method="IsForceTeamVoteEligible">
+    <method class="CvTeam" fn="isForceTeamVoteEligible"/>
+  </api>
+  <api object="Team" method="ChangeForceTeamVoteEligibilityCount">
+    <method class="CvTeam" fn="changeForceTeamVoteEligibilityCount"/>
+  </api>
+  <api object="Team" method="GetExtraWaterSeeFromCount">
+    <method class="CvTeam" fn="getExtraWaterSeeFromCount"/>
+  </api>
+  <api object="Team" method="IsExtraWaterSeeFrom">
+    <method class="CvTeam" fn="isExtraWaterSeeFrom"/>
+  </api>
+  <api object="Team" method="ChangeExtraWaterSeeFromCount">
+    <method class="CvTeam" fn="changeExtraWaterSeeFromCount"/>
+  </api>
+  <api object="Team" method="GetMapTradingCount">
+    <method class="CvTeam" fn="getMapTradingCount"/>
+  </api>
+  <api object="Team" method="IsMapTrading">
+    <method class="CvTeam" fn="isMapTrading"/>
+  </api>
+  <api object="Team" method="ChangeMapTradingCount">
+    <method class="CvTeam" fn="changeMapTradingCount"/>
+  </api>
+  <api object="Team" method="GetTechTradingCount">
+    <method class="CvTeam" fn="getTechTradingCount"/>
+  </api>
+  <api object="Team" method="IsTechTrading">
+    <method class="CvTeam" fn="isTechTrading"/>
+  </api>
+  <api object="Team" method="ChangeTechTradingCount">
+    <method class="CvTeam" fn="changeTechTradingCount"/>
+  </api>
+  <api object="Team" method="GetGoldTradingCount">
+    <method class="CvTeam" fn="getGoldTradingCount"/>
+  </api>
+  <api object="Team" method="IsGoldTrading">
+    <method class="CvTeam" fn="isGoldTrading"/>
+  </api>
+  <api object="Team" method="ChangeGoldTradingCount">
+    <method class="CvTeam" fn="changeGoldTradingCount"/>
+  </api>
+  <api object="Team" method="GetAllowEmbassyTradingAllowedCount">
+    <method class="CvTeam" fn="getAllowEmbassyTradingAllowedCount"/>
+  </api>
+  <api object="Team" method="IsAllowEmbassyTradingAllowed">
+    <method class="CvTeam" fn="isAllowEmbassyTradingAllowed"/>
+  </api>
+  <api object="Team" method="ChangeAllowEmbassyTradingAllowedCount">
+    <method class="CvTeam" fn="changeAllowEmbassyTradingAllowedCount"/>
+  </api>
+  <api object="Team" method="GetOpenBordersTradingAllowedCount">
+    <method class="CvTeam" fn="getOpenBordersTradingAllowedCount"/>
+  </api>
+  <api object="Team" method="IsOpenBordersTradingAllowed">
+    <method class="CvTeam" fn="isOpenBordersTradingAllowed"/>
+  </api>
+  <api object="Team" method="IsOpenBordersTradingAllowedWithTeam">
+    <method class="CvTeam" fn="isOpenBordersTradingAllowedWithTeam"/>
+  </api>
+  <api object="Team" method="ChangeOpenBordersTradingAllowedCount">
+    <method class="CvTeam" fn="changeOpenBordersTradingAllowedCount"/>
+  </api>
+  <api object="Team" method="GetDefensivePactTradingAllowedCount">
+    <method class="CvTeam" fn="getDefensivePactTradingAllowedCount"/>
+  </api>
+  <api object="Team" method="IsDefensivePactTradingAllowed">
+    <method class="CvTeam" fn="isDefensivePactTradingAllowed"/>
+  </api>
+  <api object="Team" method="IsDefensivePactTradingAllowedWithTeam">
+    <method class="CvTeam" fn="isDefensivePactTradingAllowedWithTeam"/>
+  </api>
+  <api object="Team" method="ChangeDefensivePactTradingAllowedCount">
+    <method class="CvTeam" fn="changeDefensivePactTradingAllowedCount"/>
+  </api>
+  <api object="Team" method="IsResearchAgreementTradingAllowed">
+    <method class="CvTeam" fn="IsResearchAgreementTradingAllowed"/>
+  </api>
+  <api object="Team" method="IsResearchAgreementTradingAllowedWithTeam">
+    <method class="CvTeam" fn="IsResearchAgreementTradingAllowedWithTeam"/>
+  </api>
+  <api object="Team" method="IsTradeAgreementTradingAllowed">
+    <method class="CvTeam" fn="IsTradeAgreementTradingAllowed"/>
+  </api>
+  <api object="Team" method="GetPermanentAllianceTradingCount">
+    <method class="CvTeam" fn="getPermanentAllianceTradingCount"/>
+  </api>
+  <api object="Team" method="IsPermanentAllianceTrading">
+    <method class="CvTeam" fn="isPermanentAllianceTrading"/>
+  </api>
+  <api object="Team" method="ChangePermanentAllianceTradingCount">
+    <method class="CvTeam" fn="changePermanentAllianceTradingCount"/>
+  </api>
+  <api object="Team" method="GetBridgeBuildingCount">
+    <method class="CvTeam" fn="getBridgeBuildingCount"/>
+  </api>
+  <api object="Team" method="IsBridgeBuilding">
+    <method class="CvTeam" fn="isBridgeBuilding"/>
+  </api>
+  <api object="Team" method="ChangeBridgeBuildingCount">
+    <method class="CvTeam" fn="changeBridgeBuildingCount"/>
+  </api>
+  <api object="Team" method="GetWaterWorkCount">
+    <method class="CvTeam" fn="getWaterWorkCount"/>
+  </api>
+  <api object="Team" method="IsWaterWork">
+    <method class="CvTeam" fn="isWaterWork"/>
+  </api>
+  <api object="Team" method="ChangeWaterWorkCount">
+    <method class="CvTeam" fn="changeWaterWorkCount"/>
+  </api>
+  <api object="Team" method="GetBorderObstacleCount">
+    <method class="CvTeam" fn="getBorderObstacleCount"/>
+  </api>
+  <api object="Team" method="IsBorderObstacle">
+    <method class="CvTeam" fn="isBorderObstacle"/>
+  </api>
+  <api object="Team" method="ChangeBorderObstacleCount">
+    <method class="CvTeam" fn="changeBorderObstacleCount"/>
+  </api>
+  <api object="Team" method="IsMapCentering">
+    <method class="CvTeam" fn="isMapCentering"/>
+  </api>
+  <api object="Team" method="SetMapCentering">
+    <method class="CvTeam" fn="setMapCentering"/>
+  </api>
+  <api object="Team" method="GetID">
+    <method class="CvTeam" fn="GetID"/>
+  </api>
+  <api object="Team" method="GetTechShareCount">
+    <method class="CvTeam" fn="getTechShareCount"/>
+  </api>
+  <api object="Team" method="IsTechShare">
+    <method class="CvTeam" fn="isTechShare"/>
+  </api>
+  <api object="Team" method="ChangeTechShareCount">
+    <method class="CvTeam" fn="changeTechShareCount"/>
+  </api>
+  <api object="Team" method="GetExtraMoves">
+    <method class="CvTeam" fn="getExtraMoves"/>
+  </api>
+  <api object="Team" method="ChangeExtraMoves">
+    <method class="CvTeam" fn="changeExtraMoves"/>
+  </api>
+  <api object="Team" method="CanEmbark">
+    <method class="CvTeam" fn="canEmbark"/>
+  </api>
+  <api object="Team" method="CanDefensiveEmbark">
+    <method class="CvTeam" fn="canDefensiveEmbark"/>
+  </api>
+  <api object="Team" method="IsHasMet">
+    <method class="CvTeam" fn="isHasMet"/>
+  </api>
+  <api object="Team" method="IsAtWar">
+    <method class="CvTeam" fn="isAtWar"/>
+  </api>
+  <api object="Team" method="IsPermanentWarPeace">
+    <method class="CvTeam" fn="isPermanentWarPeace"/>
+  </api>
+  <api object="Team" method="SetPermanentWarPeace">
+    <method class="CvTeam" fn="setPermanentWarPeace"/>
+  </api>
+  <api object="Team" method="GetLiberatedByTeam">
+    <method class="CvTeam" fn="GetLiberatedByTeam"/>
+  </api>
+  <api object="Team" method="GetKilledByTeam">
+    <method class="CvTeam" fn="GetKilledByTeam"/>
+  </api>
+  <api object="Team" method="HasEmbassyAtTeam">
+    <method class="CvTeam" fn="HasEmbassyAtTeam"/>
+  </api>
+  <api object="Team" method="IsAllowsOpenBordersToTeam">
+    <method class="CvTeam" fn="IsAllowsOpenBordersToTeam"/>
+  </api>
+  <api object="Team" method="IsForcePeace">
+    <method class="CvTeam" fn="isForcePeace"/>
+  </api>
+  <api object="Team" method="IsDefensivePact">
+    <method class="CvTeam" fn="IsHasDefensivePact"/>
+  </api>
+  <api object="Team" method="GetRouteChange">
+    <method class="CvTeam" fn="getRouteChange"/>
+  </api>
+  <api object="Team" method="ChangeRouteChange">
+    <method class="CvTeam" fn="changeRouteChange"/>
+  </api>
+  <api object="Team" method="GetProjectCount">
+    <method class="CvTeam" fn="getProjectCount"/>
+  </api>
+  <api object="Team" method="GetProjectDefaultArtType">
+    <method class="CvTeam" fn="getProjectDefaultArtType"/>
+  </api>
+  <api object="Team" method="SetProjectDefaultArtType">
+    <method class="CvTeam" fn="setProjectDefaultArtType"/>
+  </api>
+  <api object="Team" method="GetProjectArtType">
+    <method class="CvTeam" fn="getProjectArtType"/>
+  </api>
+  <api object="Team" method="SetProjectArtType">
+    <method class="CvTeam" fn="setProjectArtType"/>
+  </api>
+  <api object="Team" method="IsProjectMaxedOut">
+    <method class="CvTeam" fn="isProjectMaxedOut"/>
+  </api>
+  <api object="Team" method="IsProjectAndArtMaxedOut">
+    <method class="CvTeam" fn="isProjectAndArtMaxedOut"/>
+  </api>
+  <api object="Team" method="ChangeProjectCount">
+    <method class="CvTeam" fn="changeProjectCount"/>
+  </api>
+  <api object="Team" method="GetProjectMaking">
+    <method class="CvTeam" fn="getProjectMaking"/>
+  </api>
+  <api object="Team" method="GetUnitClassCount">
+    <method class="CvTeam" fn="getUnitClassCount"/>
+  </api>
+  <api object="Team" method="IsUnitClassMaxedOut">
+    <method class="CvTeam" fn="isUnitClassMaxedOut"/>
+  </api>
+  <api object="Team" method="GetBuildingClassCount">
+    <method class="CvTeam" fn="getBuildingClassCount"/>
+  </api>
+  <api object="Team" method="IsBuildingClassMaxedOut">
+    <method class="CvTeam" fn="isBuildingClassMaxedOut"/>
+  </api>
+  <api object="Team" method="GetObsoleteBuildingCount">
+    <method class="CvTeam" fn="getObsoleteBuildingCount"/>
+  </api>
+  <api object="Team" method="IsObsoleteBuilding">
+    <method class="CvTeam" fn="isObsoleteBuilding"/>
+  </api>
+  <api object="Team" method="IsHasResearchAgreement">
+    <method class="CvTeam" fn="IsHasResearchAgreement"/>
+  </api>
+  <api object="Team" method="IsHasTradeAgreement">
+    <method class="CvTeam" fn="IsHasTradeAgreement"/>
+  </api>
+  <api object="Team" method="IsHasTech">
+    <arg pos="2" type="TechTypes" name="eTech"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Team" method="SetHasTech">
+    <arg pos="2" type="TechTypes" name="eIndex"/>
+    <arg pos="3" type="bool" name="bNewValue"/>
+    <arg pos="4" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="4" type="bool" name="bFirst"><bug>should be in position 5</bug></arg>
+    <arg pos="5" type="bool" name="bAnnounce"><bug>should be in position 6</bug></arg>
+    <ret type="void"/>
+  </api>
+  <api object="Team" method="GetTeamTechs">
+    <ret type="TeamTech"/>
+  </api>
+  <api object="Team" method="GetImprovementYieldChange">
+    <method class="CvTeam" fn="getImprovementYieldChange"/>
+  </api>
+  <api object="Team" method="ChangeImprovementYieldChange">
+    <method class="CvTeam" fn="changeImprovementYieldChange"/>
+  </api>
+  <api object="Team" method="IsHomeOfUnitedNations">
+    <method class="CvTeam" fn="IsHomeOfUnitedNations"/>
+  </api>
+  <api object="Team" method="GetVictoryCountdown">
+    <method class="CvTeam" fn="getVictoryCountdown"/>
+  </api>
+  <api object="Team" method="GetVictoryDelay">
+    <method class="CvTeam" fn="getVictoryDelay"/>
+  </api>
+  <api object="Team" method="CanLaunch">
+    <method class="CvTeam" fn="canLaunch"/>
+  </api>
+  <api object="Team" method="GetVictoryPoints">
+    <method class="CvTeam" fn="getVictoryPoints"/>
+  </api>
+  <api object="Team" method="ChangeVictoryPoints">
+    <method class="CvTeam" fn="changeVictoryPoints"/>
+  </api>
+  <api object="Team" method="GetCurrentEra">
+    <method class="CvTeam" fn="GetCurrentEra"/>
+  </api>
+  <api object="Team" method="SetCurrentEra">
+    <method class="CvTeam" fn="SetCurrentEra"/>
+  </api>
+  <api object="Team" method="UpdateEmbarkGraphics">
+    <method class="CvTeam" fn="UpdateEmbarkGraphics"/>
+  </api>
+</obj>

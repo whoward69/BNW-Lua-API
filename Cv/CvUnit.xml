@@ -1,0 +1,1804 @@
+<class type="CvUnit">
+  <call fn="init" ret="void">
+    <arg type="int" name="iID"/>
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="UnitAITypes" name="eUnitAI"/>
+    <arg type="PlayerTypes" name="eOwner"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="DirectionTypes" name="eFacingDirection"/>
+    <arg type="bool" name="bNoMove"/>
+    <arg type="bool" name="bSetupGraphical" default="true"/>
+    <arg type="int" name="iMapLayer" default="DEFAULT_UNIT_MAP_LAYER"/>
+    <arg type="int" name="iNumGoodyHutsPopped" default="0"/>
+  </call>
+  <call fn="initWithNameOffset" ret="void">
+    <arg type="int" name="iID"/>
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="int" name="iNameOffset"/>
+    <arg type="UnitAITypes" name="eUnitAI"/>
+    <arg type="PlayerTypes" name="eOwner"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="DirectionTypes" name="eFacingDirection"/>
+    <arg type="bool" name="bNoMove"/>
+    <arg type="bool" name="bSetupGraphical" default="true"/>
+    <arg type="int" name="iMapLayer" default="DEFAULT_UNIT_MAP_LAYER"/>
+    <arg type="int" name="iNumGoodyHutsPopped" default="0"/>
+  </call>
+  <call fn="uninit" ret="void"></call>
+  <call fn="reset" ret="void">
+    <arg type="int" name="iID" default="0"/>
+    <arg type="UnitTypes" name="eUnit" default="NO_UNIT"/>
+    <arg type="PlayerTypes" name="eOwner" default="NO_PLAYER"/>
+    <arg type="bool" name="bConstructorCall" default="false"/>
+  </call>
+  <call fn="setupGraphical" ret="void"></call>
+  <call fn="initPromotions" ret="void"></call>
+  <call fn="uninitInfos" ret="void"></call>
+  <call fn="convert" ret="void">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="bool" name="bIsUpgrade"/>
+  </call>
+  <call fn="kill" ret="void">
+    <arg type="bool" name="bDelay"/>
+    <arg type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+  </call>
+  <call fn="doTurn" ret="void"></call>
+  <call fn="isActionRecommended" ret="bool">
+    <arg type="int" name="iAction"/>
+  </call>
+  <call fn="isBetterDefenderThan" ret="bool">
+    <arg type="Unit" name="pDefender"/>
+    <arg type="Unit" name="pAttacker"/>
+  </call>
+  <call fn="canDoCommand" ret="bool">
+    <arg type="CommandTypes" name="eCommand"/>
+    <arg type="int" name="iData1"/>
+    <arg type="int" name="iData2"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+    <arg type="bool" name="bTestBusy" default="true"/>
+  </call>
+  <call fn="doCommand" ret="void">
+    <arg type="CommandTypes" name="eCommand"/>
+    <arg type="int" name="iData1"/>
+    <arg type="int" name="iData2"/>
+  </call>
+  <call fn="IsDoingPartialMove" ret="bool"></call>
+  <call fn="GetActivityType" ret="ActivityTypes"></call>
+  <call fn="SetActivityType" ret="void">
+    <arg type="ActivityTypes" name="eNewValue"/>
+  </call>
+  <call fn="GetAutomateType" ret="AutomateTypes"></call>
+  <call fn="IsAutomated" ret="bool"></call>
+  <call fn="SetAutomateType" ret="void">
+    <arg type="AutomateTypes" name="eNewValue"/>
+  </call>
+  <call fn="CanAutomate" ret="bool">
+    <arg type="AutomateTypes" name="eAutomate"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="Automate" ret="void">
+    <arg type="AutomateTypes" name="eAutomate"/>
+  </call>
+  <call fn="ReadyToSelect" ret="bool"></call>
+  <call fn="ReadyToMove" ret="bool"></call>
+  <call fn="ReadyToAuto" ret="bool"></call>
+  <call fn="IsBusy" ret="bool"></call>
+  <call fn="SentryAlert" ret="bool"></call>
+  <call fn="ShowMoves" ret="bool"></call>
+  <call fn="CanDoInterfaceMode" ret="bool">
+    <arg type="InterfaceModeTypes" name="eInterfaceMode"/>
+    <arg type="bool" name="bTestVisibility" default="false"/>
+  </call>
+  <call fn="IsDeclareWar" ret="bool"></call>
+  <call fn="GetBestBuildRoute" ret="RouteTypes">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="BuildTypes*" name="peBestBuild" default="NULL"/>
+  </call>
+  <call fn="PlayActionSound" ret="void"></call>
+  <call fn="UnitAttack" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="int" name="iFlags"/>
+    <arg type="int" name="iSteps" default="0"/>
+  </call>
+  <call fn="UnitMove" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bCombat"/>
+    <arg type="Unit" name="pCombatUnit"/>
+    <arg type="bool" name="bEndMove" default="false"/>
+  </call>
+  <call fn="UnitPathTo" ret="int">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="int" name="iFlags"/>
+    <arg type="int" name="iPrevETA" default="-1"/>
+    <arg type="bool" name="bBuildingRoute" default="false"/>
+  </call>
+  <call fn="UnitRoadTo" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="int" name="iFlags"/>
+  </call>
+  <call fn="UnitBuild" ret="bool">
+    <arg type="BuildTypes" name="eBuild"/>
+  </call>
+  <call fn="canEnterTerritory" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="bool" name="bIgnoreRightOfPassage" default="false"/>
+    <arg type="bool" name="bIsCity" default="false"/>
+    <arg type="bool" name="bIsDeclareWarMove" default="false"/>
+  </call>
+  <call fn="canEnterTerrain" ret="bool">
+    <arg type="CvPlot" name="pPlot"/>
+    <arg type="byte" name="bMoveFlags" default="0"/>
+  </call>
+  <call fn="GetDeclareWarMove" ret="TeamTypes">
+    <arg type="CvPlot" name="pPlot"/>
+  </call>
+  <call fn="GetBullyMinorMove" ret="PlayerTypes">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="GetDeclareWarRangeStrike" ret="TeamTypes">
+    <arg type="CvPlot" name="pPlot"/>
+  </call>
+  <call fn="canMoveInto" ret="bool">
+    <arg type="CvPlot" name="pPlot"/>
+    <arg type="byte" name="bMoveFlags" default="0"/>
+  </call>
+  <call fn="canMoveOrAttackInto" ret="bool">
+    <arg type="CvPlot" name="pPlot"/>
+    <arg type="byte" name="bMoveFlags" default="0"/>
+  </call>
+  <call fn="canMoveThrough" ret="bool">
+    <arg type="CvPlot" name="pPlot"/>
+    <arg type="byte" name="bMoveFlags" default="0"/>
+  </call>
+  <call fn="IsAngerFreeUnit" ret="bool"></call>
+  <call fn="getCombatDamage" ret="int">
+    <arg type="int" name="iStrength"/>
+    <arg type="int" name="iOpponentStrength"/>
+    <arg type="int" name="iCurrentDamage"/>
+    <arg type="bool" name="bIncludeRand"/>
+    <arg type="bool" name="bAttackerIsCity"/>
+    <arg type="bool" name="bDefenderIsCity"/>
+  </call>
+  <call fn="fightInterceptor" ret="void">
+    <arg type="CvPlot" name="pPlot"/>
+  </call>
+  <call fn="move" ret="void">
+    <arg type="CvPlot" name="pPlot"/>
+    <arg type="bool" name="bShow"/>
+  </call>
+  <call fn="jumpToNearestValidPlot" ret="bool"></call>
+  <call fn="jumpToNearestValidPlotWithinRange" ret="bool">
+    <arg type="int" name="iRange"/>
+  </call>
+  <call fn="canScrap" ret="bool">
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="scrap" ret="void"></call>
+  <call fn="GetScrapGold" ret="int"></call>
+  <call fn="canGift" ret="bool">
+    <arg type="bool" name="bTestVisible" default="false"/>
+    <arg type="bool" name="bTestTransport" default="true"/>
+  </call>
+  <call fn="gift" ret="void">
+    <arg type="bool" name="bTestTransport" default="true"/>
+  </call>
+  <call fn="CanDistanceGift" ret="bool">
+    <arg type="PlayerTypes" name="eToPlayer"/>
+  </call>
+  <call fn="canLoadUnit" ret="bool">
+    <arg type="CvUnit" name="pUnit"/>
+    <arg type="CvPlot" name="pPlot"/>
+  </call>
+  <call fn="loadUnit" ret="void">
+    <arg type="CvUnit" name="pUnit"/>
+  </call>
+  <call fn="canLoad" ret="bool">
+    <arg type="CvPlot" name="pPlot"/>
+  </call>
+  <call fn="load" ret="void"></call>
+  <call fn="shouldLoadOnMove" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canUnload" ret="bool"></call>
+  <call fn="unload" ret="void"></call>
+  <call fn="canUnloadAll" ret="bool"></call>
+  <call fn="unloadAll" ret="void"></call>
+  <call fn="getTransportUnit" ret="Unit"></call>
+  <call fn="getTransportUnit" ret="Unit"></call>
+  <call fn="isCargo" ret="bool"></call>
+  <call fn="setTransportUnit" ret="void">
+    <arg type="Unit" name="pTransportUnit"/>
+  </call>
+  <call fn="specialCargo" ret="SpecialUnitTypes"></call>
+  <call fn="domainCargo" ret="DomainTypes"></call>
+  <call fn="cargoSpace" ret="int"></call>
+  <call fn="changeCargoSpace" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="isFull" ret="bool"></call>
+  <call fn="cargoSpaceAvailable" ret="int">
+    <arg type="SpecialUnitTypes" name="eSpecialCargo" default="NO_SPECIALUNIT"/>
+    <arg type="DomainTypes" name="eDomainCargo" default="NO_DOMAIN"/>
+  </call>
+  <call fn="hasCargo" ret="bool"></call>
+  <call fn="canCargoAllMove" ret="bool"></call>
+  <call fn="getUnitAICargo" ret="int">
+    <arg type="UnitAITypes" name="eUnitAI"/>
+  </call>
+  <call fn="canHold" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canSleep" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canFortify" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canAirPatrol" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="IsRangeAttackIgnoreLOS" ret="bool"></call>
+  <call fn="GetRangeAttackIgnoreLOSCount" ret="int"></call>
+  <call fn="ChangeRangeAttackIgnoreLOSCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="canSetUpForRangedAttack" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="isSetUpForRangedAttack" ret="bool"></call>
+  <call fn="setSetUpForRangedAttack" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="IsCityAttackOnly" ret="bool"></call>
+  <call fn="ChangeCityAttackOnlyCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsCaptureDefeatedEnemy" ret="bool"></call>
+  <call fn="ChangeCaptureDefeatedEnemyCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCaptureChance" ret="int">
+    <arg type="Unit" name="pEnemy"/>
+  </call>
+  <call fn="canEmbark" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canDisembark" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canEmbarkOnto" ret="bool">
+    <arg type="CvPlot" name="pOriginPlot"/>
+    <arg type="CvPlot" name="pTargetPlot"/>
+    <arg type="bool" name="bOverrideEmbarkedCheck" default="false"/>
+    <arg type="bool" name="bIsDestination" default="false"/>
+  </call>
+  <call fn="canDisembarkOnto" ret="bool">
+    <arg type="CvPlot" name="pOriginPlot"/>
+    <arg type="CvPlot" name="pTargetPlot"/>
+    <arg type="bool" name="bOverrideEmbarkedCheck" default="false"/>
+    <arg type="bool" name="bIsDestination" default="false"/>
+  </call>
+  <call fn="canDisembarkOnto" ret="bool">
+    <arg type="CvPlot" name="pTargetPlot"/>
+    <arg type="bool" name="bIsDestination" default="false"/>
+  </call>
+  <call fn="CanEverEmbark" ret="bool"></call>
+  <call fn="embark" ret="void">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="disembark" ret="void">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="isEmbarked" ret="bool"></call>
+  <call fn="setEmbarked" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="IsHasEmbarkAbility" ret="bool"></call>
+  <call fn="GetEmbarkAbilityCount" ret="int"></call>
+  <call fn="ChangeEmbarkAbilityCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="canHeal" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="canSentry" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="healRate" ret="int">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="healTurns" ret="int">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="doHeal" ret="void"></call>
+  <call fn="DoAttrition" ret="void"></call>
+  <call fn="canAirlift" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canAirliftAt" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="airlift" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="isNukeVictim" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="canNuke" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canNukeAt" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="canParadrop" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bOnlyTestVisibility"/>
+  </call>
+  <call fn="canParadropAt" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="paradrop" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="canMakeTradeRoute" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canMakeTradeRouteAt" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="TradeConnectionType" name="eConnectionType"/>
+  </call>
+  <call fn="makeTradeRoute" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="TradeConnectionType" name="eConnectionType"/>
+  </call>
+  <call fn="canChangeTradeUnitHomeCity" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canChangeTradeUnitHomeCityAt" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="changeTradeUnitHomeCity" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="canChangeAdmiralPort" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canChangeAdmiralPortAt" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="changeAdmiralPort" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="canPlunderTradeRoute" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bOnlyTestVisibility" default="false"/>
+  </call>
+  <call fn="plunderTradeRoute" ret="bool"></call>
+  <call fn="canCreateGreatWork" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bOnlyTestVisibility" default="false"/>
+  </call>
+  <call fn="createGreatWork" ret="bool"></call>
+  <call fn="getNumExoticGoods" ret="int"></call>
+  <call fn="setNumExoticGoods" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="changeNumExoticGoods" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="calculateExoticGoodsDistanceFactor" ret="float">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canSellExoticGoods" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bOnlyTestVisibility" default="false"/>
+  </call>
+  <call fn="getExoticGoodsGoldAmount" ret="int"></call>
+  <call fn="getExoticGoodsXPAmount" ret="int"></call>
+  <call fn="sellExoticGoods" ret="bool"></call>
+  <call fn="canRebase" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canRebaseAt" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="rebase" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="canPillage" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="pillage" ret="bool"></call>
+  <call fn="canFound" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="found" ret="bool"></call>
+  <call fn="canJoin" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="SpecialistTypes" name="eSpecialist"/>
+  </call>
+  <call fn="join" ret="bool">
+    <arg type="SpecialistTypes" name="eSpecialist"/>
+  </call>
+  <call fn="canConstruct" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="BuildingTypes" name="eBuilding"/>
+  </call>
+  <call fn="construct" ret="bool">
+    <arg type="BuildingTypes" name="eBuilding"/>
+  </call>
+  <call fn="CanFoundReligion" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="DoFoundReligion" ret="bool"></call>
+  <call fn="CanEnhanceReligion" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="DoEnhanceReligion" ret="bool"></call>
+  <call fn="CanSpreadReligion" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="DoSpreadReligion" ret="bool"></call>
+  <call fn="CanRemoveHeresy" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="DoRemoveHeresy" ret="bool"></call>
+  <call fn="GetNumFollowersAfterSpread" ret="int"></call>
+  <call fn="GetMajorityReligionAfterSpread" ret="ReligionTypes"></call>
+  <call fn="GetSpreadReligionTargetCity" ret="City"></call>
+  <call fn="GetConversionStrength" ret="int"></call>
+  <call fn="canDiscover" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="getDiscoverAmount" ret="int"></call>
+  <call fn="discover" ret="bool"></call>
+  <call fn="IsCanRushBuilding" ret="bool">
+    <arg type="City" name="pCity"/>
+    <arg type="bool" name="bTestVisible"/>
+  </call>
+  <call fn="DoRushBuilding" ret="bool"></call>
+  <call fn="getMaxHurryProduction" ret="int">
+    <arg type="City" name="pCity"/>
+  </call>
+  <call fn="getHurryProduction" ret="int">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canHurry" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="hurry" ret="bool"></call>
+  <call fn="getTradeGold" ret="int">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="getTradeInfluence" ret="int">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="canTrade" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="trade" ret="bool"></call>
+  <call fn="canBuyCityState" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="buyCityState" ret="bool"></call>
+  <call fn="canRepairFleet" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="repairFleet" ret="bool"></call>
+  <call fn="CanBuildSpaceship" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible"/>
+  </call>
+  <call fn="DoBuildSpaceship" ret="bool"></call>
+  <call fn="CanCultureBomb" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="DoCultureBomb" ret="bool"></call>
+  <call fn="PerformCultureBomb" ret="void">
+    <arg type="int" name="iRadius"/>
+  </call>
+  <call fn="canGoldenAge" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="goldenAge" ret="bool"></call>
+  <call fn="GetGoldenAgeTurns" ret="int"></call>
+  <call fn="canGivePolicies" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="getGivePoliciesCulture" ret="int"></call>
+  <call fn="givePolicies" ret="bool"></call>
+  <call fn="canBlastTourism" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="getBlastTourism" ret="int"></call>
+  <call fn="blastTourism" ret="bool"></call>
+  <call fn="canBuild" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="BuildTypes" name="eBuild"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+    <arg type="bool" name="bTestGold" default="true"/>
+  </call>
+  <call fn="build" ret="bool">
+    <arg type="BuildTypes" name="eBuild"/>
+  </call>
+  <call fn="canPromote" ret="bool">
+    <arg type="PromotionTypes" name="ePromotion"/>
+    <arg type="int" name="iLeaderUnitId"/>
+  </call>
+  <call fn="promote" ret="void">
+    <arg type="PromotionTypes" name="ePromotion"/>
+    <arg type="int" name="iLeaderUnitId"/>
+  </call>
+  <call fn="canLead" ret="int">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="int" name="iUnitId"/>
+  </call>
+  <call fn="lead" ret="bool">
+    <arg type="int" name="iUnitId"/>
+  </call>
+  <call fn="canGiveExperience" ret="int">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="giveExperience" ret="bool"></call>
+  <call fn="getStackExperienceToGive" ret="int">
+    <arg type="int" name="iNumUnits"/>
+  </call>
+  <call fn="isReadyForUpgrade" ret="bool"></call>
+  <call fn="CanUpgradeRightNow" ret="bool">
+    <arg type="bool" name="bOnlyTestVisible"/>
+  </call>
+  <call fn="GetUpgradeUnitType" ret="UnitTypes"></call>
+  <call fn="upgradePrice" ret="int">
+    <arg type="UnitTypes" name="eUnit"/>
+  </call>
+  <call fn="DoUpgrade" ret="Unit"></call>
+  <call fn="getHandicapType" ret="HandicapTypes"></call>
+  <call fn="getCivilizationInfo" ret="CvCivilizationInfo"></call>
+  <call fn="getCivilizationType" ret="CivilizationTypes"></call>
+  <call fn="getVisualCivAdjective" ret="str">
+    <arg type="TeamTypes" name="eForTeam"/>
+  </call>
+  <call fn="getSpecialUnitType" ret="SpecialUnitTypes"></call>
+  <call fn="IsGreatPerson" ret="bool"></call>
+  <call fn="getCaptureUnitType" ret="UnitTypes">
+    <arg type="CivilizationTypes" name="eCivilization"/>
+  </call>
+  <call fn="getUnitCombatType" ret="UnitCombatTypes"></call>
+  <call fn="getDomainType" ret="DomainTypes"></call>
+  <call fn="flavorValue" ret="int">
+    <arg type="FlavorTypes" name="eFlavor"/>
+  </call>
+  <call fn="isBarbarian" ret="bool"></call>
+  <call fn="isHuman" ret="bool"></call>
+  <call fn="DoTestBarbarianThreatToMinorsWithThisUnitsDeath" ret="void">
+    <arg type="PlayerTypes" name="eKillingPlayer"/>
+  </call>
+  <call fn="IsBarbarianUnitThreateningMinor" ret="bool">
+    <arg type="PlayerTypes" name="eMinor"/>
+  </call>
+  <call fn="visibilityRange" ret="int"></call>
+  <call fn="canChangeVisibility" ret="bool"></call>
+  <call fn="baseMoves" ret="int">
+    <arg type="DomainTypes" name="eIntoDomain" default="NO_DOMAIN"/>
+  </call>
+  <call fn="maxMoves" ret="int"></call>
+  <call fn="movesLeft" ret="int"></call>
+  <call fn="canMove" ret="bool"></call>
+  <call fn="hasMoved" ret="bool"></call>
+  <call fn="GetRange" ret="int"></call>
+  <call fn="GetNukeDamageLevel" ret="int"></call>
+  <call fn="canBuildRoute" ret="bool"></call>
+  <call fn="getBuildType" ret="BuildTypes"></call>
+  <call fn="workRate" ret="int">
+    <arg type="bool" name="bMax"/>
+    <arg type="BuildTypes" name="eBuild" default="NO_BUILD"/>
+  </call>
+  <call fn="isNoBadGoodies" ret="bool"></call>
+  <call fn="isRivalTerritory" ret="bool"></call>
+  <call fn="getRivalTerritoryCount" ret="int"></call>
+  <call fn="changeRivalTerritoryCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="isFound" ret="bool"></call>
+  <call fn="IsFoundAbroad" ret="bool"></call>
+  <call fn="IsWork" ret="bool"></call>
+  <call fn="isGoldenAge" ret="bool"></call>
+  <call fn="isGivesPolicies" ret="bool"></call>
+  <call fn="isBlastTourism" ret="bool"></call>
+  <call fn="canCoexistWithEnemyUnit" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="isMustSetUpToRangedAttack" ret="bool"></call>
+  <call fn="getMustSetUpToRangedAttackCount" ret="int"></call>
+  <call fn="changeMustSetUpToRangedAttackCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="isRangedSupportFire" ret="bool"></call>
+  <call fn="getRangedSupportFireCount" ret="int"></call>
+  <call fn="changeRangedSupportFireCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="isFighting" ret="bool"></call>
+  <call fn="isAttacking" ret="bool"></call>
+  <call fn="isDefending" ret="bool"></call>
+  <call fn="isInCombat" ret="bool"></call>
+  <call fn="GetMaxHitPoints" ret="int"></call>
+  <call fn="GetCurrHitPoints" ret="int"></call>
+  <call fn="IsHurt" ret="bool"></call>
+  <call fn="IsDead" ret="bool"></call>
+  <call fn="GetStrategicResourceCombatPenalty" ret="int"></call>
+  <call fn="GetUnhappinessCombatPenalty" ret="int"></call>
+  <call fn="SetBaseCombatStrength" ret="void">
+    <arg type="int" name="iCombat"/>
+  </call>
+  <call fn="GetBaseCombatStrength" ret="int">
+    <arg type="bool" name="bIgnoreEmbarked" default="false"/>
+  </call>
+  <call fn="GetBaseCombatStrengthConsideringDamage" ret="int"></call>
+  <call fn="GetGenericMaxStrengthModifier" ret="int">
+    <arg type="Unit" name="pOtherUnit"/>
+    <arg type="Plot" name="pBattlePlot"/>
+    <arg type="bool" name="bIgnoreUnitAdjacency"/>
+  </call>
+  <call fn="GetMaxAttackStrength" ret="int">
+    <arg type="Plot" name="pFromPlot"/>
+    <arg type="Plot" name="pToPlot"/>
+    <arg type="Unit" name="pDefender"/>
+  </call>
+  <call fn="GetMaxDefenseStrength" ret="int">
+    <arg type="Plot" name="pInPlot"/>
+    <arg type="Unit" name="pAttacker"/>
+    <arg type="bool" name="bFromRangedAttack" default="false"/>
+  </call>
+  <call fn="GetEmbarkedUnitDefense" ret="int"></call>
+  <call fn="canSiege" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="GetBaseRangedCombatStrength" ret="int"></call>
+  <call fn="GetMaxRangedCombatStrength" ret="int">
+    <arg type="Unit" name="pOtherUnit"/>
+    <arg type="City" name="pCity"/>
+    <arg type="bool" name="bAttacking"/>
+    <arg type="bool" name="bForRangedAttack"/>
+  </call>
+  <call fn="GetAirCombatDamage" ret="int">
+    <arg type="Unit" name="pDefender"/>
+    <arg type="City" name="pCity"/>
+    <arg type="bool" name="bIncludeRand"/>
+    <arg type="int" name="iAssumeExtraDamage" default="0"/>
+  </call>
+  <call fn="GetRangeCombatDamage" ret="int">
+    <arg type="Unit" name="pDefender"/>
+    <arg type="City" name="pCity"/>
+    <arg type="bool" name="bIncludeRand"/>
+    <arg type="int" name="iAssumeExtraDamage" default="0"/>
+  </call>
+  <call fn="canAirAttack" ret="bool"></call>
+  <call fn="canAirDefend" ret="bool">
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="GetAirStrikeDefenseDamage" ret="int">
+    <arg type="Unit" name="pAttacker"/>
+    <arg type="bool" name="bIncludeRand" default="true"/>
+  </call>
+  <call fn="GetBestInterceptor" ret="Unit">
+    <arg type="CvPlot" name="pPlot"/>
+    <arg type="Unit" name="pkDefender" default="NULL"/>
+    <arg type="bool" name="bLandInterceptorsOnly" default="false"/>
+    <arg type="bool" name="bVisibleInterceptorsOnly" default="false"/>
+  </call>
+  <call fn="GetInterceptorCount" ret="int">
+    <arg type="CvPlot" name="pPlot"/>
+    <arg type="Unit" name="pkDefender" default="NULL"/>
+    <arg type="bool" name="bLandInterceptorsOnly" default="false"/>
+    <arg type="bool" name="bVisibleInterceptorsOnly" default="false"/>
+  </call>
+  <call fn="GetInterceptionDamage" ret="int">
+    <arg type="Unit" name="pAttacker"/>
+    <arg type="bool" name="bIncludeRand" default="true"/>
+  </call>
+  <call fn="GetCombatLimit" ret="int"></call>
+  <call fn="GetRangedCombatLimit" ret="int"></call>
+  <call fn="isWaiting" ret="bool"></call>
+  <call fn="isFortifyable" ret="bool">
+    <arg type="bool" name="bCanWaitForNextTurn" default="false"/>
+  </call>
+  <call fn="IsEverFortifyable" ret="bool"></call>
+  <call fn="fortifyModifier" ret="int"></call>
+  <call fn="experienceNeeded" ret="int"></call>
+  <call fn="attackXPValue" ret="int"></call>
+  <call fn="defenseXPValue" ret="int"></call>
+  <call fn="maxXPValue" ret="int"></call>
+  <call fn="firstStrikes" ret="int"></call>
+  <call fn="chanceFirstStrikes" ret="int"></call>
+  <call fn="maxFirstStrikes" ret="int"></call>
+  <call fn="isRanged" ret="bool"></call>
+  <call fn="immuneToFirstStrikes" ret="bool"></call>
+  <call fn="ignoreBuildingDefense" ret="bool"></call>
+  <call fn="ignoreTerrainCost" ret="bool"></call>
+  <call fn="getIgnoreTerrainCostCount" ret="int"></call>
+  <call fn="changeIgnoreTerrainCostCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="IsRoughTerrainEndsTurn" ret="bool"></call>
+  <call fn="GetRoughTerrainEndsTurnCount" ret="int"></call>
+  <call fn="ChangeRoughTerrainEndsTurnCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="IsHoveringUnit" ret="bool"></call>
+  <call fn="GetHoveringUnitCount" ret="int"></call>
+  <call fn="ChangeHoveringUnitCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="flatMovementCost" ret="bool"></call>
+  <call fn="getFlatMovementCostCount" ret="int"></call>
+  <call fn="changeFlatMovementCostCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="canMoveImpassable" ret="bool"></call>
+  <call fn="getCanMoveImpassableCount" ret="int"></call>
+  <call fn="changeCanMoveImpassableCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="canMoveAllTerrain" ret="bool"></call>
+  <call fn="changeCanMoveAllTerrainCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getCanMoveAllTerrainCount" ret="int"></call>
+  <call fn="canMoveAfterAttacking" ret="bool"></call>
+  <call fn="changeCanMoveAfterAttackingCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getCanMoveAfterAttackingCount" ret="int"></call>
+  <call fn="hasFreePillageMove" ret="bool"></call>
+  <call fn="changeFreePillageMoveCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getFreePillageMoveCount" ret="int"></call>
+  <call fn="hasHealOnPillage" ret="bool"></call>
+  <call fn="changeHealOnPillageCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getHealOnPillageCount" ret="int"></call>
+  <call fn="isHiddenNationality" ret="bool"></call>
+  <call fn="changeHiddenNationalityCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getHiddenNationalityCount" ret="int"></call>
+  <call fn="isNoRevealMap" ret="bool"></call>
+  <call fn="changeNoRevealMapCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getNoRevealMapCount" ret="int"></call>
+  <call fn="isOnlyDefensive" ret="bool"></call>
+  <call fn="getOnlyDefensiveCount" ret="int"></call>
+  <call fn="changeOnlyDefensiveCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="noDefensiveBonus" ret="bool"></call>
+  <call fn="getNoDefensiveBonusCount" ret="int"></call>
+  <call fn="changeNoDefensiveBonusCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="isNoCapture" ret="bool"></call>
+  <call fn="getNoCaptureCount" ret="int"></call>
+  <call fn="changeNoCaptureCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="isNeverInvisible" ret="bool"></call>
+  <call fn="isInvisible" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="bool" name="bDebug"/>
+    <arg type="bool" name="bCheckCargo" default="true"/>
+  </call>
+  <call fn="isNukeImmune" ret="bool"></call>
+  <call fn="changeNukeImmuneCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getNukeImmuneCount" ret="int"></call>
+  <call fn="maxInterceptionProbability" ret="int"></call>
+  <call fn="currInterceptionProbability" ret="int"></call>
+  <call fn="evasionProbability" ret="int"></call>
+  <call fn="withdrawalProbability" ret="int"></call>
+  <call fn="GetNumEnemyUnitsAdjacent" ret="int">
+    <arg type="Unit" name="pUnitToExclude" default="NULL"/>
+  </call>
+  <call fn="IsEnemyCityAdjacent" ret="bool"></call>
+  <call fn="IsEnemyCityAdjacent" ret="bool">
+    <arg type="City" name="pSpecifyCity"/>
+  </call>
+  <call fn="GetNumSpecificEnemyUnitsAdjacent" ret="int">
+    <arg type="Unit" name="pUnitToExclude" default="NULL"/>
+    <arg type="Unit" name="pUnitCompare" default="NULL"/>
+  </call>
+  <call fn="IsFriendlyUnitAdjacent" ret="bool">
+    <arg type="bool" name="bCombatUnit"/>
+  </call>
+  <call fn="GetAdjacentModifier" ret="int"></call>
+  <call fn="ChangeAdjacentModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetRangedAttackModifier" ret="int"></call>
+  <call fn="ChangeRangedAttackModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetInterceptionCombatModifier" ret="int"></call>
+  <call fn="ChangeInterceptionCombatModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetInterceptionDefenseDamageModifier" ret="int"></call>
+  <call fn="ChangeInterceptionDefenseDamageModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetAirSweepCombatModifier" ret="int"></call>
+  <call fn="ChangeAirSweepCombatModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getAttackModifier" ret="int"></call>
+  <call fn="changeAttackModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getDefenseModifier" ret="int"></call>
+  <call fn="changeDefenseModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="cityAttackModifier" ret="int"></call>
+  <call fn="cityDefenseModifier" ret="int"></call>
+  <call fn="rangedDefenseModifier" ret="int"></call>
+  <call fn="hillsAttackModifier" ret="int"></call>
+  <call fn="hillsDefenseModifier" ret="int"></call>
+  <call fn="openAttackModifier" ret="int"></call>
+  <call fn="openRangedAttackModifier" ret="int"></call>
+  <call fn="roughAttackModifier" ret="int"></call>
+  <call fn="roughRangedAttackModifier" ret="int"></call>
+  <call fn="attackFortifiedModifier" ret="int"></call>
+  <call fn="attackWoundedModifier" ret="int"></call>
+  <call fn="openDefenseModifier" ret="int"></call>
+  <call fn="roughDefenseModifier" ret="int"></call>
+  <call fn="terrainAttackModifier" ret="int">
+    <arg type="TerrainTypes" name="eTerrain"/>
+  </call>
+  <call fn="terrainDefenseModifier" ret="int">
+    <arg type="TerrainTypes" name="eTerrain"/>
+  </call>
+  <call fn="featureAttackModifier" ret="int">
+    <arg type="FeatureTypes" name="eFeature"/>
+  </call>
+  <call fn="featureDefenseModifier" ret="int">
+    <arg type="FeatureTypes" name="eFeature"/>
+  </call>
+  <call fn="unitClassAttackModifier" ret="int">
+    <arg type="UnitClassTypes" name="eUnitClass"/>
+  </call>
+  <call fn="unitClassDefenseModifier" ret="int">
+    <arg type="UnitClassTypes" name="eUnitClass"/>
+  </call>
+  <call fn="unitCombatModifier" ret="int">
+    <arg type="UnitCombatTypes" name="eUnitCombat"/>
+  </call>
+  <call fn="domainModifier" ret="int">
+    <arg type="DomainTypes" name="eDomain"/>
+  </call>
+  <call fn="IsHasNoValidMove" ret="bool"></call>
+  <call fn="GetID" ret="int"></call>
+  <call fn="getIndex" ret="int"></call>
+  <call fn="GetIDInfo" ret="IDInfo"></call>
+  <call fn="SetID" ret="void">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="getHotKeyNumber" ret="int"></call>
+  <call fn="setHotKeyNumber" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getX" ret="int"></call>
+  <call fn="getY" ret="int"></call>
+  <call fn="setXY" ret="void">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="bool" name="bGroup" default="false"/>
+    <arg type="bool" name="bUpdate" default="true"/>
+    <arg type="bool" name="bShow" default="false"/>
+    <arg type="bool" name="bCheckPlotVisible" default="false"/>
+    <arg type="bool" name="bNoMove" default="false"/>
+  </call>
+  <call fn="at" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="atPlot" ret="bool">
+    <arg type="CvPlot" name="plot"/>
+  </call>
+  <call fn="plot" ret="Plot"></call>
+  <call fn="getArea" ret="int"></call>
+  <call fn="area" ret="Area"></call>
+  <call fn="onMap" ret="bool"></call>
+  <call fn="getLastMoveTurn" ret="int"></call>
+  <call fn="setLastMoveTurn" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="GetCycleOrder" ret="int"></call>
+  <call fn="SetCycleOrder" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="GetDeployFromOperationTurn" ret="int"></call>
+  <call fn="SetDeployFromOperationTurn" ret="void">
+    <arg type="int" name="iTurn"/>
+  </call>
+  <call fn="IsRecon" ret="bool"></call>
+  <call fn="GetReconCount" ret="int"></call>
+  <call fn="ChangeReconCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getReconPlot" ret="Plot"></call>
+  <call fn="setReconPlot" ret="void">
+    <arg type="Plot" name="pNewValue"/>
+  </call>
+  <call fn="getGameTurnCreated" ret="int"></call>
+  <call fn="setGameTurnCreated" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getDamage" ret="int"></call>
+  <call fn="setDamage" ret="int">
+    <arg type="int" name="iNewValue"/>
+    <arg type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+,float fAdditionalTextDelay=0.0f,
+    <arg type="str" name="pAppendText" default="NULL"/>
+  </call>
+  <call fn="changeDamage" ret="int">
+    <arg type="int" name="iChange"/>
+    <arg type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+,float fAdditionalTextDelay=0.0f,
+    <arg type="str" name="pAppendText" default="NULL"/>
+  </call>
+  <call fn="getMoves" ret="int"></call>
+  <call fn="setMoves" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeMoves" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="finishMoves" ret="void"></call>
+  <call fn="IsImmobile" ret="bool"></call>
+  <call fn="SetImmobile" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="IsInFriendlyTerritory" ret="bool"></call>
+  <call fn="IsUnderEnemyRangedAttack" ret="bool"></call>
+  <call fn="getExperience" ret="int"></call>
+  <call fn="setExperience" ret="void">
+    <arg type="int" name="iNewValue"/>
+    <arg type="int" name="iMax" default="-1"/>
+  </call>
+  <call fn="changeExperience" ret="void">
+    <arg type="int" name="iChange"/>
+    <arg type="int" name="iMax" default="-1"/>
+    <arg type="bool" name="bFromCombat" default="false"/>
+    <arg type="bool" name="bInBorders" default="false"/>
+    <arg type="bool" name="bUpdateGlobal" default="false"/>
+  </call>
+  <call fn="getLevel" ret="int"></call>
+  <call fn="setLevel" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeLevel" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getCargo" ret="int"></call>
+  <call fn="changeCargo" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getAttackPlot" ret="Plot"></call>
+  <call fn="setAttackPlot" ret="void">
+    <arg type="Plot" name="pNewValue"/>
+    <arg type="bool" name="bAirCombat"/>
+  </call>
+  <call fn="isAirCombat" ret="bool"></call>
+  <call fn="getCombatTimer" ret="int"></call>
+  <call fn="setCombatTimer" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeCombatTimer" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getCombatFirstStrikes" ret="int"></call>
+  <call fn="setCombatFirstStrikes" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeCombatFirstStrikes" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsGarrisoned" ret="bool"></call>
+  <call fn="GetGarrisonedCity" ret="City"></call>
+  <call fn="getFortifyTurns" ret="int"></call>
+  <call fn="setFortifyTurns" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeFortifyTurns" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsFortifiedThisTurn" ret="bool"></call>
+  <call fn="SetFortifiedThisTurn" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="getBlitzCount" ret="int"></call>
+  <call fn="isBlitz" ret="bool"></call>
+  <call fn="changeBlitzCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getAmphibCount" ret="int"></call>
+  <call fn="isAmphib" ret="bool"></call>
+  <call fn="changeAmphibCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getRiverCrossingNoPenaltyCount" ret="int"></call>
+  <call fn="isRiverCrossingNoPenalty" ret="bool"></call>
+  <call fn="changeRiverCrossingNoPenaltyCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getEnemyRouteCount" ret="int"></call>
+  <call fn="isEnemyRoute" ret="bool"></call>
+  <call fn="changeEnemyRouteCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getAlwaysHealCount" ret="int"></call>
+  <call fn="isAlwaysHeal" ret="bool"></call>
+  <call fn="changeAlwaysHealCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHealOutsideFriendlyCount" ret="int"></call>
+  <call fn="isHealOutsideFriendly" ret="bool"></call>
+  <call fn="changeHealOutsideFriendlyCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHillsDoubleMoveCount" ret="int"></call>
+  <call fn="isHillsDoubleMove" ret="bool"></call>
+  <call fn="changeHillsDoubleMoveCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getImmuneToFirstStrikesCount" ret="int"></call>
+  <call fn="changeImmuneToFirstStrikesCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraVisibilityRange" ret="int"></call>
+  <call fn="changeExtraVisibilityRange" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraMoves" ret="int"></call>
+  <call fn="changeExtraMoves" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraMoveDiscount" ret="int"></call>
+  <call fn="changeExtraMoveDiscount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraNavalMoves" ret="int"></call>
+  <call fn="changeExtraNavalMoves" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHPHealedIfDefeatEnemy" ret="int"></call>
+  <call fn="changeHPHealedIfDefeatEnemy" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="IsHealIfDefeatExcludeBarbarians" ret="bool"></call>
+  <call fn="GetHealIfDefeatExcludeBarbariansCount" ret="int"></call>
+  <call fn="ChangeHealIfDefeatExcludeBarbariansCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetGoldenAgeValueFromKills" ret="int"></call>
+  <call fn="ChangeGoldenAgeValueFromKills" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getExtraRange" ret="int"></call>
+  <call fn="changeExtraRange" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraIntercept" ret="int"></call>
+  <call fn="changeExtraIntercept" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraEvasion" ret="int"></call>
+  <call fn="changeExtraEvasion" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraFirstStrikes" ret="int"></call>
+  <call fn="changeExtraFirstStrikes" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraChanceFirstStrikes" ret="int"></call>
+  <call fn="changeExtraChanceFirstStrikes" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraWithdrawal" ret="int"></call>
+  <call fn="changeExtraWithdrawal" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraEnemyHeal" ret="int"></call>
+  <call fn="changeExtraEnemyHeal" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraNeutralHeal" ret="int"></call>
+  <call fn="changeExtraNeutralHeal" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraFriendlyHeal" ret="int"></call>
+  <call fn="changeExtraFriendlyHeal" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getSameTileHeal" ret="int"></call>
+  <call fn="changeSameTileHeal" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getAdjacentTileHeal" ret="int"></call>
+  <call fn="changeAdjacentTileHeal" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getEnemyDamageChance" ret="int"></call>
+  <call fn="changeEnemyDamageChance" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNeutralDamageChance" ret="int"></call>
+  <call fn="changeNeutralDamageChance" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getEnemyDamage" ret="int"></call>
+  <call fn="changeEnemyDamage" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNeutralDamage" ret="int"></call>
+  <call fn="changeNeutralDamage" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNearbyEnemyCombatMod" ret="int"></call>
+  <call fn="changeNearbyEnemyCombatMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNearbyEnemyCombatRange" ret="int"></call>
+  <call fn="changeNearbyEnemyCombatRange" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraCombatPercent" ret="int"></call>
+  <call fn="changeExtraCombatPercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraCityAttackPercent" ret="int"></call>
+  <call fn="changeExtraCityAttackPercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraCityDefensePercent" ret="int"></call>
+  <call fn="changeExtraCityDefensePercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraRangedDefenseModifier" ret="int"></call>
+  <call fn="changeExtraRangedDefenseModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraHillsAttackPercent" ret="int"></call>
+  <call fn="changeExtraHillsAttackPercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraHillsDefensePercent" ret="int"></call>
+  <call fn="changeExtraHillsDefensePercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraOpenAttackPercent" ret="int"></call>
+  <call fn="changeExtraOpenAttackPercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraOpenRangedAttackMod" ret="int"></call>
+  <call fn="changeExtraOpenRangedAttackMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraRoughAttackPercent" ret="int"></call>
+  <call fn="changeExtraRoughAttackPercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraRoughRangedAttackMod" ret="int"></call>
+  <call fn="changeExtraRoughRangedAttackMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraAttackFortifiedMod" ret="int"></call>
+  <call fn="changeExtraAttackFortifiedMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraAttackWoundedMod" ret="int"></call>
+  <call fn="changeExtraAttackWoundedMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetFlankAttackModifier" ret="int"></call>
+  <call fn="ChangeFlankAttackModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraOpenDefensePercent" ret="int"></call>
+  <call fn="changeExtraOpenDefensePercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraRoughDefensePercent" ret="int"></call>
+  <call fn="changeExtraRoughDefensePercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="changeExtraAttacks" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsNearEnemyCitadel" ret="bool">
+    <arg type="int" name="iCitadelDamage"/>
+  </call>
+  <call fn="IsNearGreatGeneral" ret="bool"></call>
+  <call fn="IsStackedGreatGeneral" ret="bool"></call>
+  <call fn="GetGreatGeneralStackMovement" ret="int"></call>
+  <call fn="GetReverseGreatGeneralModifier" ret="int"></call>
+  <call fn="GetNearbyImprovementModifier" ret="int"></call>
+  <call fn="IsGreatGeneral" ret="bool"></call>
+  <call fn="GetGreatGeneralCount" ret="int"></call>
+  <call fn="ChangeGreatGeneralCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsGreatAdmiral" ret="bool"></call>
+  <call fn="GetGreatAdmiralCount" ret="int"></call>
+  <call fn="ChangeGreatAdmiralCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getGreatGeneralModifier" ret="int"></call>
+  <call fn="changeGreatGeneralModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsGreatGeneralReceivesMovement" ret="bool"></call>
+  <call fn="ChangeGreatGeneralReceivesMovementCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetGreatGeneralCombatModifier" ret="int"></call>
+  <call fn="ChangeGreatGeneralCombatModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsIgnoreGreatGeneralBenefit" ret="bool"></call>
+  <call fn="ChangeIgnoreGreatGeneralBenefitCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsIgnoreZOC" ret="bool"></call>
+  <call fn="ChangeIgnoreZOCCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsSapper" ret="bool"></call>
+  <call fn="ChangeSapperCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsSappingCity" ret="bool">
+    <arg type="City" name="pTargetCity"/>
+  </call>
+  <call fn="IsNearSapper" ret="bool">
+    <arg type="City" name="pTargetCity"/>
+  </call>
+  <call fn="IsCanHeavyCharge" ret="bool"></call>
+  <call fn="ChangeCanHeavyChargeCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getFriendlyLandsModifier" ret="int"></call>
+  <call fn="changeFriendlyLandsModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getFriendlyLandsAttackModifier" ret="int"></call>
+  <call fn="changeFriendlyLandsAttackModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getOutsideFriendlyLandsModifier" ret="int"></call>
+  <call fn="changeOutsideFriendlyLandsModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getPillageChange" ret="int"></call>
+  <call fn="changePillageChange" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getUpgradeDiscount" ret="int"></call>
+  <call fn="changeUpgradeDiscount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExperiencePercent" ret="int"></call>
+  <call fn="changeExperiencePercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getKamikazePercent" ret="int"></call>
+  <call fn="changeKamikazePercent" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getFacingDirection" ret="DirectionTypes">
+    <arg type="bool" name="checkLineOfSightProperty"/>
+  </call>
+  <call fn="setFacingDirection" ret="void">
+    <arg type="DirectionTypes" name="facingDirection"/>
+  </call>
+  <call fn="rotateFacingDirectionClockwise" ret="void"></call>
+  <call fn="rotateFacingDirectionCounterClockwise" ret="void"></call>
+  <call fn="isSuicide" ret="bool"></call>
+  <call fn="isTrade" ret="bool"></call>
+  <call fn="getDropRange" ret="int"></call>
+  <call fn="changeDropRange" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="isOutOfAttacks" ret="bool"></call>
+  <call fn="setMadeAttack" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="GetNumInterceptions" ret="int"></call>
+  <call fn="ChangeNumInterceptions" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="isOutOfInterceptions" ret="bool"></call>
+  <call fn="getMadeInterceptionCount" ret="int"></call>
+  <call fn="setMadeInterception" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="TurnProcessed" ret="bool"></call>
+  <call fn="SetTurnProcessed" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="isPromotionReady" ret="bool"></call>
+  <call fn="setPromotionReady" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="testPromotionReady" ret="void"></call>
+  <call fn="isDelayedDeath" ret="bool"></call>
+  <call fn="isDelayedDeathExported" ret="bool"></call>
+  <call fn="startDelayedDeath" ret="void"></call>
+  <call fn="doDelayedDeath" ret="bool"></call>
+  <call fn="isCombatFocus" ret="bool"></call>
+  <call fn="isInfoBarDirty" ret="bool"></call>
+  <call fn="setInfoBarDirty" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="IsNotConverting" ret="bool"></call>
+  <call fn="SetNotConverting" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="getOwner" ret="PlayerTypes"></call>
+  <call fn="getVisualOwner" ret="PlayerTypes">
+    <arg type="TeamTypes" name="eForTeam" default="NO_TEAM"/>
+  </call>
+  <call fn="getCombatOwner" ret="PlayerTypes">
+    <arg type="TeamTypes" name="eForTeam"/>
+    <arg type="CvPlot" name="pPlot"/>
+  </call>
+  <call fn="getTeam" ret="TeamTypes"></call>
+  <call fn="GetOriginalOwner" ret="PlayerTypes"></call>
+  <call fn="SetOriginalOwner" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="getCapturingPlayer" ret="PlayerTypes"></call>
+  <call fn="setCapturingPlayer" ret="void">
+    <arg type="PlayerTypes" name="eNewValue"/>
+  </call>
+  <call fn="IsCapturedAsIs" ret="bool"></call>
+  <call fn="SetCapturedAsIs" ret="void">
+    <arg type="bool" name="bSetValue"/>
+  </call>
+  <call fn="getUnitType" ret="UnitTypes"></call>
+  <call fn="getUnitInfo" ret="CvUnitEntry"></call>
+  <call fn="getUnitClassType" ret="UnitClassTypes"></call>
+  <call fn="getLeaderUnitType" ret="UnitTypes"></call>
+  <call fn="setLeaderUnitType" ret="void">
+    <arg type="UnitTypes" name="leaderUnitType"/>
+  </call>
+  <call fn="getInvisibleType" ret="InvisibleTypes"></call>
+  <call fn="setInvisibleType" ret="void">
+    <arg type="InvisibleTypes" name="InvisibleType"/>
+  </call>
+  <call fn="getSeeInvisibleType" ret="InvisibleTypes"></call>
+  <call fn="setSeeInvisibleType" ret="void">
+    <arg type="InvisibleTypes" name="InvisibleType"/>
+  </call>
+  <call fn="getCombatUnit" ret="Unit"></call>
+  <call fn="getCombatUnit" ret="Unit"></call>
+  <call fn="setCombatUnit" ret="void">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="bool" name="bAttacking" default="false"/>
+  </call>
+  <call fn="getCombatCity" ret="City"></call>
+  <call fn="getCombatCity" ret="City"></call>
+  <call fn="setCombatCity" ret="void">
+    <arg type="City" name="pCity"/>
+  </call>
+  <call fn="clearCombat" ret="void"></call>
+  <call fn="getExtraDomainModifier" ret="int">
+    <arg type="DomainTypes" name="eIndex"/>
+  </call>
+  <call fn="changeExtraDomainModifier" ret="void">
+    <arg type="DomainTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getName" ret="str"></call>
+  <call fn="getNameKey" ret="str"></call>
+  <call fn="getNameNoDesc" ret="str"></call>
+  <call fn="setName" ret="void">
+    <arg type="str" name="strNewValue"/>
+  </call>
+  <call fn="GetGreatWork" ret="GreatWorkType"></call>
+  <call fn="SetGreatWork" ret="void">
+    <arg type="GreatWorkType" name="eGreatWork"/>
+  </call>
+  <call fn="GetTourismBlastStrength" ret="int"></call>
+  <call fn="SetTourismBlastStrength" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getScriptData" ret="string"></call>
+  <call fn="setScriptData" ret="void">
+    <arg type="string" name="szNewValue"/>
+  </call>
+  <call fn="getScenarioData" ret="int"></call>
+  <call fn="setScenarioData" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getTerrainDoubleMoveCount" ret="int">
+    <arg type="TerrainTypes" name="eIndex"/>
+  </call>
+  <call fn="isTerrainDoubleMove" ret="bool">
+    <arg type="TerrainTypes" name="eIndex"/>
+  </call>
+  <call fn="changeTerrainDoubleMoveCount" ret="void">
+    <arg type="TerrainTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getFeatureDoubleMoveCount" ret="int">
+    <arg type="FeatureTypes" name="eIndex"/>
+  </call>
+  <call fn="isFeatureDoubleMove" ret="bool">
+    <arg type="FeatureTypes" name="eIndex"/>
+  </call>
+  <call fn="changeFeatureDoubleMoveCount" ret="void">
+    <arg type="FeatureTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getImpassableCount" ret="int"></call>
+  <call fn="getTerrainImpassableCount" ret="int">
+    <arg type="TerrainTypes" name="eIndex"/>
+  </call>
+  <call fn="changeTerrainImpassableCount" ret="void">
+    <arg type="TerrainTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getFeatureImpassableCount" ret="int">
+    <arg type="FeatureTypes" name="eIndex"/>
+  </call>
+  <call fn="changeFeatureImpassableCount" ret="void">
+    <arg type="FeatureTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="isTerrainImpassable" ret="bool">
+    <arg type="TerrainTypes" name="eIndex"/>
+  </call>
+  <call fn="isFeatureImpassable" ret="bool">
+    <arg type="FeatureTypes" name="eIndex"/>
+  </call>
+  <call fn="getExtraTerrainAttackPercent" ret="int">
+    <arg type="TerrainTypes" name="eIndex"/>
+  </call>
+  <call fn="changeExtraTerrainAttackPercent" ret="void">
+    <arg type="TerrainTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraTerrainDefensePercent" ret="int">
+    <arg type="TerrainTypes" name="eIndex"/>
+  </call>
+  <call fn="changeExtraTerrainDefensePercent" ret="void">
+    <arg type="TerrainTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraFeatureAttackPercent" ret="int">
+    <arg type="FeatureTypes" name="eIndex"/>
+  </call>
+  <call fn="changeExtraFeatureAttackPercent" ret="void">
+    <arg type="FeatureTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraFeatureDefensePercent" ret="int">
+    <arg type="FeatureTypes" name="eIndex"/>
+  </call>
+  <call fn="changeExtraFeatureDefensePercent" ret="void">
+    <arg type="FeatureTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraUnitCombatModifier" ret="int">
+    <arg type="UnitCombatTypes" name="eIndex"/>
+  </call>
+  <call fn="changeExtraUnitCombatModifier" ret="void">
+    <arg type="UnitCombatTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getUnitClassModifier" ret="int">
+    <arg type="UnitClassTypes" name="eIndex"/>
+  </call>
+  <call fn="changeUnitClassModifier" ret="void">
+    <arg type="UnitClassTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="canAcquirePromotion" ret="bool">
+    <arg type="PromotionTypes" name="ePromotion"/>
+  </call>
+  <call fn="canAcquirePromotionAny" ret="bool"></call>
+  <call fn="isPromotionValid" ret="bool">
+    <arg type="PromotionTypes" name="ePromotion"/>
+  </call>
+  <call fn="isHasPromotion" ret="bool">
+    <arg type="PromotionTypes" name="eIndex"/>
+  </call>
+  <call fn="setHasPromotion" ret="void">
+    <arg type="PromotionTypes" name="eIndex"/>
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="getSubUnitCount" ret="int"></call>
+  <call fn="getSubUnitsAlive" ret="int"></call>
+  <call fn="getSubUnitsAlive" ret="int">
+    <arg type="int" name="iDamage"/>
+  </call>
+  <call fn="isEnemy" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="isPotentialEnemy" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="canRangeStrike" ret="bool"></call>
+  <call fn="canEverRangeStrikeAt" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="canRangeStrikeAt" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="bool" name="bNeedWar" default="true"/>
+    <arg type="bool" name="bNoncombatAllowed" default="true"/>
+  </call>
+  <call fn="IsAirSweepCapable" ret="bool"></call>
+  <call fn="GetAirSweepCapableCount" ret="int"></call>
+  <call fn="ChangeAirSweepCapableCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="canAirSweep" ret="bool"></call>
+  <call fn="canAirSweepAt" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="airSweep" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="potentialWarAction" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="willRevealByMove" ret="bool">
+    <arg type="CvPlot" name="pPlot"/>
+  </call>
+  <call fn="isAlwaysHostile" ret="bool">
+    <arg type="CvPlot" name="pPlot"/>
+  </call>
+  <call fn="changeAlwaysHostileCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getAlwaysHostileCount" ret="int"></call>
+  <call fn="getArmyID" ret="int"></call>
+  <call fn="setArmyID" ret="void">
+    <arg type="int" name="iNewArmyID"/>
+  </call>
+  <call fn="isUnderTacticalControl" ret="bool"></call>
+  <call fn="setTacticalMove" ret="void">
+    <arg type="TacticalAIMoveTypes" name="eMove"/>
+  </call>
+  <call fn="getTacticalMove" ret="TacticalAIMoveTypes"></call>
+  <call fn="canRecruitFromTacticalAI" ret="bool"></call>
+  <call fn="SetTacticalAIPlot" ret="void">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="GetTacticalAIPlot" ret="Plot"></call>
+  <call fn="LogWorkerEvent" ret="void">
+    <arg type="BuildTypes" name="eBuildType"/>
+    <arg type="bool" name="bStartingConstruction"/>
+  </call>
+  <call fn="GetPower" ret="int"></call>
+  <call fn="AreUnitsOfSameType" ret="bool">
+    <arg type="CvUnit" name="pUnit2"/>
+    <arg type="bool" name="bPretendEmbarked" default="false"/>
+  </call>
+  <call fn="CanSwapWithUnitHere" ret="bool">
+    <arg type="CvPlot" name="pPlot"/>
+  </call>
+  <call fn="read" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="write" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="AI_promote" ret="void"></call>
+  <call fn="AI_getUnitAIType" ret="UnitAITypes"></call>
+  <call fn="AI_setUnitAIType" ret="void">
+    <arg type="UnitAITypes" name="eNewValue"/>
+  </call>
+  <call fn="AI_promotionValue" ret="int">
+    <arg type="PromotionTypes" name="ePromotion"/>
+  </call>
+  <call fn="GetGreatPeopleDirective" ret="GreatPeopleDirectiveTypes"></call>
+  <call fn="SetGreatPeopleDirective" ret="void">
+    <arg type="GreatPeopleDirectiveTypes" name="eDirective"/>
+  </call>
+  <call fn="IsSelected" ret="bool"></call>
+  <call fn="IsFirstTimeSelected" ret="bool"></call>
+  <call fn="IncrementFirstTimeSelected" ret="void"></call>
+  <call fn="SetPosition" ret="void">
+    <arg type="Plot" name="pkPlot"/>
+  </call>
+  <call fn="getSyncArchive" ret="FAutoArchive"></call>
+  <call fn="getSyncArchive" ret="FAutoArchive"></call>
+  <call fn="PushMission" ret="void">
+    <arg type="MissionTypes" name="eMission"/>
+    <arg type="int" name="iData1" default="-1"/>
+    <arg type="int" name="iData2" default="-1"/>
+    <arg type="int" name="iFlags" default="0"/>
+    <arg type="bool" name="bAppend" default="false"/>
+    <arg type="bool" name="bManual" default="false"/>
+    <arg type="MissionAITypes" name="eMissionAI" default="NO_MISSIONAI"/>
+    <arg type="Plot" name="pMissionAIPlot" default="NULL"/>
+    <arg type="Unit" name="pMissionAIUnit" default="NULL"/>
+  </call>
+  <call fn="PopMission" ret="void"></call>
+  <call fn="AutoMission" ret="void"></call>
+  <call fn="UpdateMission" ret="void"></call>
+  <call fn="LastMissionPlot" ret="Plot"></call>
+  <call fn="CanStartMission" ret="bool">
+    <arg type="int" name="iMission"/>
+    <arg type="int" name="iData1"/>
+    <arg type="int" name="iData2"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="GetMissionTimer" ret="int"></call>
+  <call fn="SetMissionTimer" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="ChangeMissionTimer" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="ClearMissionQueue" ret="void">
+    <arg type="int" name="iUnitCycleTimer" default="1"/>
+  </call>
+  <call fn="GetLengthMissionQueue" ret="int"></call>
+  <call fn="GetHeadMissionData" ret="MissionData*"></call>
+  <call fn="GetMissionData" ret="MissionData*">
+    <arg type="int" name="iIndex"/>
+  </call>
+  <call fn="GetMissionAIPlot" ret="Plot"></call>
+  <call fn="GetMissionAIType" ret="MissionAITypes"></call>
+  <call fn="SetMissionAI" ret="void">
+    <arg type="MissionAITypes" name="eNewMissionAI"/>
+    <arg type="Plot" name="pNewPlot"/>
+    <arg type="Unit" name="pNewUnit"/>
+  </call>
+  <call fn="GetMissionAIUnit" ret="Unit"></call>
+  <call fn="IsCombatUnit" ret="bool"></call>
+  <call fn="IsCanAttackWithMove" ret="bool"></call>
+  <call fn="IsCanAttackRanged" ret="bool"></call>
+  <call fn="IsCanAttack" ret="bool"></call>
+  <call fn="IsCanAttackWithMoveNow" ret="bool"></call>
+  <call fn="IsCanDefend" ret="bool">
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="IsEnemyInMovementRange" ret="bool">
+    <arg type="bool" name="bOnlyFortified" default="false"/>
+    <arg type="bool" name="bOnlyCities" default="false"/>
+  </call>
+  <call fn="GeneratePath" ret="bool">
+    <arg type="Plot" name="pToPlot"/>
+    <arg type="int" name="iFlags" default="0"/>
+    <arg type="bool" name="bReuse" default="false"/>
+    <arg type="int*" name="piPathTurns" default="NULL"/>
+  </call>
+  <call fn="ResetPath" ret="void"></call>
+  <call fn="GetPathFirstPlot" ret="Plot"></call>
+  <call fn="GetPathLastPlot" ret="Plot"></call>
+  <call fn="GetPathNodeArray" ret="CvPathNodeArray"></call>
+  <call fn="GetPathEndTurnPlot" ret="Plot"></call>
+  <call fn="isBusyMoving" ret="bool"></call>
+  <call fn="setBusyMoving" ret="void">
+    <arg type="bool" name="bState"/>
+  </call>
+  <call fn="IsIgnoringDangerWakeup" ret="bool"></call>
+  <call fn="SetIgnoreDangerWakeup" ret="void">
+    <arg type="bool" name="bState"/>
+  </call>
+  <call fn="IsNotCivilianIfEmbarked" ret="bool"></call>
+  <call fn="ChangeNotCivilianIfEmbarkedCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetNotCivilianIfEmbarkedCount" ret="int"></call>
+  <call fn="IsEmbarkAllWater" ret="bool"></call>
+  <call fn="ChangeEmbarkAllWaterCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetEmbarkAllWaterCount" ret="int"></call>
+  <call fn="ChangeEmbarkExtraVisibility" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetEmbarkExtraVisibility" ret="int"></call>
+  <call fn="ChangeEmbarkDefensiveModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetEmbarkDefensiveModifier" ret="int"></call>
+  <call fn="ChangeCapitalDefenseModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetCapitalDefenseModifier" ret="int"></call>
+  <call fn="ChangeCapitalDefenseFalloff" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetCapitalDefenseFalloff" ret="int"></call>
+  <call fn="ChangeCityAttackPlunderModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetCityAttackPlunderModifier" ret="int"></call>
+  <call fn="ChangeReligiousStrengthLossRivalTerritory" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetReligiousStrengthLossRivalTerritory" ret="int"></call>
+  <call fn="ChangeTradeMissionInfluenceModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetTradeMissionInfluenceModifier" ret="int"></call>
+  <call fn="ChangeTradeMissionGoldModifier" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetTradeMissionGoldModifier" ret="int"></call>
+  <call fn="IsHasBeenPromotedFromGoody" ret="bool"></call>
+  <call fn="SetBeenPromotedFromGoody" ret="void">
+    <arg type="bool" name="bBeenPromoted"/>
+  </call>
+  <call fn="IsHigherTechThan" ret="bool">
+    <arg type="UnitTypes" name="otherUnit"/>
+  </call>
+  <call fn="IsLargerCivThan" ret="bool">
+    <arg type="Unit" name="pOtherUnit"/>
+  </call>
+  <call fn="GetNumGoodyHutsPopped" ret="int"></call>
+  <call fn="ChangeNumGoodyHutsPopped" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="SearchRange" ret="int">
+    <arg type="int" name="iRange"/>
+  </call>
+  <call fn="PlotValid" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="GetReligionData" ret="CvUnitReligion*"></call>
+</class>

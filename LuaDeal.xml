@@ -1,0 +1,188 @@
+<obj type="Deal">
+  <api object="Deal" method="ClearItems">
+    <method class="CvDeal" fn="ClearItems"/>
+  </api>
+  <api object="Deal" method="GetNumItems">
+    <method class="CvDeal" fn="GetNumItems"/>
+  </api>
+  <api object="Deal" method="GetStartTurn">
+    <method class="CvDeal" fn="GetStartTurn"/>
+  </api>
+  <api object="Deal" method="GetEndTurn">
+    <method class="CvDeal" fn="GetEndTurn"/>
+  </api>
+  <api object="Deal" method="GetDuration">
+    <method class="CvDeal" fn="GetDuration"/>
+  </api>
+  <api object="Deal" method="SetFromPlayer">
+    <method class="CvDeal" fn="SetFromPlayer"/>
+  </api>
+  <api object="Deal" method="SetToPlayer">
+    <method class="CvDeal" fn="SetToPlayer"/>
+  </api>
+  <api object="Deal" method="GetOtherPlayer">
+    <method class="CvDeal" fn="GetOtherPlayer"/>
+  </api>
+  <api object="Deal" method="GetToPlayer">
+    <method class="CvDeal" fn="GetToPlayer"/>
+  </api>
+  <api object="Deal" method="GetFromPlayer">
+    <method class="CvDeal" fn="GetFromPlayer"/>
+  </api>
+  <api object="Deal" method="GetSurrenderingPlayer">
+    <method class="CvDeal" fn="GetSurrenderingPlayer"/>
+  </api>
+  <api object="Deal" method="SetSurrenderingPlayer">
+    <method class="CvDeal" fn="SetSurrenderingPlayer"/>
+  </api>
+  <api object="Deal" method="GetDemandingPlayer">
+    <method class="CvDeal" fn="GetDemandingPlayer"/>
+  </api>
+  <api object="Deal" method="SetDemandingPlayer">
+    <method class="CvDeal" fn="SetDemandingPlayer"/>
+  </api>
+  <api object="Deal" method="GetRequestingPlayer">
+    <method class="CvDeal" fn="GetRequestingPlayer"/>
+  </api>
+  <api object="Deal" method="SetRequestingPlayer">
+    <method class="CvDeal" fn="SetRequestingPlayer"/>
+  </api>
+  <api object="Deal" method="GetGoldAvailable">
+    <method class="CvDeal" fn="GetGoldAvailable"/>
+  </api>
+  <api object="Deal" method="AddGoldTrade">
+    <method class="CvDeal" fn="AddGoldTrade"/>
+  </api>
+  <api object="Deal" method="AddGoldPerTurnTrade">
+    <method class="CvDeal" fn="AddGoldPerTurnTrade"/>
+  </api>
+  <api object="Deal" method="AddMapTrade">
+    <method class="CvDeal" fn="AddMapTrade"/>
+  </api>
+  <api object="Deal" method="AddResourceTrade">
+    <method class="CvDeal" fn="AddResourceTrade"/>
+  </api>
+  <api object="Deal" method="AddCityTrade">
+    <method class="CvDeal" fn="AddCityTrade"/>
+  </api>
+  <api object="Deal" method="AddUnitTrade">
+    <method class="CvDeal" fn="AddUnitTrade"/>
+  </api>
+  <api object="Deal" method="AddAllowEmbassy">
+    <method class="CvDeal" fn="AddAllowEmbassy"/>
+  </api>
+  <api object="Deal" method="AddOpenBorders">
+    <method class="CvDeal" fn="AddOpenBorders"/>
+  </api>
+  <api object="Deal" method="AddDefensivePact">
+    <method class="CvDeal" fn="AddDefensivePact"/>
+  </api>
+  <api object="Deal" method="AddResearchAgreement">
+    <method class="CvDeal" fn="AddResearchAgreement"/>
+  </api>
+  <api object="Deal" method="AddTradeAgreement">
+    <method class="CvDeal" fn="AddTradeAgreement"/>
+  </api>
+  <api object="Deal" method="AddPermamentAlliance">
+    <method class="CvDeal" fn="AddPermamentAlliance"/>
+  </api>
+  <api object="Deal" method="AddSurrender">
+    <method class="CvDeal" fn="AddSurrender"/>
+  </api>
+  <api object="Deal" method="AddTruce">
+    <method class="CvDeal" fn="AddTruce"/>
+  </api>
+  <api object="Deal" method="AddPeaceTreaty">
+    <method class="CvDeal" fn="AddPeaceTreaty"/>
+  </api>
+  <api object="Deal" method="AddThirdPartyPeace">
+    <method class="CvDeal" fn="AddThirdPartyPeace"/>
+  </api>
+  <api object="Deal" method="AddThirdPartyWar">
+    <method class="CvDeal" fn="AddThirdPartyWar"/>
+  </api>
+  <api object="Deal" method="AddThirdPartyEmbargo">
+    <method class="CvDeal" fn="AddThirdPartyEmbargo"/>
+  </api>
+  <api object="Deal" method="AddDeclarationOfFriendship">
+    <method class="CvDeal" fn="AddDeclarationOfFriendship"/>
+  </api>
+  <api object="Deal" method="ChangeGoldTrade">
+    <method class="CvDeal" fn="ChangeGoldTrade"/>
+  </api>
+  <api object="Deal" method="ChangeGoldPerTurnTrade">
+    <method class="CvDeal" fn="ChangeGoldPerTurnTrade"/>
+  </api>
+  <api object="Deal" method="ChangeResourceTrade">
+    <method class="CvDeal" fn="ChangeResourceTrade"/>
+  </api>
+  <api object="Deal" method="ChangeThirdPartyWarDuration">
+    <method class="CvDeal" fn="ChangeThirdPartyWarDuration"/>
+  </api>
+  <api object="Deal" method="ChangeThirdPartyPeaceDuration">
+    <method class="CvDeal" fn="ChangeThirdPartyPeaceDuration"/>
+  </api>
+  <api object="Deal" method="ChangeThirdPartyEmbargoDuration">
+    <method class="CvDeal" fn="ChangeThirdPartyEmbargoDuration"/>
+  </api>
+  <api object="Deal" method="RemoveResourceTrade">
+    <method class="CvDeal" fn="RemoveResourceTrade"/>
+  </api>
+  <api object="Deal" method="RemoveCityTrade">
+    <method class="CvDeal" fn="RemoveCityTrade"/>
+  </api>
+  <api object="Deal" method="RemoveUnitTrade">
+    <method class="CvDeal" fn="RemoveUnitTrade"/>
+  </api>
+  <api object="Deal" method="RemoveThirdPartyPeace">
+    <method class="CvDeal" fn="RemoveThirdPartyPeace"/>
+  </api>
+  <api object="Deal" method="RemoveThirdPartyWar">
+    <method class="CvDeal" fn="RemoveThirdPartyWar"/>
+  </api>
+  <api object="Deal" method="RemoveThirdPartyEmbargo">
+    <method class="CvDeal" fn="RemoveThirdPartyEmbargo"/>
+  </api>
+  <api object="Deal" method="RemoveByType">
+    <arg pos="2" type="int" name="iItem"/>
+    <arg pos="3" type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+    <ret type="void"/>
+  </api>
+  <api object="Deal" method="IsPossibleToTradeItem">
+    <arg pos="2" type="PlayerTypes" name="eFromPlayer"/>
+    <arg pos="3" type="PlayerTypes" name="eToPlayer"/>
+    <arg pos="4" type="TradeableItems" name="eItem"/>
+    <arg pos="5" type="int" name="iData1"/>
+    <arg pos="6" type="int" name="iData2"/>
+    <arg pos="7" type="int" name="iData3"/>
+    <arg pos="8" type="bool" name="bFlag1"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Deal" method="GetNumResource">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="ResourceTypes" name="eResource"/>
+    <ret type="int"/>
+  </api>
+  <api object="Deal" method="ResetIterator">
+    <ret type="void"/>
+  </api>
+  <api object="Deal" method="GetNextItem">
+    <ret type="int, int, int, int, int, int, bool, int"/>
+  </api>
+  <api object="Deal" method="AddVoteCommitment">
+    <arg pos="2" type="PlayerTypes" name="eFromPlayer"/>
+    <arg pos="3" type="int" name="iResolutionID"/>
+    <arg pos="4" type="int" name="iVoteChoice"/>
+    <arg pos="5" type="int" name="iNumVotes"/>
+    <arg pos="6" type="bool" name="bRepeal"/>
+    <ret type="void"/>
+  </api>
+  <api object="Deal" method="RemoveVoteCommitment">
+    <arg pos="2" type="PlayerTypes" name="eFromPlayer"/>
+    <arg pos="3" type="int" name="iResolutionID"/>
+    <arg pos="4" type="int" name="iVoteChoice"/>
+    <arg pos="5" type="int" name="iNumVotes"/>
+    <arg pos="6" type="bool" name="bRepeal"/>
+    <ret type="void"/>
+  </api>
+</obj>

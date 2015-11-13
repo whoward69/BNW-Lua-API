@@ -1,0 +1,88 @@
+<obj type="Area">
+  <api object="Area" method="IsNone">
+    <ret type="bool"/>
+  </api>
+  <api object="Area" method="CalculateTotalBestNatureYield">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="CountCoastalLand">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="CountNumUniqueResourceTypes">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetID">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumTiles">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumOwnedTiles">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumUnownedTiles">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumRiverEdges">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumCities">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumUnits">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetTotalPopulation">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumStartingPlots">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="IsWater">
+    <ret type="bool"/>
+  </api>
+  <api object="Area" method="GetUnitsPerPlayer">
+    <arg pos="2" type="PlayerTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetCitiesPerPlayer">
+    <arg pos="2" type="PlayerTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetPopulationPerPlayer">
+    <arg pos="2" type="PlayerTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetFreeSpecialist">
+    <arg pos="2" type="PlayerTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumRevealedTiles">
+    <arg pos="2" type="TeamTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumUnrevealedTiles">
+    <arg pos="2" type="TeamTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetTargetCity">
+    <arg pos="2" type="PlayerTypes" name="eIndex"/>
+    <ret type="City"/>
+  </api>
+  <api object="Area" method="GetYieldRateModifier">
+    <arg pos="2" type="PlayerTypes" name="eIndex1"/>
+    <arg pos="3" type="YieldTypes" name="eIndex2"/>
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumResources">
+    <arg pos="2" type="ResourceTypes" name="eResource"/>
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumTotalResources">
+    <ret type="int"/>
+  </api>
+  <api object="Area" method="GetNumImprovements">
+    <arg pos="2" type="ImprovementTypes" name="eImprovement"/>
+    <ret type="int"/>
+  </api>
+</obj>

@@ -1,0 +1,869 @@
+<class type="CvPlot">
+  <call fn="init" ret="void">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="uninit" ret="void"></call>
+  <call fn="reset" ret="void">
+    <arg type="int" name="iX" default="0"/>
+    <arg type="int" name="iY" default="0"/>
+    <arg type="bool" name="bConstructorCall" default="false"/>
+  </call>
+  <call fn="setupGraphical" ret="void"></call>
+  <call fn="erase" ret="void">
+    <arg type="bool" name="bEraseUnits"/>
+  </call>
+  <call fn="doTurn" ret="void"></call>
+  <call fn="doImprovement" ret="void"></call>
+  <call fn="GetActiveFogOfWarMode" ret="FogOfWarModeTypes"></call>
+  <call fn="updateFog" ret="void">
+    <arg type="bool" name="bDefer" default="false"/>
+  </call>
+  <call fn="updateVisibility" ret="void"></call>
+  <call fn="updateSymbols" ret="void"></call>
+  <call fn="updateCenterUnit" ret="void"></call>
+  <call fn="verifyUnitValidPlot" ret="void"></call>
+  <call fn="nukeExplosion" ret="void">
+    <arg type="int" name="iDamageLevel"/>
+    <arg type="Unit" name="pNukeUnit" default="NULL"/>
+  </call>
+  <call fn="isAdjacentToArea" ret="bool">
+    <arg type="int" name="iAreaID"/>
+  </call>
+  <call fn="isAdjacentToArea" ret="bool">
+    <arg type="Area" name="pArea"/>
+  </call>
+  <call fn="shareAdjacentArea" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="isAdjacent" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="isAdjacentToLand" ret="bool"></call>
+  <call fn="isShallowWater" ret="bool"></call>
+  <call fn="isAdjacentToShallowWater" ret="bool"></call>
+  <call fn="isCoastalLand" ret="bool">
+    <arg type="int" name="iMinWaterSize" default="-1"/>
+  </call>
+  <call fn="GetSizeLargestAdjacentWater" ret="int"></call>
+  <call fn="isVisibleWorked" ret="bool"></call>
+  <call fn="isWithinTeamCityRadius" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="PlayerTypes" name="eIgnorePlayer" default="NO_PLAYER"/>
+  </call>
+  <call fn="isLake" ret="bool"></call>
+  <call fn="isFreshWater" ret="bool"></call>
+  <call fn="isRiverCrossingFlowClockwise" ret="bool">
+    <arg type="DirectionTypes" name="eDirection"/>
+  </call>
+  <call fn="isRiverSide" ret="bool"></call>
+  <call fn="isRiverConnection" ret="bool">
+    <arg type="DirectionTypes" name="eDirection"/>
+  </call>
+  <call fn="getNeighboringPlot" ret="Plot">
+    <arg type="DirectionTypes" name="eDirection"/>
+  </call>
+  <call fn="getNearestLandPlotInternal" ret="Plot">
+    <arg type="int" name="iDistance"/>
+  </call>
+  <call fn="getNearestLandArea" ret="int"></call>
+  <call fn="getNearestLandPlot" ret="Plot"></call>
+  <call fn="seeFromLevel" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="seeThroughLevel" ret="int">
+    <arg type="bool" name="bIncludeShubbery" default="true"/>
+  </call>
+  <call fn="changeSeeFromSight" ret="void">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="DirectionTypes" name="eDirection"/>
+    <arg type="int" name="iFromLevel"/>
+    <arg type="bool" name="bIncrement"/>
+    <arg type="InvisibleTypes" name="eSeeInvisible"/>
+  </call>
+  <call fn="changeAdjacentSight" ret="void">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="int" name="iRange"/>
+    <arg type="bool" name="bIncrement"/>
+    <arg type="InvisibleTypes" name="eSeeInvisible"/>
+    <arg type="DirectionTypes" name="eFacingDirection"/>
+    <arg type="bool" name="bBasedOnUnit" default="true"/>
+  </call>
+  <call fn="canSeePlot" ret="bool">
+    <arg type="Plot" name="plot"/>
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="int" name="iRange"/>
+    <arg type="DirectionTypes" name="eFacingDirection"/>
+  </call>
+  <call fn="shouldProcessDisplacementPlot" ret="bool">
+    <arg type="int" name="dx"/>
+    <arg type="int" name="dy"/>
+    <arg type="int" name="range"/>
+    <arg type="DirectionTypes" name="eFacingDirection"/>
+  </call>
+  <call fn="updateSight" ret="void">
+    <arg type="bool" name="bIncrement"/>
+  </call>
+  <call fn="updateSeeFromSight" ret="void">
+    <arg type="bool" name="bIncrement"/>
+  </call>
+  <call fn="canHaveResource" ret="bool">
+    <arg type="ResourceTypes" name="eResource"/>
+    <arg type="bool" name="bIgnoreLatitude" default="false"/>
+  </call>
+  <call fn="canHaveImprovement" ret="bool">
+    <arg type="ImprovementTypes" name="eImprovement"/>
+    <arg type="TeamTypes" name="eTeam" default="NO_TEAM"/>
+    <arg type="bool" name="bOnlyTestVisible" default="false"/>
+  </call>
+  <call fn="canBuild" ret="bool">
+    <arg type="BuildTypes" name="eBuild"/>
+    <arg type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+    <arg type="bool" name="bTestPlotOwner" default="true"/>
+  </call>
+  <call fn="getBuildTime" ret="int">
+    <arg type="BuildTypes" name="eBuild"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="getBuildTurnsTotal" ret="int">
+    <arg type="BuildTypes" name="eBuild"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="getBuildTurnsLeft" ret="int">
+    <arg type="BuildTypes" name="eBuild"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="int" name="iNowExtra"/>
+    <arg type="int" name="iThenExtra"/>
+  </call>
+  <call fn="getFeatureProduction" ret="int">
+    <arg type="BuildTypes" name="eBuild"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="City*" name="ppCity"/>
+  </call>
+  <call fn="getBestDefender" ret="UnitHandle">
+    <arg type="PlayerTypes" name="eOwner"/>
+    <arg type="PlayerTypes" name="eAttackingPlayer" default="NO_PLAYER"/>
+    <arg type="Unit" name="pAttacker" default="NULL"/>
+    <arg type="bool" name="bTestAtWar" default="false"/>
+    <arg type="bool" name="bTestPotentialEnemy" default="false"/>
+    <arg type="bool" name="bTestCanMove" default="false"/>
+    <arg type="bool" name="bNoncombatAllowed" default="false"/>
+  </call>
+  <call fn="getBestDefender" ret="UnitHandle">
+    <arg type="PlayerTypes" name="eOwner"/>
+    <arg type="PlayerTypes" name="eAttackingPlayer" default="NO_PLAYER"/>
+    <arg type="Unit" name="pAttacker" default="NULL"/>
+    <arg type="bool" name="bTestAtWar" default="false"/>
+    <arg type="bool" name="bTestPotentialEnemy" default="false"/>
+    <arg type="bool" name="bTestCanMove" default="false"/>
+    <arg type="bool" name="bNoncombatAllowed" default="false"/>
+  </call>
+  <call fn="getSelectedUnit" ret="Unit"></call>
+  <call fn="getSelectedUnit" ret="Unit"></call>
+  <call fn="getUnitPower" ret="int">
+    <arg type="PlayerTypes" name="eOwner" default="NO_PLAYER"/>
+  </call>
+  <call fn="defenseModifier" ret="int">
+    <arg type="TeamTypes" name="eDefender"/>
+    <arg type="bool" name="bIgnoreBuilding"/>
+    <arg type="bool" name="bHelp" default="false"/>
+  </call>
+  <call fn="movementCost" ret="int">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="Plot" name="pFromPlot"/>
+    <arg type="int" name="iMovesRemaining" default="0"/>
+  </call>
+  <call fn="MovementCostNoZOC" ret="int">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="Plot" name="pFromPlot"/>
+    <arg type="int" name="iMovesRemaining" default="0"/>
+  </call>
+  <call fn="getExtraMovePathCost" ret="int"></call>
+  <call fn="changeExtraMovePathCost" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="isAdjacentOwned" ret="bool"></call>
+  <call fn="isAdjacentPlayer" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="bool" name="bLandOnly" default="false"/>
+  </call>
+  <call fn="IsAdjacentOwnedByOtherTeam" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="isAdjacentTeam" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="bool" name="bLandOnly" default="false"/>
+  </call>
+  <call fn="GetAdjacentFriendlyCity" ret="City">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="bool" name="bLandOnly" default="false"/>
+  </call>
+  <call fn="GetAdjacentCity" ret="City">
+    <arg type="bool" name="bLandOnly" default="false"/>
+  </call>
+  <call fn="GetNumAdjacentDifferentTeam" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="bool" name="bIgnoreWater"/>
+  </call>
+  <call fn="GetNumAdjacentMountains" ret="int"></call>
+  <call fn="plotAction" ret="void">
+    <arg type="PlotUnitFunc" name="func"/>
+    <arg type="int" name="iData1" default="-1"/>
+    <arg type="int" name="iData2" default="-1"/>
+    <arg type="PlayerTypes" name="eOwner" default="NO_PLAYER"/>
+    <arg type="TeamTypes" name="eTeam" default="NO_TEAM"/>
+  </call>
+  <call fn="plotCount" ret="int">
+    <arg type="ConstPlotUnitFunc" name="funcA"/>
+    <arg type="int" name="iData1A" default="-1"/>
+    <arg type="int" name="iData2A" default="-1"/>
+    <arg type="PlayerTypes" name="eOwner" default="NO_PLAYER"/>
+    <arg type="TeamTypes" name="eTeam" default="NO_TEAM"/>
+    <arg type="ConstPlotUnitFunc" name="funcB" default="NULL"/>
+    <arg type="int" name="iData1B" default="-1"/>
+    <arg type="int" name="iData2B" default="-1"/>
+  </call>
+  <call fn="plotCheck" ret="Unit">
+    <arg type="ConstPlotUnitFunc" name="funcA"/>
+    <arg type="int" name="iData1A" default="-1"/>
+    <arg type="int" name="iData2A" default="-1"/>
+    <arg type="PlayerTypes" name="eOwner" default="NO_PLAYER"/>
+    <arg type="TeamTypes" name="eTeam" default="NO_TEAM"/>
+    <arg type="ConstPlotUnitFunc" name="funcB" default="NULL"/>
+    <arg type="int" name="iData1B" default="-1"/>
+    <arg type="int" name="iData2B" default="-1"/>
+  </call>
+  <call fn="plotCheck" ret="Unit">
+    <arg type="ConstPlotUnitFunc" name="funcA"/>
+    <arg type="int" name="iData1A" default="-1"/>
+    <arg type="int" name="iData2A" default="-1"/>
+    <arg type="PlayerTypes" name="eOwner" default="NO_PLAYER"/>
+    <arg type="TeamTypes" name="eTeam" default="NO_TEAM"/>
+    <arg type="ConstPlotUnitFunc" name="funcB" default="NULL"/>
+    <arg type="int" name="iData1B" default="-1"/>
+    <arg type="int" name="iData2B" default="-1"/>
+  </call>
+  <call fn="isOwned" ret="bool"></call>
+  <call fn="isBarbarian" ret="bool"></call>
+  <call fn="isRevealedBarbarian" ret="bool"></call>
+  <call fn="HasBarbarianCamp" ret="bool"></call>
+  <call fn="isVisible" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="isActiveVisible" ret="bool"></call>
+  <call fn="isVisibleToCivTeam" ret="bool"></call>
+  <call fn="isVisibleToEnemyTeam" ret="bool">
+    <arg type="TeamTypes" name="eFriendlyTeam"/>
+  </call>
+  <call fn="isVisibleToWatchingHuman" ret="bool"></call>
+  <call fn="isAdjacentVisible" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="isAdjacentNonvisible" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="getNumAdjacentNonvisible" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="isGoody" ret="bool">
+    <arg type="TeamTypes" name="eTeam" default="NO_TEAM"/>
+  </call>
+  <call fn="isRevealedGoody" ret="bool">
+    <arg type="TeamTypes" name="eTeam" default="NO_TEAM"/>
+  </call>
+  <call fn="removeGoody" ret="void"></call>
+  <call fn="getTeam" ret="TeamTypes"></call>
+  <call fn="isCity" ret="bool"></call>
+  <call fn="isEnemyCity" ret="bool">
+    <arg type="CvUnit" name="kUnit"/>
+  </call>
+  <call fn="isFriendlyCity" ret="bool">
+    <arg type="CvUnit" name="kUnit"/>
+    <arg type="bool" name="bCheckImprovement"/>
+  </call>
+  <call fn="IsFriendlyTerritory" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="isBeingWorked" ret="bool"></call>
+  <call fn="isUnit" ret="bool"></call>
+  <call fn="isVisibleEnemyDefender" ret="bool">
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="getVisibleEnemyDefender" ret="Unit">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="getNumDefenders" ret="int">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="getNumVisibleEnemyDefenders" ret="int">
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="getNumVisiblePotentialEnemyDefenders" ret="int">
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="isVisibleEnemyUnit" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="isVisibleEnemyUnit" ret="bool">
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="isVisibleOtherUnit" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="IsActualEnemyUnit" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="bool" name="bCombatUnitsOnly" default="true"/>
+  </call>
+  <call fn="getNumFriendlyUnitsOfType" ret="int">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="bool" name="bBreakOnUnitLimit" default="true"/>
+  </call>
+  <call fn="isFighting" ret="bool"></call>
+  <call fn="isUnitFighting" ret="bool"></call>
+  <call fn="isCityFighting" ret="bool"></call>
+  <call fn="canHaveFeature" ret="bool">
+    <arg type="FeatureTypes" name="eFeature"/>
+  </call>
+  <call fn="isRoute" ret="bool"></call>
+  <call fn="isValidRoute" ret="bool">
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="SetTradeRoute" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="bool" name="bActive"/>
+  </call>
+  <call fn="IsTradeRoute" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+  </call>
+  <call fn="isValidDomainForLocation" ret="bool">
+    <arg type="CvUnit" name="unit"/>
+  </call>
+  <call fn="isValidDomainForAction" ret="bool">
+    <arg type="CvUnit" name="unit"/>
+  </call>
+  <call fn="getX" ret="int"></call>
+  <call fn="getY" ret="int"></call>
+  <call fn="at" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="getLatitude" ret="int"></call>
+  <call fn="area" ret="Area"></call>
+  <call fn="waterArea" ret="Area"></call>
+  <call fn="secondWaterArea" ret="Area"></call>
+  <call fn="getArea" ret="int"></call>
+  <call fn="setArea" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getLandmass" ret="int"></call>
+  <call fn="setLandmass" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getFeatureVariety" ret="int"></call>
+  <call fn="getOwnershipDuration" ret="int"></call>
+  <call fn="isOwnershipScore" ret="bool"></call>
+  <call fn="setOwnershipDuration" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeOwnershipDuration" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getImprovementDuration" ret="int"></call>
+  <call fn="setImprovementDuration" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeImprovementDuration" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getUpgradeProgress" ret="int"></call>
+  <call fn="getUpgradeTimeLeft" ret="int">
+    <arg type="ImprovementTypes" name="eImprovement"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="setUpgradeProgress" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeUpgradeProgress" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="ComputeCultureFromAdjacentImprovement" ret="int">
+    <arg type="CvImprovementEntry" name="kImprovement"/>
+    <arg type="ImprovementTypes" name="eValue"/>
+  </call>
+  <call fn="getNumMajorCivsRevealed" ret="int"></call>
+  <call fn="setNumMajorCivsRevealed" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeNumMajorCivsRevealed" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getCityRadiusCount" ret="int"></call>
+  <call fn="isCityRadius" ret="int"></call>
+  <call fn="changeCityRadiusCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="isStartingPlot" ret="bool"></call>
+  <call fn="setStartingPlot" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="isNEOfRiver" ret="bool"></call>
+  <call fn="setNEOfRiver" ret="void">
+    <arg type="bool" name="bNewValue"/>
+    <arg type="FlowDirectionTypes" name="eRiverDir"/>
+  </call>
+  <call fn="isWOfRiver" ret="bool"></call>
+  <call fn="setWOfRiver" ret="void">
+    <arg type="bool" name="bNewValue"/>
+    <arg type="FlowDirectionTypes" name="eRiverDir"/>
+  </call>
+  <call fn="isNWOfRiver" ret="bool"></call>
+  <call fn="setNWOfRiver" ret="void">
+    <arg type="bool" name="bNewValue"/>
+    <arg type="FlowDirectionTypes" name="eRiverDir"/>
+  </call>
+  <call fn="getRiverEFlowDirection" ret="FlowDirectionTypes"></call>
+  <call fn="getRiverSEFlowDirection" ret="FlowDirectionTypes"></call>
+  <call fn="getRiverSWFlowDirection" ret="FlowDirectionTypes"></call>
+  <call fn="getInlandCorner" ret="Plot"></call>
+  <call fn="hasCoastAtSECorner" ret="bool"></call>
+  <call fn="isPotentialCityWork" ret="bool"></call>
+  <call fn="isPotentialCityWorkForArea" ret="bool">
+    <arg type="Area" name="pArea"/>
+  </call>
+  <call fn="updatePotentialCityWork" ret="void"></call>
+  <call fn="getOwner" ret="PlayerTypes"></call>
+  <call fn="setOwner" ret="void">
+    <arg type="PlayerTypes" name="eNewValue"/>
+    <arg type="int" name="iAcquiringCityID"/>
+    <arg type="bool" name="bCheckUnits" default="true"/>
+    <arg type="bool" name="bUpdateResources" default="true"/>
+  </call>
+  <call fn="ClearCityPurchaseInfo" ret="void"></call>
+  <call fn="GetCityPurchaseOwner" ret="PlayerTypes"></call>
+  <call fn="GetCityPurchaseID" ret="int"></call>
+  <call fn="SetCityPurchaseID" ret="void">
+    <arg type="int" name="iAcquiringCityID"/>
+  </call>
+  <call fn="IsHomeFrontForPlayer" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="getPlotType" ret="PlotTypes"></call>
+  <call fn="isWater" ret="bool"></call>
+  <call fn="isHills" ret="bool"></call>
+  <call fn="isOpenGround" ret="bool"></call>
+  <call fn="isMountain" ret="bool"></call>
+  <call fn="isRiver" ret="bool"></call>
+  <call fn="getTerrainType" ret="TerrainTypes"></call>
+  <call fn="getFeatureType" ret="FeatureTypes"></call>
+  <call fn="isImpassable" ret="bool"></call>
+  <call fn="IsAllowsWalkWater" ret="bool"></call>
+  <call fn="isRoughGround" ret="bool"></call>
+  <call fn="isFlatlands" ret="bool"></call>
+  <call fn="setPlotType" ret="void">
+    <arg type="PlotTypes" name="eNewValue"/>
+    <arg type="bool" name="bRecalculate" default="true"/>
+    <arg type="bool" name="bRebuildGraphics" default="true"/>
+    <arg type="bool" name="bEraseUnitsIfWater" default="true"/>
+  </call>
+  <call fn="IsRoughFeature" ret="bool"></call>
+  <call fn="SetRoughFeature" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="setTerrainType" ret="void">
+    <arg type="TerrainTypes" name="eNewValue"/>
+    <arg type="bool" name="bRecalculate" default="true"/>
+    <arg type="bool" name="bRebuildGraphics" default="true"/>
+  </call>
+  <call fn="setFeatureType" ret="void">
+    <arg type="FeatureTypes" name="eNewValue"/>
+    <arg type="int" name="iVariety" default="-1"/>
+  </call>
+  <call fn="IsNaturalWonder" ret="bool"></call>
+  <call fn="getResourceType" ret="ResourceTypes">
+    <arg type="TeamTypes" name="eTeam" default="NO_TEAM"/>
+  </call>
+  <call fn="getNonObsoleteResourceType" ret="ResourceTypes">
+    <arg type="TeamTypes" name="eTeam" default="NO_TEAM"/>
+  </call>
+  <call fn="setResourceType" ret="void">
+    <arg type="ResourceTypes" name="eNewValue"/>
+    <arg type="int" name="iResourceNum"/>
+    <arg type="bool" name="bForMinorCivPlot" default="false"/>
+  </call>
+  <call fn="getNumResource" ret="int"></call>
+  <call fn="setNumResource" ret="void">
+    <arg type="int" name="iNum"/>
+  </call>
+  <call fn="changeNumResource" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNumResourceForPlayer" ret="int">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="getImprovementType" ret="ImprovementTypes"></call>
+  <call fn="getImprovementTypeNeededToImproveResource" ret="ImprovementTypes">
+    <arg type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+    <arg type="bool" name="bTestPlotOwner" default="true"/>
+  </call>
+  <call fn="setImprovementType" ret="void">
+    <arg type="ImprovementTypes" name="eNewValue"/>
+    <arg type="PlayerTypes" name="eBuilder" default="NO_PLAYER"/>
+  </call>
+  <call fn="IsImprovementPillaged" ret="bool"></call>
+  <call fn="SetImprovementPillaged" ret="void">
+    <arg type="bool" name="bPillaged"/>
+  </call>
+  <call fn="IsImprovedByGiftFromMajor" ret="bool"></call>
+  <call fn="SetImprovedByGiftFromMajor" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="HasSpecialImprovement" ret="bool"></call>
+  <call fn="GetPlayerThatBuiltImprovement" ret="PlayerTypes"></call>
+  <call fn="SetPlayerThatBuiltImprovement" ret="void">
+    <arg type="PlayerTypes" name="eBuilder"/>
+  </call>
+  <call fn="GetPlayerResponsibleForImprovement" ret="PlayerTypes"></call>
+  <call fn="SetPlayerResponsibleForImprovement" ret="void">
+    <arg type="PlayerTypes" name="eNewValue"/>
+  </call>
+  <call fn="GetPlayerResponsibleForRoute" ret="PlayerTypes"></call>
+  <call fn="SetPlayerResponsibleForRoute" ret="void">
+    <arg type="PlayerTypes" name="eNewValue"/>
+  </call>
+  <call fn="IsBarbarianCampNotConverting" ret="bool"></call>
+  <call fn="SetBarbarianCampNotConverting" ret="void">
+    <arg type="bool" name="bNotConverting"/>
+  </call>
+  <call fn="GetWorldAnchor" ret="GenericWorldAnchorTypes"></call>
+  <call fn="GetWorldAnchorData" ret="int"></call>
+  <call fn="SetWorldAnchor" ret="void">
+    <arg type="GenericWorldAnchorTypes" name="eAnchor"/>
+    <arg type="int" name="iData1" default="-1"/>
+  </call>
+  <call fn="getRouteType" ret="RouteTypes"></call>
+  <call fn="setRouteType" ret="void">
+    <arg type="RouteTypes" name="eNewValue"/>
+  </call>
+  <call fn="updateCityRoute" ret="void"></call>
+  <call fn="IsRoutePillaged" ret="bool"></call>
+  <call fn="SetRoutePillaged" ret="void">
+    <arg type="bool" name="bPillaged"/>
+  </call>
+  <call fn="GetPlayerThatClearedBarbCampHere" ret="PlayerTypes"></call>
+  <call fn="SetPlayerThatClearedBarbCampHere" ret="void">
+    <arg type="PlayerTypes" name="eNewValue"/>
+  </call>
+  <call fn="GetResourceLinkedCity" ret="City"></call>
+  <call fn="SetResourceLinkedCity" ret="void">
+    <arg type="City" name="pNewValue"/>
+  </call>
+  <call fn="IsResourceLinkedCityActive" ret="bool"></call>
+  <call fn="SetResourceLinkedCityActive" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="DoFindCityToLinkResourceTo" ret="void">
+    <arg type="City" name="pCityToExclude" default="NULL"/>
+  </call>
+  <call fn="getPlotCity" ret="City"></call>
+  <call fn="setPlotCity" ret="void">
+    <arg type="City" name="pNewValue"/>
+  </call>
+  <call fn="getWorkingCity" ret="City"></call>
+  <call fn="updateWorkingCity" ret="void"></call>
+  <call fn="getWorkingCityOverride" ret="City"></call>
+  <call fn="setWorkingCityOverride" ret="void">
+    <arg type="City" name="pNewValue"/>
+  </call>
+  <call fn="getReconCount" ret="int"></call>
+  <call fn="changeReconCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getRiverCrossingCount" ret="int"></call>
+  <call fn="changeRiverCrossingCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getYield" ret="short*"></call>
+  <call fn="getYield" ret="int">
+    <arg type="YieldTypes" name="eIndex"/>
+  </call>
+  <call fn="calculateNatureYield" ret="int">
+    <arg type="YieldTypes" name="eIndex"/>
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="bool" name="bIgnoreFeature" default="false"/>
+  </call>
+  <call fn="calculateBestNatureYield" ret="int">
+    <arg type="YieldTypes" name="eIndex"/>
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="calculateTotalBestNatureYield" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="calculateImprovementYieldChange" ret="int">
+    <arg type="ImprovementTypes" name="eImprovement"/>
+    <arg type="YieldTypes" name="eYield"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="bool" name="bOptimal" default="false"/>
+    <arg type="RouteTypes" name="eAssumeThisRoute" default="NUM_ROUTE_TYPES"/>
+  </call>
+  <call fn="calculateYield" ret="int">
+    <arg type="YieldTypes" name="eIndex"/>
+    <arg type="bool" name="bDisplay" default="false"/>
+  </call>
+  <call fn="hasYield" ret="bool"></call>
+  <call fn="updateYield" ret="void"></call>
+  <call fn="getYieldWithBuild" ret="int">
+    <arg type="BuildTypes" name="eBuild"/>
+    <arg type="YieldTypes" name="eYield"/>
+    <arg type="bool" name="bWithUpgrade"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="countNumAirUnits" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="getFoundValue" ret="int">
+    <arg type="PlayerTypes" name="eIndex"/>
+  </call>
+  <call fn="isBestAdjacentFound" ret="bool">
+    <arg type="PlayerTypes" name="eIndex"/>
+  </call>
+  <call fn="setFoundValue" ret="void">
+    <arg type="PlayerTypes" name="eIndex"/>
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getPlayerCityRadiusCount" ret="int">
+    <arg type="PlayerTypes" name="eIndex"/>
+  </call>
+  <call fn="isPlayerCityRadius" ret="bool">
+    <arg type="PlayerTypes" name="eIndex"/>
+  </call>
+  <call fn="changePlayerCityRadiusCount" ret="void">
+    <arg type="PlayerTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getVisibilityCount" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="changeVisibilityCount" ret="PlotVisibilityChangeResult">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="int" name="iChange"/>
+    <arg type="InvisibleTypes" name="eSeeInvisible"/>
+    <arg type="bool" name="bInformExplorationTracking"/>
+    <arg type="bool" name="bAlwaysSeeInvisible"/>
+  </call>
+  <call fn="getRevealedOwner" ret="PlayerTypes">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="getRevealedTeam" ret="TeamTypes">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="setRevealedOwner" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="PlayerTypes" name="eNewValue"/>
+  </call>
+  <call fn="updateRevealedOwner" ret="void">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="isRiverCrossing" ret="bool">
+    <arg type="DirectionTypes" name="eIndex"/>
+  </call>
+  <call fn="updateRiverCrossing" ret="void">
+    <arg type="DirectionTypes" name="eIndex"/>
+  </call>
+  <call fn="updateRiverCrossing" ret="void"></call>
+  <call fn="IsNoSettling" ret="bool">
+    <arg type="PlayerTypes" name="eMajor"/>
+  </call>
+  <call fn="SetNoSettling" ret="void">
+    <arg type="PlayerTypes" name="eMajor"/>
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="isRevealed" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="setRevealed" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="bool" name="bNewValue"/>
+    <arg type="bool" name="bTerrainOnly" default="false"/>
+    <arg type="TeamTypes" name="eFromTeam" default="NO_TEAM"/>
+  </call>
+  <call fn="isAdjacentRevealed" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="isAdjacentNonrevealed" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="getNumAdjacentNonrevealed" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="IsResourceForceReveal" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="SetResourceForceReveal" ret="void">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="getRevealedImprovementType" ret="ImprovementTypes">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="setRevealedImprovementType" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="ImprovementTypes" name="eNewValue"/>
+  </call>
+  <call fn="getRevealedRouteType" ret="RouteTypes">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="setRevealedRouteType" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="RouteTypes" name="eNewValue"/>
+  </call>
+  <call fn="getBuildProgress" ret="int">
+    <arg type="BuildTypes" name="eBuild"/>
+  </call>
+  <call fn="changeBuildProgress" ret="bool">
+    <arg type="BuildTypes" name="eBuild"/>
+    <arg type="int" name="iChange"/>
+    <arg type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+  </call>
+  <call fn="getAnyBuildProgress" ret="bool"></call>
+  <call fn="SilentlyResetAllBuildProgress" ret="void"></call>
+  <call fn="isLayoutDirty" ret="bool"></call>
+  <call fn="setLayoutDirty" ret="void">
+    <arg type="bool" name="bDirty"/>
+  </call>
+  <call fn="isLayoutStateDifferent" ret="bool"></call>
+  <call fn="setLayoutStateToCurrent" ret="void"></call>
+  <call fn="getVisibleImprovementState" ret="void">
+    <arg type="ImprovementTypes" name="eType"/>
+    <arg type="bool" name="bWorked"/>
+  </call>
+  <call fn="getVisibleResourceState" ret="void">
+    <arg type="ResourceTypes" name="eType"/>
+    <arg type="bool" name="bImproved"/>
+    <arg type="bool" name="bWorked"/>
+  </call>
+  <call fn="getCenterUnit" ret="UnitHandle"></call>
+  <call fn="getCenterUnit" ret="UnitHandle"></call>
+  <call fn="setCenterUnit" ret="void">
+    <arg type="UnitHandle" name="pNewValue"/>
+  </call>
+  <call fn="getInvisibleVisibilityCount" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="InvisibleTypes" name="eInvisible"/>
+  </call>
+  <call fn="isInvisibleVisible" ret="bool">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="InvisibleTypes" name="eInvisible"/>
+  </call>
+  <call fn="changeInvisibleVisibilityCount" ret="void">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="InvisibleTypes" name="eInvisible"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNumUnits" ret="int"></call>
+  <call fn="GetNumCombatUnits" ret="int"></call>
+  <call fn="getUnitByIndex" ret="Unit">
+    <arg type="int" name="iIndex"/>
+  </call>
+  <call fn="getUnitIndex" ret="int">
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="addUnit" ret="void">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="bool" name="bUpdate" default="true"/>
+  </call>
+  <call fn="removeUnit" ret="void">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="bool" name="bUpdate" default="true"/>
+  </call>
+  <call fn="nextUnitNode" ret="IDInfo*">
+    <arg type="IDInfo*" name="pNode"/>
+  </call>
+  <call fn="nextUnitNode" ret="IDInfo*">
+    <arg type="IDInfo*" name="pNode"/>
+  </call>
+  <call fn="prevUnitNode" ret="IDInfo*">
+    <arg type="IDInfo*" name="pNode"/>
+  </call>
+  <call fn="prevUnitNode" ret="IDInfo*">
+    <arg type="IDInfo*" name="pNode"/>
+  </call>
+  <call fn="headUnitNode" ret="IDInfo*"></call>
+  <call fn="headUnitNode" ret="IDInfo*"></call>
+  <call fn="tailUnitNode" ret="IDInfo*"></call>
+  <call fn="tailUnitNode" ret="IDInfo*"></call>
+  <call fn="getUnits" ret="uint">
+    <arg type="IDInfoVector*" name="pkInfoVector"/>
+  </call>
+  <call fn="getNumLayerUnits" ret="int">
+    <arg type="int" name="iLayerID" default="-1"/>
+  </call>
+  <call fn="getLayerUnit" ret="Unit">
+    <arg type="int" name="iIndex"/>
+    <arg type="int" name="iLayerID" default="-1"/>
+  </call>
+  <call fn="getScriptData" ret="str"></call>
+  <call fn="setScriptData" ret="void">
+    <arg type="str" name="szNewValue"/>
+  </call>
+  <call fn="canTrain" ret="bool">
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="bool" name="bContinue"/>
+    <arg type="bool" name="bTestVisible"/>
+  </call>
+  <call fn="read" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="write" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="GetBuilderAIScratchPadPlayer" ret="PlayerTypes"></call>
+  <call fn="SetBuilderAIScratchPadPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="GetBuilderAIScratchPadTurn" ret="short"></call>
+  <call fn="SetBuilderAIScratchPadTurn" ret="void">
+    <arg type="short" name="sNewValue"/>
+  </call>
+  <call fn="GetBuilderAIScratchPadRoute" ret="RouteTypes"></call>
+  <call fn="SetBuilderAIScratchPadRoute" ret="void">
+    <arg type="RouteTypes" name="eRoute"/>
+  </call>
+  <call fn="GetBuilderAIScratchPadValue" ret="short"></call>
+  <call fn="SetBuilderAIScratchPadValue" ret="void">
+    <arg type="short" name="sNewValue"/>
+  </call>
+  <call fn="GetPlotIndex" ret="int"></call>
+  <call fn="GetContinentType" ret="char"></call>
+  <call fn="SetContinentType" ret="void">
+    <arg type="char" name="cContinent"/>
+  </call>
+  <call fn="getSyncArchive" ret="FAutoArchive"></call>
+  <call fn="getSyncArchive" ret="FAutoArchive"></call>
+  <call fn="Validate" ret="int">
+    <arg type="CvMap" name="kParentMap"/>
+  </call>
+  <call fn="MustPayMaintenanceHere" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="AddArchaeologicalRecord" ret="void">
+    <arg type="GreatWorkArtifactClass" name="eType"/>
+    <arg type="PlayerTypes" name="ePlayer1"/>
+    <arg type="PlayerTypes" name="ePlayer2"/>
+  </call>
+  <call fn="AddArchaeologicalRecord" ret="void">
+    <arg type="GreatWorkArtifactClass" name="eType"/>
+    <arg type="EraTypes" name="eEra"/>
+    <arg type="PlayerTypes" name="ePlayer1"/>
+    <arg type="PlayerTypes" name="ePlayer2"/>
+  </call>
+  <call fn="ClearArchaeologicalRecord" ret="void"></call>
+  <call fn="GetArchaeologicalRecord" ret="CvArchaeologyData"></call>
+  <call fn="SetArtifactType" ret="void">
+    <arg type="GreatWorkArtifactClass" name="eType"/>
+  </call>
+  <call fn="SetArtifactGreatWork" ret="void">
+    <arg type="GreatWorkType" name="eWork"/>
+  </call>
+  <call fn="HasWrittenArtifact" ret="bool"></call>
+</class>

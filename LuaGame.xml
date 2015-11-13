@@ -1,0 +1,943 @@
+<obj type="Game">
+  <api object="Game" method="CanHandleAction" static="true">
+    <arg pos="1" type="int" name="iAction"/>
+    <arg pos="2" type="Plot" name="pkPlot" default="nil"/>
+    <arg pos="3" type="bool" name="bTestVisible" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="HandleAction" static="true">
+    <arg pos="1" type="int" name="iAction"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="UpdateScore" static="true">
+    <method class="CvGame" fn="updateScore"/>
+  </api>
+  <api object="Game" method="CycleCities" static="true">
+    <method class="CvGame" fn="cycleCities"/>
+  </api>
+  <api object="Game" method="CycleUnits" static="true">
+    <method class="CvGame" fn="cycleUnits"/>
+  </api>
+  <api object="Game" method="CyclePlotUnits" static="true">
+    <arg pos="1" type="Plot" name="pkPlot"/>
+    <arg pos="2" type="bool" name="bForward"/>
+    <arg pos="3" type="bool" name="bAuto"/>
+    <arg pos="4" type="int" name="iCount"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="SelectionListMove" static="true">
+    <arg pos="1" type="Plot" name="pkPlot"/>
+    <arg pos="2" type="void" name="_"/>
+    <arg pos="3" type="bool" name="bShift"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="SelectionListGameNetMessage" static="true">
+    <arg pos="1" type="int" name="eMessage"/>
+    <arg pos="2" type="int" name="iData2" default="-1"/>
+    <arg pos="3" type="int" name="iData3" default="-1"/>
+    <arg pos="4" type="int" name="iData4" default="-1"/>
+    <arg pos="5" type="int" name="iFlags" default="0"/>
+    <arg pos="6" type="bool" name="bAlt" default="false"/>
+    <arg pos="7" type="bool" name="bShift" default="false"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="SelectedCitiesGameNetMessage" static="true">
+    <arg pos="1" type="int" name="eMessage"/>
+    <arg pos="2" type="int" name="iData2" default="-1"/>
+    <arg pos="3" type="int" name="iData3" default="-1"/>
+    <arg pos="4" type="int" name="iData4" default="-1"/>
+    <arg pos="5" type="bool" name="bOption" default="false"/>
+    <arg pos="6" type="bool" name="bAlt" default="false"/>
+    <arg pos="7" type="bool" name="bShift" default="false"/>
+    <arg pos="8" type="bool" name="bCtrl" default="false"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="CityPushOrder" static="true">
+    <arg pos="1" type="City" name="pkCity"/>
+    <arg pos="2" type="OrderTypes" name="eOrder"/>
+    <arg pos="3" type="int" name="iData"/>
+    <arg pos="4" type="bool" name="bAlt" default="false"/>
+    <arg pos="5" type="bool" name="bShift" default="false"/>
+    <arg pos="6" type="bool" name="bCtrl" default="false"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="CityPurchaseUnit" static="true">
+    <arg pos="1" type="City" name="pkCity"/>
+    <arg pos="2" type="UnitTypes" name="eUnitType"/>
+    <arg pos="3" type="YieldTypes" name="ePurchaseYield"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="CityPurchaseBuilding" static="true">
+    <arg pos="1" type="City" name="pkCity"/>
+    <arg pos="2" type="BuildingTypes" name="eBuildingType"/>
+    <arg pos="3" type="YieldTypes" name="ePurchaseYield"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="CityPurchaseProject" static="true">
+    <arg pos="1" type="City" name="pkCity"/>
+    <arg pos="2" type="ProjectTypes" name="eProjectType"/>
+    <arg pos="3" type="YieldTypes" name="ePurchaseYield"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="GetProductionPerPopulation" static="true">
+    <method class="CvGame" fn="getProductionPerPopulation"/>
+  </api>
+  <api object="Game" method="GetAdjustedPopulationPercent" static="true">
+    <method class="CvGame" fn="getAdjustedPopulationPercent"/>
+  </api>
+  <api object="Game" method="GetAdjustedLandPercent" static="true">
+    <method class="CvGame" fn="getAdjustedLandPercent"/>
+  </api>
+  <api object="Game" method="GetUnitedNationsCountdown" static="true">
+    <method class="CvGame" fn="GetUnitedNationsCountdown"/>
+  </api>
+  <api object="Game" method="SetUnitedNationsCountdown" static="true">
+    <arg pos="1" type="int" name="iTurns"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="CountCivPlayersAlive" static="true">
+    <method class="CvGame" fn="countCivPlayersAlive"/>
+  </api>
+  <api object="Game" method="CountCivPlayersEverAlive" static="true">
+    <method class="CvGame" fn="countCivPlayersEverAlive"/>
+  </api>
+  <api object="Game" method="CountCivTeamsAlive" static="true">
+    <method class="CvGame" fn="countCivTeamsAlive"/>
+  </api>
+  <api object="Game" method="CountCivTeamsEverAlive" static="true">
+    <method class="CvGame" fn="countCivTeamsEverAlive"/>
+  </api>
+  <api object="Game" method="CountHumanPlayersAlive" static="true">
+    <method class="CvGame" fn="countHumanPlayersAlive"/>
+  </api>
+  <api object="Game" method="CountHumanPlayersEverAlive" static="true">
+    <method class="CvGame" fn="countHumanPlayersEverAlive"/>
+  </api>
+  <api object="Game" method="CountTotalCivPower" static="true">
+    <method class="CvGame" fn="countTotalCivPower"/>
+  </api>
+  <api object="Game" method="CountTotalNukeUnits" static="true">
+    <method class="CvGame" fn="countTotalNukeUnits"/>
+  </api>
+  <api object="Game" method="CountKnownTechNumTeams" static="true">
+    <method class="CvGame" fn="countKnownTechNumTeams"/>
+  </api>
+  <api object="Game" method="GoldenAgeLength" static="true">
+    <method class="CvGame" fn="goldenAgeLength"/>
+  </api>
+  <api object="Game" method="VictoryDelay" static="true">
+    <method class="CvGame" fn="victoryDelay"/>
+  </api>
+  <api object="Game" method="GetImprovementUpgradeTime" static="true">
+    <method class="CvGame" fn="getImprovementUpgradeTime"/>
+  </api>
+  <api object="Game" method="CanTrainNukes" static="true">
+    <method class="CvGame" fn="canTrainNukes"/>
+  </api>
+  <api object="Game" method="GetCurrentEra" static="true">
+    <method class="CvGame" fn="getCurrentEra"/>
+  </api>
+  <api object="Game" method="GetDiploResponse" static="true">
+    <arg pos="1" type="str" name="sLeaderType"/>
+    <arg pos="2" type="str" name="sResponseType"/>
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetActiveTeam" static="true">
+    <method class="CvGame" fn="getActiveTeam"/>
+  </api>
+  <api object="Game" method="GetActiveCivilizationType" static="true">
+    <method class="CvGame" fn="getActiveCivilizationType"/>
+  </api>
+  <api object="Game" method="IsNetworkMultiPlayer" static="true">
+    <method class="CvGame" fn="isNetworkMultiPlayer"/>
+  </api>
+  <api object="Game" method="IsGameMultiPlayer" static="true">
+    <method class="CvGame" fn="isGameMultiPlayer"/>
+  </api>
+  <api object="Game" method="IsTeamGame" static="true">
+    <method class="CvGame" fn="isTeamGame"/>
+  </api>
+  <api object="Game" method="ReviveActivePlayer" static="true">
+    <method class="CvGame" fn="ReviveActivePlayer"/>
+  </api>
+  <api object="Game" method="GetNumHumanPlayers" static="true">
+    <method class="CvGame" fn="getNumHumanPlayers"/>
+  </api>
+  <api object="Game" method="GetNumSequentialHumans" static="true">
+    <method class="CvGame" fn="getNumSequentialHumans"/>
+  </api>
+  <api object="Game" method="GetGameTurn" static="true">
+    <method class="CvGame" fn="getGameTurn"/>
+  </api>
+  <api object="Game" method="SetGameTurn" static="true">
+    <method class="CvGame" fn="setGameTurn"/>
+  </api>
+  <api object="Game" method="GetTurnYear" static="true">
+    <method class="CvGame" fn="getTurnYear"/>
+  </api>
+  <api object="Game" method="GetGameTurnYear" static="true">
+    <method class="CvGame" fn="getGameTurnYear"/>
+  </api>
+  <api object="Game" method="GetTurnString" static="true">
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetElapsedGameTurns" static="true">
+    <method class="CvGame" fn="getElapsedGameTurns"/>
+  </api>
+  <api object="Game" method="GetMaxTurns" static="true">
+    <method class="CvGame" fn="getMaxTurns"/>
+  </api>
+  <api object="Game" method="SetMaxTurns" static="true">
+    <method class="CvGame" fn="setMaxTurns"/>
+  </api>
+  <api object="Game" method="ChangeMaxTurns" static="true">
+    <method class="CvGame" fn="changeMaxTurns"/>
+  </api>
+  <api object="Game" method="GetMaxCityElimination" static="true">
+    <method class="CvGame" fn="getMaxCityElimination"/>
+  </api>
+  <api object="Game" method="SetMaxCityElimination" static="true">
+    <method class="CvGame" fn="setMaxCityElimination"/>
+  </api>
+  <api object="Game" method="GetNumAdvancedStartPoints" static="true">
+    <method class="CvGame" fn="getNumAdvancedStartPoints"/>
+  </api>
+  <api object="Game" method="SetNumAdvancedStartPoints" static="true">
+    <method class="CvGame" fn="setNumAdvancedStartPoints"/>
+  </api>
+  <api object="Game" method="GetStartTurn" static="true">
+    <method class="CvGame" fn="getStartTurn"/>
+  </api>
+  <api object="Game" method="GetWinningTurn" static="true">
+    <method class="CvGame" fn="GetWinningTurn"/>
+  </api>
+  <api object="Game" method="GetStartYear" static="true">
+    <method class="CvGame" fn="getStartYear"/>
+  </api>
+  <api object="Game" method="SetStartYear" static="true">
+    <method class="CvGame" fn="setStartYear"/>
+  </api>
+  <api object="Game" method="GetEstimateEndTurn" static="true">
+    <method class="CvGame" fn="getEstimateEndTurn"/>
+  </api>
+  <api object="Game" method="SetEstimateEndTurn" static="true">
+    <method class="CvGame" fn="setEstimateEndTurn"/>
+  </api>
+  <api object="Game" method="GetTurnSlice" static="true">
+    <method class="CvGame" fn="getTurnSlice"/>
+  </api>
+  <api object="Game" method="GetMinutesPlayed" static="true">
+    <method class="CvGame" fn="getMinutesPlayed"/>
+  </api>
+  <api object="Game" method="GetTargetScore" static="true">
+    <method class="CvGame" fn="getTargetScore"/>
+  </api>
+  <api object="Game" method="SetTargetScore" static="true">
+    <method class="CvGame" fn="setTargetScore"/>
+  </api>
+  <api object="Game" method="IsStaticTutorialActive" static="true">
+    <method class="CvGame" fn="IsStaticTutorialActive"/>
+  </api>
+  <api object="Game" method="SetStaticTutorialActive" static="true">
+    <method class="CvGame" fn="SetStaticTutorialActive"/>
+  </api>
+  <api object="Game" method="IsEverRightClickMoved" static="true">
+    <method class="CvGame" fn="IsEverRightClickMoved"/>
+  </api>
+  <api object="Game" method="SetEverRightClickMoved" static="true">
+    <method class="CvGame" fn="SetEverRightClickMoved"/>
+  </api>
+  <api object="Game" method="IsTutorialLogging" static="true">
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="IsTutorialDebugging" static="true">
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="GetTutorialLevel" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="HasAdvisorMessageBeenSeen" static="true">
+    <arg pos="1" type="str" name="sMessage"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="SetAdvisorMessageHasBeenSeen" static="true">
+    <arg pos="1" type="str" name="sMessage"/>
+    <arg pos="2" type="bool" name="bSeen"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="SetAdvisorBadAttackInterrupt" static="true">
+    <arg pos="1" type="bool" name="bValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="SetAdvisorCityAttackInterrupt" static="true">
+    <arg pos="1" type="bool" name="bValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="GetAllowRClickMovementWhileScrolling" static="true">
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="GetNumGameTurnActive" static="true">
+    <method class="CvGame" fn="getNumGameTurnActive"/>
+  </api>
+  <api object="Game" method="CountNumHumanGameTurnActive" static="true">
+    <method class="CvGame" fn="countNumHumanGameTurnActive"/>
+  </api>
+  <api object="Game" method="GetNumCities" static="true">
+    <method class="CvGame" fn="getNumCities"/>
+  </api>
+  <api object="Game" method="GetNumCivCities" static="true">
+    <method class="CvGame" fn="getNumCivCities"/>
+  </api>
+  <api object="Game" method="GetTotalPopulation" static="true">
+    <method class="CvGame" fn="getTotalPopulation"/>
+  </api>
+  <api object="Game" method="GetNoNukesCount" static="true">
+    <method class="CvGame" fn="getNoNukesCount"/>
+  </api>
+  <api object="Game" method="IsNoNukes" static="true">
+    <method class="CvGame" fn="isNoNukes"/>
+  </api>
+  <api object="Game" method="ChangeNoNukesCount" static="true">
+    <arg pos="1" type="void" name="_"><bug>iNumNukes should be here</bug></arg>
+    <arg pos="2" type="int" name="iNumNukes"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="GetNukesExploded" static="true">
+    <method class="CvGame" fn="getNukesExploded"/>
+  </api>
+  <api object="Game" method="ChangeNukesExploded" static="true">
+    <arg pos="1" type="void" name="_"><bug>iNumNukes should be here</bug></arg>
+    <arg pos="2" type="int" name="iNumNukes"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="GetMaxPopulation" static="true">
+    <method class="CvGame" fn="getMaxPopulation"/>
+  </api>
+  <api object="Game" method="GetInitPopulation" static="true">
+    <method class="CvGame" fn="getInitPopulation"/>
+  </api>
+  <api object="Game" method="GetInitLand" static="true">
+    <method class="CvGame" fn="getInitLand"/>
+  </api>
+  <api object="Game" method="GetInitTech" static="true">
+    <method class="CvGame" fn="getInitTech"/>
+  </api>
+  <api object="Game" method="GetInitWonders" static="true">
+    <method class="CvGame" fn="getInitWonders"/>
+  </api>
+  <api object="Game" method="GetNumWorldWonders" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetAIAutoPlay" static="true">
+    <method class="CvGame" fn="getAIAutoPlay"/>
+  </api>
+  <api object="Game" method="SetAIAutoPlay" static="true">
+    <method class="CvGame" fn="setAIAutoPlay"/>
+  </api>
+  <api object="Game" method="IsScoreDirty" static="true">
+    <method class="CvGame" fn="isScoreDirty"/>
+  </api>
+  <api object="Game" method="SetScoreDirty" static="true">
+    <method class="CvGame" fn="setScoreDirty"/>
+  </api>
+  <api object="Game" method="IsCircumnavigated" static="true">
+    <method class="CvGame" fn="isCircumnavigated"/>
+  </api>
+  <api object="Game" method="MakeCircumnavigated" static="true">
+    <method class="CvGame" fn="makeCircumnavigated"/>
+  </api>
+  <api object="Game" method="DoFromUIDiploEvent" static="true">
+    <method class="CvGame" fn="DoFromUIDiploEvent"/>
+  </api>
+  <api object="Game" method="IsDebugMode" static="true">
+    <method class="CvGame" fn="isDebugMode"/>
+  </api>
+  <api object="Game" method="SetDebugMode" static="true">
+    <method class="CvGame" fn="setDebugMode"/>
+  </api>
+  <api object="Game" method="ToggleDebugMode" static="true">
+    <method class="CvGame" fn="toggleDebugMode"/>
+  </api>
+  <api object="Game" method="UpdateFOW" static="true">
+    <method class="CvGame" fn="setFOW"/>
+  </api>
+  <api object="Game" method="GetPitbossTurnTime" static="true">
+    <method class="CvGame" fn="getPitbossTurnTime"/>
+  </api>
+  <api object="Game" method="SetPitbossTurnTime" static="true">
+    <method class="CvGame" fn="setPitbossTurnTime"/>
+  </api>
+  <api object="Game" method="IsHotSeat" static="true">
+    <method class="CvGame" fn="isHotSeat"/>
+  </api>
+  <api object="Game" method="IsPbem" static="true">
+    <method class="CvGame" fn="isPbem"/>
+  </api>
+  <api object="Game" method="IsPitboss" static="true">
+    <method class="CvGame" fn="isPitboss"/>
+  </api>
+  <api object="Game" method="IsSimultaneousTeamTurns" static="true">
+    <method class="CvGame" fn="isSimultaneousTeamTurns"/>
+  </api>
+  <api object="Game" method="IsFinalInitialized" static="true">
+    <method class="CvGame" fn="isFinalInitialized"/>
+  </api>
+  <api object="Game" method="GetActivePlayer" static="true">
+    <method class="CvGame" fn="getActivePlayer"/>
+  </api>
+  <api object="Game" method="SetActivePlayer" static="true">
+    <method class="CvGame" fn="setActivePlayer"/>
+  </api>
+  <api object="Game" method="GetPausePlayer" static="true">
+    <method class="CvGame" fn="getPausePlayer"/>
+  </api>
+  <api object="Game" method="SetPausePlayer" static="true">
+    <arg pos="1" type="int" name="iPlayer"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="IsPaused" static="true">
+    <method class="CvGame" fn="isPaused"/>
+  </api>
+  <api object="Game" method="GetBestLandUnit" static="true">
+    <method class="CvGame" fn="getBestLandUnit"/>
+  </api>
+  <api object="Game" method="GetBestLandUnitCombat" static="true">
+    <method class="CvGame" fn="getBestLandUnitCombat"/>
+  </api>
+  <api object="Game" method="GetFaithCost" static="true">
+    <arg pos="1" type="UnitTypes" name="eUnit"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetWinner" static="true">
+    <method class="CvGame" fn="getWinner"/>
+  </api>
+  <api object="Game" method="GetVictory" static="true">
+    <method class="CvGame" fn="getVictory"/>
+  </api>
+  <api object="Game" method="SetWinner" static="true">
+    <method class="CvGame" fn="setWinner"/>
+  </api>
+  <api object="Game" method="GetGameState" static="true">
+    <method class="CvGame" fn="getGameState"/>
+  </api>
+  <api object="Game" method="SetGameState" static="true">
+    <arg pos="1" type="int" name="iGameState"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="GetVotesNeededForDiploVictory" static="true">
+    <method class="CvGame" fn="GetVotesNeededForDiploVictory"/>
+  </api>
+  <api object="Game" method="IsUnitedNationsActive" static="true">
+    <method class="CvGame" fn="IsUnitedNationsActive"/>
+  </api>
+  <api object="Game" method="GetNumVictoryVotesTallied" static="true">
+    <method class="CvGame" fn="GetNumVictoryVotesTallied"/>
+  </api>
+  <api object="Game" method="GetVoteCast" static="true">
+    <method class="CvGame" fn="GetVoteCast"/>
+  </api>
+  <api object="Game" method="GetPreviousVoteCast" static="true">
+    <method class="CvGame" fn="GetPreviousVoteCast"/>
+  </api>
+  <api object="Game" method="GetNumVotesForTeam" static="true">
+    <method class="CvGame" fn="GetNumVotesForTeam"/>
+  </api>
+  <api object="Game" method="SetNumVotesForTeam" static="true">
+    <method class="CvGame" fn="SetNumVotesForTeam"/>
+  </api>
+  <api object="Game" method="ChangeNumVotesForTeam" static="true">
+    <method class="CvGame" fn="ChangeNumVotesForTeam"/>
+  </api>
+  <api object="Game" method="GetHandicapType" static="true">
+    <method class="CvGame" fn="getHandicapType"/>
+  </api>
+  <api object="Game" method="GetCalendar" static="true">
+    <method class="CvGame" fn="getCalendar"/>
+  </api>
+  <api object="Game" method="GetStartEra" static="true">
+    <method class="CvGame" fn="getStartEra"/>
+  </api>
+  <api object="Game" method="GetGameSpeedType" static="true">
+    <method class="CvGame" fn="getGameSpeedType"/>
+  </api>
+  <api object="Game" method="GetRankPlayer" static="true">
+    <method class="CvGame" fn="getRankPlayer"/>
+  </api>
+  <api object="Game" method="GetPlayerRank" static="true">
+    <method class="CvGame" fn="getPlayerRank"/>
+  </api>
+  <api object="Game" method="GetPlayerScore" static="true">
+    <method class="CvGame" fn="getPlayerScore"/>
+  </api>
+  <api object="Game" method="GetRankTeam" static="true">
+    <method class="CvGame" fn="getRankTeam"/>
+  </api>
+  <api object="Game" method="GetTeamRank" static="true">
+    <method class="CvGame" fn="getTeamRank"/>
+  </api>
+  <api object="Game" method="GetTeamScore" static="true">
+    <method class="CvGame" fn="getTeamScore"/>
+  </api>
+  <api object="Game" method="IsOption" static="true">
+    <arg pos="1" type="var" name="option"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="SetOption" static="true">
+    <arg pos="1" type="var" name="option"/>
+    <arg pos="2" type="bool" name="bValue"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="IsMPOption" static="true">
+    <method class="CvGame" fn="isMPOption"/>
+  </api>
+  <api object="Game" method="GetUnitCreatedCount" static="true">
+    <method class="CvGame" fn="getUnitCreatedCount"/>
+  </api>
+  <api object="Game" method="GetUnitClassCreatedCount" static="true">
+    <method class="CvGame" fn="getUnitClassCreatedCount"/>
+  </api>
+  <api object="Game" method="IsUnitClassMaxedOut" static="true">
+    <method class="CvGame" fn="isUnitClassMaxedOut"/>
+  </api>
+  <api object="Game" method="GetBuildingClassCreatedCount" static="true">
+    <method class="CvGame" fn="getBuildingClassCreatedCount"/>
+  </api>
+  <api object="Game" method="IsBuildingClassMaxedOut" static="true">
+    <method class="CvGame" fn="isBuildingClassMaxedOut"/>
+  </api>
+  <api object="Game" method="GetProjectCreatedCount" static="true">
+    <method class="CvGame" fn="getProjectCreatedCount"/>
+  </api>
+  <api object="Game" method="IsProjectMaxedOut" static="true">
+    <method class="CvGame" fn="isProjectMaxedOut"/>
+  </api>
+  <api object="Game" method="IsVictoryValid" static="true">
+    <method class="CvGame" fn="isVictoryValid"/>
+  </api>
+  <api object="Game" method="SetVictoryValid" static="true">
+    <arg pos="1" type="VictoryTypes" name="eVictoryType"/>
+    <arg pos="2" type="bool" name="bValid"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="IsSpecialUnitValid" static="true">
+    <method class="CvGame" fn="isSpecialUnitValid"/>
+  </api>
+  <api object="Game" method="MakeSpecialUnitValid" static="true">
+    <method class="CvGame" fn="makeSpecialUnitValid"/>
+  </api>
+  <api object="Game" method="IsNukesValid" static="true">
+    <method class="CvGame" fn="isNukesValid"/>
+  </api>
+  <api object="Game" method="MakeNukesValid" static="true">
+    <method class="CvGame" fn="makeNukesValid"/>
+  </api>
+  <api object="Game" method="IsInAdvancedStart" static="true">
+    <method class="CvGame" fn="isInAdvancedStart"/>
+  </api>
+  <api object="Game" method="SetName" static="true">
+    <method class="CvGame" fn="setName"/>
+  </api>
+  <api object="Game" method="GetName" static="true">
+    <error>Not implemented</error>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="Rand" static="true">
+    <arg pos="1" type="int" name="iMax"/>
+    <arg pos="2" type="str" name="sMsg"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="CalculateSyncChecksum" static="true">
+    <method class="CvGame" fn="calculateSyncChecksum"/>
+  </api>
+  <api object="Game" method="CalculateOptionsChecksum" static="true">
+    <method class="CvGame" fn="calculateOptionsChecksum"/>
+  </api>
+  <api object="Game" method="GetReplayMessage" static="true">
+    <ret type="({Player, Turn, Type, Text, Plots{X, Y}})"/>
+  </api>
+  <api object="Game" method="GetReplayMessages" static="true">
+    <ret type="({Player, Turn, Type, Text, Plots{X, Y}})"/>
+  </api>
+  <api object="Game" method="GetNumReplayMessages" static="true">
+    <method class="CvGame" fn="getNumReplayMessages"/>
+  </api>
+  <api object="Game" method="GetReplayInfo" static="true">
+    <error>Not implemented</error>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="SaveReplay" static="true">
+    <method class="CvGame" fn="saveReplay"/>
+  </api>
+  <api object="Game" method="AddPlayer" static="true">
+    <method class="CvGame" fn="addPlayer"/>
+  </api>
+  <api object="Game" method="SetPlotExtraYield" static="true">
+    <method class="CvGame" fn="setPlotExtraYield"/>
+  </api>
+  <api object="Game" method="ChangePlotExtraCost" static="true">
+    <method class="CvGame" fn="changePlotExtraCost"/>
+  </api>
+  <api object="Game" method="IsCivEverActive" static="true">
+    <method class="CvGame" fn="isCivEverActive"/>
+  </api>
+  <api object="Game" method="IsLeaderEverActive" static="true">
+    <method class="CvGame" fn="isLeaderEverActive"/>
+  </api>
+  <api object="Game" method="IsUnitEverActive" static="true">
+    <method class="CvGame" fn="isUnitEverActive"/>
+  </api>
+  <api object="Game" method="IsBuildingEverActive" static="true">
+    <method class="CvGame" fn="isBuildingEverActive"/>
+  </api>
+  <api object="Game" method="CanDoControl" static="true">
+    <method class="CvGame" fn="canDoControl"/>
+  </api>
+  <api object="Game" method="DoControl" static="true">
+    <method class="CvGame" fn="doControl"/>
+  </api>
+  <api object="Game" method="DoMinorPledgeProtection" static="true">
+    <arg pos="1" type="int" name="iMajor"/>
+    <arg pos="2" type="int" name="iMinor"/>
+    <arg pos="3" type="bool" name="bProtect"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="DoMinorGoldGift" static="true">
+    <method class="CvGame" fn="DoMinorGiftGold"/>
+  </api>
+  <api object="Game" method="DoMinorGiftGold" static="true">
+    <method class="CvGame" fn="DoMinorGiftGold"/>
+  </api>
+  <api object="Game" method="DoMinorGiftTileImprovement" static="true">
+    <method class="CvGame" fn="DoMinorGiftTileImprovement"/>
+  </api>
+  <api object="Game" method="DoMinorBullyGold" static="true">
+    <arg pos="1" type="int" name="iBully"/>
+    <arg pos="2" type="int" name="iMinor"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="DoMinorBullyUnit" static="true">
+    <arg pos="1" type="int" name="iBully"/>
+    <arg pos="2" type="int" name="iMinor"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="DoMinorBuyout" static="true">
+    <arg pos="1" type="int" name="iMajor"/>
+    <arg pos="2" type="int" name="iMinor"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="GetBestWondersPlayer" static="true">
+    <method class="CvGame" fn="GetBestWondersPlayer"/>
+  </api>
+  <api object="Game" method="GetBestPoliciesPlayer" static="true">
+    <method class="CvGame" fn="GetBestPoliciesPlayer"/>
+  </api>
+  <api object="Game" method="GetBestGreatPeoplePlayer" static="true">
+    <method class="CvGame" fn="GetBestGreatPeoplePlayer"/>
+  </api>
+  <api object="Game" method="IsEverAttackedTutorial" static="true">
+    <method class="CvGame" fn="IsEverAttackedTutorial"/>
+  </api>
+  <api object="Game" method="GameplayDiplomacyAILeaderMessage" static="true">
+    <arg pos="1" type="int" name="iPlayer"/>
+    <arg pos="2" type="int" name="eMessage"/>
+    <arg pos="3" type="int" name="iData1"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="GetResourceUsageType" static="true">
+    <arg pos="1" type="ResourceTypes" name="eResource"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetNumResourceRequiredForUnit" static="true">
+    <arg pos="1" type="UnitTypes" name="eUnit"/>
+    <arg pos="2" type="ResourceTypes" name="eResource"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetNumResourceRequiredForBuilding" static="true">
+    <arg pos="1" type="BuildingTypes" name="eBuilding"/>
+    <arg pos="2" type="ResourceTypes" name="eResource"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="IsCombatWarned" static="true">
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="SetCombatWarned" static="true">
+    <arg pos="1" type="bool" name="bValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="GetAdvisorCounsel" static="true">
+    <ret type="((str))"/>
+  </api>
+  <api object="Game" method="SetAdvisorRecommenderCity" static="true">
+    <arg pos="1" type="City" name="pkCity"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="IsUnitRecommended" static="true">
+    <arg pos="1" type="UnitTypes" name="eUnit"/>
+    <arg pos="2" type="AdvisorTypes" name="eAdvisor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="IsBuildingRecommended" static="true">
+    <arg pos="1" type="BuildingTypes" name="eBuilding"/>
+    <arg pos="2" type="AdvisorTypes" name="eAdvisor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="IsProjectRecommended" static="true">
+    <arg pos="1" type="ProjectTypes" name="eProject"/>
+    <arg pos="2" type="AdvisorTypes" name="eAdvisor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="SetAdvisorRecommenderTech" static="true">
+    <arg pos="1" type="PlayerTypes" name="ePlayer"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="IsTechRecommended" static="true">
+    <arg pos="1" type="TechTypes" name="eTech"/>
+    <arg pos="2" type="AdvisorTypes" name="eAdvisor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="GetVariableCitySizeFromPopulation" static="true">
+    <arg pos="1" type="int" name="iPop"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetResearchAgreementCost" static="true">
+    <arg pos="1" type="PlayerTypes" name="ePlayer1"/>
+    <arg pos="2" type="PlayerTypes" name="ePlayer2"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetCustomOption" static="true">
+    <arg pos="1" type="str" name="sOption"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetNumCitiesPolicyCostMod" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetNumCitiesTechCostMod" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetBuildingYieldChange" static="true">
+    <arg pos="1" type="BuildingTypes" name="eBuilding"/>
+    <arg pos="2" type="YieldTypes" name="eYield"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetBuildingYieldModifier" static="true">
+    <arg pos="1" type="BuildingTypes" name="eBuilding"/>
+    <arg pos="2" type="YieldTypes" name="eYield"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetWorldNumCitiesUnhappinessPercent" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetDealDuration" static="true">
+    <method class="CvGame" fn="GetDealDuration"/>
+  </api>
+  <api object="Game" method="GetPeaceDuration" static="true">
+    <method class="CvGame" fn="GetPeaceDuration"/>
+  </api>
+  <api object="Game" method="GetUnitUpgradesTo" static="true">
+    <arg pos="1" type="UnitTypes" name="eUnit"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetCombatPrediction" static="true">
+    <arg pos="1" type="Unit" name="pAttackingUnit"/>
+    <arg pos="2" type="Unit" name="pDefendingUnit"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetTimeString" static="true">
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetMinimumFaithNextPantheon" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="SetMinimumFaithNextPantheon" static="true">
+    <arg pos="1" type="int" name="iMinFaith"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Game" method="GetAvailablePantheonBeliefs" static="true">
+    <ret type="(int)"/>
+  </api>
+  <api object="Game" method="GetAvailableFounderBeliefs" static="true">
+    <ret type="(int)"/>
+  </api>
+  <api object="Game" method="GetAvailableFollowerBeliefs" static="true">
+    <ret type="(int)"/>
+  </api>
+  <api object="Game" method="GetAvailableEnhancerBeliefs" static="true">
+    <ret type="(int)"/>
+  </api>
+  <api object="Game" method="GetAvailableBonusBeliefs" static="true">
+    <ret type="(int)"/>
+  </api>
+  <api object="Game" method="GetAvailableReformationBeliefs" static="true">
+    <ret type="(int)"/>
+  </api>
+  <api object="Game" method="GetNumFollowers" static="true">
+    <arg pos="1" type="int" name="eReligion"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetNumCitiesFollowing" static="true">
+    <arg pos="1" type="int" name="eReligion"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetBeliefsInReligion" static="true">
+    <ret type="(int)"/>
+  </api>
+  <api object="Game" method="GetNumReligionsStillToFound" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetNumReligionsFounded" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetHolyCityForReligion" static="true">
+    <arg pos="1" type="ReligionTypes" name="eReligion"/>
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="City"/>
+  </api>
+  <api object="Game" method="GetReligionName" static="true">
+    <arg pos="1" type="ReligionTypes" name="eReligion"/>
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetFounderBenefitsReligion" static="true">
+    <arg pos="1" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="FoundPantheon" static="true">
+    <arg pos="1" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="2" type="BeliefTypes" name="eBelief"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="FoundReligion" static="true">
+    <arg pos="1" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="2" type="ReligionTypes" name="eReligion"/>
+    <arg pos="3" type="str" name="sName"/>
+    <arg pos="4" type="BeliefTypes" name="eBelief1"/>
+    <arg pos="5" type="BeliefTypes" name="eBelief2"/>
+    <arg pos="6" type="BeliefTypes" name="eBelief3"/>
+    <arg pos="7" type="BeliefTypes" name="eBelief4"/>
+    <arg pos="8" type="City" name="pkHolyCity"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="EnhanceReligion" static="true">
+    <arg pos="1" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="2" type="ReligionTypes" name="eReligion"/>
+    <arg pos="3" type="BeliefTypes" name="eBelief1"/>
+    <arg pos="4" type="BeliefTypes" name="eBelief2"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="SetHolyCity" static="true">
+    <arg pos="1" type="ReligionTypes" name="eReligion"/>
+    <arg pos="2" type="City" name="pkHolyCity"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="GetFounder" static="true">
+    <arg pos="1" type="ReligionTypes" name="eReligion"/>
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="SetFounder" static="true">
+    <arg pos="1" type="ReligionTypes" name="eReligion"/>
+    <arg pos="2" type="PlayerTypes" name="eFounder"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="GetTurnsBetweenMinorCivElections" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetTurnsUntilMinorCivElection" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetNumActiveLeagues" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetNumLeaguesEverFounded" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetLeague" static="true">
+    <arg pos="1" type="LeagueTypes" name="eLeague"/>
+    <ret type="League"/>
+  </api>
+  <api object="Game" method="GetActiveLeague" static="true">
+    <ret type="League"/>
+  </api>
+  <api object="Game" method="IsProcessingMessages" static="true">
+    <ret type="bool"/>
+  </api>
+  <api object="Game" method="GetGreatWorkTooltip" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <arg pos="2" type="PlayerTypes" name="eOwner"/>
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetGreatWorkName" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetGreatWorkType" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetGreatWorkClass" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetGreatWorkArtist" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetGreatWorkEra" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetGreatWorkEraAbbreviation" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetGreatWorkEraShort" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetGreatWorkCreator" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetGreatWorkController" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetGreatWorkCurrentThemingBonus" static="true">
+    <arg pos="1" type="int" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetArtifactName" static="true">
+    <arg pos="1" type="Plot" name="pkPlot" default="nil"/>
+    <ret type="str"/>
+  </api>
+  <api object="Game" method="GetNumFreePolicies" static="true">
+    <arg pos="1" type="PolicyBranchTypes" name="eBranch"/>
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetLongestCityConnectionPlots" static="true">
+    <ret type="Plot, Plot"/>
+  </api>
+  <api object="Game" method="SelectedUnit_SpeculativePopupTradeRoute_Display" static="true">
+    <arg pos="1" type="int" name="iPlotX"/>
+    <arg pos="2" type="int" name="iPlotY"/>
+    <arg pos="3" type="int" name="iConnectionType"/>
+    <arg pos="4" type="int" name="iDomain"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="SelectedUnit_SpeculativePopupTradeRoute_Hide" static="true">
+    <arg pos="1" type="int" name="iPlotX"/>
+    <arg pos="2" type="int" name="iPlotY"/>
+    <arg pos="3" type="int" name="iConnectionType"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="MouseoverUnit" static="true">
+    <arg pos="1" type="Unit" name="pUnit"/>
+    <arg pos="2" type="bool" name="bEnter"/>
+    <ret type="void"/>
+  </api>
+  <api object="Game" method="GetNumArchaeologySites" static="true">
+    <ret type="int"/>
+  </api>
+  <api object="Game" method="GetNumHiddenArchaeologySites" static="true">
+    <ret type="int"/>
+  </api>
+</obj>

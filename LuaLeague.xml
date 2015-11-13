@@ -1,0 +1,216 @@
+<obj type="League">
+  <api object="League" method="IsNone">
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="GetID">
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetName">
+    <ret type="str"/>
+  </api>
+  <api object="League" method="CanChangeCustomName">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="IsInSession">
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="IsInSpecialSession">
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="GetTurnsUntilSession">
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetTurnsUntilVictorySession">
+    <ret type="int"/>
+  </api>
+  <api object="League" method="CanProposeEnactAnyChoice">
+    <arg pos="2" type="ResolutionTypes" name="eResolution"/>
+    <arg pos="3" type="PlayerTypes" name="eProposer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="CanProposeEnact">
+    <arg pos="2" type="ResolutionTypes" name="eResolution"/>
+    <arg pos="3" type="PlayerTypes" name="eProposer"/>
+    <arg pos="4" type="int" name="iChoice"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="CanProposeRepeal">
+    <arg pos="2" type="int" name="iResolutionID"/>
+    <arg pos="3" type="PlayerTypes" name="eProposer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="IsProposed">
+    <arg pos="2" type="int" name="iResolutionID"/>
+    <arg pos="3" type="bool" name="bRepeal"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="GetChoicesForDecision">
+    <arg pos="2" type="ResolutionDecisionTypes" name="eDecision"/>
+    <arg pos="3" type="PlayerTypes" name="eDecider"/>
+    <ret type="(int)"/>
+  </api>
+  <api object="League" method="GetTextForChoice">
+    <arg pos="2" type="ResolutionDecisionTypes" name="eDecision"/>
+    <arg pos="3" type="int" name="iChoice"/>
+    <ret type="str"/>
+  </api>
+  <api object="League" method="GetInactiveResolutions">
+    <ret type="({Type})"/>
+  </api>
+  <api object="League" method="GetEnactProposals">
+    <ret type="({ID, Type, VoterDecision, ProposerDecision, ProposalPlayer})"/>
+  </api>
+  <api object="League" method="GetEnactProposalsOnHold">
+    <ret type="({ID, Type, VoterDecision, ProposerDecision, ProposalPlayer})"/>
+  </api>
+  <api object="League" method="GetRepealProposals">
+    <ret type="({ID, Type, VoterDecision, ProposerDecision, ProposalPlayer, TargetResolutionID, RepealDecision})"/>
+  </api>
+  <api object="League" method="GetRepealProposalsOnHold">
+    <ret type="({ID, Type, VoterDecision, ProposerDecision, ProposalPlayer, TargetResolutionID, RepealDecision})"/>
+  </api>
+  <api object="League" method="GetActiveResolutions">
+    <ret type="({ID, Type, VoterDecision, ProposerDecision, TurnEnacted})"/>
+  </api>
+  <api object="League" method="IsMember">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="CanVote">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="GetRemainingVotesForMember">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetSpentVotesForMember">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetCoreVotesForMember">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="CalculateStartingVotesForMember">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="CanPropose">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="GetRemainingProposalsForMember">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="IsHostMember">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="GetHostMember">
+    <ret type="int"/>
+  </api>
+  <api object="League" method="IsUnitedNations">
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="IsProjectActive">
+    <arg pos="2" type="LeagueProjectTypes" name="eLeagueProject"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="IsProjectComplete">
+    <arg pos="2" type="LeagueProjectTypes" name="eLeagueProject"/>
+    <ret type="bool"/>
+  </api>
+  <api object="League" method="GetProjectCostPerPlayer">
+    <arg pos="2" type="LeagueProjectTypes" name="eLeagueProject"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetProjectBuildingCostPerPlayer">
+    <arg pos="2" type="BuildingTypes" name="eRewardBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetProjectCost">
+    <arg pos="2" type="LeagueProjectTypes" name="eLeagueProject"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetMemberContribution">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="LeagueProjectTypes" name="eLeagueProject"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetMemberContributionTier">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="LeagueProjectTypes" name="eLeagueProject"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetContributionTierThreshold">
+    <arg pos="2" type="int" name="iThreshold"/>
+    <arg pos="3" type="LeagueProjectTypes" name="eLeagueProject"/>
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetArtsyGreatPersonRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetScienceyGreatPersonRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="League" method="GetResolutionName">
+    <arg pos="2" type="ResolutionTypes" name="eResolution"/>
+    <arg pos="3" type="int" name="iResolutionID"/>
+    <arg pos="4" type="int" name="iProposerChoice"/>
+    <arg pos="5" type="bool" name="bIncludePrefix"/>
+    <ret type="str"/>
+  </api>
+  <api object="League" method="GetResolutionDetails">
+    <arg pos="2" type="ResolutionTypes" name="eResolution"/>
+    <arg pos="3" type="PlayerTypes" name="eObserver"/>
+    <arg pos="4" type="int" name="iResolutionID"/>
+    <arg pos="5" type="int" name="iProposerChoice"/>
+    <ret type="str"/>
+  </api>
+  <api object="League" method="GetMemberDetails">
+    <arg pos="2" type="PlayerTypes" name="eMember"/>
+    <arg pos="3" type="PlayerTypes" name="eObserver"/>
+    <ret type="str"/>
+  </api>
+  <api object="League" method="GetProjectDetails">
+    <arg pos="2" type="LeagueProjectTypes" name="eProject"/>
+    <arg pos="3" type="PlayerTypes" name="eObserver" default="NO_PLAYER"/>
+    <ret type="str"/>
+  </api>
+  <api object="League" method="GetProjectRewardTierDetails">
+    <arg pos="2" type="int" name="iTier"/>
+    <arg pos="3" type="LeagueProjectTypes" name="eProject"/>
+    <arg pos="4" type="PlayerTypes" name="eObserver" default="NO_PLAYER"/>
+    <ret type="str"/>
+  </api>
+  <api object="League" method="GetCurrentEffectsSummary">
+    <ret type="(str)"/>
+  </api>
+  <api object="League" method="GetLeagueSplashTitle">
+    <arg pos="2" type="LeagueSpecialSessionTypes" name="eGoverningSpecialSession"/>
+    <arg pos="3" type="bool" name="bJustFounded"/>
+    <ret type="str"/>
+  </api>
+  <api object="League" method="GetLeagueSplashDescription">
+    <arg pos="2" type="LeagueSpecialSessionTypes" name="eGoverningSpecialSession"/>
+    <arg pos="3" type="bool" name="bJustFounded"/>
+    <ret type="str"/>
+  </api>
+  <api object="League" method="GetLeagueSplashThisEraDetails">
+    <arg pos="2" type="LeagueSpecialSessionTypes" name="eGoverningSpecialSession"/>
+    <arg pos="3" type="bool" name="bJustFounded"/>
+    <ret type="str"/>
+  </api>
+  <api object="League" method="GetLeagueSplashNextEraDetails">
+    <arg pos="2" type="LeagueSpecialSessionTypes" name="eGoverningSpecialSession"/>
+    <arg pos="3" type="bool" name="bJustFounded"/>
+    <ret type="str"/>
+  </api>
+  <api object="League" method="GetGreatPersonRateModifierDetails">
+    <arg pos="2" type="UnitClassTypes" name="eGreatPersonClass"/>
+    <ret type="str"/>
+  </api>
+</obj>

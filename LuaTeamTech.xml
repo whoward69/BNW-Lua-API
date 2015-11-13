@@ -1,0 +1,56 @@
+<obj type="TeamTech">
+  <api object="TeamTech" method="SetHasTech">
+    <method class="CvTeamTech" fn="SetHasTech"/>
+  </api>
+  <api object="TeamTech" method="HasTech">
+    <method class="CvTeamTech" fn="HasTech"/>
+  </api>
+  <api object="TeamTech" method="GetNumTechsKnown">
+    <method class="CvTeamTech" fn="GetNumTechsKnown"/>
+  </api>
+  <api object="TeamTech" method="HasResearchedAllTechs">
+    <method class="CvTeamTech" fn="HasResearchedAllTechs"/>
+  </api>
+  <api object="TeamTech" method="GetLastTechAcquired">
+    <method class="CvTeamTech" fn="GetLastTechAcquired"/>
+  </api>
+  <api object="TeamTech" method="SetNoTradeTech">
+    <method class="CvTeamTech" fn="SetNoTradeTech"/>
+  </api>
+  <api object="TeamTech" method="IsNoTradeTech">
+    <method class="CvTeamTech" fn="IsNoTradeTech"/>
+  </api>
+  <api object="TeamTech" method="IncrementTechCount">
+    <method class="CvTeamTech" fn="IncrementTechCount"/>
+  </api>
+  <api object="TeamTech" method="GetTechCount">
+    <method class="CvTeamTech" fn="GetTechCount"/>
+  </api>
+  <api object="TeamTech" method="SetResearchProgress">
+    <method class="CvTeamTech" fn="SetResearchProgress"/>
+  </api>
+  <api object="TeamTech" method="SetResearchProgressTimes100">
+    <method class="CvTeamTech" fn="SetResearchProgressTimes100"/>
+  </api>
+  <api object="TeamTech" method="GetResearchProgress">
+    <method class="CvTeamTech" fn="GetResearchProgress"/>
+  </api>
+  <api object="TeamTech" method="GetResearchProgressTimes100">
+    <method class="CvTeamTech" fn="GetResearchProgressTimes100"/>
+  </api>
+  <api object="TeamTech" method="ChangeResearchProgress">
+    <method class="CvTeamTech" fn="ChangeResearchProgress"/>
+  </api>
+  <api object="TeamTech" method="ChangeResearchProgressTimes100">
+    <method class="CvTeamTech" fn="ChangeResearchProgressTimes100"/>
+  </api>
+  <api object="TeamTech" method="ChangeResearchProgressPercent">
+    <method class="CvTeamTech" fn="ChangeResearchProgressPercent"/>
+  </api>
+  <api object="TeamTech" method="GetResearchCost">
+    <method class="CvTeamTech" fn="GetResearchCost"/>
+  </api>
+  <api object="TeamTech" method="GetResearchLeft">
+    <method class="CvTeamTech" fn="GetResearchLeft"/>
+  </api>
+</obj>

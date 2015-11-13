@@ -1,0 +1,2793 @@
+<obj type="Player">
+  <api object="Player" method="InitCity">
+    <arg pos="2" type="int" name="x"/>
+    <arg pos="3" type="int" name="y"/>
+    <arg pos="4" type="bool" name="bBumpUnits" default="true"/>
+    <arg pos="5" type="bool" name="bInitialFounding" default="true"/>
+    <ret type="City"/>
+  </api>
+  <api object="Player" method="AcquireCity">
+    <arg pos="2" type="City" name="pkCity"/>
+    <arg pos="3" type="bool" name="bConquest"/>
+    <arg pos="4" type="bool" name="bTrade"/>
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="KillCities">
+    <method class="CvPlayer" fn="killCities"/>
+  </api>
+  <api object="Player" method="GetNewCityName">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="InitUnit">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <arg pos="3" type="int" name="x"/>
+    <arg pos="4" type="int" name="y"/>
+    <arg pos="5" type="int" name="eUnitAI" default="NO_UNITAI"/>
+    <arg pos="6" type="int" name="eFacingDirection" default="NO_DIRECTION"/>
+    <ret type="Unit"/>
+  </api>
+  <api object="Player" method="InitUnitWithNameOffset">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <arg pos="3" type="int" name="iNameOffset"/>
+    <arg pos="4" type="int" name="x"/>
+    <arg pos="5" type="int" name="y"/>
+    <arg pos="6" type="int" name="eUnitAI" default="NO_UNITAI"/>
+    <arg pos="7" type="int" name="eFacingDirection" default="NO_DIRECTION"/>
+    <ret type="Unit"/>
+  </api>
+  <api object="Player" method="DisbandUnit">
+    <method class="CvPlayer" fn="disbandUnit"/>
+  </api>
+  <api object="Player" method="AddFreeUnit">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <arg pos="3" type="int" name="eUnitAI" default="NO_UNITAI"/>
+    <ret type="Plot"/>
+  </api>
+  <api object="Player" method="KillUnits">
+    <method class="CvPlayer" fn="killUnits"/>
+  </api>
+  <api object="Player" method="ChooseTech">
+    <arg pos="2" type="int" name="iDiscover"/>
+    <arg pos="3" type="str" name="aText"/>
+    <arg pos="4" type="TechTypes" name="iTechJustDiscovered"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="IsHuman">
+    <method class="CvPlayer" fn="isHuman"/>
+  </api>
+  <api object="Player" method="IsBarbarian">
+    <method class="CvPlayer" fn="isBarbarian"/>
+  </api>
+  <api object="Player" method="GetName">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetNameKey">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetNickName">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetCivilizationDescription">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetCivilizationDescriptionKey">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetCivilizationShortDescription">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetCivilizationShortDescriptionKey">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetCivilizationAdjective">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetCivilizationAdjectiveKey">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="IsWhiteFlag">
+    <method class="CvPlayer" fn="isWhiteFlag"/>
+  </api>
+  <api object="Player" method="GetStateReligionName">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetStateReligionKey">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetWorstEnemyName">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetArtStyleType">
+    <method class="CvPlayer" fn="getArtStyleType"/>
+  </api>
+  <api object="Player" method="CountCityFeatures">
+    <method class="CvPlayer" fn="countCityFeatures"/>
+  </api>
+  <api object="Player" method="CountNumBuildings">
+    <method class="CvPlayer" fn="countNumBuildings"/>
+  </api>
+  <api object="Player" method="GetNumWorldWonders">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="ChangeNumWorldWonders">
+    <arg pos="2" type="int" name="iChange"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetNumWondersBeatenTo">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="SetNumWondersBeatenTo">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <arg pos="3" type="int" name="iValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="IsCapitalConnectedToCity">
+    <arg pos="2" type="City" name="pkCity"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsTurnActive">
+    <method class="CvPlayer" fn="isTurnActive"/>
+  </api>
+  <api object="Player" method="IsSimultaneousTurns">
+    <method class="CvPlayer" fn="isSimultaneousTurns"/>
+  </api>
+  <api object="Player" method="FindNewCapital">
+    <method class="CvPlayer" fn="findNewCapital"/>
+  </api>
+  <api object="Player" method="CanRaze">
+    <arg pos="2" type="City" name="pkCity"/>
+    <arg pos="3" type="bool" name="bIgnoreCapitals" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="Raze">
+    <arg pos="2" type="City" name="pkCity"/>
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="Disband">
+    <arg pos="2" type="City" name="pkCity"/>
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="CanReceiveGoody">
+    <arg pos="2" type="Plot" name="pPlot"/>
+    <arg pos="3" type="GoodyTypes" name="eGoody"/>
+    <arg pos="4" type="Unit" name="pUnit"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="ReceiveGoody">
+    <method class="CvPlayer" fn="receiveGoody"/>
+  </api>
+  <api object="Player" method="DoGoody">
+    <method class="CvPlayer" fn="doGoody"/>
+  </api>
+  <api object="Player" method="CanGetGoody">
+    <arg pos="2" type="Plot" name="pPlot"/>
+    <arg pos="3" type="GoodyTypes" name="eGoody"/>
+    <arg pos="4" type="Unit" name="pUnit"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanFound">
+    <method class="CvPlayer" fn="canFound"/>
+  </api>
+  <api object="Player" method="Found">
+    <method class="CvPlayer" fn="found"/>
+  </api>
+  <api object="Player" method="CanTrain">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <arg pos="3" type="bool" name="bContinue"/>
+    <arg pos="4" type="bool" name="bTestVisible"/>
+    <arg pos="5" type="bool" name="bIgnoreCost"/>
+    <arg pos="6" type="bool" name="bIgnoreUniqueUnitStatus"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanConstruct">
+    <arg pos="2" type="int" name="iBuilding"/>
+    <arg pos="3" type="bool" name="bContinue" default="false"/>
+    <arg pos="4" type="bool" name="bTestVisible" default="false"/>
+    <arg pos="5" type="bool" name="bIgnoreCost" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanCreate">
+    <method class="CvPlayer" fn="canCreate"/>
+  </api>
+  <api object="Player" method="CanPrepare">
+    <method class="CvPlayer" fn="canPrepare"/>
+  </api>
+  <api object="Player" method="CanMaintain">
+    <method class="CvPlayer" fn="canMaintain"/>
+  </api>
+  <api object="Player" method="IsCanPurchaseAnyCity">
+    <arg pos="2" type="bool" name="bTestPurchaseCost"/>
+    <arg pos="3" type="bool" name="bTestTrainable"/>
+    <arg pos="4" type="UnitTypes" name="eUnitType"/>
+    <arg pos="5" type="BuildingTypes" name="eBuildingType"/>
+    <arg pos="6" type="YieldTypes" name="ePurchaseYield"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetFaithPurchaseType">
+    <method class="CvPlayer" fn="GetFaithPurchaseType"/>
+  </api>
+  <api object="Player" method="SetFaithPurchaseType">
+    <method class="CvPlayer" fn="SetFaithPurchaseType"/>
+  </api>
+  <api object="Player" method="GetFaithPurchaseIndex">
+    <method class="CvPlayer" fn="GetFaithPurchaseIndex"/>
+  </api>
+  <api object="Player" method="SetFaithPurchaseIndex">
+    <method class="CvPlayer" fn="SetFaithPurchaseIndex"/>
+  </api>
+  <api object="Player" method="IsProductionMaxedUnitClass">
+    <method class="CvPlayer" fn="isProductionMaxedUnitClass"/>
+  </api>
+  <api object="Player" method="IsProductionMaxedBuildingClass">
+    <method class="CvPlayer" fn="isProductionMaxedBuildingClass"/>
+  </api>
+  <api object="Player" method="IsProductionMaxedProject">
+    <method class="CvPlayer" fn="isProductionMaxedProject"/>
+  </api>
+  <api object="Player" method="GetUnitProductionNeeded">
+    <arg pos="2" type="UnitTypes" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetBuildingProductionNeeded">
+    <arg pos="2" type="BuildingTypes" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetProjectProductionNeeded">
+    <arg pos="2" type="ProjectTypes" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="HasReadyUnit">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetFirstReadyUnit">
+    <ret type="Unit"/>
+  </api>
+  <api object="Player" method="GetFirstReadyUnitPlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="Player" method="HasBusyUnit">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="HasBusyMovingUnit">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetBuildingClassPrereqBuilding">
+    <method class="CvPlayer" fn="getBuildingClassPrereqBuilding"/>
+  </api>
+  <api object="Player" method="RemoveBuildingClass">
+    <method class="CvPlayer" fn="removeBuildingClass"/>
+  </api>
+  <api object="Player" method="CanBuild">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="BuildTypes" name="eBuild"/>
+    <arg pos="4" type="bool" name="bTestEra" default="false"/>
+    <arg pos="5" type="bool" name="bTestVisible" default="false"/>
+    <arg pos="6" type="bool" name="bTestGold" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsBuildBlockedByFeature">
+    <arg pos="2" type="BuildTypes" name="eBuild"/>
+    <arg pos="3" type="FeatureTypes" name="eFeature"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetBestRoute">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetImprovementUpgradeRate">
+    <method class="CvPlayer" fn="getImprovementUpgradeRate"/>
+  </api>
+  <api object="Player" method="CalculateTotalYield">
+    <method class="CvPlayer" fn="calculateTotalYield"/>
+  </api>
+  <api object="Player" method="CalculateUnitCost">
+    <method class="CvPlayer" fn="calculateUnitCost"/>
+  </api>
+  <api object="Player" method="CalculateUnitSupply">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumMaintenanceFreeUnits">
+    <method class="CvPlayer" fn="GetNumMaintenanceFreeUnits"/>
+  </api>
+  <api object="Player" method="GetBuildingGoldMaintenance">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="SetBaseBuildingGoldMaintenance">
+    <arg pos="2" type="int" name="iValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="ChangeBaseBuildingGoldMaintenance">
+    <arg pos="2" type="int" name="iValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetImprovementGoldMaintenance">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="CalculateGoldRate">
+    <method class="CvPlayer" fn="calculateGoldRate"/>
+  </api>
+  <api object="Player" method="CalculateGoldRateTimes100">
+    <method class="CvPlayer" fn="calculateGoldRateTimes100"/>
+  </api>
+  <api object="Player" method="CalculateGrossGoldTimes100">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="CalculateInflatedCosts">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="CalculateResearchModifier">
+    <method class="CvPlayer" fn="calculateResearchModifier"/>
+  </api>
+  <api object="Player" method="IsResearch">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanEverResearch">
+    <arg pos="2" type="TechTypes" name="eTech"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanResearch">
+    <arg pos="2" type="TechTypes" name="eTech"/>
+    <arg pos="3" type="bool" name="bTrade" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanResearchForFree">
+    <arg pos="2" type="TechTypes" name="eTech"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetCurrentResearch">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsCurrentResearchRepeat">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsNoResearchAvailable">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetResearchTurnsLeft">
+    <arg pos="2" type="TechTypes" name="eTech"/>
+    <arg pos="3" type="bool" name="bOverflow"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetResearchCost">
+    <arg pos="2" type="TechTypes" name="eTech"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetResearchProgress">
+    <arg pos="2" type="TechTypes" name="eTech"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="UnitsRequiredForGoldenAge">
+    <method class="CvPlayer" fn="unitsRequiredForGoldenAge"/>
+  </api>
+  <api object="Player" method="UnitsGoldenAgeCapable">
+    <method class="CvPlayer" fn="unitsGoldenAgeCapable"/>
+  </api>
+  <api object="Player" method="UnitsGoldenAgeReady">
+    <method class="CvPlayer" fn="unitsGoldenAgeReady"/>
+  </api>
+  <api object="Player" method="GreatGeneralThreshold">
+    <method class="CvPlayer" fn="greatGeneralThreshold"/>
+  </api>
+  <api object="Player" method="GreatAdmiralThreshold">
+    <method class="CvPlayer" fn="greatAdmiralThreshold"/>
+  </api>
+  <api object="Player" method="SpecialistYield">
+    <method class="CvPlayer" fn="specialistYield"/>
+  </api>
+  <api object="Player" method="SetGreatGeneralCombatBonus">
+    <arg pos="2" type="int" name="iValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetGreatGeneralCombatBonus">
+    <method class="CvPlayer" fn="GetGreatGeneralCombatBonus"/>
+  </api>
+  <api object="Player" method="GetStartingPlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="Player" method="SetStartingPlot">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="GetTotalPopulation">
+    <method class="CvPlayer" fn="getTotalPopulation"/>
+  </api>
+  <api object="Player" method="GetAveragePopulation">
+    <method class="CvPlayer" fn="getAveragePopulation"/>
+  </api>
+  <api object="Player" method="GetRealPopulation">
+    <method class="CvPlayer" fn="getRealPopulation"/>
+  </api>
+  <api object="Player" method="GetNewCityExtraPopulation">
+    <method class="CvPlayer" fn="GetNewCityExtraPopulation"/>
+  </api>
+  <api object="Player" method="ChangeNewCityExtraPopulation">
+    <arg pos="2" type="int" name="iValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetTotalLand">
+    <method class="CvPlayer" fn="getTotalLand"/>
+  </api>
+  <api object="Player" method="GetTotalLandScored">
+    <method class="CvPlayer" fn="getTotalLandScored"/>
+  </api>
+  <api object="Player" method="GetGold">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="SetGold">
+    <arg pos="2" type="int" name="iValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="ChangeGold">
+    <arg pos="2" type="int" name="iValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="CalculateGrossGold">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetLifetimeGrossGold">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGoldFromCitiesTimes100">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGoldFromCitiesMinusTradeRoutesTimes100">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGoldPerTurnFromDiplomacy">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCityConnectionRouteGoldTimes100">
+    <arg pos="2" type="City" name="pkCity"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCityConnectionGold">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCityConnectionGoldTimes100">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGoldPerTurnFromReligion">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGoldPerTurnFromTradeRoutes">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGoldPerTurnFromTradeRoutesTimes100">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGoldPerTurnFromTraits">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTotalJONSCulturePerTurn">
+    <method class="CvPlayer" fn="GetTotalJONSCulturePerTurn"/>
+  </api>
+  <api object="Player" method="GetJONSCulturePerTurnFromCities">
+    <method class="CvPlayer" fn="GetJONSCulturePerTurnFromCities"/>
+  </api>
+  <api object="Player" method="GetJONSCulturePerTurnFromExcessHappiness">
+    <method class="CvPlayer" fn="GetJONSCulturePerTurnFromExcessHappiness"/>
+  </api>
+  <api object="Player" method="GetJONSCulturePerTurnFromTraits">
+    <method class="CvPlayer" fn="GetJONSCulturePerTurnFromTraits"/>
+  </api>
+  <api object="Player" method="GetCultureWonderMultiplier">
+    <method class="CvPlayer" fn="GetCultureWonderMultiplier"/>
+  </api>
+  <api object="Player" method="GetJONSCulturePerTurnForFree">
+    <method class="CvPlayer" fn="GetJONSCulturePerTurnForFree"/>
+  </api>
+  <api object="Player" method="ChangeJONSCulturePerTurnForFree">
+    <method class="CvPlayer" fn="ChangeJONSCulturePerTurnForFree"/>
+  </api>
+  <api object="Player" method="GetJONSCulturePerTurnFromMinorCivs">
+    <method class="CvPlayer" fn="GetJONSCulturePerTurnFromMinorCivs"/>
+  </api>
+  <api object="Player" method="ChangeJONSCulturePerTurnFromMinorCivs">
+    <method class="CvPlayer" fn="ChangeJONSCulturePerTurnFromMinorCivs"/>
+  </api>
+  <api object="Player" method="GetCulturePerTurnFromMinorCivs">
+    <method class="CvPlayer" fn="GetCulturePerTurnFromMinorCivs"/>
+  </api>
+  <api object="Player" method="GetCulturePerTurnFromMinor">
+    <method class="CvPlayer" fn="GetCulturePerTurnFromMinor"/>
+  </api>
+  <api object="Player" method="GetCulturePerTurnFromReligion">
+    <method class="CvPlayer" fn="GetCulturePerTurnFromReligion"/>
+  </api>
+  <api object="Player" method="GetCulturePerTurnFromBonusTurns">
+    <method class="CvPlayer" fn="GetCulturePerTurnFromBonusTurns"/>
+  </api>
+  <api object="Player" method="GetCultureCityModifier">
+    <method class="CvPlayer" fn="GetJONSCultureCityModifier"/>
+  </api>
+  <api object="Player" method="GetJONSCulture">
+    <method class="CvPlayer" fn="getJONSCulture"/>
+  </api>
+  <api object="Player" method="SetJONSCulture">
+    <method class="CvPlayer" fn="setJONSCulture"/>
+  </api>
+  <api object="Player" method="ChangeJONSCulture">
+    <method class="CvPlayer" fn="changeJONSCulture"/>
+  </api>
+  <api object="Player" method="GetJONSCultureEverGenerated">
+    <method class="CvPlayer" fn="GetJONSCultureEverGenerated"/>
+  </api>
+  <api object="Player" method="GetLastTurnLifetimeCulture">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInfluenceOn">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetLastTurnInfluenceOn">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInfluencePerTurn">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInfluenceLevel">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInfluenceTrend">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTurnsToInfluential">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumCivsInfluentialOn">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumCivsToBeInfluentialOn">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInfluenceTradeRouteScienceBonus">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInfluenceCityStateSpyRankBonus">
+    <arg pos="2" type="PlayerTypes" name="eCityStatePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInfluenceMajorCivSpyRankBonus">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInfluenceSpyRankTooltip">
+    <arg pos="2" type="str" name="sName"/>
+    <arg pos="3" type="str" name="sRank"/>
+    <arg pos="4" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetTourism">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTourismModifierWith">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTourismModifierWithTooltip">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetPublicOpinionType">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPublicOpinionPreferredIdeology">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPublicOpinionTooltip">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetPublicOpinionUnhappiness">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPublicOpinionUnhappinessTooltip">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="HasAvailableGreatWorkSlot">
+    <arg pos="2" type="int" name="eGreatWorkSlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetCityOfClosestGreatWorkSlot">
+    <arg pos="2" type="int" name="iX"/>
+    <arg pos="3" type="int" name="iY"/>
+    <arg pos="4" type="int" name="eGreatWorkSlot"/>
+    <ret type="City"/>
+  </api>
+  <api object="Player" method="GetBuildingOfClosestGreatWorkSlot">
+    <arg pos="2" type="int" name="iX"/>
+    <arg pos="3" type="int" name="iY"/>
+    <arg pos="4" type="int" name="eGreatWorkSlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNextDigCompletePlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="Player" method="GetWrittenArtifactCulture">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumGreatWorks">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumGreatWorkSlots">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetFaith">
+    <method class="CvPlayer" fn="GetFaith"/>
+  </api>
+  <api object="Player" method="SetFaith">
+    <method class="CvPlayer" fn="SetFaith"/>
+  </api>
+  <api object="Player" method="ChangeFaith">
+    <method class="CvPlayer" fn="ChangeFaith"/>
+  </api>
+  <api object="Player" method="GetTotalFaithPerTurn">
+    <method class="CvPlayer" fn="GetTotalFaithPerTurn"/>
+  </api>
+  <api object="Player" method="GetFaithPerTurnFromCities">
+    <method class="CvPlayer" fn="GetFaithPerTurnFromCities"/>
+  </api>
+  <api object="Player" method="GetFaithPerTurnFromMinorCivs">
+    <method class="CvPlayer" fn="GetFaithPerTurnFromMinorCivs"/>
+  </api>
+  <api object="Player" method="GetFaithPerTurnFromReligion">
+    <method class="CvPlayer" fn="GetFaithPerTurnFromReligion"/>
+  </api>
+  <api object="Player" method="HasCreatedPantheon">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetBeliefInPantheon">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="CanCreatePantheon">
+    <arg pos="2" type="bool" name="bCheckFaith"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="HasCreatedReligion">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetReligionCreatedByPlayer">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetFoundedReligionEnemyCityCombatMod">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetFoundedReligionFriendlyCityCombatMod">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinimumFaithNextGreatProphet">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="HasReligionInMostCities">
+    <arg pos="2" type="ReligionTypes" name="eReligion"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="DoesUnitPassFaithPurchaseCheck">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetHappiness">
+    <method class="CvPlayer" fn="GetHappiness"/>
+  </api>
+  <api object="Player" method="SetHappiness">
+    <method class="CvPlayer" fn="SetHappiness"/>
+  </api>
+  <api object="Player" method="GetExcessHappiness">
+    <method class="CvPlayer" fn="GetExcessHappiness"/>
+  </api>
+  <api object="Player" method="IsEmpireUnhappy">
+    <method class="CvPlayer" fn="IsEmpireUnhappy"/>
+  </api>
+  <api object="Player" method="IsEmpireVeryUnhappy">
+    <method class="CvPlayer" fn="IsEmpireVeryUnhappy"/>
+  </api>
+  <api object="Player" method="IsEmpireSuperUnhappy">
+    <method class="CvPlayer" fn="IsEmpireSuperUnhappy"/>
+  </api>
+  <api object="Player" method="GetHappinessFromPolicies">
+    <method class="CvPlayer" fn="GetHappinessFromPolicies"/>
+  </api>
+  <api object="Player" method="GetHappinessFromCities">
+    <method class="CvPlayer" fn="GetHappinessFromCities"/>
+  </api>
+  <api object="Player" method="GetHappinessFromBuildings">
+    <method class="CvPlayer" fn="GetHappinessFromBuildings"/>
+  </api>
+  <api object="Player" method="GetExtraHappinessPerCity">
+    <method class="CvPlayer" fn="GetExtraHappinessPerCity"/>
+  </api>
+  <api object="Player" method="ChangeExtraHappinessPerCity">
+    <method class="CvPlayer" fn="ChangeExtraHappinessPerCity"/>
+  </api>
+  <api object="Player" method="GetHappinessFromResources">
+    <method class="CvPlayer" fn="GetHappinessFromResources"/>
+  </api>
+  <api object="Player" method="GetHappinessFromResourceVariety">
+    <method class="CvPlayer" fn="GetHappinessFromResourceVariety"/>
+  </api>
+  <api object="Player" method="GetExtraHappinessPerLuxury">
+    <method class="CvPlayer" fn="GetExtraHappinessPerLuxury"/>
+  </api>
+  <api object="Player" method="GetHappinessFromReligion">
+    <method class="CvPlayer" fn="GetHappinessFromReligion"/>
+  </api>
+  <api object="Player" method="GetHappinessFromNaturalWonders">
+    <method class="CvPlayer" fn="GetHappinessFromNaturalWonders"/>
+  </api>
+  <api object="Player" method="GetHappinessFromLeagues">
+    <method class="CvPlayer" fn="GetHappinessFromLeagues"/>
+  </api>
+  <api object="Player" method="GetUnhappiness">
+    <method class="CvPlayer" fn="GetUnhappiness"/>
+  </api>
+  <api object="Player" method="GetUnhappinessForecast">
+    <arg pos="2" type="City" name="pkAssumeCityAnnexed" default="nil"/>
+    <arg pos="3" type="City" name="pkAssumeCityPuppeted" default="nil"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetUnhappinessFromCityForUI">
+    <arg pos="2" type="City" name="pkCity" default="nil"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetUnhappinessFromCityCount">
+    <arg pos="2" type="City" name="pAnnexedCity" default="nil"/>
+    <arg pos="3" type="City" name="pPuppetedCity" default="nil"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetUnhappinessFromCapturedCityCount">
+    <method class="CvPlayer" fn="GetUnhappinessFromCapturedCityCount"/>
+  </api>
+  <api object="Player" method="GetUnhappinessFromCityPopulation">
+    <method class="CvPlayer" fn="GetUnhappinessFromCityPopulation"/>
+  </api>
+  <api object="Player" method="GetUnhappinessFromCitySpecialists">
+    <arg pos="2" type="City" name="pAnnexedCity" default="nil"/>
+    <arg pos="3" type="City" name="pPuppetedCity" default="nil"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetUnhappinessFromPuppetCityPopulation">
+    <method class="CvPlayer" fn="GetUnhappinessFromPuppetCityPopulation"/>
+  </api>
+  <api object="Player" method="GetUnhappinessFromOccupiedCities">
+    <method class="CvPlayer" fn="GetUnhappinessFromOccupiedCities"/>
+  </api>
+  <api object="Player" method="GetUnhappinessFromPublicOpinion">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetUnhappinessFromUnits">
+    <method class="CvPlayer" fn="GetUnhappinessFromUnits"/>
+  </api>
+  <api object="Player" method="ChangeUnhappinessFromUnits">
+    <method class="CvPlayer" fn="ChangeUnhappinessFromUnits"/>
+  </api>
+  <api object="Player" method="GetUnhappinessMod">
+    <method class="CvPlayer" fn="GetUnhappinessMod"/>
+  </api>
+  <api object="Player" method="GetCityCountUnhappinessMod">
+    <method class="CvPlayer" fn="GetCityCountUnhappinessMod"/>
+  </api>
+  <api object="Player" method="GetOccupiedPopulationUnhappinessMod">
+    <method class="CvPlayer" fn="GetOccupiedPopulationUnhappinessMod"/>
+  </api>
+  <api object="Player" method="GetCapitalUnhappinessMod">
+    <method class="CvPlayer" fn="GetCapitalUnhappinessMod"/>
+  </api>
+  <api object="Player" method="GetTraitCityUnhappinessMod">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTraitPopUnhappinessMod">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsHalfSpecialistUnhappiness">
+    <method class="CvPlayer" fn="isHalfSpecialistUnhappiness"/>
+  </api>
+  <api object="Player" method="GetHappinessPerGarrisonedUnit">
+    <method class="CvPlayer" fn="GetHappinessPerGarrisonedUnit"/>
+  </api>
+  <api object="Player" method="SetHappinessPerGarrisonedUnit">
+    <method class="CvPlayer" fn="SetHappinessPerGarrisonedUnit"/>
+  </api>
+  <api object="Player" method="ChangeHappinessPerGarrisonedUnit">
+    <method class="CvPlayer" fn="ChangeHappinessPerGarrisonedUnit"/>
+  </api>
+  <api object="Player" method="GetHappinessFromTradeRoutes">
+    <method class="CvPlayer" fn="GetHappinessFromTradeRoutes"/>
+  </api>
+  <api object="Player" method="GetHappinessPerTradeRoute">
+    <method class="CvPlayer" fn="GetHappinessPerTradeRoute"/>
+  </api>
+  <api object="Player" method="SetHappinessPerTradeRoute">
+    <method class="CvPlayer" fn="SetHappinessPerTradeRoute"/>
+  </api>
+  <api object="Player" method="ChangeHappinessPerTradeRoute">
+    <method class="CvPlayer" fn="ChangeHappinessPerTradeRoute"/>
+  </api>
+  <api object="Player" method="GetCityConnectionTradeRouteGoldModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRoutePlotToolTip">
+    <arg pos="2" type="Plot" name="pPlot" default="nil"/>
+    <ret type="({String})"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRoutePlotMouseoverToolTip">
+    <arg pos="2" type="Plot" name="pPlot" default="nil"/>
+    <ret type="({String})"/>
+  </api>
+  <api object="Player" method="GetNumInternationalTradeRoutesUsed">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumInternationalTradeRoutesAvailable">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPotentialInternationalTradeRouteDestinations">
+    <arg pos="2" type="Unit" name="pkUnit" default="nil"/>
+    <ret type="({X, Y, TradeConnectionType, ToReligion, ToPressureAmount, FromReligion, FromPressureAmount, OldTradeRoute, Yields{Mine, Theirs}})"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteBaseBonus">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <arg pos="4" type="bool" name="bOrigin"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteGPTBonus">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <arg pos="4" type="bool" name="bOrigin"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteResourceBonus">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <arg pos="4" type="bool" name="bOrigin"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteResourceTraitModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteExclusiveBonus">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteYourBuildingBonus">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <arg pos="4" type="DomainTypes" name="eDomain"/>
+    <arg pos="5" type="bool" name="bOrigin"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteTheirBuildingBonus">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <arg pos="4" type="DomainTypes" name="eDomain"/>
+    <arg pos="5" type="bool" name="bOrigin"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRoutePolicyBonus">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <arg pos="4" type="DomainTypes" name="eDomain"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteOtherTraitBonus">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <arg pos="4" type="DomainTypes" name="eDomain"/>
+    <arg pos="5" type="bool" name="bOrigin"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteRiverModifier">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <arg pos="4" type="DomainTypes" name="eDomain"/>
+    <arg pos="5" type="bool" name="bOrigin"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteDomainModifier">
+    <arg pos="2" type="DomainTypes" name="eDomain"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteTotal">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <arg pos="4" type="DomainTypes" name="eDomain"/>
+    <arg pos="5" type="bool" name="bOrigin"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetInternationalTradeRouteScience">
+    <arg pos="2" type="City" name="pOriginCity"/>
+    <arg pos="3" type="City" name="pDestCity"/>
+    <arg pos="4" type="DomainTypes" name="eDomain"/>
+    <arg pos="5" type="bool" name="bOrigin"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPotentialTradeUnitNewHomeCity">
+    <arg pos="2" type="Unit" name="pkUnit" default="nil"/>
+    <ret type="({X, Y})"/>
+  </api>
+  <api object="Player" method="GetPotentialAdmiralNewPort">
+    <arg pos="2" type="Unit" name="pkUnit" default="nil"/>
+    <ret type="({X, Y})"/>
+  </api>
+  <api object="Player" method="GetNumAvailableTradeUnits">
+    <arg pos="2" type="DomainTypes" name="eDomain"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTradeUnitType">
+    <arg pos="2" type="DomainTypes" name="eDomain"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTradeYourRoutesTTString">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetTradeToYouRoutesTTString">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetTradeRoutes">
+    <ret type="({Domain, FromCivilizationType, FromID, FromCityName, FromCity, ToCivilizationType, ToID, ToCityName, ToCity, FromGPT, ToGPT, ToFood, ToProduction, FromScience, ToScience, ToReligion, ToPressure, FromReligion, FromPressure, FromTourism, ToTourism, TurnsLeft})"/>
+  </api>
+  <api object="Player" method="GetTradeRoutesAvailable">
+    <ret type="({Domain, FromCivilizationType, FromID, FromCityName, FromCity, ToCivilizationType, ToID, ToCityName, ToCity, FromGPT, ToGPT, ToFood, ToProduction, FromScience, ToScience, ToReligion, ToPressure, FromReligion, FromPressure, FromTourism, ToTourism, TurnsLeft})"/>
+  </api>
+  <api object="Player" method="GetTradeRoutesToYou">
+    <ret type="({Domain, FromCivilizationType, FromID, FromCityName, FromCity, ToCivilizationType, ToID, ToCityName, ToCity, FromGPT, ToGPT, ToFood, ToProduction, FromScience, ToScience, ToReligion, ToPressure, FromReligion, FromPressure, FromTourism, ToTourism, TurnsLeft})"/>
+  </api>
+  <api object="Player" method="GetNumTechDifference">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGreatWorks">
+    <arg pos="2" type="GreatWorkClass" name="eGreatWorkClass"/>
+    <ret type="({Index, Creator, Era})"/>
+  </api>
+  <api object="Player" method="GetOthersGreatWorks">
+    <ret type="({iPlayer, WritingIndex, WritingCreator, WritingEra, ArtIndex, ArtCreator, ArtEra, ArtifactIndex, ArtifactCreator, ArtifactEra, MusicIndex, MusicCreator, MusicEra})"/>
+  </api>
+  <api object="Player" method="GetSwappableGreatWriting">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetSwappableGreatArt">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetSwappableGreatArtifact">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetSwappableGreatMusic">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetHappinessFromMinorCivs">
+    <method class="CvPlayer" fn="GetHappinessFromMinorCivs"/>
+  </api>
+  <api object="Player" method="GetHappinessFromMinor">
+    <method class="CvPlayer" fn="GetHappinessFromMinor"/>
+  </api>
+  <api object="Player" method="GetBarbarianCombatBonus">
+    <method class="CvPlayer" fn="GetBarbarianCombatBonus"/>
+  </api>
+  <api object="Player" method="SetBarbarianCombatBonus">
+    <method class="CvPlayer" fn="SetBarbarianCombatBonus"/>
+  </api>
+  <api object="Player" method="ChangeBarbarianCombatBonus">
+    <method class="CvPlayer" fn="ChangeBarbarianCombatBonus"/>
+  </api>
+  <api object="Player" method="GetCombatBonusVsHigherTech">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCombatBonusVsLargerCiv">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsAlwaysSeeBarbCamps">
+    <method class="CvPlayer" fn="IsAlwaysSeeBarbCamps"/>
+  </api>
+  <api object="Player" method="SetAlwaysSeeBarbCampsCount">
+    <method class="CvPlayer" fn="SetAlwaysSeeBarbCampsCount"/>
+  </api>
+  <api object="Player" method="ChangeAlwaysSeeBarbCampsCount">
+    <method class="CvPlayer" fn="ChangeAlwaysSeeBarbCampsCount"/>
+  </api>
+  <api object="Player" method="GetGarrisonedCityRangeStrikeModifier">
+    <method class="CvPlayer" fn="GetGarrisonedCityRangeStrikeModifier"/>
+  </api>
+  <api object="Player" method="ChangeGarrisonedCityRangeStrikeModifier">
+    <method class="CvPlayer" fn="ChangeGarrisonedCityRangeStrikeModifier"/>
+  </api>
+  <api object="Player" method="IsPolicyBlocked">
+    <arg pos="2" type="PolicyTypes" name="ePolicy"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPolicyBranchBlocked">
+    <arg pos="2" type="PolicyBranchTypes" name="ePolicyBranch"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPolicyBranchUnlocked">
+    <arg pos="2" type="PolicyBranchTypes" name="eBranchType"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="SetPolicyBranchUnlocked">
+    <arg pos="2" type="PolicyBranchTypes" name="eBranchType"/>
+    <arg pos="3" type="bool" name="bNewValue"/>
+    <arg pos="4" type="bool" name="bRevolution"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetNumPolicyBranchesUnlocked">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumPolicyBranchesAllowed">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyBranchChosen">
+    <arg pos="2" type="int" name="iID"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumPolicies">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumPoliciesInBranch">
+    <arg pos="2" type="PolicyBranchTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="HasPolicy">
+    <arg pos="2" type="PolicyTypes" name="iIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="SetHasPolicy">
+    <method class="CvPlayer" fn="setHasPolicy"/>
+  </api>
+  <api object="Player" method="GetNextPolicyCost">
+    <method class="CvPlayer" fn="getNextPolicyCost"/>
+  </api>
+  <api object="Player" method="CanAdoptPolicy">
+    <arg pos="2" type="int" name="ePolicy"/>
+    <arg pos="3" type="bool" name="bIgnoreCost" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="DoAdoptPolicy">
+    <method class="CvPlayer" fn="doAdoptPolicy"/>
+  </api>
+  <api object="Player" method="CanUnlockPolicyBranch">
+    <arg pos="2" type="PolicyBranchTypes" name="iIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetDominantPolicyBranchForTitle">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetLateGamePolicyTree">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetBranchPicked1">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetBranchPicked2">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetBranchPicked3">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyCatchSpiesModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumPolicyBranchesFinished">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsPolicyBranchFinished">
+    <arg pos="2" type="int" name="iID"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetAvailableTenets">
+    <arg pos="2" type="int" name="iLevel"/>
+    <ret type="(int)"/>
+  </api>
+  <api object="Player" method="GetTenet">
+    <arg pos="2" type="PolicyBranchTypes" name="eBranch"/>
+    <arg pos="3" type="int" name="iLevel"/>
+    <arg pos="4" type="int" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsAnarchy">
+    <method class="CvPlayer" fn="IsAnarchy"/>
+  </api>
+  <api object="Player" method="GetAnarchyNumTurns">
+    <method class="CvPlayer" fn="GetAnarchyNumTurns"/>
+  </api>
+  <api object="Player" method="SetAnarchyNumTurns">
+    <method class="CvPlayer" fn="SetAnarchyNumTurns"/>
+  </api>
+  <api object="Player" method="ChangeAnarchyNumTurns">
+    <method class="CvPlayer" fn="ChangeAnarchyNumTurns"/>
+  </api>
+  <api object="Player" method="GetAdvancedStartPoints">
+    <method class="CvPlayer" fn="getAdvancedStartPoints"/>
+  </api>
+  <api object="Player" method="SetAdvancedStartPoints">
+    <method class="CvPlayer" fn="setAdvancedStartPoints"/>
+  </api>
+  <api object="Player" method="ChangeAdvancedStartPoints">
+    <method class="CvPlayer" fn="changeAdvancedStartPoints"/>
+  </api>
+  <api object="Player" method="GetAdvancedStartUnitCost">
+    <method class="CvPlayer" fn="getAdvancedStartUnitCost"/>
+  </api>
+  <api object="Player" method="GetAdvancedStartCityCost">
+    <method class="CvPlayer" fn="getAdvancedStartCityCost"/>
+  </api>
+  <api object="Player" method="GetAdvancedStartPopCost">
+    <method class="CvPlayer" fn="getAdvancedStartPopCost"/>
+  </api>
+  <api object="Player" method="GetAdvancedStartBuildingCost">
+    <method class="CvPlayer" fn="getAdvancedStartBuildingCost"/>
+  </api>
+  <api object="Player" method="GetAdvancedStartImprovementCost">
+    <method class="CvPlayer" fn="getAdvancedStartImprovementCost"/>
+  </api>
+  <api object="Player" method="GetAdvancedStartRouteCost">
+    <method class="CvPlayer" fn="getAdvancedStartRouteCost"/>
+  </api>
+  <api object="Player" method="GetAdvancedStartTechCost">
+    <method class="CvPlayer" fn="getAdvancedStartTechCost"/>
+  </api>
+  <api object="Player" method="GetAdvancedStartVisibilityCost">
+    <method class="CvPlayer" fn="getAdvancedStartVisibilityCost"/>
+  </api>
+  <api object="Player" method="GetAttackBonusTurns">
+    <method class="CvPlayer" fn="GetAttackBonusTurns"/>
+  </api>
+  <api object="Player" method="GetCultureBonusTurns">
+    <method class="CvPlayer" fn="GetCultureBonusTurns"/>
+  </api>
+  <api object="Player" method="GetTourismBonusTurns">
+    <method class="CvPlayer" fn="GetTourismBonusTurns"/>
+  </api>
+  <api object="Player" method="GetGoldenAgeProgressThreshold">
+    <method class="CvPlayer" fn="GetGoldenAgeProgressThreshold"/>
+  </api>
+  <api object="Player" method="GetGoldenAgeProgressMeter">
+    <method class="CvPlayer" fn="GetGoldenAgeProgressMeter"/>
+  </api>
+  <api object="Player" method="SetGoldenAgeProgressMeter">
+    <method class="CvPlayer" fn="SetGoldenAgeProgressMeter"/>
+  </api>
+  <api object="Player" method="ChangeGoldenAgeProgressMeter">
+    <method class="CvPlayer" fn="ChangeGoldenAgeProgressMeter"/>
+  </api>
+  <api object="Player" method="GetNumGoldenAges">
+    <method class="CvPlayer" fn="GetNumGoldenAges"/>
+  </api>
+  <api object="Player" method="SetNumGoldenAges">
+    <method class="CvPlayer" fn="SetNumGoldenAges"/>
+  </api>
+  <api object="Player" method="ChangeNumGoldenAges">
+    <method class="CvPlayer" fn="ChangeNumGoldenAges"/>
+  </api>
+  <api object="Player" method="GetGoldenAgeTurns">
+    <method class="CvPlayer" fn="getGoldenAgeTurns"/>
+  </api>
+  <api object="Player" method="GetGoldenAgeLength">
+    <method class="CvPlayer" fn="getGoldenAgeLength"/>
+  </api>
+  <api object="Player" method="IsGoldenAge">
+    <method class="CvPlayer" fn="isGoldenAge"/>
+  </api>
+  <api object="Player" method="ChangeGoldenAgeTurns">
+    <method class="CvPlayer" fn="changeGoldenAgeTurns"/>
+  </api>
+  <api object="Player" method="GetNumUnitGoldenAges">
+    <method class="CvPlayer" fn="getNumUnitGoldenAges"/>
+  </api>
+  <api object="Player" method="ChangeNumUnitGoldenAges">
+    <method class="CvPlayer" fn="changeNumUnitGoldenAges"/>
+  </api>
+  <api object="Player" method="GetStrikeTurns">
+    <method class="CvPlayer" fn="getStrikeTurns"/>
+  </api>
+  <api object="Player" method="GetGoldenAgeModifier">
+    <method class="CvPlayer" fn="getGoldenAgeModifier"/>
+  </api>
+  <api object="Player" method="GetGoldenAgeTourismModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGoldenAgeGreatWriterRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGoldenAgeGreatArtistRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetGoldenAgeGreatMusicianRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetHurryModifier">
+    <method class="CvPlayer" fn="getHurryModifier"/>
+  </api>
+  <api object="Player" method="CreateGreatGeneral">
+    <arg pos="2" type="UnitTypes" name="eGreatPersonUnit"/>
+    <arg pos="3" type="int" name="x"/>
+    <arg pos="4" type="int" name="y"/>
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="GetGreatPeopleCreated">
+    <method class="CvPlayer" fn="getGreatPeopleCreated"/>
+  </api>
+  <api object="Player" method="GetGreatGeneralsCreated">
+    <method class="CvPlayer" fn="getGreatGeneralsCreated"/>
+  </api>
+  <api object="Player" method="GetGreatPeopleThresholdModifier">
+    <method class="CvPlayer" fn="getGreatPeopleThresholdModifier"/>
+  </api>
+  <api object="Player" method="GetGreatGeneralsThresholdModifier">
+    <method class="CvPlayer" fn="getGreatGeneralsThresholdModifier"/>
+  </api>
+  <api object="Player" method="GetGreatAdmiralsThresholdModifier">
+    <method class="CvPlayer" fn="getGreatAdmiralsThresholdModifier"/>
+  </api>
+  <api object="Player" method="GetGreatPeopleRateModifier">
+    <method class="CvPlayer" fn="getGreatPeopleRateModifier"/>
+  </api>
+  <api object="Player" method="GetGreatGeneralRateModifier">
+    <method class="CvPlayer" fn="getGreatGeneralRateModifier"/>
+  </api>
+  <api object="Player" method="GetDomesticGreatGeneralRateModifier">
+    <method class="CvPlayer" fn="getDomesticGreatGeneralRateModifier"/>
+  </api>
+  <api object="Player" method="GetGreatWriterRateModifier">
+    <method class="CvPlayer" fn="getGreatWriterRateModifier"/>
+  </api>
+  <api object="Player" method="GetGreatArtistRateModifier">
+    <method class="CvPlayer" fn="getGreatArtistRateModifier"/>
+  </api>
+  <api object="Player" method="GetGreatMusicianRateModifier">
+    <method class="CvPlayer" fn="getGreatMusicianRateModifier"/>
+  </api>
+  <api object="Player" method="GetGreatScientistRateModifier">
+    <method class="CvPlayer" fn="getGreatScientistRateModifier"/>
+  </api>
+  <api object="Player" method="GetGreatMerchantRateModifier">
+    <method class="CvPlayer" fn="getGreatMerchantRateModifier"/>
+  </api>
+  <api object="Player" method="GetGreatEngineerRateModifier">
+    <method class="CvPlayer" fn="getGreatEngineerRateModifier"/>
+  </api>
+  <api object="Player" method="GetPolicyGreatPeopleRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyGreatWriterRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyGreatArtistRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyGreatMusicianRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyGreatScientistRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyGreatMerchantRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyGreatEngineerRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetProductionModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetUnitProductionModifier">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetBuildingProductionModifier">
+    <arg pos="2" type="BuildingTypes" name="eBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetProjectProductionModifier">
+    <arg pos="2" type="ProjectTypes" name="eProject"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetSpecialistProductionModifier">
+    <arg pos="2" type="SpecialistTypes" name="eSpecialist"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMaxGlobalBuildingProductionModifier">
+    <method class="CvPlayer" fn="getMaxGlobalBuildingProductionModifier"/>
+  </api>
+  <api object="Player" method="GetMaxTeamBuildingProductionModifier">
+    <method class="CvPlayer" fn="getMaxTeamBuildingProductionModifier"/>
+  </api>
+  <api object="Player" method="GetMaxPlayerBuildingProductionModifier">
+    <method class="CvPlayer" fn="getMaxPlayerBuildingProductionModifier"/>
+  </api>
+  <api object="Player" method="GetFreeExperience">
+    <method class="CvPlayer" fn="getFreeExperience"/>
+  </api>
+  <api object="Player" method="GetFeatureProductionModifier">
+    <method class="CvPlayer" fn="getFeatureProductionModifier"/>
+  </api>
+  <api object="Player" method="GetWorkerSpeedModifier">
+    <method class="CvPlayer" fn="getWorkerSpeedModifier"/>
+  </api>
+  <api object="Player" method="GetImprovementUpgradeRateModifier">
+    <method class="CvPlayer" fn="getImprovementUpgradeRateModifier"/>
+  </api>
+  <api object="Player" method="GetMilitaryProductionModifier">
+    <method class="CvPlayer" fn="getMilitaryProductionModifier"/>
+  </api>
+  <api object="Player" method="GetSpaceProductionModifier">
+    <method class="CvPlayer" fn="getSpaceProductionModifier"/>
+  </api>
+  <api object="Player" method="GetSettlerProductionModifier">
+    <method class="CvPlayer" fn="getSettlerProductionModifier"/>
+  </api>
+  <api object="Player" method="GetCapitalSettlerProductionModifier">
+    <method class="CvPlayer" fn="getCapitalSettlerProductionModifier"/>
+  </api>
+  <api object="Player" method="GetWonderProductionModifier">
+    <method class="CvPlayer" fn="getWonderProductionModifier"/>
+  </api>
+  <api object="Player" method="GetUnitProductionMaintenanceMod">
+    <method class="CvPlayer" fn="GetUnitProductionMaintenanceMod"/>
+  </api>
+  <api object="Player" method="GetNumUnitsSupplied">
+    <method class="CvPlayer" fn="GetNumUnitsSupplied"/>
+  </api>
+  <api object="Player" method="GetNumUnitsSuppliedByHandicap">
+    <method class="CvPlayer" fn="GetNumUnitsSuppliedByHandicap"/>
+  </api>
+  <api object="Player" method="GetNumUnitsSuppliedByCities">
+    <method class="CvPlayer" fn="GetNumUnitsSuppliedByCities"/>
+  </api>
+  <api object="Player" method="GetNumUnitsSuppliedByPopulation">
+    <method class="CvPlayer" fn="GetNumUnitsSuppliedByPopulation"/>
+  </api>
+  <api object="Player" method="GetNumUnitsOutOfSupply">
+    <method class="CvPlayer" fn="GetNumUnitsOutOfSupply"/>
+  </api>
+  <api object="Player" method="GetCityDefenseModifier">
+    <method class="CvPlayer" fn="getCityDefenseModifier"/>
+  </api>
+  <api object="Player" method="GetNumNukeUnits">
+    <method class="CvPlayer" fn="getNumNukeUnits"/>
+  </api>
+  <api object="Player" method="GetNumOutsideUnits">
+    <method class="CvPlayer" fn="getNumOutsideUnits"/>
+  </api>
+  <api object="Player" method="GetGoldPerUnit">
+    <method class="CvPlayer" fn="getGoldPerUnit"/>
+  </api>
+  <api object="Player" method="ChangeGoldPerUnitTimes100">
+    <method class="CvPlayer" fn="changeGoldPerUnitTimes100"/>
+  </api>
+  <api object="Player" method="GetGoldPerMilitaryUnit">
+    <method class="CvPlayer" fn="getGoldPerMilitaryUnit"/>
+  </api>
+  <api object="Player" method="GetExtraUnitCost">
+    <method class="CvPlayer" fn="getExtraUnitCost"/>
+  </api>
+  <api object="Player" method="GetNumMilitaryUnits">
+    <method class="CvPlayer" fn="getNumMilitaryUnits"/>
+  </api>
+  <api object="Player" method="GetHappyPerMilitaryUnit">
+    <method class="CvPlayer" fn="getHappyPerMilitaryUnit"/>
+  </api>
+  <api object="Player" method="IsMilitaryFoodProduction">
+    <method class="CvPlayer" fn="isMilitaryFoodProduction"/>
+  </api>
+  <api object="Player" method="GetHighestUnitLevel">
+    <method class="CvPlayer" fn="getHighestUnitLevel"/>
+  </api>
+  <api object="Player" method="GetConscriptCount">
+    <method class="CvPlayer" fn="getConscriptCount"/>
+  </api>
+  <api object="Player" method="SetConscriptCount">
+    <method class="CvPlayer" fn="setConscriptCount"/>
+  </api>
+  <api object="Player" method="ChangeConscriptCount">
+    <method class="CvPlayer" fn="changeConscriptCount"/>
+  </api>
+  <api object="Player" method="GetMaxConscript">
+    <method class="CvPlayer" fn="getMaxConscript"/>
+  </api>
+  <api object="Player" method="GetOverflowResearch">
+    <method class="CvPlayer" fn="getOverflowResearch"/>
+  </api>
+  <api object="Player" method="GetExpInBorderModifier">
+    <method class="CvPlayer" fn="getExpInBorderModifier"/>
+  </api>
+  <api object="Player" method="GetLevelExperienceModifier">
+    <method class="CvPlayer" fn="getLevelExperienceModifier"/>
+  </api>
+  <api object="Player" method="GetCultureBombTimer">
+    <method class="CvPlayer" fn="getCultureBombTimer"/>
+  </api>
+  <api object="Player" method="GetConversionTimer">
+    <method class="CvPlayer" fn="getConversionTimer"/>
+  </api>
+  <api object="Player" method="GetCapitalCity">
+    <ret type="City"/>
+  </api>
+  <api object="Player" method="IsHasLostCapital">
+    <method class="CvPlayer" fn="IsHasLostCapital"/>
+  </api>
+  <api object="Player" method="GetCitiesLost">
+    <method class="CvPlayer" fn="getCitiesLost"/>
+  </api>
+  <api object="Player" method="GetPower">
+    <method class="CvPlayer" fn="getPower"/>
+  </api>
+  <api object="Player" method="GetMilitaryMight">
+    <method class="CvPlayer" fn="GetMilitaryMight"/>
+  </api>
+  <api object="Player" method="GetTotalTimePlayed">
+    <method class="CvPlayer" fn="getTotalTimePlayed"/>
+  </api>
+  <api object="Player" method="GetScore">
+    <method class="CvPlayer" fn="GetScore"/>
+  </api>
+  <api object="Player" method="GetScoreFromCities">
+    <method class="CvPlayer" fn="GetScoreFromCities"/>
+  </api>
+  <api object="Player" method="GetScoreFromPopulation">
+    <method class="CvPlayer" fn="GetScoreFromPopulation"/>
+  </api>
+  <api object="Player" method="GetScoreFromLand">
+    <method class="CvPlayer" fn="GetScoreFromLand"/>
+  </api>
+  <api object="Player" method="GetScoreFromWonders">
+    <method class="CvPlayer" fn="GetScoreFromWonders"/>
+  </api>
+  <api object="Player" method="GetScoreFromTechs">
+    <method class="CvPlayer" fn="GetScoreFromTechs"/>
+  </api>
+  <api object="Player" method="GetScoreFromFutureTech">
+    <method class="CvPlayer" fn="GetScoreFromFutureTech"/>
+  </api>
+  <api object="Player" method="ChangeScoreFromFutureTech">
+    <arg pos="2" type="int" name="iChange"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetScoreFromScenario1">
+    <method class="CvPlayer" fn="GetScoreFromScenario1"/>
+  </api>
+  <api object="Player" method="ChangeScoreFromScenario1">
+    <arg pos="2" type="int" name="iChange"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetScoreFromScenario2">
+    <method class="CvPlayer" fn="GetScoreFromScenario2"/>
+  </api>
+  <api object="Player" method="ChangeScoreFromScenario2">
+    <arg pos="2" type="int" name="iChange"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetScoreFromScenario3">
+    <method class="CvPlayer" fn="GetScoreFromScenario3"/>
+  </api>
+  <api object="Player" method="ChangeScoreFromScenario3">
+    <arg pos="2" type="int" name="iChange"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetScoreFromScenario4">
+    <method class="CvPlayer" fn="GetScoreFromScenario4"/>
+  </api>
+  <api object="Player" method="ChangeScoreFromScenario4">
+    <arg pos="2" type="int" name="iChange"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetScoreFromPolicies">
+    <method class="CvPlayer" fn="GetScoreFromPolicies"/>
+  </api>
+  <api object="Player" method="GetScoreFromGreatWorks">
+    <method class="CvPlayer" fn="GetScoreFromGreatWorks"/>
+  </api>
+  <api object="Player" method="GetScoreFromReligion">
+    <method class="CvPlayer" fn="GetScoreFromReligion"/>
+  </api>
+  <api object="Player" method="IsGoldenAgeCultureBonusDisabled">
+    <method class="CvPlayer" fn="IsGoldenAgeCultureBonusDisabled"/>
+  </api>
+  <api object="Player" method="IsMinorCiv">
+    <method class="CvPlayer" fn="isMinorCiv"/>
+  </api>
+  <api object="Player" method="GetMinorCivType">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivTrait">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPersonality">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsMinorCivHasUniqueUnit">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetMinorCivUniqueUnit">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="SetMinorCivUniqueUnit">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="GetAlly">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetAlliedTurns">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsFriends">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsAllies">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerHasOpenBorders">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerHasOpenBordersAutomatically">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetFriendshipChangePerTurnTimes100">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivFriendshipWithMajor">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="ChangeMinorCivFriendshipWithMajor">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="int" name="iChange"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetMinorCivFriendshipAnchorWithMajor">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsPeaceBlocked">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsMinorPermanentWar">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetNumMinorCivsMet">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetFriendshipNeededForNextLevel">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivFriendshipLevelWithMajor">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetActiveQuestForPlayer">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="MinorCivQuestTypes" name="eType"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsMinorCivActiveQuestForPlayer">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="MinorCivQuestTypes" name="eType"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetMinorCivNumActiveQuestsForPlayer">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsMinorCivDisplayedQuestForPlayer">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="MinorCivQuestTypes" name="eType"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetMinorCivNumDisplayedQuestsForPlayer">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetQuestData1">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="MinorCivQuestTypes" name="eType"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetQuestData2">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="MinorCivQuestTypes" name="eType"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetQuestTurnsRemaining">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="MinorCivQuestTypes" name="eType"/>
+    <arg pos="4" type="int" name="iGameTurn"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsMinorCivContestLeader">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="MinorCivQuestTypes" name="eType"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetMinorCivContestValueForLeader">
+    <arg pos="2" type="MinorCivQuestTypes" name="eType"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivContestValueForPlayer">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="3" type="MinorCivQuestTypes" name="eType"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsMinorCivUnitSpawningDisabled">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsMinorCivRouteEstablishedWithMajor">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsMinorWarQuestWithMajorActive">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetMinorWarQuestWithMajorRemainingCount">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsProxyWarActiveForMajor">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsThreateningBarbariansEventActiveForPlayer">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetTurnsSinceThreatenedByBarbarians">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTurnsSinceThreatenedAnnouncement">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetFriendshipFromGoldGift">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <arg pos="3" type="int" name="iGold"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivFavoriteMajor">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivScienceFriendshipBonus">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivCultureFriendshipBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivCurrentCultureFlatBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivCurrentCulturePerBuildingBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCurrentCultureBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivCurrentCultureBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivHappinessFriendshipBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivCurrentHappinessFlatBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivCurrentHappinessPerLuxuryBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivCurrentHappinessBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivCurrentFaithBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCurrentCapitalFoodBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCurrentOtherCityFoodBonus">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCurrentSpawnEstimate">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCurrentScienceFriendshipBonusTimes100">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="DoMinorLiberationByMajor">
+    <arg pos="2" type="PlayerTypes" name="eLiberator"/>
+    <arg pos="3" type="TeamTypes" name="eConquerorTeam"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="IsProtectedByMajor">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanMajorProtect">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanMajorStartProtection">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanMajorWithdrawProtection">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetTurnLastPledgedProtectionByMajor">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTurnLastPledgeBrokenByMajor">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivBullyGoldAmount">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="CanMajorBullyGold">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetMajorBullyGoldDetails">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="CanMajorBullyUnit">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetMajorBullyUnitDetails">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="CanMajorBuyout">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetBuyoutCost">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="CanMajorGiftTileImprovement">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanMajorGiftTileImprovementAtPlot">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <arg pos="3" type="int" name="iX"/>
+    <arg pos="4" type="int" name="iY"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetGiftTileImprovementCost">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="AddMinorCivQuestIfAble">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <arg pos="3" type="MinorCivQuestTypes" name="eQuest"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetFriendshipFromUnitGift">
+    <arg pos="2" type="PlayerTypes" name="eMajor"/>
+    <arg pos="3" type="bool" name="bGreatPerson"/>
+    <arg pos="4" type="bool" name="bDistanceGift"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsAlive">
+    <method class="CvPlayer" fn="isAlive"/>
+  </api>
+  <api object="Player" method="IsEverAlive">
+    <method class="CvPlayer" fn="isEverAlive"/>
+  </api>
+  <api object="Player" method="IsExtendedGame">
+    <method class="CvPlayer" fn="isExtendedGame"/>
+  </api>
+  <api object="Player" method="IsFoundedFirstCity">
+    <method class="CvPlayer" fn="isFoundedFirstCity"/>
+  </api>
+  <api object="Player" method="GetEndTurnBlockingType">
+    <method class="CvPlayer" fn="GetEndTurnBlockingType"/>
+  </api>
+  <api object="Player" method="GetEndTurnBlockingNotificationIndex">
+    <method class="CvPlayer" fn="GetEndTurnBlockingNotificationIndex"/>
+  </api>
+  <api object="Player" method="IsStrike">
+    <method class="CvPlayer" fn="isStrike"/>
+  </api>
+  <api object="Player" method="GetID">
+    <method class="CvPlayer" fn="GetID"/>
+  </api>
+  <api object="Player" method="GetHandicapType">
+    <method class="CvPlayer" fn="getHandicapType"/>
+  </api>
+  <api object="Player" method="GetCivilizationType">
+    <method class="CvPlayer" fn="getCivilizationType"/>
+  </api>
+  <api object="Player" method="GetLeaderType">
+    <method class="CvPlayer" fn="getLeaderType"/>
+  </api>
+  <api object="Player" method="GetPersonalityType">
+    <method class="CvPlayer" fn="getPersonalityType"/>
+  </api>
+  <api object="Player" method="SetPersonalityType">
+    <method class="CvPlayer" fn="setPersonalityType"/>
+  </api>
+  <api object="Player" method="GetCurrentEra">
+    <method class="CvPlayer" fn="GetCurrentEra"/>
+  </api>
+  <api object="Player" method="GetTeam">
+    <method class="CvPlayer" fn="getTeam"/>
+  </api>
+  <api object="Player" method="GetPlayerColor">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPlayerColors">
+    <ret type="{x, y, z, w}, {x, y, z, w}"/>
+  </api>
+  <api object="Player" method="GetSeaPlotYield">
+    <method class="CvPlayer" fn="getSeaPlotYield"/>
+  </api>
+  <api object="Player" method="GetYieldRateModifier">
+    <method class="CvPlayer" fn="getYieldRateModifier"/>
+  </api>
+  <api object="Player" method="GetCapitalYieldRateModifier">
+    <method class="CvPlayer" fn="getCapitalYieldRateModifier"/>
+  </api>
+  <api object="Player" method="GetExtraYieldThreshold">
+    <method class="CvPlayer" fn="getExtraYieldThreshold"/>
+  </api>
+  <api object="Player" method="GetScience">
+    <method class="CvPlayer" fn="GetScience"/>
+  </api>
+  <api object="Player" method="GetScienceTimes100">
+    <method class="CvPlayer" fn="GetScienceTimes100"/>
+  </api>
+  <api object="Player" method="GetScienceFromCitiesTimes100">
+    <method class="CvPlayer" fn="GetScienceFromCitiesTimes100"/>
+  </api>
+  <api object="Player" method="GetScienceFromOtherPlayersTimes100">
+    <method class="CvPlayer" fn="GetScienceFromOtherPlayersTimes100"/>
+  </api>
+  <api object="Player" method="GetScienceFromHappinessTimes100">
+    <method class="CvPlayer" fn="GetScienceFromHappinessTimes100"/>
+  </api>
+  <api object="Player" method="GetScienceFromResearchAgreementsTimes100">
+    <method class="CvPlayer" fn="GetScienceFromResearchAgreementsTimes100"/>
+  </api>
+  <api object="Player" method="GetScienceFromBudgetDeficitTimes100">
+    <method class="CvPlayer" fn="GetScienceFromBudgetDeficitTimes100"/>
+  </api>
+  <api object="Player" method="GetProximityToPlayer">
+    <method class="CvPlayer" fn="GetProximityToPlayer"/>
+  </api>
+  <api object="Player" method="DoUpdateProximityToPlayer">
+    <method class="CvPlayer" fn="DoUpdateProximityToPlayer"/>
+  </api>
+  <api object="Player" method="GetIncomingUnitType">
+    <method class="CvPlayer" fn="GetIncomingUnitType"/>
+  </api>
+  <api object="Player" method="GetIncomingUnitCountdown">
+    <method class="CvPlayer" fn="GetIncomingUnitCountdown"/>
+  </api>
+  <api object="Player" method="IsOption">
+    <method class="CvPlayer" fn="isOption"/>
+  </api>
+  <api object="Player" method="SetOption">
+    <method class="CvPlayer" fn="setOption"/>
+  </api>
+  <api object="Player" method="IsPlayable">
+    <method class="CvPlayer" fn="isPlayable"/>
+  </api>
+  <api object="Player" method="SetPlayable">
+    <method class="CvPlayer" fn="setPlayable"/>
+  </api>
+  <api object="Player" method="GetNumResourceUsed">
+    <method class="CvPlayer" fn="getNumResourceUsed"/>
+  </api>
+  <api object="Player" method="GetNumResourceTotal">
+    <method class="CvPlayer" fn="getNumResourceTotal"/>
+  </api>
+  <api object="Player" method="ChangeNumResourceTotal">
+    <method class="CvPlayer" fn="changeNumResourceTotal"/>
+  </api>
+  <api object="Player" method="GetNumResourceAvailable">
+    <method class="CvPlayer" fn="getNumResourceAvailable"/>
+  </api>
+  <api object="Player" method="GetResourceExport">
+    <method class="CvPlayer" fn="getResourceExport"/>
+  </api>
+  <api object="Player" method="GetResourceImport">
+    <method class="CvPlayer" fn="getResourceImport"/>
+  </api>
+  <api object="Player" method="GetResourceFromMinors">
+    <method class="CvPlayer" fn="getResourceFromMinors"/>
+  </api>
+  <api object="Player" method="GetImprovementCount">
+    <method class="CvPlayer" fn="getImprovementCount"/>
+  </api>
+  <api object="Player" method="IsBuildingFree">
+    <method class="CvPlayer" fn="isBuildingFree"/>
+  </api>
+  <api object="Player" method="GetUnitClassCount">
+    <method class="CvPlayer" fn="getUnitClassCount"/>
+  </api>
+  <api object="Player" method="IsUnitClassMaxedOut">
+    <method class="CvPlayer" fn="isUnitClassMaxedOut"/>
+  </api>
+  <api object="Player" method="GetUnitClassMaking">
+    <method class="CvPlayer" fn="getUnitClassMaking"/>
+  </api>
+  <api object="Player" method="GetUnitClassCountPlusMaking">
+    <method class="CvPlayer" fn="getUnitClassCountPlusMaking"/>
+  </api>
+  <api object="Player" method="GetBuildingClassCount">
+    <method class="CvPlayer" fn="getBuildingClassCount"/>
+  </api>
+  <api object="Player" method="IsBuildingClassMaxedOut">
+    <method class="CvPlayer" fn="isBuildingClassMaxedOut"/>
+  </api>
+  <api object="Player" method="GetBuildingClassMaking">
+    <method class="CvPlayer" fn="getBuildingClassMaking"/>
+  </api>
+  <api object="Player" method="GetBuildingClassCountPlusMaking">
+    <method class="CvPlayer" fn="getBuildingClassCountPlusMaking"/>
+  </api>
+  <api object="Player" method="GetHurryCount">
+    <method class="CvPlayer" fn="getHurryCount"/>
+  </api>
+  <api object="Player" method="IsHasAccessToHurry">
+    <method class="CvPlayer" fn="IsHasAccessToHurry"/>
+  </api>
+  <api object="Player" method="IsCanHurry">
+    <method class="CvPlayer" fn="IsCanHurry"/>
+  </api>
+  <api object="Player" method="GetHurryGoldCost">
+    <method class="CvPlayer" fn="GetHurryGoldCost"/>
+  </api>
+  <api object="Player" method="IsResearchingTech">
+    <arg pos="2" type="TechTypes" name="iIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="SetResearchingTech">
+    <method class="CvPlayer" fn="setResearchingTech"/>
+  </api>
+  <api object="Player" method="GetCombatExperience">
+    <method class="CvPlayer" fn="getCombatExperience"/>
+  </api>
+  <api object="Player" method="ChangeCombatExperience">
+    <method class="CvPlayer" fn="changeCombatExperience"/>
+  </api>
+  <api object="Player" method="SetCombatExperience">
+    <method class="CvPlayer" fn="setCombatExperience"/>
+  </api>
+  <api object="Player" method="GetLifetimeCombatExperience">
+    <method class="CvPlayer" fn="getLifetimeCombatExperience"/>
+  </api>
+  <api object="Player" method="GetNavalCombatExperience">
+    <method class="CvPlayer" fn="getNavalCombatExperience"/>
+  </api>
+  <api object="Player" method="ChangeNavalCombatExperience">
+    <method class="CvPlayer" fn="changeNavalCombatExperience"/>
+  </api>
+  <api object="Player" method="SetNavalCombatExperience">
+    <method class="CvPlayer" fn="setNavalCombatExperience"/>
+  </api>
+  <api object="Player" method="GetSpecialistExtraYield">
+    <arg pos="2" type="SpecialistTypes" name="eIndex1"/>
+    <arg pos="3" type="YieldTypes" name="eIndex2"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="FindPathLength">
+    <method class="CvPlayer" fn="findPathLength"/>
+  </api>
+  <api object="Player" method="GetQueuePosition">
+    <method class="CvPlayer" fn="getQueuePosition"/>
+  </api>
+  <api object="Player" method="ClearResearchQueue">
+    <method class="CvPlayer" fn="clearResearchQueue"/>
+  </api>
+  <api object="Player" method="PushResearch">
+    <method class="CvPlayer" fn="pushResearch"/>
+  </api>
+  <api object="Player" method="PopResearch">
+    <method class="CvPlayer" fn="popResearch"/>
+  </api>
+  <api object="Player" method="GetLengthResearchQueue">
+    <method class="CvPlayer" fn="getLengthResearchQueue"/>
+  </api>
+  <api object="Player" method="AddCityName">
+    <arg pos="2" type="str" name="sName"/>
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="GetNumCityNames">
+    <method class="CvPlayer" fn="getNumCityNames"/>
+  </api>
+  <api object="Player" method="GetCityName">
+    <arg pos="2" type="int" name="iCity"/>
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="Cities">
+    <ret type="iterator"/>
+  </api>
+  <api object="Player" method="GetNumCities">
+    <method class="CvPlayer" fn="getNumCities"/>
+  </api>
+  <api object="Player" method="GetCityByID">
+    <arg pos="2" type="int" name="id"/>
+    <ret type="City"/>
+  </api>
+  <api object="Player" method="Units">
+    <ret type="iterator"/>
+  </api>
+  <api object="Player" method="GetUnitByID">
+    <arg pos="2" type="int" name="id"/>
+    <ret type="Unit"/>
+  </api>
+  <api object="Player" method="GetNumUnits">
+    <method class="CvPlayer" fn="getNumUnits"/>
+  </api>
+  <api object="Player" method="AI_updateFoundValues">
+    <method class="CvPlayer" fn="AI_updateFoundValues"/>
+  </api>
+  <api object="Player" method="AI_foundValue">
+    <method class="CvPlayer" fn="AI_foundValue"/>
+  </api>
+  <api object="Player" method="GetScoreHistory">
+    <arg pos="2" type="int" name="uiTurn"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetEconomyHistory">
+    <arg pos="2" type="int" name="uiTurn"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetIndustryHistory">
+    <arg pos="2" type="int" name="uiTurn"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetAgricultureHistory">
+    <arg pos="2" type="int" name="uiTurn"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPowerHistory">
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="GetReplayData">
+    <ret type="(str, (int))"/>
+  </api>
+  <api object="Player" method="SetReplayDataValue">
+    <arg pos="2" type="str" name="sDataSet"/>
+    <arg pos="3" type="int" name="iTurn"/>
+    <arg pos="4" type="int" name="iValue"/>
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="GetScriptData">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="SetScriptData">
+    <arg pos="2" type="str" name="sData"/>
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="GetNumPlots">
+    <method class="CvPlayer" fn="GetNumPlots"/>
+  </api>
+  <api object="Player" method="GetNumPlotsBought">
+    <method class="CvPlayer" fn="GetNumPlotsBought"/>
+  </api>
+  <api object="Player" method="SetNumPlotsBought">
+    <method class="CvPlayer" fn="SetNumPlotsBought"/>
+  </api>
+  <api object="Player" method="ChangeNumPlotsBought">
+    <method class="CvPlayer" fn="ChangeNumPlotsBought"/>
+  </api>
+  <api object="Player" method="GetBuyPlotCost">
+    <method class="CvPlayer" fn="GetBuyPlotCost"/>
+  </api>
+  <api object="Player" method="GetPlotDanger">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="DoBeginDiploWithHuman">
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="DoTradeScreenOpened">
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="DoTradeScreenClosed">
+    <arg pos="2" type="bool" name="bAIWasMakingOffer"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetApproachTowardsUsGuess">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMajorCivApproach">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsWillAcceptPeaceWithPlayer">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsProtectingMinor">
+    <arg pos="2" type="PlayerTypes" name="eMinor"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsDontSettleMessageTooSoon">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsStopSpyingMessageTooSoon">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsAskedToStopConverting">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsAskedToStopDigging">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsDoFMessageTooSoon">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsDoF">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetDoFCounter">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsPlayerDoFwithAnyFriend">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerDoFwithAnyEnemy">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerDenouncedFriend">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerDenouncedEnemy">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsUntrustworthyFriend">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetNumFriendsDenouncedBy">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsFriendDenouncedUs">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetWeDenouncedFriendCount">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsFriendDeclaredWarOnUs">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetWeDeclaredWarOnFriendCount">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCoopWarAcceptedState">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <arg pos="3" type="PlayerTypes" name="eAgainstPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumWarsFought">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetLandDisputeLevel">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetVictoryDisputeLevel">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetWonderDisputeLevel">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetMinorCivDisputeLevel">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetWarmongerThreat">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsPlayerNoSettleRequestEverAsked">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerStopSpyingRequestEverAsked">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsDemandEverMade">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetNumCiviliansReturnedToMe">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumLandmarksBuiltForMe">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumTimesCultureBombed">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNegativeReligiousConversionPoints">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNegativeArchaeologyPoints">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="HasOthersReligionInMostCities">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerBrokenMilitaryPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerIgnoredMilitaryPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerBrokenExpansionPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerIgnoredExpansionPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerBrokenBorderPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerIgnoredBorderPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerBrokenAttackCityStatePromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerIgnoredAttackCityStatePromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerBrokenBullyCityStatePromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerIgnoredBullyCityStatePromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerBrokenSpyPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerIgnoredSpyPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerForgivenForSpying">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerBrokenNoConvertPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerIgnoredNoConvertPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerBrokenNoDiggingPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerIgnoredNoDiggingPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerBrokenCoopWarPromise">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetOtherPlayerNumProtectedMinorsKilled">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetOtherPlayerNumProtectedMinorsAttacked">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTurnsSincePlayerBulliedProtectedMinor">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsHasPlayerBulliedProtectedMinor">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsDenouncedPlayer">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetDenouncedPlayerCounter">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsDenouncingPlayer">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsPlayerRecklessExpander">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetRecentTradeValue">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetCommonFoeValue">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetRecentAssistValue">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsGaveAssistanceTo">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsHasPaidTributeTo">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsNukedBy">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsCapitalCapturedBy">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsAngryAboutProtectedMinorKilled">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsAngryAboutProtectedMinorAttacked">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsAngryAboutProtectedMinorBullied">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsAngryAboutSidedWithTheirProtectedMinor">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetNumTimesRobbedBy">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumTimesIntrigueSharedBy">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="DoForceDoF">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="DoForceDenounce">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="AddNotification">
+    <arg pos="2" type="int" name="iNotification"/>
+    <arg pos="3" type="str" name="sMessage"/>
+    <arg pos="4" type="str" name="sSummary"/>
+    <arg pos="5" type="int" name="iPlotX"/>
+    <arg pos="6" type="int" name="iPlotY"/>
+    <arg pos="7" type="int" name="iData"/>
+    <arg pos="8" type="int" name="iDataExtra" default="-1"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumNotifications">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNotificationStr">
+    <arg pos="2" type="int" name="iIndex"/>
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetNotificationSummaryStr">
+    <arg pos="2" type="int" name="iIndex"/>
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetNotificationIndex">
+    <arg pos="2" type="int" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNotificationTurn">
+    <arg pos="2" type="int" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNotificationDismissed">
+    <arg pos="2" type="int" name="iIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetRecommendedWorkerPlots">
+    <ret type="({plot, buildType})"/>
+  </api>
+  <api object="Player" method="GetRecommendedFoundCityPlots">
+    <ret type="(Plot)"/>
+  </api>
+  <api object="Player" method="GetUnimprovedAvailableLuxuryResource">
+    <ret type="Plot"/>
+  </api>
+  <api object="Player" method="IsAnyPlotImproved">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetPlayerVisiblePlot">
+    <arg pos="2" type="Player" name="pPlayer2"/>
+    <ret type="Plot"/>
+  </api>
+  <api object="Player" method="GetEverPoppedGoody">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetClosestGoodyPlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="Player" method="IsAnyGoodyPlotAccessible">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetPlotHasOrder">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetAnyUnitHasOrderToGoody">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetEverTrainedBuilder">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetNumFreeTechs">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="SetNumFreeTechs">
+    <arg pos="2" type="int" name="iNumTechs"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetNumFreePolicies">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="SetNumFreePolicies">
+    <arg pos="2" type="int" name="iNumPolicies"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="ChangeNumFreePolicies">
+    <arg pos="2" type="int" name="iNumPolicies"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetNumFreeTenets">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="SetNumFreeTenets">
+    <arg pos="2" type="int" name="iNumTenets"/>
+    <arg pos="3" type="bool" name="bCountAsFreePolicies"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="ChangeNumFreeTenets">
+    <arg pos="2" type="int" name="iNumTenets"/>
+    <arg pos="3" type="bool" name="bCountAsFreePolicies"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetNumFreeGreatPeople">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="SetNumFreeGreatPeople">
+    <arg pos="2" type="int" name="iNumGreatPeople"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="ChangeNumFreeGreatPeople">
+    <arg pos="2" type="int" name="iNumGreatPeople"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetNumMayaBoosts">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="SetNumMayaBoosts">
+    <arg pos="2" type="int" name="iNumBoosts"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="ChangeNumMayaBoosts">
+    <arg pos="2" type="int" name="iNumBoosts"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetNumFaithGreatPeople">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="SetNumFaithGreatPeople">
+    <arg pos="2" type="int" name="iNumGreatPeople"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="ChangeNumFaithGreatPeople">
+    <arg pos="2" type="int" name="iNumGreatPeople"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetUnitBaktun">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsFreeMayaGreatPersonChoice">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="HasReceivedNetTurnComplete">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetTraitGoldenAgeCombatModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTraitCityStateCombatModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTraitGreatGeneralExtraBonus">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetTraitGreatScientistRateModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsTraitBonusReligiousBelief">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetHappinessFromLuxury">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsAbleToAnnexCityStates">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsUsingMayaCalendar">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetMayaCalendarString">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetMayaCalendarLongString">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetExtraBuildingHappinessFromPolicies">
+    <arg pos="2" type="BuildingTypes" name="eBuilding"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNextCity">
+    <arg pos="2" type="City" name="pCurrentCity"/>
+    <ret type="City"/>
+  </api>
+  <api object="Player" method="GetPrevCity">
+    <arg pos="2" type="City" name="pCurrentCity"/>
+    <ret type="City"/>
+  </api>
+  <api object="Player" method="GetFreePromotionCount">
+    <arg pos="2" type="int" name="iPromotionIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsFreePromotion">
+    <arg pos="2" type="int" name="iPromotionIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="ChangeFreePromotionCount">
+    <arg pos="2" type="int" name="iPromotionIndex"/>
+    <arg pos="3" type="int" name="iValue"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetEmbarkedGraphicOverride">
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="SetEmbarkedGraphicOverride">
+    <arg pos="2" type="str" name="sGraphic"/>
+    <ret type="void"/>
+  </api>
+  <api object="Player" method="AddTemporaryDominanceZone">
+    <arg pos="2" type="int" name="iX"/>
+    <arg pos="3" type="int" name="iY"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Player" method="GetNaturalWonderYieldModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyBuildingClassYieldModifier">
+    <arg pos="2" type="BuildingClassTypes" name="eBuildingClass"/>
+    <arg pos="3" type="YieldTypes" name="eYieldType"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyBuildingClassYieldChange">
+    <arg pos="2" type="BuildingClassTypes" name="eBuildingClass"/>
+    <arg pos="3" type="YieldTypes" name="eYieldType"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyEspionageModifier">
+    <arg pos="2" type="PolicyTypes" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPolicyEspionageCatchSpiesModifier">
+    <arg pos="2" type="PolicyTypes" name="iIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPlayerBuildingClassYieldChange">
+    <arg pos="2" type="BuildingClassTypes" name="eBuildingClass"/>
+    <arg pos="3" type="YieldTypes" name="eYieldType"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetPlayerBuildingClassHappiness">
+    <arg pos="2" type="BuildingClassTypes" name="eOtherBuildingClass"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="WasResurrectedBy">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="WasResurrectedThisTurnBy">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetOpinionTable">
+    <arg pos="2" type="PlayerTypes" name="eWithPlayer"/>
+    <ret type="(str)"/>
+  </api>
+  <api object="Player" method="GetDealValue">
+    <arg pos="2" type="Deal" name="pkDeal"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetDealMyValue">
+    <arg pos="2" type="Deal" name="pkDeal"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetDealTheyreValue">
+    <arg pos="2" type="Deal" name="pkDeal"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="MayNotAnnex">
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetEspionageCityStatus">
+    <ret type="({PlayerID, CityID, CityX, CityY, CivilizationType, Team, Name, Population, Potential, BasePotential, LargestBasePotential})"/>
+  </api>
+  <api object="Player" method="GetNumSpies">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetNumUnassignedSpies">
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetEspionageSpies">
+    <ret type="({AgentID, CityX, CityY, Name, Rank, State, TurnsLeft, PercentComplete, EstablishedSurveillance, IsDiplomat})"/>
+  </api>
+  <api object="Player" method="HasSpyEstablishedSurveillance">
+    <arg pos="2" type="int" name="iSpyIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsSpyDiplomat">
+    <arg pos="2" type="int" name="iSpyIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsSpySchmoozing">
+    <arg pos="2" type="int" name="iSpyIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="CanSpyStageCoup">
+    <arg pos="2" type="int" name="iSpyIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetAvailableSpyRelocationCities">
+    <ret type="({PlayerID, CityID, CivilizationType, Team, Name, Population, Potential})"/>
+  </api>
+  <api object="Player" method="GetNumTechsToSteal">
+    <arg pos="2" type="int" name="iPlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="GetIntrigueMessages">
+    <ret type="({String, Turn, DiscoveringPlayer, SpyName})"/>
+  </api>
+  <api object="Player" method="HasRecentIntrigueAbout">
+    <arg pos="2" type="int" name="iPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetRecentIntrigueInfo">
+    <arg pos="2" type="int" name="iPlayer"/>
+    <ret type="int, int"/>
+  </api>
+  <api object="Player" method="GetCoupChanceOfSuccess">
+    <arg pos="2" type="City" name="pkCity"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="IsMyDiplomatVisitingThem">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="IsOtherDiplomatVisitingMe">
+    <arg pos="2" type="PlayerTypes" name="eOtherPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetTradeRouteRange">
+    <arg pos="2" type="DomainTypes" name="eDomain"/>
+    <arg pos="3" type="City" name="pkCity"/>
+    <ret type="int"/>
+  </api>
+  <api object="Player" method="CanCommitVote">
+    <arg pos="2" type="PlayerTypes" name="eToPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetCommitVoteDetails">
+    <arg pos="2" type="PlayerTypes" name="eToPlayer"/>
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="IsConnected">
+    <method class="CvPlayer" fn="isConnected"/>
+  </api>
+  <api object="Player" method="IsObserver">
+    <method class="CvPlayer" fn="isObserver"/>
+  </api>
+  <api object="Player" method="HasTurnTimerExpired">
+    <method class="CvPlayer" fn="hasTurnTimerExpired"/>
+  </api>
+  <api object="Player" method="HasUnitOfClassType">
+    <arg pos="2" type="int" name="eUnitClass"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Player" method="GetWarmongerPreviewString">
+    <arg pos="2" type="PlayerTypes" name="eOwner"/>
+    <ret type="str"/>
+  </api>
+  <api object="Player" method="GetLiberationPreviewString">
+    <arg pos="2" type="PlayerTypes" name="eOriginalOwner"/>
+    <ret type="str"/>
+  </api>
+</obj>

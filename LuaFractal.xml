@@ -1,0 +1,33 @@
+<obj type="Fractal">
+  <api object="Fractal" method="BuildRidges">
+    <arg pos="2" type="int" name="iNumSeeds"/>
+    <arg pos="3" type="int" name="iFlags"/>
+    <arg pos="4" type="int" name="iBlendRidge"/>
+    <arg pos="5" type="int" name="iBlendFract"/>
+    <ret type="void"/>
+  </api>
+  <api object="Fractal" method="Create" static="true">
+    <arg pos="1" type="int" name="iNewXs"/>
+    <arg pos="2" type="int" name="iNewYs"/>
+    <arg pos="3" type="int" name="iGrain"/>
+    <arg pos="4" type="int" name="iFlags"/>
+    <arg pos="5" type="int" name="iFracXExp" default="DEFAULT_FRAC_X_EXP"/>
+    <arg pos="6" type="int" name="iFracYExp" default="DEFAULT_FRAC_Y_EXP"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Fractal" method="CreateRifts" static="true">
+    <arg pos="1" type="int" name="iNewXs"/>
+    <arg pos="2" type="int" name="iNewYs"/>
+    <arg pos="3" type="int" name="iGrain"/>
+    <arg pos="4" type="int" name="iFlags"/>
+    <arg pos="5" type="Fractal" name="pRidgeFrac"/>
+    <arg pos="6" type="int" name="iFracXExp" default="DEFAULT_FRAC_X_EXP"/>
+    <arg pos="7" type="int" name="iFracYExp" default="DEFAULT_FRAC_Y_EXP"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Fractal" method="GetHeight">
+    <arg pos="2" type="int" name="xORpercentage"/>
+    <arg pos="3" type="int" name="y" default="0"/>
+    <ret type="int"/>
+  </api>
+</obj>

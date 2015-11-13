@@ -1,0 +1,243 @@
+<class type="CvDeal">
+  <call fn="ClearItems" ret="void"></call>
+  <call fn="GetNumItems" ret="int"></call>
+  <call fn="SetFromPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="SetToPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="GetOtherPlayer" ret="PlayerTypes">
+    <arg type="PlayerTypes" name="eFromPlayer"/>
+  </call>
+  <call fn="GetToPlayer" ret="PlayerTypes"></call>
+  <call fn="GetFromPlayer" ret="PlayerTypes"></call>
+  <call fn="GetStartTurn" ret="int"></call>
+  <call fn="GetDuration" ret="int"></call>
+  <call fn="GetEndTurn" ret="int"></call>
+  <call fn="GetPeaceTreatyType" ret="PeaceTreatyTypes"></call>
+  <call fn="SetPeaceTreatyType" ret="void">
+    <arg type="PeaceTreatyTypes" name="eTreaty"/>
+  </call>
+  <call fn="GetSurrenderingPlayer" ret="PlayerTypes"></call>
+  <call fn="SetSurrenderingPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="GetDemandingPlayer" ret="PlayerTypes"></call>
+  <call fn="SetDemandingPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="GetRequestingPlayer" ret="PlayerTypes"></call>
+  <call fn="SetRequestingPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="GetGoldAvailable" ret="int">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="TradeableItems" name="eItemToBeChanged"/>
+  </call>
+  <call fn="IsPossibleToTradeItem" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="PlayerTypes" name="eToPlayer"/>
+    <arg type="TradeableItems" name="eItem"/>
+    <arg type="int" name="iData1" default="-1"/>
+    <arg type="int" name="iData2" default="-1"/>
+    <arg type="int" name="iData3" default="-1"/>
+    <arg type="bool" name="bFlag1" default="false"/>
+    <arg type="bool" name="bCheckOtherPlayerValidity" default="true"/>
+    <arg type="bool" name="bFinalizing" default="false"/>
+  </call>
+  <call fn="GetNumResource" ret="int">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="ResourceTypes" name="eResource"/>
+  </call>
+  <call fn="AddGoldTrade" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iAmount"/>
+  </call>
+  <call fn="AddGoldPerTurnTrade" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iAmount"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="AddMapTrade" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="AddResourceTrade" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="ResourceTypes" name="eResource"/>
+    <arg type="int" name="iAmount"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="AddCityTrade" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iCityID"/>
+  </call>
+  <call fn="AddUnitTrade" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iUnitID"/>
+  </call>
+  <call fn="AddAllowEmbassy" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="AddOpenBorders" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="AddDefensivePact" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="AddResearchAgreement" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="AddTradeAgreement" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="AddPermamentAlliance" ret="void"></call>
+  <call fn="AddSurrender" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="AddTruce" ret="void"></call>
+  <call fn="AddPeaceTreaty" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="AddThirdPartyPeace" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="TeamTypes" name="eThirdPartyTeam"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="AddThirdPartyWar" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="TeamTypes" name="eThirdPartyTeam"/>
+  </call>
+  <call fn="AddThirdPartyEmbargo" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="PlayerTypes" name="eThirdParty"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="AddDeclarationOfFriendship" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="AddVoteCommitment" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iResolutionID"/>
+    <arg type="int" name="iVoteChoice"/>
+    <arg type="int" name="iNumVotes"/>
+    <arg type="bool" name="bRepeal"/>
+  </call>
+  <call fn="GetGoldTrade" ret="int">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="ChangeGoldTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iNewAmount"/>
+  </call>
+  <call fn="GetGoldPerTurnTrade" ret="int">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="ChangeGoldPerTurnTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iNewAmount"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="IsResourceTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="ResourceTypes" name="eResource"/>
+  </call>
+  <call fn="ChangeResourceTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="ResourceTypes" name="eResource"/>
+    <arg type="int" name="iAmount"/>
+    <arg type="int" name="iDuration"/>
+  </call>
+  <call fn="IsCityTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="x"/>
+    <arg type="int" name="y"/>
+  </call>
+  <call fn="ChangeThirdPartyWarDuration" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="TeamTypes" name="eThirdPartyTeam"/>
+    <arg type="int" name="iNewDuration"/>
+  </call>
+  <call fn="ChangeThirdPartyPeaceDuration" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="TeamTypes" name="eThirdPartyTeam"/>
+    <arg type="int" name="iNewDuration"/>
+  </call>
+  <call fn="ChangeThirdPartyEmbargoDuration" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="PlayerTypes" name="eThirdParty"/>
+    <arg type="int" name="iNewDuration"/>
+  </call>
+  <call fn="IsAllowEmbassyTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="IsOpenBordersTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="IsDefensivePactTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="IsResearchAgreementTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="IsTradeAgreementTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="IsPeaceTreatyTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="IsThirdPartyPeaceTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="TeamTypes" name="eThirdPartyTeam"/>
+  </call>
+  <call fn="IsThirdPartyWarTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="TeamTypes" name="eThirdPartyTeam"/>
+  </call>
+  <call fn="IsVoteCommitmentTrade" ret="bool">
+    <arg type="PlayerTypes" name="eFrom"/>
+  </call>
+  <call fn="IsPotentiallyRenewable" ret="bool"></call>
+  <call fn="RemoveByType" ret="void">
+    <arg type="TradeableItems" name="eType"/>
+    <arg type="PlayerTypes" name="eFrom" default="NO_PLAYER"/>
+  </call>
+  <call fn="RemoveResourceTrade" ret="void">
+    <arg type="ResourceTypes" name="eResource"/>
+  </call>
+  <call fn="RemoveCityTrade" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iCityID"/>
+  </call>
+  <call fn="RemoveUnitTrade" ret="void">
+    <arg type="int" name="iUnitID"/>
+  </call>
+  <call fn="RemoveThirdPartyPeace" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="TeamTypes" name="eThirdPartyTeam"/>
+  </call>
+  <call fn="RemoveThirdPartyWar" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="TeamTypes" name="eThirdPartyTeam"/>
+  </call>
+  <call fn="RemoveThirdPartyEmbargo" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="PlayerTypes" name="eThirdParty"/>
+  </call>
+  <call fn="RemoveVoteCommitment" ret="void">
+    <arg type="PlayerTypes" name="eFrom"/>
+    <arg type="int" name="iResolutionID"/>
+    <arg type="int" name="iVoteChoice"/>
+    <arg type="int" name="iNumVotes"/>
+    <arg type="bool" name="bRepeal"/>
+  </call>
+  <call fn="ContainsItemType" ret="bool">
+    <arg type="TradeableItems" name="eItemType"/>
+    <arg type="PlayerTypes" name="eFrom" default="NO_PLAYER"/>
+  </call>
+</class>

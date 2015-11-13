@@ -1,0 +1,644 @@
+<obj type="Plot">
+  <api object="Plot" method="CanHaveFeature">
+    <arg pos="2" type="int" name="featureType"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="GetFeatureType">
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetTerrainType">
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="IsRiver">
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsWater">
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="SetFeatureType">
+    <arg pos="2" type="int" name="featureType"/>
+    <arg pos="3" type="int" name="variety" default="-1"/>
+    <ret type="void"/>
+  </api>
+  <api object="Plot" method="SetTerrainType">
+    <arg pos="2" type="int" name="terrainType"/>
+    <arg pos="3" type="bool" name="bRecalculate"/>
+    <arg pos="4" type="bool" name="bRebuildGraphics"/>
+    <ret type="void"/>
+  </api>
+  <api object="Plot" method="IsNone">
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="Erase">
+    <method class="CvPlot" fn="erase"/>
+  </api>
+  <api object="Plot" method="GetTeam">
+    <method class="CvPlot" fn="getTeam"/>
+  </api>
+  <api object="Plot" method="NukeExplosion">
+    <method class="CvPlot" fn="nukeExplosion"/>
+  </api>
+  <api object="Plot" method="UpdateFog">
+    <method class="CvPlot" fn="updateFog"/>
+  </api>
+  <api object="Plot" method="UpdateVisibility">
+    <method class="CvPlot" fn="updateVisibility"/>
+  </api>
+  <api object="Plot" method="IsAdjacentToArea">
+    <arg pos="2" type="Area" name="pkArea"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="ShareAdjacentArea">
+    <arg pos="2" type="Plot" name="pkPlot2"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsAdjacentToLand">
+    <method class="CvPlot" fn="isAdjacentToLand"/>
+  </api>
+  <api object="Plot" method="IsAdjacentToShallowWater">
+    <method class="CvPlot" fn="isAdjacentToShallowWater"/>
+  </api>
+  <api object="Plot" method="IsCoastalLand">
+    <method class="CvPlot" fn="isCoastalLand"/>
+  </api>
+  <api object="Plot" method="IsWithinTeamCityRadius">
+    <method class="CvPlot" fn="isWithinTeamCityRadius"/>
+  </api>
+  <api object="Plot" method="IsLake">
+    <method class="CvPlot" fn="isLake"/>
+  </api>
+  <api object="Plot" method="IsFreshWater">
+    <method class="CvPlot" fn="isFreshWater"/>
+  </api>
+  <api object="Plot" method="IsRiverSide">
+    <method class="CvPlot" fn="isRiverSide"/>
+  </api>
+  <api object="Plot" method="IsRiverConnection">
+    <method class="CvPlot" fn="isRiverConnection"/>
+  </api>
+  <api object="Plot" method="IsRiverCrossingFlowClockwise">
+    <arg pos="2" type="DirectionTypes" name="eDirection"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="GetNearestLandArea">
+    <method class="CvPlot" fn="getNearestLandArea"/>
+  </api>
+  <api object="Plot" method="SeeFromLevel">
+    <method class="CvPlot" fn="seeFromLevel"/>
+  </api>
+  <api object="Plot" method="GetNearestLandPlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="Plot" method="SeeThroughLevel">
+    <method class="CvPlot" fn="seeThroughLevel"/>
+  </api>
+  <api object="Plot" method="CanHaveResource">
+    <method class="CvPlot" fn="canHaveResource"/>
+  </api>
+  <api object="Plot" method="CanHaveImprovement">
+    <method class="CvPlot" fn="canHaveImprovement"/>
+  </api>
+  <api object="Plot" method="CanBuild">
+    <method class="CvPlot" fn="canBuild"/>
+  </api>
+  <api object="Plot" method="GetBuildTime">
+    <method class="CvPlot" fn="getBuildTime"/>
+  </api>
+  <api object="Plot" method="GetBuildTurnsLeft">
+    <method class="CvPlot" fn="getBuildTurnsLeft"/>
+  </api>
+  <api object="Plot" method="GetBuildTurnsTotal">
+    <method class="CvPlot" fn="getBuildTurnsTotal"/>
+  </api>
+  <api object="Plot" method="GetFeatureProduction">
+    <arg pos="2" type="BuildTypes" name="eBuild"/>
+    <arg pos="3" type="PlayerTypes" name="ePlayer"/>
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetBestDefender">
+    <arg pos="2" type="PlayerTypes" name="eOwner"/>
+    <arg pos="3" type="PlayerTypes" name="eAttackingPlayer"/>
+    <arg pos="4" type="Unit" name="pkAttacker" default="nil"/>
+    <arg pos="5" type="bool" name="bTestAtWar" default="false"/>
+    <arg pos="6" type="bool" name="bTestPotentialEnemy" default="false"/>
+    <arg pos="7" type="bool" name="bTestCanMove" default="false"/>
+    <ret type="Unit"/>
+  </api>
+  <api object="Plot" method="GetSelectedUnit">
+    <ret type="Unit"/>
+  </api>
+  <api object="Plot" method="GetUnitPower">
+    <method class="CvPlot" fn="getUnitPower"/>
+  </api>
+  <api object="Plot" method="DefenseModifier">
+    <method class="CvPlot" fn="defenseModifier"/>
+  </api>
+  <api object="Plot" method="MovementCost">
+    <method class="CvPlot" fn="movementCost"/>
+  </api>
+  <api object="Plot" method="GetExtraMovePathCost">
+    <method class="CvPlot" fn="getExtraMovePathCost"/>
+  </api>
+  <api object="Plot" method="ChangeExtraMovePathCost">
+    <method class="CvPlot" fn="changeExtraMovePathCost"/>
+  </api>
+  <api object="Plot" method="IsAdjacentOwned">
+    <method class="CvPlot" fn="isAdjacentOwned"/>
+  </api>
+  <api object="Plot" method="IsAdjacentPlayer">
+    <method class="CvPlot" fn="isAdjacentPlayer"/>
+  </api>
+  <api object="Plot" method="IsAdjacentTeam">
+    <method class="CvPlot" fn="isAdjacentTeam"/>
+  </api>
+  <api object="Plot" method="IsOwned">
+    <method class="CvPlot" fn="isOwned"/>
+  </api>
+  <api object="Plot" method="IsBarbarian">
+    <method class="CvPlot" fn="isBarbarian"/>
+  </api>
+  <api object="Plot" method="IsRevealedBarbarian">
+    <method class="CvPlot" fn="isRevealedBarbarian"/>
+  </api>
+  <api object="Plot" method="HasBarbarianCamp">
+    <method class="CvPlot" fn="HasBarbarianCamp"/>
+  </api>
+  <api object="Plot" method="IsVisible">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="bDebug" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsActiveVisible">
+    <arg pos="2" type="bool" name="bDebug" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsVisibleToWatchingHuman">
+    <method class="CvPlot" fn="isVisibleToWatchingHuman"/>
+  </api>
+  <api object="Plot" method="IsAdjacentVisible">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="bDebug" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsAdjacentNonvisible">
+    <method class="CvPlot" fn="isAdjacentNonvisible"/>
+  </api>
+  <api object="Plot" method="IsAdjacentRevealed">
+    <method class="CvPlot" fn="isAdjacentRevealed"/>
+  </api>
+  <api object="Plot" method="IsAdjacentNonrevealed">
+    <method class="CvPlot" fn="isAdjacentNonrevealed"/>
+  </api>
+  <api object="Plot" method="RemoveGoody">
+    <method class="CvPlot" fn="removeGoody"/>
+  </api>
+  <api object="Plot" method="IsGoody">
+    <method class="CvPlot" fn="isGoody"/>
+  </api>
+  <api object="Plot" method="IsRevealedGoody">
+    <method class="CvPlot" fn="isRevealedGoody"/>
+  </api>
+  <api object="Plot" method="IsFriendlyTerritory">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsCity">
+    <method class="CvPlot" fn="isCity"/>
+  </api>
+  <api object="Plot" method="IsFriendlyCity">
+    <arg pos="2" type="Unit" name="pkUnit"/>
+    <arg pos="3" type="bool" name="bCheckImprovement"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsEnemyCity">
+    <arg pos="2" type="Unit" name="pkUnit"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsBeingWorked">
+    <method class="CvPlot" fn="isBeingWorked"/>
+  </api>
+  <api object="Plot" method="IsUnit">
+    <method class="CvPlot" fn="isUnit"/>
+  </api>
+  <api object="Plot" method="IsVisibleEnemyDefender">
+    <arg pos="2" type="Unit" name="pkUnit"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="GetNumDefenders">
+    <method class="CvPlot" fn="getNumDefenders"/>
+  </api>
+  <api object="Plot" method="GetNumVisibleEnemyDefenders">
+    <method class="CvPlot" fn="getNumVisibleEnemyDefenders"/>
+  </api>
+  <api object="Plot" method="GetNumVisiblePotentialEnemyDefenders">
+    <method class="CvPlot" fn="getNumVisiblePotentialEnemyDefenders"/>
+  </api>
+  <api object="Plot" method="IsVisibleEnemyUnit">
+    <arg pos="2" type="PlayerTypes" name="ePlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsVisibleOtherUnit">
+    <method class="CvPlot" fn="isVisibleOtherUnit"/>
+  </api>
+  <api object="Plot" method="GetNumFriendlyUnitsOfType">
+    <arg pos="2" type="Unit" name="pkUnit"/>
+    <arg pos="3" type="bool" name="bBreakOnUnitLimit" default="true"/>
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="IsFighting">
+    <method class="CvPlot" fn="isFighting"/>
+  </api>
+  <api object="Plot" method="IsRoute">
+    <method class="CvPlot" fn="isRoute"/>
+  </api>
+  <api object="Plot" method="IsTradeRoute">
+    <arg pos="2" type="PlayerTypes" name="ePlayer" default="-1"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsValidDomainForLocation">
+    <arg pos="2" type="Unit" name="pkUnit"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsValidDomainForAction">
+    <arg pos="2" type="Unit" name="pkUnit"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsImpassable">
+    <method class="CvPlot" fn="isImpassable"/>
+  </api>
+  <api object="Plot" method="GetX">
+    <method class="CvPlot" fn="getX"/>
+  </api>
+  <api object="Plot" method="GetY">
+    <method class="CvPlot" fn="getY"/>
+  </api>
+  <api object="Plot" method="At">
+    <method class="CvPlot" fn="at"/>
+  </api>
+  <api object="Plot" method="GetPlotIndex">
+    <method class="CvPlot" fn="GetPlotIndex"/>
+  </api>
+  <api object="Plot" method="GetLatitude">
+    <method class="CvPlot" fn="getLatitude"/>
+  </api>
+  <api object="Plot" method="Area">
+    <ret type="Area"/>
+  </api>
+  <api object="Plot" method="WaterArea">
+    <ret type="Area"/>
+  </api>
+  <api object="Plot" method="GetArea">
+    <method class="CvPlot" fn="getArea"/>
+  </api>
+  <api object="Plot" method="SetArea">
+    <method class="CvPlot" fn="setArea"/>
+  </api>
+  <api object="Plot" method="GetFeatureVariety">
+    <method class="CvPlot" fn="getFeatureVariety"/>
+  </api>
+  <api object="Plot" method="GetOwnershipDuration">
+    <method class="CvPlot" fn="getOwnershipDuration"/>
+  </api>
+  <api object="Plot" method="IsOwnershipScore">
+    <method class="CvPlot" fn="isOwnershipScore"/>
+  </api>
+  <api object="Plot" method="SetOwnershipDuration">
+    <method class="CvPlot" fn="setOwnershipDuration"/>
+  </api>
+  <api object="Plot" method="ChangeOwnershipDuration">
+    <method class="CvPlot" fn="changeOwnershipDuration"/>
+  </api>
+  <api object="Plot" method="GetInlandCorner">
+    <ret type="Plot"/>
+  </api>
+  <api object="Plot" method="GetImprovementDuration">
+    <method class="CvPlot" fn="getImprovementDuration"/>
+  </api>
+  <api object="Plot" method="SetImprovementDuration">
+    <method class="CvPlot" fn="setImprovementDuration"/>
+  </api>
+  <api object="Plot" method="ChangeImprovementDuration">
+    <method class="CvPlot" fn="changeImprovementDuration"/>
+  </api>
+  <api object="Plot" method="GetUpgradeProgress">
+    <method class="CvPlot" fn="getUpgradeProgress"/>
+  </api>
+  <api object="Plot" method="GetUpgradeTimeLeft">
+    <method class="CvPlot" fn="getUpgradeTimeLeft"/>
+  </api>
+  <api object="Plot" method="SetUpgradeProgress">
+    <method class="CvPlot" fn="setUpgradeProgress"/>
+  </api>
+  <api object="Plot" method="ChangeUpgradeProgress">
+    <method class="CvPlot" fn="changeUpgradeProgress"/>
+  </api>
+  <api object="Plot" method="GetCityRadiusCount">
+    <method class="CvPlot" fn="getCityRadiusCount"/>
+  </api>
+  <api object="Plot" method="IsCityRadius">
+    <method class="CvPlot" fn="isCityRadius"/>
+  </api>
+  <api object="Plot" method="IsStartingPlot">
+    <method class="CvPlot" fn="isStartingPlot"/>
+  </api>
+  <api object="Plot" method="SetStartingPlot">
+    <method class="CvPlot" fn="setStartingPlot"/>
+  </api>
+  <api object="Plot" method="IsNEOfRiver">
+    <method class="CvPlot" fn="isNEOfRiver"/>
+  </api>
+  <api object="Plot" method="SetNEOfRiver">
+    <method class="CvPlot" fn="setNEOfRiver"/>
+  </api>
+  <api object="Plot" method="IsWOfRiver">
+    <method class="CvPlot" fn="isWOfRiver"/>
+  </api>
+  <api object="Plot" method="SetWOfRiver">
+    <method class="CvPlot" fn="setWOfRiver"/>
+  </api>
+  <api object="Plot" method="IsNWOfRiver">
+    <method class="CvPlot" fn="isNWOfRiver"/>
+  </api>
+  <api object="Plot" method="SetNWOfRiver">
+    <method class="CvPlot" fn="setNWOfRiver"/>
+  </api>
+  <api object="Plot" method="GetRiverEFlowDirection">
+    <method class="CvPlot" fn="getRiverEFlowDirection"/>
+  </api>
+  <api object="Plot" method="GetRiverSEFlowDirection">
+    <method class="CvPlot" fn="getRiverSEFlowDirection"/>
+  </api>
+  <api object="Plot" method="GetRiverSWFlowDirection">
+    <method class="CvPlot" fn="getRiverSWFlowDirection"/>
+  </api>
+  <api object="Plot" method="IsPotentialCityWork">
+    <method class="CvPlot" fn="isPotentialCityWork"/>
+  </api>
+  <api object="Plot" method="IsPotentialCityWorkForArea">
+    <method class="CvPlot" fn="isPotentialCityWorkForArea"/>
+  </api>
+  <api object="Plot" method="GetOwner">
+    <method class="CvPlot" fn="getOwner"/>
+  </api>
+  <api object="Plot" method="SetOwner">
+    <method class="CvPlot" fn="setOwner"/>
+  </api>
+  <api object="Plot" method="GetPlotType">
+    <method class="CvPlot" fn="getPlotType"/>
+  </api>
+  <api object="Plot" method="IsFlatlands">
+    <method class="CvPlot" fn="isFlatlands"/>
+  </api>
+  <api object="Plot" method="IsHills">
+    <method class="CvPlot" fn="isHills"/>
+  </api>
+  <api object="Plot" method="IsOpenGround">
+    <method class="CvPlot" fn="isOpenGround"/>
+  </api>
+  <api object="Plot" method="IsRoughGround">
+    <method class="CvPlot" fn="isRoughGround"/>
+  </api>
+  <api object="Plot" method="IsMountain">
+    <method class="CvPlot" fn="isMountain"/>
+  </api>
+  <api object="Plot" method="SetPlotType">
+    <method class="CvPlot" fn="setPlotType"/>
+  </api>
+  <api object="Plot" method="GetResourceType">
+    <arg pos="2" type="TeamTypes" name="eTeam" default="NO_TEAM"/>
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetNonObsoleteResourceType">
+    <method class="CvPlot" fn="getNonObsoleteResourceType"/>
+  </api>
+  <api object="Plot" method="SetResourceType">
+    <method class="CvPlot" fn="setResourceType"/>
+  </api>
+  <api object="Plot" method="GetNumResource">
+    <method class="CvPlot" fn="getNumResource"/>
+  </api>
+  <api object="Plot" method="SetNumResource">
+    <method class="CvPlot" fn="setNumResource"/>
+  </api>
+  <api object="Plot" method="ChangeNumResource">
+    <method class="CvPlot" fn="changeNumResource"/>
+  </api>
+  <api object="Plot" method="GetImprovementType">
+    <method class="CvPlot" fn="getImprovementType"/>
+  </api>
+  <api object="Plot" method="SetImprovementType">
+    <method class="CvPlot" fn="setImprovementType"/>
+  </api>
+  <api object="Plot" method="SetImprovementPillaged">
+    <method class="CvPlot" fn="SetImprovementPillaged"/>
+  </api>
+  <api object="Plot" method="GetRouteType">
+    <method class="CvPlot" fn="getRouteType"/>
+  </api>
+  <api object="Plot" method="SetRouteType">
+    <method class="CvPlot" fn="setRouteType"/>
+  </api>
+  <api object="Plot" method="IsRoutePillaged">
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="GetPlotCity">
+    <ret type="City"/>
+  </api>
+  <api object="Plot" method="GetWorkingCity">
+    <ret type="City"/>
+  </api>
+  <api object="Plot" method="GetWorkingCityOverride">
+    <ret type="City"/>
+  </api>
+  <api object="Plot" method="GetReconCount">
+    <method class="CvPlot" fn="getReconCount"/>
+  </api>
+  <api object="Plot" method="GetRiverCrossingCount">
+    <method class="CvPlot" fn="getRiverCrossingCount"/>
+  </api>
+  <api object="Plot" method="GetYield">
+    <arg pos="2" type="YieldTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="CalculateNatureYield">
+    <method class="CvPlot" fn="calculateNatureYield"/>
+  </api>
+  <api object="Plot" method="CalculateBestNatureYield">
+    <method class="CvPlot" fn="calculateBestNatureYield"/>
+  </api>
+  <api object="Plot" method="CalculateTotalBestNatureYield">
+    <method class="CvPlot" fn="calculateTotalBestNatureYield"/>
+  </api>
+  <api object="Plot" method="CalculateImprovementYieldChange">
+    <arg pos="2" type="ImprovementTypes" name="eImprovement"/>
+    <arg pos="3" type="YieldTypes" name="eYield"/>
+    <arg pos="4" type="PlayerTypes" name="ePlayer"/>
+    <arg pos="5" type="bool" name="bOptional" default="false"/>
+    <arg pos="5" type="RouteTypes" name="eRoute" default="NUM_ROUTE_TYPES"><bug>should be in position 6</bug></arg>
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="CalculateYield">
+    <method class="CvPlot" fn="calculateYield"/>
+  </api>
+  <api object="Plot" method="HasYield">
+    <method class="CvPlot" fn="hasYield"/>
+  </api>
+  <api object="Plot" method="GetYieldWithBuild">
+    <method class="CvPlot" fn="getYieldWithBuild"/>
+  </api>
+  <api object="Plot" method="CountNumAirUnits">
+    <method class="CvPlot" fn="countNumAirUnits"/>
+  </api>
+  <api object="Plot" method="GetFoundValue">
+    <method class="CvPlot" fn="getFoundValue"/>
+  </api>
+  <api object="Plot" method="IsBestAdjacentFound">
+    <method class="CvPlot" fn="isBestAdjacentFound"/>
+  </api>
+  <api object="Plot" method="GetPlayerCityRadiusCount">
+    <method class="CvPlot" fn="getPlayerCityRadiusCount"/>
+  </api>
+  <api object="Plot" method="IsPlayerCityRadius">
+    <method class="CvPlot" fn="isPlayerCityRadius"/>
+  </api>
+  <api object="Plot" method="GetVisibilityCount">
+    <method class="CvPlot" fn="getVisibilityCount"/>
+  </api>
+  <api object="Plot" method="ChangeVisibilityCount">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="iChange"><bug>should be int,  not bool</bug></arg>
+    <arg pos="4" type="int" name="eSeeInvisible"/>
+    <arg pos="5" type="bool" name="bInformExplorationTracking"/>
+    <arg pos="6" type="bool" name="bAlwaysSeeInvisible"/>
+    <ret type="void"/>
+  </api>
+  <api object="Plot" method="GetRevealedOwner">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="bDebug" default="false"/>
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetRevealedTeam">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="bDebug" default="false"/>
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="IsRiverCrossing">
+    <method class="CvPlot" fn="isRiverCrossing"/>
+  </api>
+  <api object="Plot" method="IsRiverCrossingToPlot">
+    <arg pos="2" type="Plot" name="pkOtherPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsRevealed">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="bDebug" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="SetRevealed">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="bNewValue"/>
+    <arg pos="4" type="bool" name="bTerrainOnly" default="false"/>
+    <arg pos="5" type="TeamTypes" name="eFromTeam" default="NO_TEAM"/>
+    <ret type="void"/>
+  </api>
+  <api object="Plot" method="GetRevealedImprovementType">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="bDebug" default="false"/>
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetRevealedRouteType">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="bDebug" default="false"/>
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetBuildProgress">
+    <method class="CvPlot" fn="getBuildProgress"/>
+  </api>
+  <api object="Plot" method="ChangeBuildProgress">
+    <method class="CvPlot" fn="changeBuildProgress"/>
+  </api>
+  <api object="Plot" method="GetInvisibleVisibilityCount">
+    <method class="CvPlot" fn="getInvisibleVisibilityCount"/>
+  </api>
+  <api object="Plot" method="IsInvisibleVisible">
+    <method class="CvPlot" fn="isInvisibleVisible"/>
+  </api>
+  <api object="Plot" method="ChangeInvisibleVisibilityCount">
+    <method class="CvPlot" fn="changeInvisibleVisibilityCount"/>
+  </api>
+  <api object="Plot" method="GetNumUnits">
+    <method class="CvPlot" fn="getNumUnits"/>
+  </api>
+  <api object="Plot" method="GetUnit">
+    <arg pos="2" type="int" name="iIndex"/>
+    <ret type="Unit"/>
+  </api>
+  <api object="Plot" method="GetNumLayerUnits">
+    <arg pos="2" type="int" name="iLayerID" default="-1"/>
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetLayerUnit">
+    <arg pos="2" type="int" name="iIndex"/>
+    <arg pos="3" type="int" name="iLayerID" default="-1"/>
+    <ret type="Unit"/>
+  </api>
+  <api object="Plot" method="GetScriptData">
+    <ret type="str"/>
+  </api>
+  <api object="Plot" method="SetScriptData">
+    <arg pos="2" type="str" name="sData"/>
+    <ret type="void"/>
+  </api>
+  <api object="Plot" method="GetActiveFogOfWarMode">
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="IsImprovementPillaged">
+    <method class="CvPlot" fn="IsImprovementPillaged"/>
+  </api>
+  <api object="Plot" method="CanSeePlot">
+    <arg pos="2" type="Plot" name="pkThatPlot"/>
+    <arg pos="3" type="TeamTypes" name="eTeam"/>
+    <arg pos="4" type="int" name="iRange"/>
+    <arg pos="5" type="DirectionTypes" name="eFacingDirection"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="GetContinentArtType">
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="SetContinentArtType">
+    <arg pos="2" type="int" name="iContinentType"/>
+    <ret type="void"/>
+  </api>
+  <api object="Plot" method="IsResourceConnectedByImprovement">
+    <arg pos="2" type="ImprovementTypes" name="eImprovement"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="IsBuildRemovesFeature">
+    <arg pos="2" type="BuildTypes" name="eBuild"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Plot" method="GetArchaeologyArtifactType">
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetArchaeologyArtifactEra">
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetArchaeologyArtifactPlayer1">
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetArchaeologyArtifactPlayer2">
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="GetArchaeologyArtifactWork">
+    <ret type="int"/>
+  </api>
+  <api object="Plot" method="HasWrittenArtifact">
+    <method class="CvPlot" fn="HasWrittenArtifact"/>
+  </api>
+  <api object="Plot" method="GetCityPurchaseID">
+    <method class="CvPlot" fn="GetCityPurchaseID"/>
+  </api>
+  <api object="Plot" method="SetCityPurchaseID">
+    <method class="CvPlot" fn="SetCityPurchaseID"/>
+  </api>
+</obj>

@@ -1,0 +1,1359 @@
+<obj type="Unit">
+  <api object="Unit" method="IsNone">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="Convert">
+    <arg pos="2" type="Unit" name="pkUnitToConvert"/>
+    <arg pos="3" type="bool" name="bIsUpgrade"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="Kill">
+    <arg pos="2" type="bool" name="bDelay"/>
+    <arg pos="3" type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="IsActionRecommended">
+    <method class="CvUnit" fn="isActionRecommended"/>
+  </api>
+  <api object="Unit" method="IsBetterDefenderThan">
+    <arg pos="2" type="Unit" name="pkDefender" default="nil"/>
+    <arg pos="3" type="Unit" name="pkAttacker" default="nil"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanDoCommand">
+    <arg pos="2" type="CommandTypes" name="eCommand"/>
+    <arg pos="3" type="int" name="iData1"/>
+    <arg pos="4" type="int" name="iData2"/>
+    <arg pos="5" type="bool" name="bTestVisible" default="false"/>
+    <arg pos="6" type="bool" name="bTestBusy" default="true"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="DoCommand">
+    <method class="CvUnit" fn="doCommand"/>
+  </api>
+  <api object="Unit" method="GetPathEndTurnPlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="Unit" method="GeneratePath">
+    <error>Not implemented</error>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="CanEnterTerritory">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="bIgnoreRightOfPassage" default="false"/>
+    <arg pos="4" type="bool" name="bIsCity" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetDeclareWarRangeStrike">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanMoveOrAttackInto">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="bool" name="bDeclareWar" default="false"/>
+    <arg pos="4" type="bool" name="bDestination" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanMoveThrough">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="JumpToNearestValidPlot">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetCombatDamage">
+    <arg pos="2" type="int" name="iStrength"/>
+    <arg pos="3" type="int" name="iOpponentStrength"/>
+    <arg pos="4" type="int" name="iCurrentDamage"/>
+    <arg pos="5" type="bool" name="bIncludeRand"/>
+    <arg pos="6" type="bool" name="bAttackerIsCity"/>
+    <arg pos="7" type="bool" name="bDefenderIsCity"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetFireSupportUnit">
+    <arg pos="2" type="PlayerTypes" name="eDefender"/>
+    <arg pos="3" type="int" name="iX"/>
+    <arg pos="4" type="int" name="iY"/>
+    <ret type="Unit"/>
+  </api>
+  <api object="Unit" method="CanAutomate">
+    <arg pos="2" type="AutomateTypes" name="eAutomate"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanRebaseAt">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="int" name="iX"/>
+    <arg pos="4" type="int" name="iY"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanScrap">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetScrapGold">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanGift">
+    <arg pos="2" type="bool" name="bTestVisible" default="false"/>
+    <arg pos="3" type="bool" name="bTestTransport" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanDistanceGift">
+    <arg pos="2" type="PlayerTypes" name="eToPlayer"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanLoadUnit">
+    <arg pos="2" type="Unit" name="pkLoadUnit"/>
+    <arg pos="3" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanLoad">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanUnload">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanUnloadAll">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanHold">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanSleep">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanFortify">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanAirPatrol">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsEmbarked">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="SetEmbarked">
+    <arg pos="2" type="bool" name="bNewValue"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="CanHeal">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanSentry">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanEmbark">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanDisembark">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanEmbarkOnto">
+    <arg pos="2" type="Plot" name="pkOriginPlot"/>
+    <arg pos="3" type="Plot" name="pkTargetPlot"/>
+    <arg pos="4" type="bool" name="bIsDestination" default="true"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanDisembarkOnto">
+    <arg pos="2" type="Plot" name="pkTargetPlot"/>
+    <arg pos="3" type="bool" name="bIsDestination" default="true"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="Embark">
+    <arg pos="2" type="Plot" name="pkTargetPlot" default="nil"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsRangeAttackIgnoreLOS">
+    <method class="CvUnit" fn="IsRangeAttackIgnoreLOS"/>
+  </api>
+  <api object="Unit" method="CanAirlift">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanAirliftAt">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="int" name="x"/>
+    <arg pos="4" type="int" name="y"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsNukeVictim">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="TeamTypes" name="eTeam"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanNuke">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanNukeAt">
+    <arg pos="2" type="int" name="x"/>
+    <arg pos="3" type="int" name="y"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanRangeStrike">
+    <method class="CvUnit" fn="canRangeStrike"/>
+  </api>
+  <api object="Unit" method="CanRangeStrikeAt">
+    <arg pos="2" type="int" name="x"/>
+    <arg pos="3" type="int" name="y"/>
+    <arg pos="4" type="bool" name="bNeedsWar" default="true"/>
+    <arg pos="5" type="bool" name="bNoncombatAllowed" default="true"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanParadrop">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="bool" name="bTestVisibility"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanParadropAt">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="int" name="x"/>
+    <arg pos="4" type="int" name="y"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanMakeTradeRoute">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanMakeTradeRouteAt">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="int" name="x"/>
+    <arg pos="4" type="int" name="y"/>
+    <arg pos="5" type="TradeConnectionType" name="eConnection"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetExoticGoodsGoldAmount">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExoticGoodsXPAmount">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanPillage">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsSelected">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanFound">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="bool" name="bTestVisible" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanJoin">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="SpecialistTypes" name="eSpecialist"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanConstruct">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="BuildingTypes" name="eBuilding"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsRangeAttackOnlyInDomain">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsCityAttackOnly">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanDiscover">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetDiscoverAmount">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetHurryProduction">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetTradeGold">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetTradeInfluence">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanBuyCityState">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="bool" name="bTestVisible" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanTrade">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="bool" name="bTestVisible" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanRepairFleet">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="bool" name="bTestVisible" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanBuildSpaceship">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="bool" name="bTestVisible" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanGoldenAge">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetGoldenAgeTurns">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetGivePoliciesCulture">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetBlastTourism">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanBuild">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="BuildTypes" name="eBuild"/>
+    <arg pos="4" type="bool" name="bTestVisible" default="false"/>
+    <arg pos="5" type="bool" name="bTestGold" default="true"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanLead">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="int" name="iUnitId"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="Lead">
+    <arg pos="2" type="int" name="iUnitId"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanGiveExperience">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GiveExperience">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanPromote">
+    <arg pos="2" type="PromotionTypes" name="ePromotion"/>
+    <arg pos="3" type="int" name="iLeaderUnitId"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="Promote">
+    <arg pos="2" type="PromotionTypes" name="ePromotion"/>
+    <arg pos="3" type="int" name="iLeaderUnitId"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetUpgradeUnitType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="UpgradePrice">
+    <arg pos="2" type="UnitTypes" name="eUnit"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanUpgradeRightNow">
+    <arg pos="2" type="bool" name="bTestVisible" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetNumResourceNeededToUpgrade">
+    <arg pos="2" type="ResourceTypes" name="eResource"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetHandicapType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetCivilizationType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetSpecialUnitType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetCaptureUnitType">
+    <arg pos="2" type="CivilizationTypes" name="eCivilization"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetUnitCombatType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetUnitAIType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="SetUnitAIType">
+    <arg pos="2" type="UnitAITypes" name="eUnitAI"/>
+    <ret type="nil"/>
+  </api>
+  <api object="Unit" method="GetDomainType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetInvisibleType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetSeeInvisibleType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetDropRange">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="FlavorValue">
+    <arg pos="2" type="FlavorTypes" name="eFlavor"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsBarbarian">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsHuman">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="VisibilityRange">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="MaxMoves">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="MovesLeft">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanMove">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="HasMoved">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="Range">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="NukeDamageLevel">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanBuildRoute">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetBuildType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="WorkRate">
+    <arg pos="2" type="bool" name="bMax"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsNoBadGoodies">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsOnlyDefensive">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsNoCapture">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsRivalTerritory">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsFound">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsWork">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsGoldenAge">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanCoexistWithEnemyUnit">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsGreatPerson">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsFighting">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsAttacking">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsDefending">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsInCombat">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetMaxHitPoints">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetCurrHitPoints">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsHurt">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsDead">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsDelayedDeath">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="SetBaseCombatStrength">
+    <arg pos="2" type="int" name="iCombat"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetBaseCombatStrength">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsCombatUnit">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsCanDefend">
+    <arg pos="2" type="Plot" name="pkPlot" default="nil"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsCanAttackWithMove">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsCanAttackRanged">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsCanAttack">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsCanAttackWithMoveNow">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetMaxAttackStrength">
+    <arg pos="2" type="Plot" name="pkFromPlot" default="nil"/>
+    <arg pos="3" type="Plot" name="pToPlot" default="nil"/>
+    <arg pos="4" type="Unit" name="pkDefender" default="nil"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetMaxDefenseStrength">
+    <arg pos="2" type="Plot" name="pInPlot" default="nil"/>
+    <arg pos="3" type="Unit" name="pkAttacker" default="nil"/>
+    <arg pos="4" type="bool" name="bFromRangedAttack" default="false"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetEmbarkedUnitDefense">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanSiege">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsEnemyInMovementRange">
+    <arg pos="2" type="bool" name="bOnlyFortified"/>
+    <arg pos="3" type="bool" name="bOnlyCities"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsTrade">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetBaseRangedCombatStrength">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetMaxRangedCombatStrength">
+    <arg pos="2" type="Unit" name="pkOther" default="nil"/>
+    <arg pos="3" type="City" name="pkCity" default="nil"/>
+    <arg pos="4" type="bool" name="bAttacking"/>
+    <arg pos="5" type="bool" name="bForRangedAttack"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetCombatLimit">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetRangedCombatLimit">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanAirAttack">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanAirDefend">
+    <arg pos="2" type="Plot" name="pkPlot" default="nil"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetAirCombatDamage">
+    <arg pos="2" type="Unit" name="pkDefender"/>
+    <arg pos="3" type="City" name="pkCity"/>
+    <arg pos="4" type="bool" name="bIncludeRand"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetRangeCombatDamage">
+    <arg pos="2" type="Unit" name="pkDefender" default="nil"/>
+    <arg pos="3" type="City" name="pkCity" default="nil"/>
+    <arg pos="4" type="bool" name="bIncludeRand"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetAirStrikeDefenseDamage">
+    <arg pos="2" type="Unit" name="pkAttacker"/>
+    <arg pos="3" type="bool" name="bIncludeRand"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetBestInterceptor">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="Unit" name="pkDefender" default="nil"/>
+    <arg pos="4" type="bool" name="bLandInterceptorsOnly"/>
+    <arg pos="5" type="bool" name="bVisibleInterceptorsOnly"/>
+    <ret type="Unit"/>
+  </api>
+  <api object="Unit" method="GetInterceptorCount">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <arg pos="3" type="Unit" name="pkDefender" default="nil"/>
+    <arg pos="4" type="bool" name="bLandInterceptorsOnly"/>
+    <arg pos="5" type="bool" name="bVisibleInterceptorsOnly"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetBestSeaPillageInterceptor">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="Unit"/>
+  </api>
+  <api object="Unit" method="GetCaptureChance">
+    <arg pos="2" type="Unit" name="pkEnemy"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsAutomated">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsWaiting">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsFortifyable">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsEverFortifyable">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="FortifyModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="ExperienceNeeded">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="AttackXPValue">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="DefenseXPValue">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="MaxXPValue">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="FirstStrikes">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="ChanceFirstStrikes">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="MaxFirstStrikes">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsRanged">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsMustSetUpToRangedAttack">
+    <method class="CvUnit" fn="isMustSetUpToRangedAttack"/>
+  </api>
+  <api object="Unit" method="CanSetUpForRangedAttack">
+    <method class="CvUnit" fn="canSetUpForRangedAttack"/>
+  </api>
+  <api object="Unit" method="IsSetUpForRangedAttack">
+    <method class="CvUnit" fn="isSetUpForRangedAttack"/>
+  </api>
+  <api object="Unit" method="ImmuneToFirstStrikes">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="NoDefensiveBonus">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IgnoreBuildingDefense">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanMoveImpassable">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanMoveAllTerrain">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="FlatMovementCost">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IgnoreTerrainCost">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsNeverInvisible">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsInvisible">
+    <arg pos="2" type="TeamTypes" name="eTeam"/>
+    <arg pos="3" type="bool" name="bDebug"/>
+    <arg pos="4" type="int" name="iCheckCargo" default="0"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsEnemyCityAdjacent">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsNukeImmune">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="MaxInterceptionProbability">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CurrInterceptionProbability">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="EvasionProbability">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="WithdrawalProbability">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetAdjacentModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetAttackModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetDefenseModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetRangedAttackModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CityAttackModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CityDefenseModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="HillsAttackModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="HillsDefenseModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="OpenAttackModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="OpenRangedAttackModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="RoughAttackModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="RoughRangedAttackModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="AttackFortifiedModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="AttackWoundedModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="FlankAttackModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="OpenDefenseModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="RoughDefenseModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="TerrainAttackModifier">
+    <arg pos="2" type="TerrainTypes" name="eTerrain"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="TerrainDefenseModifier">
+    <arg pos="2" type="TerrainTypes" name="eTerrain"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="FeatureAttackModifier">
+    <arg pos="2" type="FeatureTypes" name="eFeature"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="FeatureDefenseModifier">
+    <arg pos="2" type="FeatureTypes" name="eFeature"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="UnitClassAttackModifier">
+    <arg pos="2" type="UnitClassTypes" name="eUnitClass"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="UnitClassDefenseModifier">
+    <arg pos="2" type="UnitClassTypes" name="eUnitClass"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="UnitCombatModifier">
+    <arg pos="2" type="UnitCombatTypes" name="eUnitCombat"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="DomainModifier">
+    <arg pos="2" type="DomainTypes" name="eDomain"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetStrategicResourceCombatPenalty">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetUnhappinessCombatPenalty">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="AirSweepCombatMod">
+    <method class="CvUnit" fn="GetAirSweepCombatModifier"/>
+  </api>
+  <api object="Unit" method="CapitalDefenseModifier">
+    <method class="CvUnit" fn="GetCapitalDefenseModifier"/>
+  </api>
+  <api object="Unit" method="CapitalDefenseFalloff">
+    <method class="CvUnit" fn="GetCapitalDefenseFalloff"/>
+  </api>
+  <api object="Unit" method="SpecialCargo">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="DomainCargo">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CargoSpace">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="ChangeCargoSpace">
+    <arg pos="2" type="int" name="iChange"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="IsFull">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CargoSpaceAvailable">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="HasCargo">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanCargoAllMove">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetUnitAICargo">
+    <arg pos="2" type="UnitAITypes" name="eUnitAI"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetID">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetHotKeyNumber">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="SetHotKeyNumber">
+    <arg pos="2" type="int" name="iNewValue"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetX">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetY">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="SetXY">
+    <arg pos="2" type="int" name="x"/>
+    <arg pos="3" type="int" name="y"/>
+    <arg pos="4" type="bool" name="bGroup" default="false"/>
+    <arg pos="5" type="bool" name="bUpdate" default="true"/>
+    <arg pos="6" type="bool" name="bShow" default="false"/>
+    <arg pos="7" type="bool" name="bCheckPlotVisible" default="false"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="At">
+    <arg pos="2" type="int" name="x"/>
+    <arg pos="3" type="int" name="y"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="AtPlot">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetPlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="Unit" method="GetArea">
+    <ret type="Area"/>
+  </api>
+  <api object="Unit" method="GetReconPlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="Unit" method="SetReconPlot">
+    <arg pos="2" type="Plot" name="pkPlot"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetGameTurnCreated">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetLastMoveTurn">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetDamage">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="SetDamage">
+    <arg pos="2" type="int" name="iNewValue"/>
+    <arg pos="3" type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+    <arg pos="4" type="bool" name="bNotifyEntity" default="true"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="ChangeDamage">
+    <arg pos="2" type="int" name="iChange"/>
+    <arg pos="3" type="PlayerTypes" name="ePlayer" default="NO_PLAYER"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetMoves">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="SetMoves">
+    <arg pos="2" type="int" name="iNewValue"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="ChangeMoves">
+    <arg pos="2" type="int" name="iChange"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="FinishMoves">
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="IsImmobile">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetExperience">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="SetExperience">
+    <arg pos="2" type="int" name="iNewValue"/>
+    <arg pos="3" type="int" name="iMax" default="-1"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="ChangeExperience">
+    <arg pos="2" type="int" name="iChange"/>
+    <arg pos="3" type="int" name="iMax" default="-1"/>
+    <arg pos="4" type="bool" name="bFromCombat" default="false"/>
+    <arg pos="5" type="bool" name="bInBorders" default="false"/>
+    <arg pos="6" type="bool" name="bUpdateGlobal" default="false"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetLevel">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="SetLevel">
+    <arg pos="2" type="int" name="iNewLevel"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="ChangeLevel">
+    <arg pos="2" type="int" name="iChange"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetFacingDirection">
+    <arg pos="2" type="bool" name="bCheckLineOfSightProperty" default="false"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="RotateFacingDirectionClockwise">
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="RotateFacingDirectionCounterClockwise">
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetCargo">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetFortifyTurns">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetBlitzCount">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsBlitz">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetAmphibCount">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsAmphib">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetRiverCrossingNoPenaltyCount">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsRiverCrossingNoPenalty">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsEnemyRoute">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsAlwaysHeal">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsHealOutsideFriendly">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsHillsDoubleMove">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsGarrisoned">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetGarrisonedCity">
+    <ret type="City"/>
+  </api>
+  <api object="Unit" method="GetExtraVisibilityRange">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraMoves">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraMoveDiscount">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraRange">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraIntercept">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraEvasion">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraFirstStrikes">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraChanceFirstStrikes">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraWithdrawal">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraEnemyHeal">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraNeutralHeal">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraFriendlyHeal">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetSameTileHeal">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetAdjacentTileHeal">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraCombatPercent">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetFriendlyLandsModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetFriendlyLandsAttackModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetOutsideFriendlyLandsModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraCityAttackPercent">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraCityDefensePercent">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraHillsAttackPercent">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraHillsDefensePercent">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraOpenAttackPercent">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraOpenRangedAttackMod">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraRoughAttackPercent">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraRoughRangedAttackMod">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraAttackFortifiedMod">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraAttackWoundedMod">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraOpenDefensePercent">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetPillageChange">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetUpgradeDiscount">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExperiencePercent">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetKamikazePercent">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsOutOfAttacks">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="SetMadeAttack">
+    <arg pos="2" type="bool" name="bNewValue"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="isOutOfInterceptions">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="SetMadeInterception">
+    <arg pos="2" type="bool" name="bNewValue"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="IsPromotionReady">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="SetPromotionReady">
+    <arg pos="2" type="bool" name="bNewValue"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetOwner">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetVisualOwner">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetCombatOwner">
+    <arg pos="2" type="TeamTypes" name="eForTeam"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetOriginalOwner">
+    <method class="CvUnit" fn="GetOriginalOwner"/>
+  </api>
+  <api object="Unit" method="SetOriginalOwner">
+    <arg pos="2" type="PlayerTypes" name="ePlayerType"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetTeam">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetUnitType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetUnitClassType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetLeaderUnitType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="SetLeaderUnitType">
+    <arg pos="2" type="UnitTypes" name="eLeaderUnitType"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="IsNearGreatGeneral">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsStackedGreatGeneral">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsIgnoreGreatGeneralBenefit">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetReverseGreatGeneralModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetGreatGeneralCombatModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsNearSapper">
+    <arg pos="2" type="City" name="pkCity" default="nil"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetNearbyImprovementModifier">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsFriendlyUnitAdjacent">
+    <arg pos="2" type="bool" name="bCombatUnit"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetNumEnemyUnitsAdjacent">
+    <arg pos="2" type="Unit" name="pkOtherUnit"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetTransportUnit">
+    <ret type="Unit"/>
+  </api>
+  <api object="Unit" method="IsCargo">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetExtraDomainModifier">
+    <arg pos="2" type="DomainTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetName">
+    <ret type="str"/>
+  </api>
+  <api object="Unit" method="GetNameNoDesc">
+    <ret type="str"/>
+  </api>
+  <api object="Unit" method="HasName">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetNameKey">
+    <ret type="str"/>
+  </api>
+  <api object="Unit" method="SetName">
+    <arg pos="2" type="str" name="sName"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="IsTerrainDoubleMove">
+    <arg pos="2" type="TerrainTypes" name="eIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsFeatureDoubleMove">
+    <arg pos="2" type="FeatureTypes" name="eIndex"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="GetScriptData">
+    <ret type="str"/>
+  </api>
+  <api object="Unit" method="SetScriptData">
+    <arg pos="2" type="str" name="sData"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetScenarioData">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="SetScenarioData">
+    <arg pos="2" type="int" name="iNewData"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetExtraTerrainAttackPercent">
+    <arg pos="2" type="TerrainTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraTerrainDefensePercent">
+    <arg pos="2" type="TerrainTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraFeatureAttackPercent">
+    <arg pos="2" type="FeatureTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraFeatureDefensePercent">
+    <arg pos="2" type="FeatureTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetExtraUnitCombatModifier">
+    <arg pos="2" type="UnitCombatTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetUnitClassModifier">
+    <arg pos="2" type="UnitClassTypes" name="eIndex"/>
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="CanAcquirePromotion">
+    <arg pos="2" type="PromotionTypes" name="ePromotion"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="CanAcquirePromotionAny">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsPromotionValid">
+    <arg pos="2" type="PromotionTypes" name="ePromotion"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsHasPromotion">
+    <arg pos="2" type="PromotionTypes" name="ePromotion"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="SetHasPromotion">
+    <arg pos="2" type="PromotionTypes" name="eIndex"/>
+    <arg pos="3" type="bool" name="bNewValue"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetReligion">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetConversionStrength">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetSpreadsLeft">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetNumFollowersAfterSpread">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetMajorityReligionAfterSpread">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetTourismBlastStrength">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetGreatWorkSlotType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="RangeStrike">
+    <arg pos="2" type="int" name="x"/>
+    <arg pos="3" type="int" name="y"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="GetUnitFlagIconOffset">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetUnitPortraitOffset">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="GetActivityType">
+    <ret type="int"/>
+  </api>
+  <api object="Unit" method="IsReadyToMove">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsBusy">
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="PushMission">
+    <arg pos="2" type="MissionTypes" name="eMission"/>
+    <arg pos="3" type="int" name="iData1" default="-1"/>
+    <arg pos="4" type="int" name="iData2" default="-1"/>
+    <arg pos="5" type="int" name="iFlags" default="0"/>
+    <arg pos="6" type="bool" name="bAppend" default="false"/>
+    <arg pos="7" type="bool" name="bManual" default="false"/>
+    <arg pos="8" type="MissionAITypes" name="eMissionAI" default="NO_MISSIONAI"/>
+    <arg pos="9" type="Plot" name="pkMissionAIPlot" default="nil"/>
+    <arg pos="10" type="Unit" name="pkMissionAIUnit" default="nil"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="PopMission">
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="LastMissionPlot">
+    <ret type="Plot"/>
+  </api>
+  <api object="Unit" method="CanStartMission">
+    <arg pos="2" type="int" name="iMission"/>
+    <arg pos="3" type="int" name="iData1"/>
+    <arg pos="4" type="int" name="iData2"/>
+    <arg pos="5" type="Plot" name="pkPlot" default="nil"/>
+    <arg pos="6" type="bool" name="bTestVisible" default="false"/>
+    <arg pos="7" type="bool" name="bUseCache" default="false"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="ExecuteSpecialExploreMove">
+    <arg pos="2" type="Plot" name="pkPlot" default="nil"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="SetDeployFromOperationTurn">
+    <arg pos="2" type="int" name="iTurn"/>
+    <ret type="void"/>
+  </api>
+  <api object="Unit" method="IsHigherTechThan">
+    <arg pos="2" type="UnitTypes" name="eOtherUnit"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsLargerCivThan">
+    <arg pos="2" type="Unit" name="pkOtherUnit"/>
+    <ret type="bool"/>
+  </api>
+  <api object="Unit" method="IsRangedSupportFire">
+    <ret type="bool"/>
+  </api>
+</obj>

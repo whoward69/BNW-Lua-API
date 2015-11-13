@@ -1,0 +1,888 @@
+<class type="CvGame">
+  <call fn="InitPlayers" ret="void"></call>
+  <call fn="reset" ret="void">
+    <arg type="HandicapTypes" name="eHandicap"/>
+    <arg type="bool" name="bConstructorCall" default="false"/>
+  </call>
+  <call fn="uninit" ret="void"></call>
+  <call fn="DoGameStarted" ret="void"></call>
+  <call fn="update" ret="void"></call>
+  <call fn="updateScore" ret="void">
+    <arg type="bool" name="bForce" default="false"/>
+  </call>
+  <call fn="GetMapScoreMod" ret="int"></call>
+  <call fn="updateCitySight" ret="void">
+    <arg type="bool" name="bIncrement"/>
+  </call>
+  <call fn="updateSelectionList" ret="void"></call>
+  <call fn="updateTestEndTurn" ret="void"></call>
+  <call fn="getPlotUnit" ret="Unit">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="int" name="iIndex"/>
+  </call>
+  <call fn="cycleCities" ret="void">
+    <arg type="bool" name="bForward" default="true"/>
+    <arg type="bool" name="bAdd" default="false"/>
+  </call>
+  <call fn="cycleUnits" ret="void">
+    <arg type="bool" name="bClear"/>
+    <arg type="bool" name="bForward" default="true"/>
+    <arg type="bool" name="bWorkers" default="false"/>
+  </call>
+  <call fn="cyclePlotUnits" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bForward" default="true"/>
+    <arg type="bool" name="bAuto" default="false"/>
+    <arg type="int" name="iCount" default="-1"/>
+  </call>
+  <call fn="selectionListMove" ret="void">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="bool" name="bShift"/>
+  </call>
+  <call fn="selectionListGameNetMessage" ret="void">
+    <arg type="int" name="eMessage"/>
+    <arg type="int" name="iData2" default="-1"/>
+    <arg type="int" name="iData3" default="-1"/>
+    <arg type="int" name="iData4" default="-1"/>
+    <arg type="int" name="iFlags" default="0"/>
+    <arg type="bool" name="bAlt" default="false"/>
+    <arg type="bool" name="bShift" default="false"/>
+  </call>
+  <call fn="selectedCitiesGameNetMessage" ret="void">
+    <arg type="int" name="eMessage"/>
+    <arg type="int" name="iData2" default="-1"/>
+    <arg type="int" name="iData3" default="-1"/>
+    <arg type="int" name="iData4" default="-1"/>
+    <arg type="bool" name="bOption" default="false"/>
+    <arg type="bool" name="bAlt" default="false"/>
+    <arg type="bool" name="bShift" default="false"/>
+    <arg type="bool" name="bCtrl" default="false"/>
+  </call>
+  <call fn="cityPushOrder" ret="void">
+    <arg type="City" name="pCity"/>
+    <arg type="OrderTypes" name="eOrder"/>
+    <arg type="int" name="iData"/>
+    <arg type="bool" name="bAlt" default="false"/>
+    <arg type="bool" name="bShift" default="false"/>
+    <arg type="bool" name="bCtrl" default="false"/>
+  </call>
+  <call fn="CityPurchase" ret="void">
+    <arg type="City" name="pCity"/>
+    <arg type="UnitTypes" name="eUnitType"/>
+    <arg type="BuildingTypes" name="eBuildingType"/>
+    <arg type="ProjectTypes" name="eProjectType"/>
+    <arg type="YieldTypes" name="ePurchaseYield"/>
+  </call>
+  <call fn="selectUnit" ret="void">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="bool" name="bClear"/>
+    <arg type="bool" name="bToggle" default="false"/>
+    <arg type="bool" name="bSound" default="false"/>
+  </call>
+  <call fn="mouseoverUnit" ret="void">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="bool" name="bEnter"/>
+  </call>
+  <call fn="selectGroup" ret="void">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="bool" name="bShift"/>
+    <arg type="bool" name="bCtrl"/>
+    <arg type="bool" name="bAlt"/>
+  </call>
+  <call fn="selectAll" ret="void">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="SelectSettler" ret="void"></call>
+  <call fn="selectionListIgnoreBuildingDefense" ret="bool"></call>
+  <call fn="canHandleAction" ret="bool">
+    <arg type="int" name="iAction"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="handleAction" ret="void">
+    <arg type="int" name="iAction"/>
+  </call>
+  <call fn="canDoControl" ret="bool">
+    <arg type="ControlTypes" name="eControl"/>
+  </call>
+  <call fn="doControl" ret="void">
+    <arg type="ControlTypes" name="eControl"/>
+  </call>
+  <call fn="getProductionPerPopulation" ret="int">
+    <arg type="HurryTypes" name="eHurry"/>
+  </call>
+  <call fn="getAdjustedPopulationPercent" ret="int">
+    <arg type="VictoryTypes" name="eVictory"/>
+  </call>
+  <call fn="getAdjustedLandPercent" ret="int">
+    <arg type="VictoryTypes" name="eVictory"/>
+  </call>
+  <call fn="countCivPlayersAlive" ret="int"></call>
+  <call fn="countCivPlayersEverAlive" ret="int"></call>
+  <call fn="countCivTeamsAlive" ret="int"></call>
+  <call fn="countCivTeamsEverAlive" ret="int"></call>
+  <call fn="countHumanPlayersAlive" ret="int"></call>
+  <call fn="countHumanPlayersEverAlive" ret="int"></call>
+  <call fn="countSeqHumanTurnsUntilPlayerTurn" ret="int">
+    <arg type="PlayerTypes" name="playerID"/>
+  </call>
+  <call fn="countMajorCivsAlive" ret="int"></call>
+  <call fn="countMajorCivsEverAlive" ret="int"></call>
+  <call fn="countTotalCivPower" ret="int"></call>
+  <call fn="countTotalNukeUnits" ret="int"></call>
+  <call fn="countKnownTechNumTeams" ret="int">
+    <arg type="TechTypes" name="eTech"/>
+  </call>
+  <call fn="goldenAgeLength" ret="int"></call>
+  <call fn="victoryDelay" ret="int">
+    <arg type="VictoryTypes" name="eVictory"/>
+  </call>
+  <call fn="getImprovementUpgradeTimeMod" ret="int">
+    <arg type="ImprovementTypes" name="eImprovement"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="getImprovementUpgradeTime" ret="int">
+    <arg type="ImprovementTypes" name="eImprovement"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="canTrainNukes" ret="bool"></call>
+  <call fn="getCurrentEra" ret="EraTypes"></call>
+  <call fn="getActiveTeam" ret="TeamTypes"></call>
+  <call fn="getActiveCivilizationType" ret="CivilizationTypes"></call>
+  <call fn="isNetworkMultiPlayer" ret="bool"></call>
+  <call fn="isGameMultiPlayer" ret="bool"></call>
+  <call fn="isTeamGame" ret="bool"></call>
+  <call fn="ReviveActivePlayer" ret="void"></call>
+  <call fn="CanMoveActivePlayerToObserver" ret="bool"></call>
+  <call fn="ActivateObserverSlot" ret="void"></call>
+  <call fn="getNumHumanPlayers" ret="int"></call>
+  <call fn="GetNumMinorCivsEver" ret="int"></call>
+  <call fn="getNumHumansInHumanWars" ret="int">
+    <arg type="PlayerTypes" name="ignorePlayer" default="NO_PLAYER"/>
+  </call>
+  <call fn="getNumSequentialHumans" ret="int">
+    <arg type="PlayerTypes" name="ignorePlayer" default="NO_PLAYER"/>
+  </call>
+  <call fn="getGameTurn" ret="int"></call>
+  <call fn="setGameTurn" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="incrementGameTurn" ret="void"></call>
+  <call fn="getTurnYear" ret="int">
+    <arg type="int" name="iGameTurn"/>
+  </call>
+  <call fn="getGameTurnYear" ret="int"></call>
+  <call fn="getElapsedGameTurns" ret="int"></call>
+  <call fn="incrementElapsedGameTurns" ret="void"></call>
+  <call fn="getMaxTurns" ret="int"></call>
+  <call fn="setMaxTurns" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeMaxTurns" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getMaxCityElimination" ret="int"></call>
+  <call fn="setMaxCityElimination" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getNumAdvancedStartPoints" ret="int"></call>
+  <call fn="setNumAdvancedStartPoints" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getStartTurn" ret="int"></call>
+  <call fn="setStartTurn" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="GetWinningTurn" ret="int"></call>
+  <call fn="SetWinningTurn" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getStartYear" ret="int"></call>
+  <call fn="setStartYear" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getEstimateEndTurn" ret="int"></call>
+  <call fn="setEstimateEndTurn" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getDefaultEstimateEndTurn" ret="int"></call>
+  <call fn="setDefaultEstimateEndTurn" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getTurnSlice" ret="int"></call>
+  <call fn="getMinutesPlayed" ret="int"></call>
+  <call fn="setTurnSlice" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeTurnSlice" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="resetTurnTimer" ret="void">
+    <arg type="bool" name="resetGameTurnStart" default="true"/>
+  </call>
+  <call fn="getMaxTurnLen" ret="int"></call>
+  <call fn="IsStaticTutorialActive" ret="bool"></call>
+  <call fn="SetStaticTutorialActive" ret="void">
+    <arg type="bool" name="bStaticTutorialActive"/>
+  </call>
+  <call fn="HasAdvisorMessageBeenSeen" ret="bool">
+    <arg type="str" name="szAdvisorMessageName"/>
+  </call>
+  <call fn="SetAdvisorMessageHasBeenSeen" ret="void">
+    <arg type="str" name="szAdvisorMessageName"/>
+    <arg type="bool" name="bSeen"/>
+  </call>
+  <call fn="IsCityScreenBlocked" ret="bool"></call>
+  <call fn="CanOpenCityScreen" ret="bool">
+    <arg type="PlayerTypes" name="eOpener"/>
+    <arg type="City" name="pCity"/>
+  </call>
+  <call fn="getTargetScore" ret="int"></call>
+  <call fn="setTargetScore" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getNumGameTurnActive" ret="int"></call>
+  <call fn="countNumHumanGameTurnActive" ret="int"></call>
+  <call fn="changeNumGameTurnActive" ret="void">
+    <arg type="int" name="iChange"/>
+    <arg type="string" name="why"/>
+  </call>
+  <call fn="getNumCities" ret="int"></call>
+  <call fn="getNumCivCities" ret="int"></call>
+  <call fn="changeNumCities" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getTotalPopulation" ret="int"></call>
+  <call fn="changeTotalPopulation" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNoNukesCount" ret="int"></call>
+  <call fn="isNoNukes" ret="bool"></call>
+  <call fn="changeNoNukesCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNukesExploded" ret="int"></call>
+  <call fn="changeNukesExploded" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getMaxPopulation" ret="int"></call>
+  <call fn="getInitPopulation" ret="int"></call>
+  <call fn="getInitLand" ret="int"></call>
+  <call fn="getInitTech" ret="int"></call>
+  <call fn="getInitWonders" ret="int"></call>
+  <call fn="initScoreCalculation" ret="void"></call>
+  <call fn="getAIAutoPlay" ret="int"></call>
+  <call fn="setAIAutoPlay" ret="void">
+    <arg type="int" name="iNewValue"/>
+    <arg type="PlayerTypes" name="eReturnPlayer"/>
+  </call>
+  <call fn="changeAIAutoPlay" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getInitialTime" ret="int"></call>
+  <call fn="setInitialTime" ret="void">
+    <arg type="int" name="uiNewValue"/>
+  </call>
+  <call fn="isScoreDirty" ret="bool"></call>
+  <call fn="setScoreDirty" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="isCircumnavigated" ret="bool"></call>
+  <call fn="makeCircumnavigated" ret="void"></call>
+  <call fn="circumnavigationAvailable" ret="bool"></call>
+  <call fn="DoFromUIDiploEvent" ret="void">
+    <arg type="FromUIDiploEventTypes" name="eEvent"/>
+    <arg type="PlayerTypes" name="eAIPlayer"/>
+    <arg type="int" name="iArg1"/>
+    <arg type="int" name="iArg2"/>
+  </call>
+  <call fn="DoInitDiploVictory" ret="void"></call>
+  <call fn="DoUpdateDiploVictory" ret="void"></call>
+  <call fn="GetVotesNeededForDiploVictory" ret="int"></call>
+  <call fn="SetVotesNeededForDiploVictory" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="IsUnitedNationsActive" ret="bool"></call>
+  <call fn="GetUnitedNationsCountdown" ret="int"></call>
+  <call fn="SetUnitedNationsCountdown" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeUnitedNationsCountdown" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumVictoryVotesTallied" ret="int"></call>
+  <call fn="SetNumVictoryVotesTallied" ret="void">
+    <arg type="int" name="iValue"/>
+    <arg type="bool" name="bPreliminaryVote"/>
+  </call>
+  <call fn="ChangeNumVictoryVotesTallied" ret="void">
+    <arg type="int" name="iChange"/>
+    <arg type="bool" name="bPreliminaryVote"/>
+  </call>
+  <call fn="GetNumVictoryVotesExpected" ret="int"></call>
+  <call fn="SetNumVictoryVotesExpected" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetVoteCast" ret="TeamTypes">
+    <arg type="TeamTypes" name="eVotingTeam"/>
+  </call>
+  <call fn="SetVoteCast" ret="void">
+    <arg type="TeamTypes" name="eVotingTeam"/>
+    <arg type="TeamTypes" name="eVote"/>
+    <arg type="bool" name="bPreliminaryVote" default="false"/>
+  </call>
+  <call fn="GetPreviousVoteCast" ret="TeamTypes">
+    <arg type="TeamTypes" name="eVotingTeam"/>
+  </call>
+  <call fn="SetPreviousVoteCast" ret="void">
+    <arg type="TeamTypes" name="eVotingTeam"/>
+    <arg type="TeamTypes" name="eVotingTarget"/>
+  </call>
+  <call fn="GetNumVotesForTeam" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="SetNumVotesForTeam" ret="void">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeNumVotesForTeam" ret="void">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetDiploResponse" ret="Localization::String">
+    <arg type="str" name="szLeader"/>
+    <arg type="str" name="szResponse"/>
+    <arg type="Localization::String" name="strOptionalKey1"/>
+    <arg type="Localization::String" name="strOptionalKey2"/>
+  </call>
+  <call fn="isDebugMode" ret="bool"></call>
+  <call fn="setDebugMode" ret="void">
+    <arg type="bool" name="bDebugMode"/>
+  </call>
+  <call fn="toggleDebugMode" ret="void"></call>
+  <call fn="updateDebugModeCache" ret="void"></call>
+  <call fn="setFOW" ret="void">
+    <arg type="bool" name="bMode"/>
+  </call>
+  <call fn="getFOW" ret="bool"></call>
+  <call fn="getPitbossTurnTime" ret="int"></call>
+  <call fn="setPitbossTurnTime" ret="void">
+    <arg type="int" name="iHours"/>
+  </call>
+  <call fn="isHotSeat" ret="bool"></call>
+  <call fn="isPbem" ret="bool"></call>
+  <call fn="isPitboss" ret="bool"></call>
+  <call fn="isSimultaneousTeamTurns" ret="bool"></call>
+  <call fn="isFinalInitialized" ret="bool"></call>
+  <call fn="setFinalInitialized" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="IsWaitingForBlockingInput" ret="bool"></call>
+  <call fn="SetWaitingForBlockingInput" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="getPbemTurnSent" ret="bool"></call>
+  <call fn="setPbemTurnSent" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="getHotPbemBetweenTurns" ret="bool"></call>
+  <call fn="setHotPbemBetweenTurns" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="isPlayerOptionsSent" ret="bool"></call>
+  <call fn="sendPlayerOptions" ret="void">
+    <arg type="bool" name="bForce" default="false"/>
+  </call>
+  <call fn="getActivePlayer" ret="PlayerTypes"></call>
+  <call fn="setActivePlayer" ret="void">
+    <arg type="PlayerTypes" name="eNewValue"/>
+    <arg type="bool" name="bForceHotSeat" default="false"/>
+    <arg type="bool" name="bAutoplaySwitch" default="false"/>
+  </call>
+  <call fn="getHandicapInfo" ret="CvHandicapInfo"></call>
+  <call fn="getHandicapType" ret="HandicapTypes"></call>
+  <call fn="setHandicapType" ret="void">
+    <arg type="HandicapTypes" name="eHandicap"/>
+  </call>
+  <call fn="getPausePlayer" ret="PlayerTypes"></call>
+  <call fn="isPaused" ret="bool"></call>
+  <call fn="setPausePlayer" ret="void">
+    <arg type="PlayerTypes" name="eNewValue"/>
+  </call>
+  <call fn="getBestLandUnit" ret="UnitTypes"></call>
+  <call fn="getBestLandUnitCombat" ret="int"></call>
+  <call fn="setBestLandUnit" ret="void">
+    <arg type="UnitTypes" name="eNewValue"/>
+  </call>
+  <call fn="GetFaithCost" ret="int">
+    <arg type="CvUnitEntry*" name="pkUnit"/>
+  </call>
+  <call fn="getWinner" ret="TeamTypes"></call>
+  <call fn="getVictory" ret="VictoryTypes"></call>
+  <call fn="setWinner" ret="void">
+    <arg type="TeamTypes" name="eNewWinner"/>
+    <arg type="VictoryTypes" name="eNewVictory"/>
+  </call>
+  <call fn="isVictoryAvailable" ret="bool">
+    <arg type="VictoryTypes" name="eVictory"/>
+  </call>
+  <call fn="GetNextAvailableVictoryCompetitionRank" ret="int">
+    <arg type="VictoryTypes" name="eVictory"/>
+  </call>
+  <call fn="DoPlaceTeamInVictoryCompetition" ret="void">
+    <arg type="VictoryTypes" name="eNewVictory"/>
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="getTeamVictoryRank" ret="TeamTypes">
+    <arg type="VictoryTypes" name="eNewVictory"/>
+    <arg type="int" name="iRank"/>
+  </call>
+  <call fn="setTeamVictoryRank" ret="void">
+    <arg type="VictoryTypes" name="eNewVictory"/>
+    <arg type="int" name="iRank"/>
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="GetWorldMilitaryStrengthAverage" ret="int">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="bool" name="bIncludeMe"/>
+    <arg type="bool" name="bIncludeOnlyKnown"/>
+  </call>
+  <call fn="GetTotalReligionTechCost" ret="int"></call>
+  <call fn="DoUpdateTotalReligionTechCost" ret="void"></call>
+  <call fn="GetCachedWorldReligionTechProgress" ret="int"></call>
+  <call fn="DoUpdateCachedWorldReligionTechProgress" ret="void"></call>
+  <call fn="GetReligionTech" ret="TechTypes"></call>
+  <call fn="SetReligionTech" ret="void">
+    <arg type="TechTypes" name="eTech"/>
+  </call>
+  <call fn="GetResearchLeftToReligionTech" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="GetResearchLeftToTech" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="TechTypes" name="eTech"/>
+  </call>
+  <call fn="getGameState" ret="GameStateTypes"></call>
+  <call fn="setGameState" ret="void">
+    <arg type="GameStateTypes" name="eNewValue"/>
+  </call>
+  <call fn="getStartEraInfo" ret="CvEraInfo"></call>
+  <call fn="getStartEra" ret="EraTypes"></call>
+  <call fn="getCalendar" ret="CalendarTypes"></call>
+  <call fn="getGameSpeedInfo" ret="CvGameSpeedInfo"></call>
+  <call fn="getGameSpeedType" ret="GameSpeedTypes"></call>
+  <call fn="getEndTurnMessagesReceived" ret="int">
+    <arg type="int" name="iIndex"/>
+  </call>
+  <call fn="incrementEndTurnMessagesReceived" ret="void">
+    <arg type="int" name="iIndex"/>
+  </call>
+  <call fn="getRankPlayer" ret="PlayerTypes">
+    <arg type="int" name="iRank"/>
+  </call>
+  <call fn="setRankPlayer" ret="void">
+    <arg type="int" name="iRank"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="getPlayerRank" ret="int">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="setPlayerRank" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="int" name="iRank"/>
+  </call>
+  <call fn="getPlayerScore" ret="int">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="setPlayerScore" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="int" name="iScore"/>
+  </call>
+  <call fn="getRankTeam" ret="TeamTypes">
+    <arg type="int" name="iRank"/>
+  </call>
+  <call fn="setRankTeam" ret="void">
+    <arg type="int" name="iRank"/>
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="getTeamRank" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="setTeamRank" ret="void">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="int" name="iRank"/>
+  </call>
+  <call fn="getTeamScore" ret="int">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="setTeamScore" ret="void">
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="int" name="iScore"/>
+  </call>
+  <call fn="isOption" ret="bool">
+    <arg type="GameOptionTypes" name="eIndex"/>
+  </call>
+  <call fn="isOption" ret="bool">
+    <arg type="str" name="pszOption"/>
+  </call>
+  <call fn="setOption" ret="void">
+    <arg type="GameOptionTypes" name="eIndex"/>
+    <arg type="bool" name="bEnabled"/>
+  </call>
+  <call fn="setOption" ret="void">
+    <arg type="str" name="pszOption"/>
+    <arg type="bool" name="bEnabled"/>
+  </call>
+  <call fn="isMPOption" ret="bool">
+    <arg type="MultiplayerOptionTypes" name="eIndex"/>
+  </call>
+  <call fn="setMPOption" ret="void">
+    <arg type="MultiplayerOptionTypes" name="eIndex"/>
+    <arg type="bool" name="bEnabled"/>
+  </call>
+  <call fn="getUnitCreatedCount" ret="int">
+    <arg type="UnitTypes" name="eIndex"/>
+  </call>
+  <call fn="incrementUnitCreatedCount" ret="void">
+    <arg type="UnitTypes" name="eIndex"/>
+  </call>
+  <call fn="getUnitClassCreatedCount" ret="int">
+    <arg type="UnitClassTypes" name="eIndex"/>
+  </call>
+  <call fn="isUnitClassMaxedOut" ret="bool">
+    <arg type="UnitClassTypes" name="eIndex"/>
+    <arg type="int" name="iExtra" default="0"/>
+  </call>
+  <call fn="incrementUnitClassCreatedCount" ret="void">
+    <arg type="UnitClassTypes" name="eIndex"/>
+  </call>
+  <call fn="getBuildingClassCreatedCount" ret="int">
+    <arg type="BuildingClassTypes" name="eIndex"/>
+  </call>
+  <call fn="isBuildingClassMaxedOut" ret="bool">
+    <arg type="BuildingClassTypes" name="eIndex"/>
+    <arg type="int" name="iExtra" default="0"/>
+  </call>
+  <call fn="incrementBuildingClassCreatedCount" ret="void">
+    <arg type="BuildingClassTypes" name="eIndex"/>
+  </call>
+  <call fn="getProjectCreatedCount" ret="int">
+    <arg type="ProjectTypes" name="eIndex"/>
+  </call>
+  <call fn="isProjectMaxedOut" ret="bool">
+    <arg type="ProjectTypes" name="eIndex"/>
+    <arg type="int" name="iExtra" default="0"/>
+  </call>
+  <call fn="incrementProjectCreatedCount" ret="void">
+    <arg type="ProjectTypes" name="eIndex"/>
+    <arg type="int" name="iExtra" default="1"/>
+  </call>
+  <call fn="isVictoryValid" ret="bool">
+    <arg type="VictoryTypes" name="eIndex"/>
+  </call>
+  <call fn="setVictoryValid" ret="void">
+    <arg type="VictoryTypes" name="eIndex"/>
+    <arg type="bool" name="bValid"/>
+  </call>
+  <call fn="areNoVictoriesValid" ret="bool"></call>
+  <call fn="isSpecialUnitValid" ret="bool">
+    <arg type="SpecialUnitTypes" name="eIndex"/>
+  </call>
+  <call fn="makeSpecialUnitValid" ret="void">
+    <arg type="SpecialUnitTypes" name="eIndex"/>
+  </call>
+  <call fn="isNukesValid" ret="bool"></call>
+  <call fn="makeNukesValid" ret="void">
+    <arg type="bool" name="bValid" default="true"/>
+  </call>
+  <call fn="isInAdvancedStart" ret="bool"></call>
+  <call fn="getName" ret="str"></call>
+  <call fn="setName" ret="void">
+    <arg type="str" name="szName"/>
+  </call>
+  <call fn="isDestroyedCityName" ret="bool">
+    <arg type="str" name="szName"/>
+  </call>
+  <call fn="addDestroyedCityName" ret="void">
+    <arg type="str" name="szName"/>
+  </call>
+  <call fn="isGreatPersonBorn" ret="bool">
+    <arg type="str" name="szName"/>
+  </call>
+  <call fn="addGreatPersonBornName" ret="void">
+    <arg type="str" name="szName"/>
+  </call>
+  <call fn="getMapRand" ret="CvRandom"></call>
+  <call fn="getMapRandNum" ret="int">
+    <arg type="int" name="iNum"/>
+    <arg type="str" name="pszLog"/>
+  </call>
+  <call fn="getJonRand" ret="CvRandom"></call>
+  <call fn="getJonRandNum" ret="int">
+    <arg type="int" name="iNum"/>
+    <arg type="str" name="pszLog"/>
+  </call>
+  <call fn="getAsyncRandNum" ret="int">
+    <arg type="int" name="iNum"/>
+    <arg type="str" name="pszLog"/>
+  </call>
+  <call fn="calculateSyncChecksum" ret="int"></call>
+  <call fn="calculateOptionsChecksum" ret="int"></call>
+  <call fn="addReplayMessage" ret="void">
+    <arg type="ReplayMessageTypes" name="eType"/>
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="str" name="pszText"/>
+    <arg type="int" name="iPlotX" default="-1"/>
+    <arg type="int" name="iPlotY" default="-1"/>
+  </call>
+  <call fn="clearReplayMessageMap" ret="void"></call>
+  <call fn="getNumReplayMessages" ret="uint"></call>
+  <call fn="getReplayMessage" ret="CvReplayMessage*">
+    <arg type="uint" name="i"/>
+  </call>
+  <call fn="Read" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="Write" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="ReadSupportingClassData" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="WriteSupportingClassData" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="writeReplay" ret="void">
+    <arg type="FDataStream" name="kStream"/>
+  </call>
+  <call fn="GetCombatValue" ret="int">
+    <arg type="UnitTypes" name="eUnit"/>
+  </call>
+  <call fn="saveReplay" ret="void"></call>
+  <call fn="addPlayer" ret="void">
+    <arg type="PlayerTypes" name="eNewPlayer"/>
+    <arg type="LeaderHeadTypes" name="eLeader"/>
+    <arg type="CivilizationTypes" name="eCiv"/>
+  </call>
+  <call fn="testVictory" ret="void"></call>
+  <call fn="testVictory" ret="bool">
+    <arg type="VictoryTypes" name="eVictory"/>
+    <arg type="TeamTypes" name="eTeam"/>
+    <arg type="bool*" name="pbEndScore" default="NULL"/>
+  </call>
+  <call fn="getPlotExtraYield" ret="int">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="YieldTypes" name="eYield"/>
+  </call>
+  <call fn="setPlotExtraYield" ret="void">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="YieldTypes" name="eYield"/>
+    <arg type="int" name="iCost"/>
+  </call>
+  <call fn="removePlotExtraYield" ret="void">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="getPlotExtraCost" ret="int">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="changePlotExtraCost" ret="void">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="int" name="iCost"/>
+  </call>
+  <call fn="removePlotExtraCost" ret="void">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="isCivEverActive" ret="bool">
+    <arg type="CivilizationTypes" name="eCivilization"/>
+  </call>
+  <call fn="isLeaderEverActive" ret="bool">
+    <arg type="LeaderHeadTypes" name="eLeader"/>
+  </call>
+  <call fn="isUnitEverActive" ret="bool">
+    <arg type="UnitTypes" name="eUnit"/>
+  </call>
+  <call fn="isBuildingEverActive" ret="bool">
+    <arg type="BuildingTypes" name="eBuilding"/>
+  </call>
+  <call fn="GetIndustrialRoute" ret="RouteTypes"></call>
+  <call fn="DoUpdateIndustrialRoute" ret="void"></call>
+  <call fn="GetBarbarianCampImprovementType" ret="ImprovementTypes"></call>
+  <call fn="getRandomBarbarianUnitType" ret="UnitTypes">
+    <arg type="Area" name="pArea"/>
+    <arg type="UnitAITypes" name="eUnitAI"/>
+  </call>
+  <call fn="GetBarbarianReleaseTurn" ret="int"></call>
+  <call fn="SetBarbarianReleaseTurn" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetRandomSpawnUnitType" ret="UnitTypes">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="bool" name="bIncludeUUs"/>
+    <arg type="bool" name="bIncludeRanged"/>
+  </call>
+  <call fn="GetCompetitiveSpawnUnitType" ret="UnitTypes">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="bool" name="bIncludeUUs"/>
+    <arg type="bool" name="bIncludeRanged"/>
+  </call>
+  <call fn="GetRandomUniqueUnitType" ret="UnitTypes">
+    <arg type="bool" name="bIncludeCivsInGame"/>
+    <arg type="bool" name="bIncludeStartEra"/>
+    <arg type="bool" name="bIncludeOldEras"/>
+    <arg type="bool" name="bIncludeRanged"/>
+  </call>
+  <call fn="GetSettlerSiteEvaluator" ret="CvSiteEvaluatorForSettler*"></call>
+  <call fn="GetStartSiteEvaluator" ret="CvSiteEvaluatorForStart*"></call>
+  <call fn="GetStartPositioner" ret="CvStartPositioner*"></call>
+  <call fn="GetGameDeals" ret="CvGameDeals*"></call>
+  <call fn="GetGameReligions" ret="CvGameReligions*"></call>
+  <call fn="GetGameCulture" ret="CvGameCulture*"></call>
+  <call fn="GetGameLeagues" ret="CvGameLeagues*"></call>
+  <call fn="GetGameTrade" ret="CvGameTrade*"></call>
+  <call fn="GetTacticalAnalysisMap" ret="CvTacticalAnalysisMap*"></call>
+  <call fn="GetAction" ret="int">
+    <arg type="int" name="iKeyStroke"/>
+    <arg type="bool" name="bAlt"/>
+    <arg type="bool" name="bShift"/>
+    <arg type="bool" name="bCtrl"/>
+  </call>
+  <call fn="IsAction" ret="int">
+    <arg type="int" name="iKeyStroke"/>
+    <arg type="bool" name="bAlt"/>
+    <arg type="bool" name="bShift"/>
+    <arg type="bool" name="bCtrl"/>
+  </call>
+  <call fn="endTurnTimerSemaphoreIncrement" ret="void"></call>
+  <call fn="endTurnTimerSemaphoreDecrement" ret="void"></call>
+  <call fn="endTurnTimerReset" ret="void"></call>
+  <call fn="AreUnitsSameType" ret="bool">
+    <arg type="UnitTypes" name="eFirstUnitType"/>
+    <arg type="UnitTypes" name="eSecondUnitType"/>
+  </call>
+  <call fn="DoMinorPledgeProtection" ret="void">
+    <arg type="PlayerTypes" name="eMajor"/>
+    <arg type="PlayerTypes" name="eMinor"/>
+    <arg type="bool" name="bProtect"/>
+    <arg type="bool" name="bPledgeNowBroken" default="false"/>
+  </call>
+  <call fn="DoMinorGiftGold" ret="void">
+    <arg type="PlayerTypes" name="eMinor"/>
+    <arg type="int" name="iNumGold"/>
+  </call>
+  <call fn="DoMinorGiftTileImprovement" ret="void">
+    <arg type="PlayerTypes" name="eMajor"/>
+    <arg type="PlayerTypes" name="eMinor"/>
+    <arg type="int" name="iPlotX"/>
+    <arg type="int" name="iPlotY"/>
+  </call>
+  <call fn="DoMinorBullyGold" ret="void">
+    <arg type="PlayerTypes" name="eBully"/>
+    <arg type="PlayerTypes" name="eMinor"/>
+  </call>
+  <call fn="DoMinorBullyUnit" ret="void">
+    <arg type="PlayerTypes" name="eBully"/>
+    <arg type="PlayerTypes" name="eMinor"/>
+  </call>
+  <call fn="DoMinorBuyout" ret="void">
+    <arg type="PlayerTypes" name="eMajor"/>
+    <arg type="PlayerTypes" name="eMinor"/>
+  </call>
+  <call fn="DoResearchAgreementNotification" ret="void">
+    <arg type="TeamTypes" name="eTeam1"/>
+    <arg type="TeamTypes" name="eTeam2"/>
+  </call>
+  <call fn="GetResearchAgreementCost" ret="int">
+    <arg type="PlayerTypes" name="ePlayer1"/>
+    <arg type="PlayerTypes" name="ePlayer2"/>
+  </call>
+  <call fn="DoTestConquestVictory" ret="void"></call>
+  <call fn="GetBestWondersPlayer" ret="PlayerTypes"></call>
+  <call fn="SetBestWondersPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="int" name="iWonderCount"/>
+  </call>
+  <call fn="GetBestPoliciesPlayer" ret="PlayerTypes"></call>
+  <call fn="SetBestPoliciesPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="int" name="iPolicyCount"/>
+  </call>
+  <call fn="GetBestGreatPeoplePlayer" ret="PlayerTypes"></call>
+  <call fn="SetBestGreatPeoplePlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="int" name="iGreatPeopleCount"/>
+  </call>
+  <call fn="IsEndGameTechResearched" ret="bool"></call>
+  <call fn="SetEndGameTechResearched" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="TunerEverConnected" ret="bool"></call>
+  <call fn="IsEverAttackedTutorial" ret="bool"></call>
+  <call fn="SetEverAttackedTutorial" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="IsEverRightClickMoved" ret="bool"></call>
+  <call fn="SetEverRightClickMoved" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="IsCombatWarned" ret="bool"></call>
+  <call fn="SetCombatWarned" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="GetAdvisorCounsel" ret="CvAdvisorCounsel*"></call>
+  <call fn="GetAdvisorRecommender" ret="CvAdvisorRecommender*"></call>
+  <call fn="GetTurnsBetweenMinorCivElections" ret="int"></call>
+  <call fn="GetTurnsUntilMinorCivElection" ret="int"></call>
+  <call fn="LogGameState" ret="void">
+    <arg type="bool" name="bLogHeaders" default="false"/>
+  </call>
+  <call fn="unitIsMoving" ret="void"></call>
+  <call fn="BuildProdModHelpText" ret="void">
+    <arg type="str" name="toolTipSink"/>
+    <arg type="str" name="strTextKey"/>
+    <arg type="int" name="iMod"/>
+    <arg type="str" name="strExtraKey" default=""/>
+  </call>
+  <call fn="BuildCannotPerformActionHelpText" ret="void">
+    <arg type="str" name="toolTipSink"/>
+    <arg type="str" name="strTextKey"/>
+    <arg type="str" name="strExtraKey1" default=""/>
+    <arg type="str" name="strExtraKey2" default=""/>
+    <arg type="int" name="iValue" default="-666"/>
+  </call>
+  <call fn="allUnitAIProcessed" ret="bool"></call>
+  <call fn="updateTurnTimer" ret="void"></call>
+  <call fn="hasTurnTimerExpired" ret="bool">
+    <arg type="PlayerTypes" name="playerID"/>
+  </call>
+  <call fn="TurnTimerSync" ret="void">
+    <arg type="float" name="fCurTurnTime"/>
+    <arg type="float" name="fTurnStartTime"/>
+  </call>
+  <call fn="GetTurnTimerData" ret="void">
+    <arg type="float" name="fCurTurnTime"/>
+    <arg type="float" name="fTurnStartTime"/>
+  </call>
+  <call fn="GetDealDuration" ret="int"></call>
+  <call fn="GetPeaceDuration" ret="int"></call>
+  <call fn="GetCombatPrediction" ret="CombatPredictionTypes">
+    <arg type="Unit" name="pAttackingUnit"/>
+    <arg type="Unit" name="pDefendingUnit"/>
+  </call>
+  <call fn="NetMessageStaticsReset" ret="void"></call>
+  <call fn="SetLastTurnAICivsProcessed" ret="void"></call>
+  <call fn="TriggerArchaeologySiteCreation" ret="void">
+    <arg type="bool" name="bCheckInitialized"/>
+  </call>
+  <call fn="IsArchaeologyTriggered" ret="bool"></call>
+  <call fn="GetNumArchaeologySites" ret="int"></call>
+  <call fn="GetNumHiddenArchaeologySites" ret="int"></call>
+  <call fn="GetVariableCitySizeFromPopulation" ret="int">
+    <arg type="int" name="nPopulation"/>
+  </call>
+</class>

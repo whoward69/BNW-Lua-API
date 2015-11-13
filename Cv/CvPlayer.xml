@@ -1,0 +1,2339 @@
+<class type="CvPlayer">
+  <call fn="init" ret="void">
+    <arg type="PlayerTypes" name="eID"/>
+  </call>
+  <call fn="setupGraphical" ret="void"></call>
+  <call fn="reset" ret="void">
+    <arg type="PlayerTypes" name="eID" default="NO_PLAYER"/>
+    <arg type="bool" name="bConstructorCall" default="false"/>
+  </call>
+  <call fn="gameStartInit" ret="void"></call>
+  <call fn="uninit" ret="void"></call>
+  <call fn="initFreeState" ret="void">
+    <arg type="CvGameInitialItemsOverrides" name="kOverrides"/>
+  </call>
+  <call fn="initFreeUnits" ret="void">
+    <arg type="CvGameInitialItemsOverrides" name="kOverrides"/>
+  </call>
+  <call fn="addFreeUnitAI" ret="void">
+    <arg type="UnitAITypes" name="eUnitAI"/>
+    <arg type="int" name="iCount"/>
+  </call>
+  <call fn="addFreeUnit" ret="Plot">
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="UnitAITypes" name="eUnitAI" default="NO_UNITAI"/>
+  </call>
+  <call fn="initCity" ret="City">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="bool" name="bBumpUnits" default="true"/>
+    <arg type="bool" name="bInitialFounding" default="true"/>
+  </call>
+  <call fn="acquireCity" ret="void">
+    <arg type="City" name="pCity"/>
+    <arg type="bool" name="bConquest"/>
+    <arg type="bool" name="bGift"/>
+  </call>
+  <call fn="killCities" ret="void"></call>
+  <call fn="getNewCityName" ret="str"></call>
+  <call fn="GetBorrowedCityName" ret="str">
+    <arg type="CivilizationTypes" name="eCivToBorrowFrom"/>
+  </call>
+  <call fn="getCivilizationCityName" ret="void">
+    <arg type="str" name="szBuffer"/>
+    <arg type="CivilizationTypes" name="eCivilization"/>
+  </call>
+  <call fn="isCityNameValid" ret="bool">
+    <arg type="str" name="szName"/>
+    <arg type="bool" name="bTestDestroyed" default="true"/>
+  </call>
+  <call fn="DoLiberatePlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="int" name="iOldCityID"/>
+  </call>
+  <call fn="CanLiberatePlayer" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="CanLiberatePlayerCity" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="initUnit" ret="Unit">
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="UnitAITypes" name="eUnitAI" default="NO_UNITAI"/>
+    <arg type="DirectionTypes" name="eFacingDirection" default="NO_DIRECTION"/>
+    <arg type="bool" name="bNoMove" default="false"/>
+    <arg type="bool" name="bSetupGraphical" default="true"/>
+    <arg type="int" name="iMapLayer" default="0"/>
+    <arg type="int" name="iNumGoodyHutsPopped" default="0"/>
+  </call>
+  <call fn="initUnitWithNameOffset" ret="Unit">
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="int" name="nameOffset"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="UnitAITypes" name="eUnitAI" default="NO_UNITAI"/>
+    <arg type="DirectionTypes" name="eFacingDirection" default="NO_DIRECTION"/>
+    <arg type="bool" name="bNoMove" default="false"/>
+    <arg type="bool" name="bSetupGraphical" default="true"/>
+    <arg type="int" name="iMapLayer" default="0"/>
+    <arg type="int" name="iNumGoodyHutsPopped" default="0"/>
+  </call>
+  <call fn="disbandUnit" ret="void">
+    <arg type="bool" name="bAnnounce"/>
+  </call>
+  <call fn="killUnits" ret="void"></call>
+  <call fn="GetGreatAdmiralSpawnPlot" ret="Plot">
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="GetNumBuilders" ret="int"></call>
+  <call fn="SetNumBuilders" ret="void">
+    <arg type="int" name="iNum"/>
+  </call>
+  <call fn="ChangeNumBuilders" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetMaxNumBuilders" ret="int"></call>
+  <call fn="SetMaxNumBuilders" ret="void">
+    <arg type="int" name="iNum"/>
+  </call>
+  <call fn="ChangeMaxNumBuilders" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumUnitsWithUnitAI" ret="int">
+    <arg type="UnitAITypes" name="eUnitAIType"/>
+    <arg type="bool" name="bIncludeBeingTrained" default="false"/>
+    <arg type="bool" name="bIncludeWater" default="true"/>
+  </call>
+  <call fn="GetNumUnitsWithDomain" ret="int">
+    <arg type="DomainTypes" name="eDomain"/>
+    <arg type="bool" name="bMilitaryOnly"/>
+  </call>
+  <call fn="GetNumUnitsWithUnitCombat" ret="int">
+    <arg type="UnitCombatTypes" name="eDomain"/>
+  </call>
+  <call fn="InitDangerPlots" ret="void"></call>
+  <call fn="UpdateDangerPlots" ret="void"></call>
+  <call fn="SetDangerPlotsDirty" ret="void"></call>
+  <call fn="isHuman" ret="bool"></call>
+  <call fn="isObserver" ret="bool"></call>
+  <call fn="isBarbarian" ret="bool"></call>
+  <call fn="doBarbarianRansom" ret="void">
+    <arg type="int" name="iOption"/>
+    <arg type="int" name="iUnitID"/>
+  </call>
+  <call fn="getName" ret="str"></call>
+  <call fn="getNameKey" ret="str"></call>
+  <call fn="getNickName" ret="str"></call>
+  <call fn="getCivilizationDescription" ret="str"></call>
+  <call fn="getCivilizationDescriptionKey" ret="str"></call>
+  <call fn="getCivilizationShortDescription" ret="str"></call>
+  <call fn="getCivilizationShortDescriptionKey" ret="str"></call>
+  <call fn="getCivilizationAdjective" ret="str"></call>
+  <call fn="getCivilizationAdjectiveKey" ret="str"></call>
+  <call fn="getCivilizationTypeKey" ret="str"></call>
+  <call fn="getLeaderTypeKey" ret="str"></call>
+  <call fn="isWhiteFlag" ret="bool"></call>
+  <call fn="GetStateReligionName" ret="str"></call>
+  <call fn="GetStateReligionKey" ret="str"></call>
+  <call fn="SetStateReligionKey" ret="void">
+    <arg type="str" name="strKey"/>
+  </call>
+  <call fn="getWorstEnemyName" ret="str"></call>
+  <call fn="getArtStyleType" ret="ArtStyleTypes"></call>
+  <call fn="doTurn" ret="void"></call>
+  <call fn="doTurnPostDiplomacy" ret="void"></call>
+  <call fn="doTurnUnits" ret="void"></call>
+  <call fn="SetAllUnitsUnprocessed" ret="void"></call>
+  <call fn="DoUnitReset" ret="void"></call>
+  <call fn="DoUnitAttrition" ret="void"></call>
+  <call fn="RespositionInvalidUnits" ret="void"></call>
+  <call fn="updateYield" ret="void"></call>
+  <call fn="updateExtraSpecialistYield" ret="void"></call>
+  <call fn="updateCityPlotYield" ret="void"></call>
+  <call fn="updateCitySight" ret="void">
+    <arg type="bool" name="bIncrement"/>
+  </call>
+  <call fn="UpdateNotifications" ret="void"></call>
+  <call fn="UpdateReligion" ret="void"></call>
+  <call fn="updateTimers" ret="void"></call>
+  <call fn="hasPromotableUnit" ret="bool"></call>
+  <call fn="hasReadyUnit" ret="bool"></call>
+  <call fn="GetCountReadyUnits" ret="int"></call>
+  <call fn="GetFirstReadyUnit" ret="Unit"></call>
+  <call fn="EndTurnsForReadyUnits" ret="void"></call>
+  <call fn="hasAutoUnit" ret="bool"></call>
+  <call fn="hasBusyUnit" ret="bool"></call>
+  <call fn="getBusyUnit" ret="UnitHandle"></call>
+  <call fn="hasBusyCity" ret="bool"></call>
+  <call fn="hasBusyUnitOrCity" ret="bool"></call>
+  <call fn="getBusyCity" ret="City"></call>
+  <call fn="chooseTech" ret="void">
+    <arg type="int" name="iDiscover" default="0"/>
+    <arg type="str" name="strTxt" default="0"/>
+    <arg type="TechTypes" name="iTechJustDiscovered" default="NO_TECH"/>
+  </call>
+  <call fn="GetScore" ret="int">
+    <arg type="bool" name="bFinal" default="false"/>
+    <arg type="bool" name="bVictory" default="false"/>
+  </call>
+  <call fn="GetScoreFromCities" ret="int"></call>
+  <call fn="GetScoreFromPopulation" ret="int"></call>
+  <call fn="GetScoreFromLand" ret="int"></call>
+  <call fn="GetScoreFromWonders" ret="int"></call>
+  <call fn="GetScoreFromPolicies" ret="int"></call>
+  <call fn="GetScoreFromGreatWorks" ret="int"></call>
+  <call fn="GetScoreFromReligion" ret="int"></call>
+  <call fn="GetScoreFromTechs" ret="int"></call>
+  <call fn="GetScoreFromFutureTech" ret="int"></call>
+  <call fn="ChangeScoreFromFutureTech" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetScoreFromScenario1" ret="int"></call>
+  <call fn="ChangeScoreFromScenario1" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetScoreFromScenario2" ret="int"></call>
+  <call fn="ChangeScoreFromScenario2" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetScoreFromScenario3" ret="int"></call>
+  <call fn="ChangeScoreFromScenario3" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetScoreFromScenario4" ret="int"></call>
+  <call fn="ChangeScoreFromScenario4" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="countCityFeatures" ret="int">
+    <arg type="FeatureTypes" name="eFeature"/>
+  </call>
+  <call fn="countNumBuildings" ret="int">
+    <arg type="BuildingTypes" name="eBuilding"/>
+  </call>
+  <call fn="countCitiesFeatureSurrounded" ret="int"></call>
+  <call fn="IsCityConnectedToCity" ret="bool">
+    <arg type="City" name="pCity1"/>
+    <arg type="City" name="pCity2"/>
+    <arg type="RouteTypes" name="eRestrictRouteType" default="NO_ROUTE"/>
+    <arg type="bool" name="bIgnoreHarbors" default="false"/>
+  </call>
+  <call fn="IsCapitalConnectedToPlayer" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="RouteTypes" name="eRestrictRouteType" default="NO_ROUTE"/>
+  </call>
+  <call fn="IsCapitalConnectedToCity" ret="bool">
+    <arg type="City" name="pCity"/>
+    <arg type="RouteTypes" name="eRestrictRouteType" default="NO_ROUTE"/>
+  </call>
+  <call fn="findNewCapital" ret="void"></call>
+  <call fn="canRaze" ret="bool">
+    <arg type="City" name="pCity"/>
+    <arg type="bool" name="bIgnoreCapitals" default="false"/>
+  </call>
+  <call fn="raze" ret="void">
+    <arg type="City" name="pCity"/>
+  </call>
+  <call fn="unraze" ret="void">
+    <arg type="City" name="pCity"/>
+  </call>
+  <call fn="disband" ret="void">
+    <arg type="City" name="pCity"/>
+  </call>
+  <call fn="canReceiveGoody" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="GoodyTypes" name="eGoody"/>
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="receiveGoody" ret="void">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="GoodyTypes" name="eGoody"/>
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="doGoody" ret="void">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="AwardFreeBuildings" ret="void">
+    <arg type="City" name="pCity"/>
+  </call>
+  <call fn="canFound" ret="bool">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="found" ret="void">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="canTrain" ret="bool">
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="bool" name="bContinue" default="false"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+    <arg type="bool" name="bIgnoreCost" default="false"/>
+    <arg type="bool" name="bIgnoreUniqueUnitStatus" default="false"/>
+    <arg type="str" name="toolTipSink" default="NULL"/>
+  </call>
+  <call fn="canConstruct" ret="bool">
+    <arg type="BuildingTypes" name="eBuilding"/>
+    <arg type="bool" name="bContinue" default="false"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+    <arg type="bool" name="bIgnoreCost" default="false"/>
+    <arg type="str" name="toolTipSink" default="NULL"/>
+  </call>
+  <call fn="canCreate" ret="bool">
+    <arg type="ProjectTypes" name="eProject"/>
+    <arg type="bool" name="bContinue" default="false"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+  </call>
+  <call fn="canPrepare" ret="bool">
+    <arg type="SpecialistTypes" name="eSpecialist"/>
+    <arg type="bool" name="bContinue" default="false"/>
+  </call>
+  <call fn="canMaintain" ret="bool">
+    <arg type="ProcessTypes" name="eProcess"/>
+    <arg type="bool" name="bContinue" default="false"/>
+  </call>
+  <call fn="IsCanPurchaseAnyCity" ret="bool">
+    <arg type="bool" name="bTestPurchaseCost"/>
+    <arg type="bool" name="bTestTrainable"/>
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="BuildingTypes" name="eBuilding"/>
+    <arg type="YieldTypes" name="ePurchaseYield"/>
+  </call>
+  <call fn="isProductionMaxedUnitClass" ret="bool">
+    <arg type="UnitClassTypes" name="eUnitClass"/>
+  </call>
+  <call fn="isProductionMaxedBuildingClass" ret="bool">
+    <arg type="BuildingClassTypes" name="eBuildingClass"/>
+    <arg type="bool" name="bAcquireCity" default="false"/>
+  </call>
+  <call fn="isProductionMaxedProject" ret="bool">
+    <arg type="ProjectTypes" name="eProject"/>
+  </call>
+  <call fn="getProductionNeeded" ret="int">
+    <arg type="UnitTypes" name="eUnit"/>
+  </call>
+  <call fn="getProductionNeeded" ret="int">
+    <arg type="BuildingTypes" name="eBuilding"/>
+  </call>
+  <call fn="getProductionNeeded" ret="int">
+    <arg type="ProjectTypes" name="eProject"/>
+  </call>
+  <call fn="getProductionNeeded" ret="int">
+    <arg type="SpecialistTypes" name="eSpecialist"/>
+  </call>
+  <call fn="getProductionModifier" ret="int">
+    <arg type="str" name="toolTipSink" default="NULL"/>
+  </call>
+  <call fn="getProductionModifier" ret="int">
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="str" name="toolTipSink" default="NULL"/>
+  </call>
+  <call fn="getProductionModifier" ret="int">
+    <arg type="BuildingTypes" name="eBuilding"/>
+    <arg type="str" name="toolTipSink" default="NULL"/>
+  </call>
+  <call fn="getProductionModifier" ret="int">
+    <arg type="ProjectTypes" name="eProject"/>
+    <arg type="str" name="toolTipSink" default="NULL"/>
+  </call>
+  <call fn="getProductionModifier" ret="int">
+    <arg type="SpecialistTypes" name="eSpecialist"/>
+    <arg type="str" name="toolTipSink" default="NULL"/>
+  </call>
+  <call fn="getProductionModifier" ret="int">
+    <arg type="ProcessTypes" name="eProcess"/>
+    <arg type="str" name="toolTipSink" default="NULL"/>
+  </call>
+  <call fn="getBuildingClassPrereqBuilding" ret="int">
+    <arg type="BuildingTypes" name="eBuilding"/>
+    <arg type="BuildingClassTypes" name="ePrereqBuildingClass"/>
+    <arg type="int" name="iExtra" default="0"/>
+  </call>
+  <call fn="removeBuildingClass" ret="void">
+    <arg type="BuildingClassTypes" name="eBuildingClass"/>
+  </call>
+  <call fn="processBuilding" ret="void">
+    <arg type="BuildingTypes" name="eBuilding"/>
+    <arg type="int" name="iChange"/>
+    <arg type="bool" name="bFirst"/>
+    <arg type="Area" name="pArea"/>
+  </call>
+  <call fn="GetBuildingClassYieldChange" ret="int">
+    <arg type="BuildingClassTypes" name="eBuildingClass"/>
+    <arg type="YieldTypes" name="eYieldType"/>
+  </call>
+  <call fn="canBuild" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="BuildTypes" name="eBuild"/>
+    <arg type="bool" name="bTestEra" default="false"/>
+    <arg type="bool" name="bTestVisible" default="false"/>
+    <arg type="bool" name="bTestGold" default="true"/>
+    <arg type="bool" name="bTestPlotOwner" default="true"/>
+  </call>
+  <call fn="IsBuildBlockedByFeature" ret="bool">
+    <arg type="BuildTypes" name="eBuild"/>
+    <arg type="FeatureTypes" name="eFeature"/>
+  </call>
+  <call fn="getBuildCost" ret="int">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="BuildTypes" name="eBuild"/>
+  </call>
+  <call fn="getBestRoute" ret="RouteTypes">
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="getImprovementUpgradeRate" ret="int"></call>
+  <call fn="GetAllFeatureProduction" ret="int"></call>
+  <call fn="ChangeAllFeatureProduction" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="calculateTotalYield" ret="int">
+    <arg type="YieldTypes" name="eYield"/>
+  </call>
+  <call fn="GetUnitProductionMaintenanceMod" ret="int"></call>
+  <call fn="UpdateUnitProductionMaintenanceMod" ret="void"></call>
+  <call fn="calculateUnitProductionMaintenanceMod" ret="int"></call>
+  <call fn="GetNumUnitsSupplied" ret="int"></call>
+  <call fn="GetNumUnitsSuppliedByHandicap" ret="int"></call>
+  <call fn="GetNumUnitsSuppliedByCities" ret="int"></call>
+  <call fn="GetNumUnitsSuppliedByPopulation" ret="int"></call>
+  <call fn="GetNumUnitsOutOfSupply" ret="int"></call>
+  <call fn="calculateUnitCost" ret="int"></call>
+  <call fn="calculateUnitSupply" ret="int"></call>
+  <call fn="calculateResearchModifier" ret="int">
+    <arg type="TechTypes" name="eTech"/>
+  </call>
+  <call fn="calculateGoldRate" ret="int"></call>
+  <call fn="calculateGoldRateTimes100" ret="int"></call>
+  <call fn="unitsRequiredForGoldenAge" ret="int"></call>
+  <call fn="unitsGoldenAgeCapable" ret="int"></call>
+  <call fn="unitsGoldenAgeReady" ret="int"></call>
+  <call fn="greatGeneralThreshold" ret="int"></call>
+  <call fn="greatAdmiralThreshold" ret="int"></call>
+  <call fn="specialistYield" ret="int">
+    <arg type="SpecialistTypes" name="eSpecialist"/>
+    <arg type="YieldTypes" name="eYield"/>
+  </call>
+  <call fn="GetCityYieldChange" ret="int">
+    <arg type="YieldTypes" name="eYield"/>
+  </call>
+  <call fn="ChangeCityYieldChange" ret="void">
+    <arg type="YieldTypes" name="eYield"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCoastalCityYieldChange" ret="int">
+    <arg type="YieldTypes" name="eYield"/>
+  </call>
+  <call fn="ChangeCoastalCityYieldChange" ret="void">
+    <arg type="YieldTypes" name="eYield"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCapitalYieldChange" ret="int">
+    <arg type="YieldTypes" name="eYield"/>
+  </call>
+  <call fn="ChangeCapitalYieldChange" ret="void">
+    <arg type="YieldTypes" name="eYield"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCapitalYieldPerPopChange" ret="int">
+    <arg type="YieldTypes" name="eYield"/>
+  </call>
+  <call fn="ChangeCapitalYieldPerPopChange" ret="void">
+    <arg type="YieldTypes" name="eYield"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetGreatWorkYieldChange" ret="int">
+    <arg type="YieldTypes" name="eYield"/>
+  </call>
+  <call fn="ChangeGreatWorkYieldChange" ret="void">
+    <arg type="YieldTypes" name="eYield"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getStartingPlot" ret="Plot"></call>
+  <call fn="setStartingPlot" ret="void">
+    <arg type="Plot" name="pNewValue"/>
+  </call>
+  <call fn="getTotalPopulation" ret="int"></call>
+  <call fn="getAveragePopulation" ret="int"></call>
+  <call fn="changeTotalPopulation" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getRealPopulation" ret="long"></call>
+  <call fn="GetNewCityExtraPopulation" ret="int"></call>
+  <call fn="ChangeNewCityExtraPopulation" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetFreeFoodBox" ret="int"></call>
+  <call fn="ChangeFreeFoodBox" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getTotalLand" ret="int"></call>
+  <call fn="changeTotalLand" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getTotalLandScored" ret="int"></call>
+  <call fn="changeTotalLandScored" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetHappinessFromTradeRoutes" ret="int"></call>
+  <call fn="DoUpdateCityConnectionHappiness" ret="void"></call>
+  <call fn="GetTotalJONSCulturePerTurn" ret="int"></call>
+  <call fn="GetJONSCulturePerTurnFromCities" ret="int"></call>
+  <call fn="GetJONSCulturePerTurnFromExcessHappiness" ret="int"></call>
+  <call fn="GetJONSCulturePerTurnFromTraits" ret="int"></call>
+  <call fn="GetJONSCulturePerTurnForFree" ret="int"></call>
+  <call fn="ChangeJONSCulturePerTurnForFree" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetJONSCulturePerTurnFromMinorCivs" ret="int"></call>
+  <call fn="ChangeJONSCulturePerTurnFromMinorCivs" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCulturePerTurnFromMinorCivs" ret="int"></call>
+  <call fn="GetCulturePerTurnFromMinor" ret="int">
+    <arg type="PlayerTypes" name="eMinor"/>
+  </call>
+  <call fn="GetCulturePerTurnFromReligion" ret="int"></call>
+  <call fn="GetCulturePerTurnFromBonusTurns" ret="int"></call>
+  <call fn="GetJONSCultureCityModifier" ret="int"></call>
+  <call fn="ChangeJONSCultureCityModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getJONSCulture" ret="int"></call>
+  <call fn="setJONSCulture" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeJONSCulture" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetJONSCultureEverGenerated" ret="int"></call>
+  <call fn="SetJONSCultureEverGenerated" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="ChangeJONSCultureEverGenerated" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetJONSCulturePerCityPerTurn" ret="int"></call>
+  <call fn="GetCulturePerWonder" ret="int"></call>
+  <call fn="ChangeCulturePerWonder" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCultureWonderMultiplier" ret="int"></call>
+  <call fn="ChangeCultureWonderMultiplier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCulturePerTechResearched" ret="int"></call>
+  <call fn="ChangeCulturePerTechResearched" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetSpecialistCultureChange" ret="int"></call>
+  <call fn="ChangeSpecialistCultureChange" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCultureYieldFromPreviousTurns" ret="int">
+    <arg type="int" name="iGameTurn"/>
+    <arg type="int" name="iNumPreviousTurnsToCount"/>
+  </call>
+  <call fn="GetNumCitiesFreeCultureBuilding" ret="int"></call>
+  <call fn="ChangeNumCitiesFreeCultureBuilding" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumCitiesFreeFoodBuilding" ret="int"></call>
+  <call fn="ChangeNumCitiesFreeFoodBuilding" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="DoYieldsFromKill" ret="void">
+    <arg type="UnitTypes" name="eAttackingUnitType"/>
+    <arg type="UnitTypes" name="eKilledUnitType"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="bool" name="bWasBarbarian"/>
+    <arg type="int" name="iExistingDelay"/>
+  </call>
+  <call fn="DoYieldBonusFromKill" ret="void">
+    <arg type="YieldTypes" name="eYield"/>
+    <arg type="UnitTypes" name="eAttackingUnitType"/>
+    <arg type="UnitTypes" name="eKilledUnitType"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="bool" name="bWasBarbarian"/>
+    <arg type="int" name="iNumBonuses"/>
+  </call>
+  <call fn="DoUnresearchedTechBonusFromKill" ret="void">
+    <arg type="UnitTypes" name="eKilledUnitType"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="int" name="iNumBonuses"/>
+  </call>
+  <call fn="ReportYieldFromKill" ret="void">
+    <arg type="YieldTypes" name="eYield"/>
+    <arg type="int" name="iValue"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="int" name="iDelay"/>
+  </call>
+  <call fn="DoTechFromCityConquer" ret="void">
+    <arg type="City" name="pConqueredCity"/>
+  </call>
+  <call fn="GetTotalFaithPerTurn" ret="int"></call>
+  <call fn="GetFaithPerTurnFromCities" ret="int"></call>
+  <call fn="GetFaithPerTurnFromMinorCivs" ret="int"></call>
+  <call fn="GetFaithPerTurnFromMinor" ret="int">
+    <arg type="PlayerTypes" name="eMinor"/>
+  </call>
+  <call fn="GetFaithPerTurnFromReligion" ret="int"></call>
+  <call fn="GetFaith" ret="int"></call>
+  <call fn="SetFaith" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="ChangeFaith" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetFaithEverGenerated" ret="int"></call>
+  <call fn="SetFaithEverGenerated" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="ChangeFaithEverGenerated" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="DoUpdateHappiness" ret="void"></call>
+  <call fn="GetHappiness" ret="int"></call>
+  <call fn="SetHappiness" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="GetExcessHappiness" ret="int"></call>
+  <call fn="IsEmpireUnhappy" ret="bool"></call>
+  <call fn="IsEmpireVeryUnhappy" ret="bool"></call>
+  <call fn="IsEmpireSuperUnhappy" ret="bool"></call>
+  <call fn="DoUpdateUprisings" ret="void"></call>
+  <call fn="GetUprisingCounter" ret="int"></call>
+  <call fn="SetUprisingCounter" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeUprisingCounter" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="DoResetUprisingCounter" ret="void">
+    <arg type="bool" name="bFirstTime"/>
+  </call>
+  <call fn="DoUprising" ret="void"></call>
+  <call fn="DoUpdateCityRevolts" ret="void"></call>
+  <call fn="GetCityRevoltCounter" ret="int"></call>
+  <call fn="SetCityRevoltCounter" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeCityRevoltCounter" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="DoResetCityRevoltCounter" ret="void"></call>
+  <call fn="DoCityRevolt" ret="void"></call>
+  <call fn="GetMostUnhappyCity" ret="City"></call>
+  <call fn="GetMostUnhappyCityRecipient" ret="PlayerTypes"></call>
+  <call fn="GetHappinessFromPolicies" ret="int"></call>
+  <call fn="GetHappinessFromCities" ret="int"></call>
+  <call fn="GetHappinessFromBuildings" ret="int"></call>
+  <call fn="GetExtraHappinessPerCity" ret="int"></call>
+  <call fn="ChangeExtraHappinessPerCity" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetExtraHappinessPerXPolicies" ret="int"></call>
+  <call fn="ChangeExtraHappinessPerXPolicies" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetHappinessFromResources" ret="int"></call>
+  <call fn="GetHappinessFromResourceVariety" ret="int"></call>
+  <call fn="GetHappinessFromReligion" ret="int"></call>
+  <call fn="GetHappinessFromNaturalWonders" ret="int"></call>
+  <call fn="GetExtraHappinessPerLuxury" ret="int"></call>
+  <call fn="ChangeExtraHappinessPerLuxury" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetHappinessFromLuxury" ret="int">
+    <arg type="ResourceTypes" name="eResource"/>
+  </call>
+  <call fn="GetUnhappiness" ret="int">
+    <arg type="City" name="pAssumeCityAnnexed" default="NULL"/>
+    <arg type="City" name="pAssumeCityPuppeted" default="NULL"/>
+  </call>
+  <call fn="GetUnhappinessFromCityForUI" ret="int">
+    <arg type="City" name="pCity"/>
+  </call>
+  <call fn="GetUnhappinessFromCityCount" ret="int">
+    <arg type="City" name="pAssumeCityAnnexed" default="NULL"/>
+    <arg type="City" name="pAssumeCityPuppeted" default="NULL"/>
+  </call>
+  <call fn="GetUnhappinessFromCapturedCityCount" ret="int">
+    <arg type="City" name="pAssumeCityAnnexed" default="NULL"/>
+    <arg type="City" name="pAssumeCityPuppeted" default="NULL"/>
+  </call>
+  <call fn="GetUnhappinessFromCityPopulation" ret="int">
+    <arg type="City" name="pAssumeCityAnnexed" default="NULL"/>
+    <arg type="City" name="pAssumeCityPuppeted" default="NULL"/>
+  </call>
+  <call fn="GetUnhappinessFromCitySpecialists" ret="int">
+    <arg type="City" name="pAssumeCityAnnexed"/>
+    <arg type="City" name="pAssumeCityPuppeted"/>
+  </call>
+  <call fn="GetUnhappinessFromPuppetCityPopulation" ret="int"></call>
+  <call fn="GetUnhappinessFromOccupiedCities" ret="int">
+    <arg type="City" name="pAssumeCityAnnexed" default="NULL"/>
+    <arg type="City" name="pAssumeCityPuppeted" default="NULL"/>
+  </call>
+  <call fn="GetUnhappinessFromUnits" ret="int"></call>
+  <call fn="ChangeUnhappinessFromUnits" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetUnhappinessFromUnitsMod" ret="int"></call>
+  <call fn="ChangeUnhappinessFromUnitsMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetUnhappinessMod" ret="int"></call>
+  <call fn="ChangeUnhappinessMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCityCountUnhappinessMod" ret="int"></call>
+  <call fn="ChangeCityCountUnhappinessMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetOccupiedPopulationUnhappinessMod" ret="int"></call>
+  <call fn="ChangeOccupiedPopulationUnhappinessMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCapitalUnhappinessMod" ret="int"></call>
+  <call fn="ChangeCapitalUnhappinessMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetHappinessPerGarrisonedUnit" ret="int"></call>
+  <call fn="SetHappinessPerGarrisonedUnit" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeHappinessPerGarrisonedUnit" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetHappinessPerTradeRoute" ret="int"></call>
+  <call fn="SetHappinessPerTradeRoute" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeHappinessPerTradeRoute" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetHappinessPerXPopulation" ret="int"></call>
+  <call fn="SetHappinessPerXPopulation" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeHappinessPerXPopulation" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetHappinessFromMinorCivs" ret="int"></call>
+  <call fn="GetHappinessFromMinor" ret="int">
+    <arg type="PlayerTypes" name="eMinor"/>
+  </call>
+  <call fn="GetHappinessFromLeagues" ret="int"></call>
+  <call fn="SetHappinessFromLeagues" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeHappinessFromLeagues" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetEspionageModifier" ret="int"></call>
+  <call fn="ChangeEspionageModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetStartingSpyRank" ret="int"></call>
+  <call fn="ChangeStartingSpyRank" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetExtraLeagueVotes" ret="int"></call>
+  <call fn="ChangeExtraLeagueVotes" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetWoundedUnitDamageMod" ret="int"></call>
+  <call fn="SetWoundedUnitDamageMod" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeWoundedUnitDamageMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetUnitUpgradeCostMod" ret="int"></call>
+  <call fn="SetUnitUpgradeCostMod" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeUnitUpgradeCostMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetBarbarianCombatBonus" ret="int"></call>
+  <call fn="SetBarbarianCombatBonus" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeBarbarianCombatBonus" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsAlwaysSeeBarbCamps" ret="bool"></call>
+  <call fn="SetAlwaysSeeBarbCampsCount" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeAlwaysSeeBarbCampsCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="setHasPolicy" ret="void">
+    <arg type="PolicyTypes" name="eIndex"/>
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="getNextPolicyCost" ret="int"></call>
+  <call fn="DoUpdateNextPolicyCost" ret="void"></call>
+  <call fn="canAdoptPolicy" ret="bool">
+    <arg type="PolicyTypes" name="ePolicy"/>
+  </call>
+  <call fn="doAdoptPolicy" ret="void">
+    <arg type="PolicyTypes" name="ePolicy"/>
+  </call>
+  <call fn="DoBuyNewBranch" ret="void">
+    <arg type="PolicyBranchTypes" name="eBranch"/>
+  </call>
+  <call fn="IsAnarchy" ret="bool"></call>
+  <call fn="GetAnarchyNumTurns" ret="int"></call>
+  <call fn="SetAnarchyNumTurns" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeAnarchyNumTurns" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getAdvancedStartPoints" ret="int"></call>
+  <call fn="setAdvancedStartPoints" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeAdvancedStartPoints" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="canStealTech" ret="bool">
+    <arg type="PlayerTypes" name="eTarget"/>
+    <arg type="TechTypes" name="eTech"/>
+  </call>
+  <call fn="canSpyDestroyUnit" ret="bool">
+    <arg type="PlayerTypes" name="eTarget"/>
+    <arg type="CvUnit" name="kUnit"/>
+  </call>
+  <call fn="canSpyBribeUnit" ret="bool">
+    <arg type="PlayerTypes" name="eTarget"/>
+    <arg type="CvUnit" name="kUnit"/>
+  </call>
+  <call fn="canSpyDestroyBuilding" ret="bool">
+    <arg type="PlayerTypes" name="eTarget"/>
+    <arg type="BuildingTypes" name="eBuilding"/>
+  </call>
+  <call fn="canSpyDestroyProject" ret="bool">
+    <arg type="PlayerTypes" name="eTarget"/>
+    <arg type="ProjectTypes" name="eProject"/>
+  </call>
+  <call fn="doAdvancedStartAction" ret="void">
+    <arg type="AdvancedStartActionTypes" name="eAction"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="int" name="iData"/>
+    <arg type="bool" name="bAdd"/>
+  </call>
+  <call fn="getAdvancedStartUnitCost" ret="int">
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="bool" name="bAdd"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="getAdvancedStartCityCost" ret="int">
+    <arg type="bool" name="bAdd"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="getAdvancedStartPopCost" ret="int">
+    <arg type="bool" name="bAdd"/>
+    <arg type="City" name="pCity" default="NULL"/>
+  </call>
+  <call fn="getAdvancedStartBuildingCost" ret="int">
+    <arg type="BuildingTypes" name="eBuilding"/>
+    <arg type="bool" name="bAdd"/>
+    <arg type="City" name="pCity" default="NULL"/>
+  </call>
+  <call fn="getAdvancedStartImprovementCost" ret="int">
+    <arg type="ImprovementTypes" name="eImprovement"/>
+    <arg type="bool" name="bAdd"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="getAdvancedStartRouteCost" ret="int">
+    <arg type="RouteTypes" name="eRoute"/>
+    <arg type="bool" name="bAdd"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="getAdvancedStartTechCost" ret="int">
+    <arg type="TechTypes" name="eTech"/>
+    <arg type="bool" name="bAdd"/>
+  </call>
+  <call fn="getAdvancedStartVisibilityCost" ret="int">
+    <arg type="bool" name="bAdd"/>
+    <arg type="Plot" name="pPlot" default="NULL"/>
+  </call>
+  <call fn="GetAttackBonusTurns" ret="int"></call>
+  <call fn="ChangeAttackBonusTurns" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCultureBonusTurns" ret="int"></call>
+  <call fn="ChangeCultureBonusTurns" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetTourismBonusTurns" ret="int"></call>
+  <call fn="ChangeTourismBonusTurns" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="DoProcessGoldenAge" ret="void"></call>
+  <call fn="GetGoldenAgeProgressThreshold" ret="int"></call>
+  <call fn="GetGoldenAgeProgressMeter" ret="int"></call>
+  <call fn="SetGoldenAgeProgressMeter" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeGoldenAgeProgressMeter" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetGoldenAgeMeterMod" ret="int"></call>
+  <call fn="SetGoldenAgeMeterMod" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeGoldenAgeMeterMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumGoldenAges" ret="int"></call>
+  <call fn="SetNumGoldenAges" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeNumGoldenAges" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getGoldenAgeTurns" ret="int"></call>
+  <call fn="isGoldenAge" ret="bool"></call>
+  <call fn="changeGoldenAgeTurns" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getGoldenAgeLength" ret="int"></call>
+  <call fn="getNumUnitGoldenAges" ret="int"></call>
+  <call fn="changeNumUnitGoldenAges" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getStrikeTurns" ret="int"></call>
+  <call fn="changeStrikeTurns" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getGoldenAgeModifier" ret="int"></call>
+  <call fn="changeGoldenAgeModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="createGreatGeneral" ret="void">
+    <arg type="UnitTypes" name="eGreatPersonUnit"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="createGreatAdmiral" ret="void">
+    <arg type="UnitTypes" name="eGreatPersonUnit"/>
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+  </call>
+  <call fn="getGreatPeopleCreated" ret="int"></call>
+  <call fn="incrementGreatPeopleCreated" ret="void"></call>
+  <call fn="getGreatGeneralsCreated" ret="int"></call>
+  <call fn="incrementGreatGeneralsCreated" ret="void"></call>
+  <call fn="getGreatAdmiralsCreated" ret="int"></call>
+  <call fn="incrementGreatAdmiralsCreated" ret="void"></call>
+  <call fn="getGreatWritersCreated" ret="int"></call>
+  <call fn="incrementGreatWritersCreated" ret="void"></call>
+  <call fn="getGreatArtistsCreated" ret="int"></call>
+  <call fn="incrementGreatArtistsCreated" ret="void"></call>
+  <call fn="getGreatMusiciansCreated" ret="int"></call>
+  <call fn="incrementGreatMusiciansCreated" ret="void"></call>
+  <call fn="getMerchantsFromFaith" ret="int"></call>
+  <call fn="incrementMerchantsFromFaith" ret="void"></call>
+  <call fn="getScientistsFromFaith" ret="int"></call>
+  <call fn="incrementScientistsFromFaith" ret="void"></call>
+  <call fn="getWritersFromFaith" ret="int"></call>
+  <call fn="incrementWritersFromFaith" ret="void"></call>
+  <call fn="getArtistsFromFaith" ret="int"></call>
+  <call fn="incrementArtistsFromFaith" ret="void"></call>
+  <call fn="getMusiciansFromFaith" ret="int"></call>
+  <call fn="incrementMusiciansFromFaith" ret="void"></call>
+  <call fn="getGeneralsFromFaith" ret="int"></call>
+  <call fn="incrementGeneralsFromFaith" ret="void"></call>
+  <call fn="getAdmiralsFromFaith" ret="int"></call>
+  <call fn="incrementAdmiralsFromFaith" ret="void"></call>
+  <call fn="getEngineersFromFaith" ret="int"></call>
+  <call fn="incrementEngineersFromFaith" ret="void"></call>
+  <call fn="getGreatPeopleThresholdModifier" ret="int"></call>
+  <call fn="changeGreatPeopleThresholdModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getGreatGeneralsThresholdModifier" ret="int"></call>
+  <call fn="changeGreatGeneralsThresholdModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getGreatAdmiralsThresholdModifier" ret="int"></call>
+  <call fn="changeGreatAdmiralsThresholdModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getPolicyCostModifier" ret="int"></call>
+  <call fn="recomputePolicyCostModifier" ret="void"></call>
+  <call fn="getGreatPeopleRateModifier" ret="int"></call>
+  <call fn="getGreatGeneralRateModifier" ret="int"></call>
+  <call fn="getGreatAdmiralRateModifier" ret="int"></call>
+  <call fn="getGreatWriterRateModifier" ret="int"></call>
+  <call fn="getGreatArtistRateModifier" ret="int"></call>
+  <call fn="getGreatMusicianRateModifier" ret="int"></call>
+  <call fn="getGreatMerchantRateModifier" ret="int"></call>
+  <call fn="getGreatScientistRateModifier" ret="int"></call>
+  <call fn="getGreatEngineerRateModifier" ret="int"></call>
+  <call fn="getDomesticGreatGeneralRateModifier" ret="int"></call>
+  <call fn="changeGreatPeopleRateModFromBldgs" ret="void">
+    <arg type="int" name="ichange"/>
+  </call>
+  <call fn="changeGreatGeneralRateModFromBldgs" ret="void">
+    <arg type="int" name="ichange"/>
+  </call>
+  <call fn="recomputeGreatPeopleModifiers" ret="void"></call>
+  <call fn="GetGreatPeopleRateModFromFriendships" ret="int"></call>
+  <call fn="GetGreatScientistBeakerMod" ret="int"></call>
+  <call fn="SetGreatScientistBeakerMod" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeGreatScientistBeakerMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetGreatGeneralCombatBonus" ret="int"></call>
+  <call fn="SetGreatGeneralCombatBonus" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="DoUnitKilledCombat" ret="void">
+    <arg type="PlayerTypes" name="eKilledPlayer"/>
+    <arg type="UnitTypes" name="eUnit"/>
+  </call>
+  <call fn="DoGreatPersonExpended" ret="void">
+    <arg type="UnitTypes" name="eGreatPersonUnit"/>
+  </call>
+  <call fn="GetGreatPersonExpendGold" ret="int"></call>
+  <call fn="ChangeGreatPersonExpendGold" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="DoSeedGreatPeopleSpawnCounter" ret="void"></call>
+  <call fn="DoApplyNewAllyGPBonus" ret="void"></call>
+  <call fn="GetGreatPeopleSpawnCounter" ret="int"></call>
+  <call fn="SetGreatPeopleSpawnCounter" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeGreatPeopleSpawnCounter" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="DoSpawnGreatPerson" ret="void">
+    <arg type="PlayerTypes" name="eMinor"/>
+  </call>
+  <call fn="DoGreatPeopleSpawnTurn" ret="void"></call>
+  <call fn="GetGreatPersonSpawnCity" ret="City">
+    <arg type="UnitTypes" name="eUnit"/>
+  </call>
+  <call fn="getMaxGlobalBuildingProductionModifier" ret="int"></call>
+  <call fn="changeMaxGlobalBuildingProductionModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getMaxTeamBuildingProductionModifier" ret="int"></call>
+  <call fn="changeMaxTeamBuildingProductionModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getMaxPlayerBuildingProductionModifier" ret="int"></call>
+  <call fn="changeMaxPlayerBuildingProductionModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getFreeExperience" ret="int"></call>
+  <call fn="changeFreeExperienceFromBldgs" ret="void">
+    <arg type="int" name="ichange"/>
+  </call>
+  <call fn="changeFreeExperienceFromMinors" ret="void">
+    <arg type="int" name="ichange"/>
+  </call>
+  <call fn="recomputeFreeExperience" ret="void"></call>
+  <call fn="doUpdateBarbarianCampVisibility" ret="void"></call>
+  <call fn="getFeatureProductionModifier" ret="int"></call>
+  <call fn="changeFeatureProductionModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getWorkerSpeedModifier" ret="int"></call>
+  <call fn="changeWorkerSpeedModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getImprovementCostModifier" ret="int"></call>
+  <call fn="changeImprovementCostModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getImprovementUpgradeRateModifier" ret="int"></call>
+  <call fn="changeImprovementUpgradeRateModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getSpecialistProductionModifier" ret="int"></call>
+  <call fn="changeSpecialistProductionModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getMilitaryProductionModifier" ret="int"></call>
+  <call fn="changeMilitaryProductionModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getSpaceProductionModifier" ret="int"></call>
+  <call fn="changeSpaceProductionModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getCityDefenseModifier" ret="int"></call>
+  <call fn="changeCityDefenseModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getUnitFortificationModifier" ret="int"></call>
+  <call fn="changeUnitFortificationModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getUnitBaseHealModifier" ret="int"></call>
+  <call fn="changeUnitBaseHealModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getWonderProductionModifier" ret="int"></call>
+  <call fn="changeWonderProductionModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getSettlerProductionModifier" ret="int"></call>
+  <call fn="changeSettlerProductionModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getCapitalSettlerProductionModifier" ret="int"></call>
+  <call fn="changeCapitalSettlerProductionModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetPolicyCostBuildingModifier" ret="int"></call>
+  <call fn="ChangePolicyCostBuildingModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetPolicyCostMinorCivModifier" ret="int"></call>
+  <call fn="ChangePolicyCostMinorCivModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetInfluenceSpreadModifier" ret="int"></call>
+  <call fn="ChangeInfluenceSpreadModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetExtraVotesPerDiplomat" ret="int"></call>
+  <call fn="ChangeExtraVotesPerDiplomat" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNumNukeUnits" ret="int"></call>
+  <call fn="changeNumNukeUnits" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getBaseFreeUnits" ret="int"></call>
+  <call fn="changeBaseFreeUnits" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNumOutsideUnits" ret="int"></call>
+  <call fn="changeNumOutsideUnits" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetVerifiedOutsideUnitCount" ret="int"></call>
+  <call fn="getGoldPerUnit" ret="int"></call>
+  <call fn="changeGoldPerUnit" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getGoldPerUnitTimes100" ret="int"></call>
+  <call fn="changeGoldPerUnitTimes100" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getGoldPerMilitaryUnit" ret="int"></call>
+  <call fn="changeGoldPerMilitaryUnit" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetRouteGoldMaintenanceMod" ret="int"></call>
+  <call fn="ChangeRouteGoldMaintenanceMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetBuildingGoldMaintenanceMod" ret="int"></call>
+  <call fn="ChangeBuildingGoldMaintenanceMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetUnitGoldMaintenanceMod" ret="int"></call>
+  <call fn="ChangeUnitGoldMaintenanceMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetUnitSupplyMod" ret="int"></call>
+  <call fn="ChangeUnitSupplyMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraUnitCost" ret="int"></call>
+  <call fn="changeExtraUnitCost" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumMaintenanceFreeUnits" ret="int">
+    <arg type="DomainTypes" name="eDomain" default="NO_DOMAIN"/>
+    <arg type="bool" name="bOnlyCombatUnits" default="false"/>
+  </call>
+  <call fn="getNumMilitaryUnits" ret="int"></call>
+  <call fn="changeNumMilitaryUnits" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHappyPerMilitaryUnit" ret="int"></call>
+  <call fn="changeHappyPerMilitaryUnit" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHappinessToCulture" ret="int"></call>
+  <call fn="changeHappinessToCulture" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHappinessToScience" ret="int"></call>
+  <call fn="changeHappinessToScience" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHalfSpecialistUnhappinessCount" ret="int"></call>
+  <call fn="isHalfSpecialistUnhappiness" ret="bool"></call>
+  <call fn="changeHalfSpecialistUnhappinessCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHalfSpecialistFoodCount" ret="int"></call>
+  <call fn="isHalfSpecialistFood" ret="bool"></call>
+  <call fn="changeHalfSpecialistFoodCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getMilitaryFoodProductionCount" ret="int"></call>
+  <call fn="isMilitaryFoodProduction" ret="bool"></call>
+  <call fn="changeMilitaryFoodProductionCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetGoldenAgeCultureBonusDisabledCount" ret="int"></call>
+  <call fn="IsGoldenAgeCultureBonusDisabled" ret="bool"></call>
+  <call fn="ChangeGoldenAgeCultureBonusDisabledCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetSecondReligionPantheonCount" ret="int"></call>
+  <call fn="IsSecondReligionPantheon" ret="bool"></call>
+  <call fn="ChangeSecondReligionPantheonCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetEnablesSSPartHurryCount" ret="int"></call>
+  <call fn="IsEnablesSSPartHurry" ret="bool"></call>
+  <call fn="ChangeEnablesSSPartHurryCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetEnablesSSPartPurchaseCount" ret="int"></call>
+  <call fn="IsEnablesSSPartPurchase" ret="bool"></call>
+  <call fn="ChangeEnablesSSPartPurchaseCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHighestUnitLevel" ret="int"></call>
+  <call fn="setHighestUnitLevel" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="getConscriptCount" ret="int"></call>
+  <call fn="setConscriptCount" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeConscriptCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getMaxConscript" ret="int"></call>
+  <call fn="changeMaxConscript" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getOverflowResearch" ret="int"></call>
+  <call fn="setOverflowResearch" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeOverflowResearch" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getOverflowResearchTimes100" ret="int"></call>
+  <call fn="setOverflowResearchTimes100" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeOverflowResearchTimes100" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExpModifier" ret="int"></call>
+  <call fn="changeExpModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExpInBorderModifier" ret="int"></call>
+  <call fn="changeExpInBorderModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getLevelExperienceModifier" ret="int"></call>
+  <call fn="changeLevelExperienceModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getMinorQuestFriendshipMod" ret="int"></call>
+  <call fn="changeMinorQuestFriendshipMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getMinorGoldFriendshipMod" ret="int"></call>
+  <call fn="changeMinorGoldFriendshipMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetMinorFriendshipAnchorMod" ret="int"></call>
+  <call fn="SetMinorFriendshipAnchorMod" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeMinorFriendshipAnchorMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetMinorFriendshipDecayMod" ret="int"></call>
+  <call fn="changeGetMinorFriendshipDecayMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsMinorScienceAllies" ret="bool"></call>
+  <call fn="GetMinorScienceAlliesCount" ret="int"></call>
+  <call fn="ChangeMinorScienceAlliesCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsMinorResourceBonus" ret="bool"></call>
+  <call fn="GetMinorResourceBonusCount" ret="int"></call>
+  <call fn="ChangeMinorResourceBonusCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsAbleToAnnexCityStates" ret="bool"></call>
+  <call fn="GetAbleToAnnexCityStatesCount" ret="int"></call>
+  <call fn="ChangeAbleToAnnexCityStatesCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getCultureBombTimer" ret="int"></call>
+  <call fn="setCultureBombTimer" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeCultureBombTimer" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getConversionTimer" ret="int"></call>
+  <call fn="setConversionTimer" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="changeConversionTimer" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getCapitalCity" ret="City"></call>
+  <call fn="getCapitalCity" ret="City"></call>
+  <call fn="setCapitalCity" ret="void">
+    <arg type="City" name="pNewCapitalCity"/>
+  </call>
+  <call fn="GetOriginalCapitalX" ret="int"></call>
+  <call fn="GetOriginalCapitalY" ret="int"></call>
+  <call fn="IsHasLostCapital" ret="bool"></call>
+  <call fn="SetHasLostCapital" ret="void">
+    <arg type="bool" name="bValue"/>
+    <arg type="PlayerTypes" name="eConqueror"/>
+  </call>
+  <call fn="GetCapitalConqueror" ret="PlayerTypes"></call>
+  <call fn="getCitiesLost" ret="int"></call>
+  <call fn="changeCitiesLost" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getPower" ret="int"></call>
+  <call fn="GetMilitaryMight" ret="int"></call>
+  <call fn="GetEconomicMight" ret="int"></call>
+  <call fn="calculateMilitaryMight" ret="int"></call>
+  <call fn="calculateEconomicMight" ret="int"></call>
+  <call fn="calculateProductionMight" ret="int"></call>
+  <call fn="getCombatExperience" ret="int"></call>
+  <call fn="setCombatExperience" ret="void">
+    <arg type="int" name="iExperience"/>
+  </call>
+  <call fn="changeCombatExperience" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getLifetimeCombatExperience" ret="int"></call>
+  <call fn="getNavalCombatExperience" ret="int"></call>
+  <call fn="setNavalCombatExperience" ret="void">
+    <arg type="int" name="iExperience"/>
+  </call>
+  <call fn="changeNavalCombatExperience" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getBorderObstacleCount" ret="int"></call>
+  <call fn="isBorderObstacle" ret="bool"></call>
+  <call fn="changeBorderObstacleCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNetID" ret="int"></call>
+  <call fn="setNetID" ret="void">
+    <arg type="int" name="iNetID"/>
+  </call>
+  <call fn="isConnected" ret="bool"></call>
+  <call fn="sendTurnReminder" ret="void"></call>
+  <call fn="getStartTime" ret="uint"></call>
+  <call fn="setStartTime" ret="void">
+    <arg type="uint" name="uiStartTime"/>
+  </call>
+  <call fn="getTotalTimePlayed" ret="uint"></call>
+  <call fn="isMinorCiv" ret="bool"></call>
+  <call fn="IsHasBetrayedMinorCiv" ret="bool"></call>
+  <call fn="SetHasBetrayedMinorCiv" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="setAlive" ret="void">
+    <arg type="bool" name="bNewValue"/>
+    <arg type="bool" name="bNotify" default="true"/>
+  </call>
+  <call fn="verifyAlive" ret="void"></call>
+  <call fn="isAlive" ret="bool"></call>
+  <call fn="isEverAlive" ret="bool"></call>
+  <call fn="setBeingResurrected" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="isBeingResurrected" ret="bool"></call>
+  <call fn="isTurnActive" ret="bool"></call>
+  <call fn="setTurnActive" ret="void">
+    <arg type="bool" name="bNewValue"/>
+    <arg type="bool" name="bDoTurn" default="true"/>
+  </call>
+  <call fn="isSimultaneousTurns" ret="bool"></call>
+  <call fn="setDynamicTurnsSimultMode" ret="void">
+    <arg type="bool" name="simultaneousTurns"/>
+  </call>
+  <call fn="isAutoMoves" ret="bool"></call>
+  <call fn="setAutoMoves" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="hasProcessedAutoMoves" ret="bool"></call>
+  <call fn="setProcessedAutoMoves" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="setTurnActiveForPbem" ret="void">
+    <arg type="bool" name="bActive"/>
+  </call>
+  <call fn="isPbemNewTurn" ret="bool"></call>
+  <call fn="setPbemNewTurn" ret="void">
+    <arg type="bool" name="bNew"/>
+  </call>
+  <call fn="isEndTurn" ret="bool"></call>
+  <call fn="setEndTurn" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="GetEndTurnBlockingType" ret="EndTurnBlockingTypes"></call>
+  <call fn="GetEndTurnBlockingNotificationIndex" ret="int"></call>
+  <call fn="SetEndTurnBlocking" ret="void">
+    <arg type="EndTurnBlockingTypes" name="eBlockingType"/>
+    <arg type="int" name="iNotificationIndex"/>
+  </call>
+  <call fn="isTurnDone" ret="bool"></call>
+  <call fn="isLocalPlayer" ret="bool"></call>
+  <call fn="isExtendedGame" ret="bool"></call>
+  <call fn="makeExtendedGame" ret="void"></call>
+  <call fn="isFoundedFirstCity" ret="bool"></call>
+  <call fn="setFoundedFirstCity" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="GetNumCitiesFounded" ret="int"></call>
+  <call fn="ChangeNumCitiesFounded" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="CheckForMurder" ret="void">
+    <arg type="PlayerTypes" name="ePossibleVictimPlayer"/>
+  </call>
+  <call fn="isStrike" ret="bool"></call>
+  <call fn="setStrike" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="IsCramped" ret="bool"></call>
+  <call fn="DoUpdateCramped" ret="void"></call>
+  <call fn="getHandicapInfo" ret="CvHandicapInfo"></call>
+  <call fn="getHandicapType" ret="HandicapTypes"></call>
+  <call fn="getCivilizationInfo" ret="CvCivilizationInfo"></call>
+  <call fn="getCivilizationType" ret="CivilizationTypes"></call>
+  <call fn="getLeaderInfo" ret="CvLeaderHeadInfo"></call>
+  <call fn="getLeaderType" ret="LeaderHeadTypes"></call>
+  <call fn="getPersonalityType" ret="LeaderHeadTypes"></call>
+  <call fn="setPersonalityType" ret="void">
+    <arg type="LeaderHeadTypes" name="eNewValue"/>
+  </call>
+  <call fn="GetCurrentEra" ret="EraTypes"></call>
+  <call fn="GetID" ret="PlayerTypes"></call>
+  <call fn="getTeam" ret="TeamTypes"></call>
+  <call fn="setTeam" ret="void">
+    <arg type="TeamTypes" name="eTeam"/>
+  </call>
+  <call fn="IsAITeammateOfHuman" ret="bool"></call>
+  <call fn="getPlayerColor" ret="PlayerColorTypes"></call>
+  <call fn="getPlayerTextColor" ret="CvColorA"></call>
+  <call fn="getSeaPlotYield" ret="int">
+    <arg type="YieldTypes" name="eIndex"/>
+  </call>
+  <call fn="changeSeaPlotYield" ret="void">
+    <arg type="YieldTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getYieldRateModifier" ret="int">
+    <arg type="YieldTypes" name="eIndex"/>
+  </call>
+  <call fn="changeYieldRateModifier" ret="void">
+    <arg type="YieldTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getCapitalYieldRateModifier" ret="int">
+    <arg type="YieldTypes" name="eIndex"/>
+  </call>
+  <call fn="changeCapitalYieldRateModifier" ret="void">
+    <arg type="YieldTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getExtraYieldThreshold" ret="int">
+    <arg type="YieldTypes" name="eIndex"/>
+  </call>
+  <call fn="updateExtraYieldThreshold" ret="void">
+    <arg type="YieldTypes" name="eIndex"/>
+  </call>
+  <call fn="GetScience" ret="int"></call>
+  <call fn="GetScienceTimes100" ret="int"></call>
+  <call fn="GetScienceFromCitiesTimes100" ret="int">
+    <arg type="bool" name="bIgnoreTrade"/>
+  </call>
+  <call fn="GetScienceFromOtherPlayersTimes100" ret="int"></call>
+  <call fn="GetScienceFromHappinessTimes100" ret="int"></call>
+  <call fn="GetScienceFromResearchAgreementsTimes100" ret="int"></call>
+  <call fn="GetScienceFromBudgetDeficitTimes100" ret="int"></call>
+  <call fn="GetScienceYieldFromPreviousTurns" ret="int">
+    <arg type="int" name="iGameTurn"/>
+    <arg type="int" name="iNumPreviousTurnsToCount"/>
+  </call>
+  <call fn="IsGetsScienceFromPlayer" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="SetGetsScienceFromPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="DoDeficit" ret="void"></call>
+  <call fn="getSpecialistExtraYield" ret="int">
+    <arg type="YieldTypes" name="eIndex"/>
+  </call>
+  <call fn="changeSpecialistExtraYield" ret="void">
+    <arg type="YieldTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetProximityToPlayer" ret="PlayerProximityTypes">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="SetProximityToPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="PlayerProximityTypes" name="eProximity"/>
+  </call>
+  <call fn="DoUpdateProximityToPlayer" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="UpdateResearchAgreements" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetResearchAgreementCounter" ret="int">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="SetResearchAgreementCounter" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeResearchAgreementCounter" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="DoCivilianReturnLogic" ret="void">
+    <arg type="bool" name="bReturn"/>
+    <arg type="PlayerTypes" name="eToPlayer"/>
+    <arg type="int" name="iUnitID"/>
+  </call>
+  <call fn="DoIncomingUnits" ret="void"></call>
+  <call fn="DoDistanceGift" ret="void">
+    <arg type="PlayerTypes" name="eFromPlayer"/>
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="AddIncomingUnit" ret="void">
+    <arg type="PlayerTypes" name="eFromPlayer"/>
+    <arg type="Unit" name="pUnit"/>
+  </call>
+  <call fn="GetIncomingUnitType" ret="UnitTypes">
+    <arg type="PlayerTypes" name="eFromPlayer"/>
+  </call>
+  <call fn="SetIncomingUnitType" ret="void">
+    <arg type="PlayerTypes" name="eFromPlayer"/>
+    <arg type="UnitTypes" name="eUnitType"/>
+  </call>
+  <call fn="GetIncomingUnitCountdown" ret="int">
+    <arg type="PlayerTypes" name="eFromPlayer"/>
+  </call>
+  <call fn="SetIncomingUnitCountdown" ret="void">
+    <arg type="PlayerTypes" name="eFromPlayer"/>
+    <arg type="int" name="iNumTurns"/>
+  </call>
+  <call fn="ChangeIncomingUnitCountdown" ret="void">
+    <arg type="PlayerTypes" name="eFromPlayer"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="isOption" ret="bool">
+    <arg type="PlayerOptionTypes" name="eIndex"/>
+  </call>
+  <call fn="setOption" ret="void">
+    <arg type="PlayerOptionTypes" name="eIndex"/>
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="isPlayable" ret="bool"></call>
+  <call fn="setPlayable" ret="void">
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="getNumResourceUsed" ret="int">
+    <arg type="ResourceTypes" name="eIndex"/>
+  </call>
+  <call fn="changeNumResourceUsed" ret="void">
+    <arg type="ResourceTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNumResourceTotal" ret="int">
+    <arg type="ResourceTypes" name="eIndex"/>
+    <arg type="bool" name="bIncludeImport" default="true"/>
+  </call>
+  <call fn="changeNumResourceTotal" ret="void">
+    <arg type="ResourceTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+    <arg type="bool" name="bIgnoreResourceWarning" default="false"/>
+  </call>
+  <call fn="getSiphonLuxuryCount" ret="int">
+    <arg type="PlayerTypes" name="eFromPlayer"/>
+  </call>
+  <call fn="changeSiphonLuxuryCount" ret="void">
+    <arg type="PlayerTypes" name="eFromPlayer"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="UpdateResourcesSiphoned" ret="void"></call>
+  <call fn="DoTestOverResourceNotification" ret="void">
+    <arg type="ResourceTypes" name="eIndex"/>
+  </call>
+  <call fn="GetStrategicResourceMod" ret="int"></call>
+  <call fn="ChangeStrategicResourceMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getNumResourceAvailable" ret="int">
+    <arg type="ResourceTypes" name="eIndex"/>
+    <arg type="bool" name="bIncludeImport" default="true"/>
+  </call>
+  <call fn="getResourceGiftedToMinors" ret="int">
+    <arg type="ResourceTypes" name="eIndex"/>
+  </call>
+  <call fn="changeResourceGiftedToMinors" ret="void">
+    <arg type="ResourceTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getResourceExport" ret="int">
+    <arg type="ResourceTypes" name="eIndex"/>
+  </call>
+  <call fn="changeResourceExport" ret="void">
+    <arg type="ResourceTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getResourceImport" ret="int">
+    <arg type="ResourceTypes" name="eIndex"/>
+  </call>
+  <call fn="changeResourceImport" ret="void">
+    <arg type="ResourceTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getResourceFromMinors" ret="int">
+    <arg type="ResourceTypes" name="eIndex"/>
+  </call>
+  <call fn="changeResourceFromMinors" ret="void">
+    <arg type="ResourceTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getResourceSiphoned" ret="int">
+    <arg type="ResourceTypes" name="eIndex"/>
+  </call>
+  <call fn="changeResourceSiphoned" ret="void">
+    <arg type="ResourceTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getResourceInOwnedPlots" ret="int">
+    <arg type="ResourceTypes" name="eIndex"/>
+  </call>
+  <call fn="getTotalImprovementsBuilt" ret="int"></call>
+  <call fn="changeTotalImprovementsBuilt" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getImprovementCount" ret="int">
+    <arg type="ImprovementTypes" name="eIndex"/>
+  </call>
+  <call fn="changeImprovementCount" ret="void">
+    <arg type="ImprovementTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getGreatPersonImprovementCount" ret="int"></call>
+  <call fn="getFreeBuildingCount" ret="int">
+    <arg type="BuildingTypes" name="eIndex"/>
+  </call>
+  <call fn="isBuildingFree" ret="bool">
+    <arg type="BuildingTypes" name="eIndex"/>
+  </call>
+  <call fn="changeFreeBuildingCount" ret="void">
+    <arg type="BuildingTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetFreePromotionCount" ret="int">
+    <arg type="PromotionTypes" name="eIndex"/>
+  </call>
+  <call fn="IsFreePromotion" ret="bool">
+    <arg type="PromotionTypes" name="eIndex"/>
+  </call>
+  <call fn="ChangeFreePromotionCount" ret="void">
+    <arg type="PromotionTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getUnitCombatProductionModifiers" ret="int">
+    <arg type="UnitCombatTypes" name="eIndex"/>
+  </call>
+  <call fn="changeUnitCombatProductionModifiers" ret="void">
+    <arg type="UnitCombatTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getUnitCombatFreeExperiences" ret="int">
+    <arg type="UnitCombatTypes" name="eIndex"/>
+  </call>
+  <call fn="changeUnitCombatFreeExperiences" ret="void">
+    <arg type="UnitCombatTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getUnitClassCount" ret="int">
+    <arg type="UnitClassTypes" name="eIndex"/>
+  </call>
+  <call fn="isUnitClassMaxedOut" ret="bool">
+    <arg type="UnitClassTypes" name="eIndex"/>
+    <arg type="int" name="iExtra" default="0"/>
+  </call>
+  <call fn="changeUnitClassCount" ret="void">
+    <arg type="UnitClassTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getUnitClassMaking" ret="int">
+    <arg type="UnitClassTypes" name="eIndex"/>
+  </call>
+  <call fn="changeUnitClassMaking" ret="void">
+    <arg type="UnitClassTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getUnitClassCountPlusMaking" ret="int">
+    <arg type="UnitClassTypes" name="eIndex"/>
+  </call>
+  <call fn="getBuildingClassCount" ret="int">
+    <arg type="BuildingClassTypes" name="eIndex"/>
+  </call>
+  <call fn="isBuildingClassMaxedOut" ret="bool">
+    <arg type="BuildingClassTypes" name="eIndex"/>
+    <arg type="int" name="iExtra" default="0"/>
+  </call>
+  <call fn="changeBuildingClassCount" ret="void">
+    <arg type="BuildingClassTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getBuildingClassMaking" ret="int">
+    <arg type="BuildingClassTypes" name="eIndex"/>
+  </call>
+  <call fn="changeBuildingClassMaking" ret="void">
+    <arg type="BuildingClassTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getBuildingClassCountPlusMaking" ret="int">
+    <arg type="BuildingClassTypes" name="eIndex"/>
+  </call>
+  <call fn="getProjectMaking" ret="int">
+    <arg type="ProjectTypes" name="eIndex"/>
+  </call>
+  <call fn="changeProjectMaking" ret="void">
+    <arg type="ProjectTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHurryCount" ret="int">
+    <arg type="HurryTypes" name="eIndex"/>
+  </call>
+  <call fn="IsHasAccessToHurry" ret="bool">
+    <arg type="HurryTypes" name="eIndex"/>
+  </call>
+  <call fn="IsCanHurry" ret="bool">
+    <arg type="HurryTypes" name="eIndex"/>
+  </call>
+  <call fn="GetHurryGoldCost" ret="int">
+    <arg type="HurryTypes" name="eHurry"/>
+  </call>
+  <call fn="DoHurry" ret="void">
+    <arg type="HurryTypes" name="eIndex"/>
+  </call>
+  <call fn="canPopRush" ret="bool"></call>
+  <call fn="changeHurryCount" ret="void">
+    <arg type="HurryTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getHurryModifier" ret="int">
+    <arg type="HurryTypes" name="eIndex"/>
+  </call>
+  <call fn="changeHurryModifier" ret="void">
+    <arg type="HurryTypes" name="eIndex"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="setResearchingTech" ret="void">
+    <arg type="TechTypes" name="eIndex"/>
+    <arg type="bool" name="bNewValue"/>
+  </call>
+  <call fn="getSpecialistExtraYield" ret="int">
+    <arg type="SpecialistTypes" name="eIndex1"/>
+    <arg type="YieldTypes" name="eIndex2"/>
+  </call>
+  <call fn="changeSpecialistExtraYield" ret="void">
+    <arg type="SpecialistTypes" name="eIndex1"/>
+    <arg type="YieldTypes" name="eIndex2"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="getImprovementYieldChange" ret="int">
+    <arg type="ImprovementTypes" name="eIndex1"/>
+    <arg type="YieldTypes" name="eIndex2"/>
+  </call>
+  <call fn="changeImprovementYieldChange" ret="void">
+    <arg type="ImprovementTypes" name="eIndex1"/>
+    <arg type="YieldTypes" name="eIndex2"/>
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetUnitCycler" ret="CvUnitCycler"></call>
+  <call fn="removeFromArmy" ret="bool">
+    <arg type="int" name="iArmyID"/>
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="removeFromArmy" ret="bool">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="findPathLength" ret="int">
+    <arg type="TechTypes" name="eTech"/>
+    <arg type="bool" name="bCost" default="true"/>
+  </call>
+  <call fn="getQueuePosition" ret="int">
+    <arg type="TechTypes" name="eTech"/>
+  </call>
+  <call fn="clearResearchQueue" ret="void"></call>
+  <call fn="pushResearch" ret="bool">
+    <arg type="TechTypes" name="eTech"/>
+    <arg type="bool" name="bClear" default="false"/>
+  </call>
+  <call fn="popResearch" ret="void">
+    <arg type="TechTypes" name="eTech"/>
+  </call>
+  <call fn="getLengthResearchQueue" ret="int"></call>
+  <call fn="addCityName" ret="void">
+    <arg type="str" name="szName"/>
+  </call>
+  <call fn="getNumCityNames" ret="int"></call>
+  <call fn="getCityName" ret="str">
+    <arg type="int" name="iIndex"/>
+  </call>
+  <call fn="firstCity" ret="City">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="firstCity" ret="City">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="nextCity" ret="City">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="nextCity" ret="City">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="getNumCities" ret="int"></call>
+  <call fn="getCity" ret="City">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="getCity" ret="City">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="addCity" ret="City"></call>
+  <call fn="deleteCity" ret="void">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="GetFirstCityWithBuildingClass" ret="City">
+    <arg type="BuildingClassTypes" name="eBuildingClass"/>
+  </call>
+  <call fn="getNumUnits" ret="int"></call>
+  <call fn="firstUnit" ret="Unit">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="nextUnit" ret="Unit">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="getUnit" ret="Unit">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="firstUnit" ret="Unit">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="nextUnit" ret="Unit">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="getUnit" ret="Unit">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="addUnit" ret="Unit"></call>
+  <call fn="deleteUnit" ret="void">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="firstArmyAI" ret="CvArmyAI*">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="nextArmyAI" ret="CvArmyAI*">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="firstArmyAI" ret="CvArmyAI*">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="nextArmyAI" ret="CvArmyAI*">
+    <arg type="int*" name="pIterIdx"/>
+    <arg type="bool" name="bRev" default="false"/>
+  </call>
+  <call fn="getNumArmyAIs" ret="int"></call>
+  <call fn="getArmyAI" ret="CvArmyAI*">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="getArmyAI" ret="CvArmyAI*">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="addArmyAI" ret="CvArmyAI*"></call>
+  <call fn="deleteArmyAI" ret="void">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="getFirstAIOperation" ret="CvAIOperation*"></call>
+  <call fn="getNextAIOperation" ret="CvAIOperation*"></call>
+  <call fn="getAIOperation" ret="CvAIOperation*">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="getAIOperation" ret="CvAIOperation*">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="addAIOperation" ret="CvAIOperation*">
+    <arg type="int" name="iOperationType"/>
+    <arg type="PlayerTypes" name="eEnemy" default="NO_PLAYER"/>
+    <arg type="int" name="iArea" default="-1"/>
+    <arg type="City" name="pTarget" default="NULL"/>
+    <arg type="City" name="pMuster" default="NULL"/>
+  </call>
+  <call fn="deleteAIOperation" ret="void">
+    <arg type="int" name="iID"/>
+  </call>
+  <call fn="haveAIOperationOfType" ret="bool">
+    <arg type="int" name="iOperationType"/>
+    <arg type="int*" name="piID" default="NULL"/>
+    <arg type="PlayerTypes" name="eTargetPlayer" default="NO_PLAYER"/>
+    <arg type="Plot" name="pTargetPlot" default="NULL"/>
+  </call>
+  <call fn="numOperationsOfType" ret="int">
+    <arg type="int" name="iOperationType"/>
+  </call>
+  <call fn="IsCityAlreadyTargeted" ret="bool">
+    <arg type="City" name="pCity"/>
+    <arg type="DomainTypes" name="eDomain" default="NO_DOMAIN"/>
+    <arg type="int" name="iPercentToTarget" default="100"/>
+    <arg type="int" name="iIgnoreOperationID" default="-1"/>
+  </call>
+  <call fn="IsPlotTargetedForCity" ret="bool">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="GatherPerTurnReplayStats" ret="void">
+    <arg type="int" name="iGameTurn"/>
+  </call>
+  <call fn="getNumReplayDataSets" ret="int"></call>
+  <call fn="getReplayDataSetName" ret="str">
+    <arg type="int" name="uiDataSet"/>
+  </call>
+  <call fn="getReplayDataSetIndex" ret="int">
+    <arg type="str" name="szDataSetName"/>
+  </call>
+  <call fn="getReplayDataValue" ret="int">
+    <arg type="int" name="uiDataSet"/>
+    <arg type="int" name="uiTurn"/>
+  </call>
+  <call fn="setReplayDataValue" ret="void">
+    <arg type="int" name="uiDataSet"/>
+    <arg type="int" name="uiTurn"/>
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="getReplayDataHistory" ret="TurnData">
+    <arg type="int" name="uiDataSet"/>
+  </call>
+  <call fn="getScriptData" ret="string"></call>
+  <call fn="setScriptData" ret="void">
+    <arg type="string" name="szNewValue"/>
+  </call>
+  <call fn="getPbemEmailAddress" ret="str"></call>
+  <call fn="setPbemEmailAddress" ret="void">
+    <arg type="str" name="szAddress"/>
+  </call>
+  <call fn="getUnitExtraCost" ret="int">
+    <arg type="UnitClassTypes" name="eUnitClass"/>
+  </call>
+  <call fn="setUnitExtraCost" ret="void">
+    <arg type="UnitClassTypes" name="eUnitClass"/>
+    <arg type="int" name="iCost"/>
+  </call>
+  <call fn="launch" ret="void">
+    <arg type="VictoryTypes" name="victoryType"/>
+  </call>
+  <call fn="invalidatePopulationRankCache" ret="void"></call>
+  <call fn="invalidateYieldRankCache" ret="void">
+    <arg type="YieldTypes" name="eYield" default="NO_YIELD"/>
+  </call>
+  <call fn="pickConqueredCityOwner" ret="PlayerTypes">
+    <arg type="CvCity" name="kCity"/>
+  </call>
+  <call fn="getNewCityProductionValue" ret="int"></call>
+  <call fn="getGrowthThreshold" ret="int">
+    <arg type="int" name="iPopulation"/>
+  </call>
+  <call fn="GetCityStrengthMod" ret="int"></call>
+  <call fn="SetCityStrengthMod" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeCityStrengthMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCityGrowthMod" ret="int"></call>
+  <call fn="SetCityGrowthMod" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeCityGrowthMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetCapitalGrowthMod" ret="int"></call>
+  <call fn="SetCapitalGrowthMod" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeCapitalGrowthMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="InitPlots" ret="void"></call>
+  <call fn="UpdatePlots" ret="void"></call>
+  <call fn="AddAPlot" ret="void">
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="GetPlots" ret="CvPlotsVector"></call>
+  <call fn="GetNumPlots" ret="int"></call>
+  <call fn="GetNumPlotsBought" ret="int"></call>
+  <call fn="SetNumPlotsBought" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeNumPlotsBought" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetBuyPlotCost" ret="int"></call>
+  <call fn="GetPlotGoldCostMod" ret="int"></call>
+  <call fn="ChangePlotGoldCostMod" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetPlotCultureCostModifier" ret="int"></call>
+  <call fn="ChangePlotCultureCostModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetPlotCultureExponentModifier" ret="int"></call>
+  <call fn="ChangePlotCultureExponentModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumCitiesPolicyCostDiscount" ret="int"></call>
+  <call fn="ChangeNumCitiesPolicyCostDiscount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetGarrisonedCityRangeStrikeModifier" ret="int"></call>
+  <call fn="ChangeGarrisonedCityRangeStrikeModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="IsGarrisonFreeMaintenance" ret="bool"></call>
+  <call fn="ChangeGarrisonFreeMaintenanceCount" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetUnitPurchaseCostModifier" ret="int"></call>
+  <call fn="ChangeUnitPurchaseCostModifier" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetPlotDanger" ret="int">
+    <arg type="CvPlot" name="Plot"/>
+  </call>
+  <call fn="IsPlotUnderImmediateThreat" ret="bool">
+    <arg type="CvPlot" name="Plot"/>
+  </call>
+  <call fn="GetClosestFriendlyCity" ret="City">
+    <arg type="CvPlot" name="plot"/>
+    <arg type="int" name="iSearchRadius"/>
+  </call>
+  <call fn="GetNumPuppetCities" ret="int"></call>
+  <call fn="GetMaxEffectiveCities" ret="int">
+    <arg type="bool" name="bIncludePuppets" default="false"/>
+  </call>
+  <call fn="GetNumNaturalWondersDiscoveredInArea" ret="int"></call>
+  <call fn="SetNumNaturalWondersDiscoveredInArea" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeNumNaturalWondersDiscoveredInArea" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumNaturalWondersInOwnedPlots" ret="int"></call>
+  <call fn="GetTurnsSinceSettledLastCity" ret="int"></call>
+  <call fn="SetTurnsSinceSettledLastCity" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeTurnsSinceSettledLastCity" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetBestSettleAreas" ret="int">
+    <arg type="int" name="iMinScore"/>
+    <arg type="int" name="iFirstArea"/>
+    <arg type="int" name="iSecondArea"/>
+  </call>
+  <call fn="GetBestSettlePlot" ret="Plot">
+    <arg type="Unit" name="pUnit"/>
+    <arg type="bool" name="bEscorted"/>
+    <arg type="int" name="iArea" default="-1"/>
+  </call>
+  <call fn="GetNumWonders" ret="int"></call>
+  <call fn="ChangeNumWonders" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetNumPolicies" ret="int"></call>
+  <call fn="ChangeNumPolicies" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetNumGreatPeople" ret="int"></call>
+  <call fn="ChangeNumGreatPeople" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="DoAdoptedGreatPersonCityStatePolicy" ret="void"></call>
+  <call fn="IsAlliesGreatPersonBiasApplied" ret="bool"></call>
+  <call fn="SetAlliesGreatPersonBiasApplied" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="IsHasAdoptedStateReligion" ret="bool"></call>
+  <call fn="SetHasAdoptedStateReligion" ret="void">
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="GetNumCitiesWithStateReligion" ret="int"></call>
+  <call fn="GetHolyCity" ret="City"></call>
+  <call fn="SetHolyCity" ret="void">
+    <arg type="int" name="iCityID"/>
+  </call>
+  <call fn="GetEmbarkationPromotion" ret="PromotionTypes"></call>
+  <call fn="DoAnnounceReligionAdoption" ret="void"></call>
+  <call fn="GetNumFreeTechs" ret="int"></call>
+  <call fn="SetNumFreeTechs" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetMedianTechPercentage" ret="int"></call>
+  <call fn="ChangeMedianTechPercentage" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetNumFreeGreatPeople" ret="int"></call>
+  <call fn="SetNumFreeGreatPeople" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeNumFreeGreatPeople" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumMayaBoosts" ret="int"></call>
+  <call fn="SetNumMayaBoosts" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeNumMayaBoosts" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumFaithGreatPeople" ret="int"></call>
+  <call fn="SetNumFaithGreatPeople" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeNumFaithGreatPeople" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumArchaeologyChoices" ret="int"></call>
+  <call fn="SetNumArchaeologyChoices" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="GetFaithPurchaseType" ret="FaithPurchaseTypes"></call>
+  <call fn="SetFaithPurchaseType" ret="void">
+    <arg type="FaithPurchaseTypes" name="eType"/>
+  </call>
+  <call fn="GetFaithPurchaseIndex" ret="int"></call>
+  <call fn="SetFaithPurchaseIndex" ret="void">
+    <arg type="int" name="iIndex"/>
+  </call>
+  <call fn="GetNumFreePolicies" ret="int"></call>
+  <call fn="SetNumFreePolicies" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeNumFreePolicies" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumFreePoliciesEver" ret="int"></call>
+  <call fn="SetNumFreePoliciesEver" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="ChangeNumFreePoliciesEver" ret="void">
+    <arg type="int" name="iChange"/>
+  </call>
+  <call fn="GetNumFreeTenets" ret="int"></call>
+  <call fn="SetNumFreeTenets" ret="void">
+    <arg type="int" name="iValue"/>
+    <arg type="bool" name="bCountAsFreePolicies"/>
+  </call>
+  <call fn="ChangeNumFreeTenets" ret="void">
+    <arg type="int" name="iChange"/>
+    <arg type="bool" name="bCountAsFreePolicies"/>
+  </call>
+  <call fn="GetLastSliceMoved" ret="int"></call>
+  <call fn="SetLastSliceMoved" ret="void">
+    <arg type="int" name="iValue"/>
+  </call>
+  <call fn="SetEverConqueredBy" ret="void">
+    <arg type="PlayerTypes" name="ePlayer"/>
+    <arg type="bool" name="bValue"/>
+  </call>
+  <call fn="IsEverConqueredBy" ret="bool">
+    <arg type="PlayerTypes" name="ePlayer"/>
+  </call>
+  <call fn="GetEverPoppedGoody" ret="bool"></call>
+  <call fn="GetClosestGoodyPlot" ret="Plot">
+    <arg type="bool" name="bStopAfterFindingFirst" default="false"/>
+  </call>
+  <call fn="GetPlotHasOrder" ret="bool">
+    <arg type="Plot" name="Plot"/>
+  </call>
+  <call fn="GetAnyUnitHasOrderToGoody" ret="bool"></call>
+  <call fn="GetEverTrainedBuilder" ret="bool"></call>
+  <call fn="IsAllowedToTradeWith" ret="bool">
+    <arg type="PlayerTypes" name="eOtherPlayer"/>
+  </call>
+  <call fn="GetPlayerPolicies" ret="CvPlayerPolicies*"></call>
+  <call fn="GetPlayerTraits" ret="CvPlayerTraits*"></call>
+  <call fn="GetEconomicAI" ret="CvEconomicAI*"></call>
+  <call fn="GetMilitaryAI" ret="CvMilitaryAI*"></call>
+  <call fn="GetCitySpecializationAI" ret="CvCitySpecializationAI*"></call>
+  <call fn="GetWonderProductionAI" ret="CvWonderProductionAI*"></call>
+  <call fn="GetGrandStrategyAI" ret="CvGrandStrategyAI*"></call>
+  <call fn="GetDiplomacyAI" ret="CvDiplomacyAI*"></call>
+  <call fn="GetReligions" ret="CvPlayerReligions*"></call>
+  <call fn="GetCulture" ret="CvPlayerCulture*"></call>
+  <call fn="GetReligionAI" ret="CvReligionAI*"></call>
+  <call fn="GetPlayerTechs" ret="CvPlayerTechs*"></call>
+  <call fn="GetFlavorManager" ret="CvFlavorManager*"></call>
+  <call fn="GetTacticalAI" ret="CvTacticalAI*"></call>
+  <call fn="GetHomelandAI" ret="CvHomelandAI*"></call>
+  <call fn="GetMinorCivAI" ret="CvMinorCivAI*"></call>
+  <call fn="GetDealAI" ret="CvDealAI*"></call>
+  <call fn="GetBuilderTaskingAI" ret="CvBuilderTaskingAI*"></call>
+  <call fn="GetCityConnections" ret="CvCityConnections*"></call>
+  <call fn="GetEspionage" ret="CvPlayerEspionage*"></call>
+  <call fn="GetEspionageAI" ret="CvEspionageAI*"></call>
+  <call fn="GetTrade" ret="CvPlayerTrade*"></call>
+  <call fn="GetTradeAI" ret="CvTradeAI*"></call>
+  <call fn="GetLeagueAI" ret="CvLeagueAI*"></call>
+  <call fn="GetNotifications" ret="CvNotifications*"></call>
+  <call fn="GetDiplomacyRequests" ret="CvDiplomacyRequests*"></call>
+  <call fn="HasActiveDiplomacyRequests" ret="bool"></call>
+  <call fn="GetTreasury" ret="CvTreasury*"></call>
+  <call fn="GetCityDistanceHighwaterMark" ret="int"></call>
+  <call fn="SetCityDistanceHighwaterMark" ret="void">
+    <arg type="int" name="iNewValue"/>
+  </call>
+  <call fn="SetEmbarkedGraphicOverride" ret="void">
+    <arg type="str" name="szGraphicName"/>
+  </call>
+  <call fn="GetEmbarkedGraphicOverride" ret="str"></call>
+  <call fn="getSyncArchive" ret="FAutoArchive"></call>
+  <call fn="getSyncArchive" ret="FAutoArchive"></call>
+  <call fn="disconnected" ret="void"></call>
+  <call fn="reconnected" ret="void"></call>
+  <call fn="hasBusyUnitUpdatesRemaining" ret="bool"></call>
+  <call fn="setBusyUnitUpdatesRemaining" ret="void">
+    <arg type="int" name="iUpdateCount"/>
+  </call>
+  <call fn="hasUnitsThatNeedAIUpdate" ret="bool"></call>
+  <call fn="checkInitialTurnAIProcessed" ret="void"></call>
+  <call fn="checkRunAutoMovesForEveryone" ret="void"></call>
+  <call fn="GetPlayerAchievements" ret="CvPlayerAchievements"></call>
+  <call fn="hasTurnTimerExpired" ret="bool"></call>
+  <call fn="AI_init" ret="void"></call>
+  <call fn="AI_uninit" ret="void"></call>
+  <call fn="AI_reset" ret="void"></call>
+  <call fn="AI_doTurnPre" ret="void"></call>
+  <call fn="AI_doTurnPost" ret="void"></call>
+  <call fn="AI_doTurnUnitsPre" ret="void"></call>
+  <call fn="AI_doTurnUnitsPost" ret="void"></call>
+  <call fn="AI_updateFoundValues" ret="void">
+    <arg type="bool" name="bStartingLoc" default="false"/>
+  </call>
+  <call fn="AI_unitUpdate" ret="void"></call>
+  <call fn="AI_conquerCity" ret="void">
+    <arg type="City" name="pCity"/>
+    <arg type="PlayerTypes" name="eOldOwner"/>
+  </call>
+  <call fn="AI_captureUnit" ret="bool">
+    <arg type="UnitTypes" name="eUnit"/>
+    <arg type="Plot" name="pPlot"/>
+  </call>
+  <call fn="AI_foundValue" ret="int">
+    <arg type="int" name="iX"/>
+    <arg type="int" name="iY"/>
+    <arg type="int" name="iMinRivalRange" default="-1"/>
+    <arg type="bool" name="bStartingLoc" default="false"/>
+  </call>
+  <call fn="AI_chooseFreeGreatPerson" ret="void"></call>
+  <call fn="AI_chooseFreeTech" ret="void"></call>
+  <call fn="AI_chooseResearch" ret="void"></call>
+  <call fn="AI_considerAnnex" ret="void"></call>
+  <call fn="AI_plotTargetMissionAIs" ret="int">
+    <arg type="Plot" name="pPlot"/>
+    <arg type="MissionAITypes" name="eMissionAI"/>
+    <arg type="int" name="iRange" default="0"/>
+  </call>
+  <call fn="ProcessGreatPeople" ret="void"></call>
+  <call fn="GetDirectiveWriter" ret="GreatPeopleDirectiveTypes">
+    <arg type="Unit" name="pGreatWriter"/>
+  </call>
+  <call fn="GetDirectiveArtist" ret="GreatPeopleDirectiveTypes">
+    <arg type="Unit" name="pGreatArtist"/>
+  </call>
+  <call fn="GetDirectiveMusician" ret="GreatPeopleDirectiveTypes">
+    <arg type="Unit" name="pGreatMusician"/>
+  </call>
+  <call fn="GetDirectiveEngineer" ret="GreatPeopleDirectiveTypes">
+    <arg type="Unit" name="pGreatEngineer"/>
+  </call>
+  <call fn="GetDirectiveMerchant" ret="GreatPeopleDirectiveTypes">
+    <arg type="Unit" name="pGreatMerchant"/>
+  </call>
+  <call fn="GetDirectiveScientist" ret="GreatPeopleDirectiveTypes">
+    <arg type="Unit" name="pGreatScientist"/>
+  </call>
+  <call fn="GetDirectiveGeneral" ret="GreatPeopleDirectiveTypes">
+    <arg type="Unit" name="pGreatGeneral"/>
+  </call>
+  <call fn="GetDirectiveProphet" ret="GreatPeopleDirectiveTypes">
+    <arg type="Unit" name="pGreatProphet"/>
+  </call>
+  <call fn="GetDirectiveAdmiral" ret="GreatPeopleDirectiveTypes">
+    <arg type="Unit" name="pGreatAdmiral"/>
+  </call>
+  <call fn="GreatMerchantWantsCash" ret="bool"></call>
+  <call fn="FindBestMerchantTargetPlot" ret="Plot">
+    <arg type="Unit" name="pGreatMerchant"/>
+    <arg type="bool" name="bOnlySafePaths"/>
+  </call>
+  <call fn="FindBestArtistTargetPlot" ret="Plot">
+    <arg type="Unit" name="pGreatArtist"/>
+    <arg type="int" name="iScore"/>
+  </call>
+  <call fn="FindBestMusicianTargetPlot" ret="Plot">
+    <arg type="Unit" name="pGreatMerchant"/>
+    <arg type="bool" name="bOnlySafePaths"/>
+  </call>
+</class>
